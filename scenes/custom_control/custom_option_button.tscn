@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b7l3k3ntwhj60"]
+
+[ext_resource type="Script" uid="uid://bwfwklror663o" path="res://scripts/custom_control/custom_option_button.gd" id="1_haqsc"]
+
+[node name="CustomOptionButton" type="OptionButton" unique_id=204344868]
+offset_right = 32.0
+offset_bottom = 20.0
+script = ExtResource("1_haqsc")

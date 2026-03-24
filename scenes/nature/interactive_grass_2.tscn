@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cat11q235hi6k"]
+
+[ext_resource type="Script" uid="uid://cfs25nvobwn4p" path="res://scripts/nature/interactive_foliage.gd" id="1_ol6ag"]
+[ext_resource type="Shader" uid="uid://dix7ypuoxdcow" path="res://shaders/environment/interactive_foliage.gdshader" id="2_5qcq0"]
+[ext_resource type="Texture2D" uid="uid://dblob4mbah13c" path="res://assets/textures/tiles/tileset.png" id="3_hsg6d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ol6ag"]
+resource_local_to_scene = true
+shader = ExtResource("2_5qcq0")
+shader_parameter/skew = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bavp2"]
+atlas = ExtResource("3_hsg6d")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ymq6"]
+size = Vector2(8, 11)
+
+[node name="InteractiveGrass2" type="Area2D" unique_id=102363179]
+script = ExtResource("1_ol6ag")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1088794335]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ol6ag")
+texture = SubResource("AtlasTexture_bavp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604569013]
+position = Vector2(-1, 2.5)
+shape = SubResource("RectangleShape2D_4ymq6")

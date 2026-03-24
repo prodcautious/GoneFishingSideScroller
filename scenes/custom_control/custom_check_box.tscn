@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b21cw5bm03bdh"]
+
+[ext_resource type="Script" uid="uid://dm3x470i8khp7" path="res://scripts/custom_control/custom_check_box.gd" id="1_7oll3"]
+
+[node name="CheckBox" type="CheckBox" unique_id=252365730]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7oll3")

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cos1gokbt36eu"]
+
+[ext_resource type="Shader" uid="uid://dj82ruo0414vw" path="res://shaders/environment/sway.gdshader" id="1_cf6ku"]
+[ext_resource type="Texture2D" uid="uid://fjji2031vb55" path="res://assets/textures/tiles/overworld.png" id="2_b6fcs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j018"]
+shader = ExtResource("1_cf6ku")
+shader_parameter/start_y = 0.400000019
+shader_parameter/strength = 0.02000000095
+shader_parameter/curve_scale = 1.0000000475
+shader_parameter/speed = 1.0000000475
+shader_parameter/wind_start = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf6ku"]
+shader = ExtResource("1_cf6ku")
+shader_parameter/start_y = 0.3
+shader_parameter/strength = 0.02000000095
+shader_parameter/curve_scale = 1.0000000475
+shader_parameter/speed = 1.0000000475
+shader_parameter/wind_start = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf6ku"]
+atlas = ExtResource("2_b6fcs")
+region = Rect2(0, 32, 48, 64)
+
+[sub_resource type="Gradient" id="Gradient_cf6ku"]
+colors = PackedColorArray(0.827451, 0.35686275, 0.16862746, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cf6ku"]
+gradient = SubResource("Gradient_cf6ku")
+width = 80
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.2)
+metadata/_snap_enabled = true
+
+[node name="OrangeTree" type="Node2D" unique_id=211830029]
+material = SubResource("ShaderMaterial_1j018")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2018603735]
+light_mask = 2
+material = SubResource("ShaderMaterial_cf6ku")
+position = Vector2(0, 8)
+texture = SubResource("AtlasTexture_cf6ku")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=406164845]
+position = Vector2(0, 8)
+energy = 0.5
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_cf6ku")

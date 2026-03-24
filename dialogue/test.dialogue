@@ -1,0 +1,9 @@
+~ start
+Blue: [[Hi!|Welcome!|Greetings!]] I'm the fishing gooner!
+Blue: Here are some choices.
+- Choices?
+	Blue: Yes! You can determine your own destiny!
+- Okay
+	Blue: Okay.
+Blue: Bye!
+=> END

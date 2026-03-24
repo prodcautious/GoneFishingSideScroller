@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://bhwrhc4ep1j4p"]
+
+[ext_resource type="Script" uid="uid://cpxlq1rlfmqor" path="res://scripts/characters/player.gd" id="1_yewv4"]
+[ext_resource type="Texture2D" uid="uid://mv45ugn07256" path="res://assets/textures/misc/white_box.png" id="2_yewv4"]
+[ext_resource type="Shader" uid="uid://dogrmsj3anntm" path="res://shaders/ui/vignette.gdshader" id="3_76oj4"]
+[ext_resource type="Script" uid="uid://dl4kc6g6ccgen" path="res://scripts/ui/inventory/inventory.gd" id="4_dyp2m"]
+[ext_resource type="PackedScene" uid="uid://c7tep62fenkq8" path="res://scenes/ui/inventory/inventory_slot.tscn" id="5_atpat"]
+[ext_resource type="Script" uid="uid://cqflsm5366rkm" path="res://item.gd" id="6_6eyoc"]
+[ext_resource type="Resource" uid="uid://ji2b6rq4o206" path="res://resources/items/fishing_rod.tres" id="7_eojnx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyp2m"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_yewv4"]
+length = 0.35
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_76oj4"]
+length = 0.35
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_dyp2m"]
+length = 0.35
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_atpat"]
+length = 0.35
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_kqtwu"]
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_6eyoc"]
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_eojnx"]
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_qgnko"]
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_7vyk4"]
+length = 0.7
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_2l4js"]
+length = 0.7
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_jk2m4"]
+length = 0.7
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_xhtjm"]
+length = 0.7
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_k4v7y"]
+length = 0.9
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_xrqxk"]
+length = 0.9
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_g66nw"]
+length = 0.9
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_rpnd8"]
+length = 0.9
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_d6tgn"]
+length = 0.65
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_3wg1y"]
+length = 0.65
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_kmyvj"]
+length = 0.65
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_a2luo"]
+length = 0.65
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eir2k"]
+_data = {
+&"hit_backward": SubResource("Animation_yewv4"),
+&"hit_forward": SubResource("Animation_76oj4"),
+&"hit_left": SubResource("Animation_dyp2m"),
+&"hit_right": SubResource("Animation_atpat"),
+&"idle_down": SubResource("Animation_kqtwu"),
+&"idle_left": SubResource("Animation_6eyoc"),
+&"idle_right": SubResource("Animation_eojnx"),
+&"idle_up": SubResource("Animation_qgnko"),
+&"pickup_down": SubResource("Animation_7vyk4"),
+&"pickup_left": SubResource("Animation_2l4js"),
+&"pickup_right": SubResource("Animation_jk2m4"),
+&"pickup_up": SubResource("Animation_xhtjm"),
+&"run_down": SubResource("Animation_k4v7y"),
+&"run_left": SubResource("Animation_xrqxk"),
+&"run_right": SubResource("Animation_g66nw"),
+&"run_up": SubResource("Animation_rpnd8"),
+&"till_backward": SubResource("Animation_d6tgn"),
+&"till_down": SubResource("Animation_3wg1y"),
+&"till_left": SubResource("Animation_kmyvj"),
+&"till_right": SubResource("Animation_a2luo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76oj4"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyp2m"]
+shader = ExtResource("3_76oj4")
+shader_parameter/inner_radius = 0.4
+shader_parameter/outer_radius = 0.8
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" unique_id=1423084509 node_paths=PackedStringArray("fishing_rod") groups=["Player"]]
+script = ExtResource("1_yewv4")
+fishing_rod = NodePath("FishingRodController")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1708479061]
+texture = ExtResource("2_yewv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1208561843]
+shape = SubResource("RectangleShape2D_dyp2m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=903160031]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_eir2k")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1911022542]
+unique_name_in_owner = true
+process_mode = 3
+limit_left = -320
+limit_right = 320
+
+[node name="DetectArea2D" type="Area2D" parent="." unique_id=1867857144]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D" unique_id=1161522135]
+shape = SubResource("RectangleShape2D_76oj4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2116784824]
+
+[node name="InteractVignette" type="ColorRect" parent="CanvasLayer" unique_id=1810522506]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_dyp2m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="Control" parent="CanvasLayer" unique_id=477351987]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_dyp2m")
+slot = ExtResource("5_atpat")
+hotbar = Array[ExtResource("6_6eyoc")]([ExtResource("7_eojnx"), ExtResource("7_eojnx")])
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Inventory" unique_id=526985369]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HotbarContainer" type="HBoxContainer" parent="CanvasLayer/Inventory/MarginContainer" unique_id=803957417]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+
+[node name="FishingRodController" type="Node2D" parent="." unique_id=521459041]

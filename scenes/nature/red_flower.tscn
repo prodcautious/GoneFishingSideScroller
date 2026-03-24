@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bfba1s8e2p5gu"]
+
+[ext_resource type="Shader" uid="uid://dj82ruo0414vw" path="res://shaders/environment/sway.gdshader" id="1_1f7qv"]
+[ext_resource type="Texture2D" uid="uid://fjji2031vb55" path="res://assets/textures/tiles/overworld.png" id="2_x85qk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j018"]
+shader = ExtResource("1_1f7qv")
+shader_parameter/start_y = 0.400000019
+shader_parameter/strength = 0.02000000095
+shader_parameter/curve_scale = 1.0000000475
+shader_parameter/speed = 1.0000000475
+shader_parameter/wind_start = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf6ku"]
+shader = ExtResource("1_1f7qv")
+shader_parameter/start_y = 0.2000000095
+shader_parameter/strength = 0.0400000019
+shader_parameter/curve_scale = 1.0000000475
+shader_parameter/speed = 0.50000002375
+shader_parameter/wind_start = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf6ku"]
+atlas = ExtResource("2_x85qk")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="Gradient" id="Gradient_1f7qv"]
+colors = PackedColorArray(0.827451, 0.35686275, 0.16862746, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1f7qv"]
+gradient = SubResource("Gradient_1f7qv")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.2)
+metadata/_snap_enabled = true
+
+[node name="RedFlower" type="Node2D" unique_id=211830029]
+material = SubResource("ShaderMaterial_1j018")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2018603735]
+light_mask = 2
+material = SubResource("ShaderMaterial_cf6ku")
+texture = SubResource("AtlasTexture_cf6ku")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1273359177]
+position = Vector2(2, -1)
+energy = 0.5
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_1f7qv")

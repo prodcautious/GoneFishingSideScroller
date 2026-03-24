@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://da6ccfud51pvi"]
+
+[ext_resource type="Texture2D" uid="uid://c627wiwcij4o1" path="res://icon.svg" id="1_na0rb"]
+[ext_resource type="Script" uid="uid://pxkxnaj82bke" path="res://scripts/characters/player_billboard.gd" id="1_pye4u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pye4u"]
+size = Vector3(0.26, 0.26, 0.1)
+
+[node name="PlayerBillboard" type="CharacterBody3D" unique_id=1342324091]
+script = ExtResource("1_pye4u")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1282309102]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture = ExtResource("1_na0rb")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1608590022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=65595748]
+shape = SubResource("BoxShape3D_pye4u")

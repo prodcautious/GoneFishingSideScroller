@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bkswihgy15q0b"]
+
+[ext_resource type="Script" uid="uid://iucl6j50mh1o" path="res://scripts/ui/scene_transition.gd" id="1_kq3v3"]
+[ext_resource type="Animation" uid="uid://5h84dm730xi4" path="res://animations/transitions/fade_default_in.res" id="2_fsvcv"]
+[ext_resource type="Animation" uid="uid://cq581idhwu8w5" path="res://animations/transitions/fade_default_out.res" id="3_3rnji"]
+[ext_resource type="Animation" uid="uid://bhevsvhrv1135" path="res://animations/transitions/fade_swipe_horizontal_in.res" id="4_6pxpa"]
+[ext_resource type="Animation" uid="uid://d4dbmfs52db3m" path="res://animations/transitions/fade_swipe_horizontal_out.res" id="5_lmy2s"]
+[ext_resource type="Animation" uid="uid://pjc5mb2cuier" path="res://animations/transitions/fade_swipe_vertical_in.res" id="6_ucje5"]
+[ext_resource type="Animation" uid="uid://cq3xuvyl2r2wk" path="res://animations/transitions/fade_swipe_vertical_out.res" id="7_mn1cs"]
+
+[sub_resource type="Animation" id="Animation_qveo5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfio6"]
+_data = {
+&"RESET": SubResource("Animation_qveo5"),
+&"fade_default_in": ExtResource("2_fsvcv"),
+&"fade_default_out": ExtResource("3_3rnji"),
+&"fade_swipe_horizontal_in": ExtResource("4_6pxpa"),
+&"fade_swipe_horizontal_out": ExtResource("5_lmy2s"),
+&"fade_swipe_vertical_in": ExtResource("6_ucje5"),
+&"fade_swipe_vertical_out": ExtResource("7_mn1cs")
+}
+
+[node name="SceneTransition" type="CanvasLayer" unique_id=775235690]
+process_mode = 3
+layer = 9999
+script = ExtResource("1_kq3v3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2001060418]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18039216, 0.13333334, 0.18431373, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1937909081]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_hfio6")

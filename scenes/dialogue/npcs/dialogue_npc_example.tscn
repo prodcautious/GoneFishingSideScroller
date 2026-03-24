@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://c2jlaw6357b8v"]
+
+[ext_resource type="Script" uid="uid://dg0f0hcova27o" path="res://scripts/dialogue/npcs/dialogue_npc_example.gd" id="1_qn8kt"]
+[ext_resource type="Resource" uid="uid://bl2l26bt34kp0" path="res://dialogue/test.dialogue" id="2_fphh3"]
+[ext_resource type="Texture2D" uid="uid://mv45ugn07256" path="res://assets/textures/misc/white_box.png" id="3_fphh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn8kt"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auq6m"]
+size = Vector2(16, 16)
+
+[sub_resource type="Gradient" id="Gradient_6eyoc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fphh3"]
+gradient = SubResource("Gradient_6eyoc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.2)
+metadata/_snap_enabled = true
+
+[node name="DialogueNPCExample" type="CharacterBody2D" unique_id=2051625574 groups=["NPC"]]
+z_index = -1
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_qn8kt")
+dialogue_resource = ExtResource("2_fphh3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=18279261]
+texture = ExtResource("3_fphh3")
+
+[node name="InteractContainer" type="VBoxContainer" parent="." unique_id=90531932]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -45.0
+offset_right = 20.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="InteractContainer" unique_id=588765366]
+unique_name_in_owner = true
+z_index = 2
+y_sort_enabled = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractLabel" type="Label" parent="InteractContainer" unique_id=1413564239]
+unique_name_in_owner = true
+z_index = 2
+y_sort_enabled = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "[E] Talk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DetectArea2D" type="Area2D" parent="." unique_id=1616301391]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D" unique_id=1334782388]
+shape = SubResource("RectangleShape2D_qn8kt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300797201]
+shape = SubResource("RectangleShape2D_auq6m")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=28955850]
+energy = 0.5
+texture = SubResource("GradientTexture2D_fphh3")

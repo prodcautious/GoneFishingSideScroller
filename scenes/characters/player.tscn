@@ -1,0 +1,355 @@
+[gd_scene format=4 uid="uid://bhwrhc4ep1j4p"]
+
+[ext_resource type="Script" uid="uid://cpxlq1rlfmqor" path="res://scripts/characters/player.gd" id="1_yewv4"]
+[ext_resource type="Shader" uid="uid://dogrmsj3anntm" path="res://shaders/ui/vignette.gdshader" id="3_76oj4"]
+[ext_resource type="Script" uid="uid://dl4kc6g6ccgen" path="res://scripts/ui/inventory/inventory.gd" id="4_dyp2m"]
+[ext_resource type="PackedScene" uid="uid://c7tep62fenkq8" path="res://scenes/ui/inventory/inventory_slot.tscn" id="5_atpat"]
+[ext_resource type="Script" uid="uid://cqflsm5366rkm" path="res://item.gd" id="6_6eyoc"]
+[ext_resource type="Resource" uid="uid://ji2b6rq4o206" path="res://resources/items/fishing_rod.tres" id="7_eojnx"]
+[ext_resource type="PackedScene" uid="uid://drco646kgct6y" path="res://scenes/ui/pause_menu.tscn" id="7_qgnko"]
+[ext_resource type="Script" uid="uid://dfdms81c6l80e" path="res://scripts/characters/player/dialogue_handler.gd" id="8_eojnx"]
+[ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/held_items/fishing_rod.gd" id="9_2l4js"]
+[ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/held_items/fishing_rod_line.gd" id="10_2l4js"]
+[ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/fishing_rod.png" id="10_7vyk4"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_2l4js"]
+_data = PackedByteArray("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")
+size_override = Vector2(160, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyp2m"]
+size = Vector2(9, 13)
+
+[sub_resource type="Animation" id="Animation_2l4js"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishingRod/RodSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -13)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishingRod/FishingLine/LineStart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jk2m4"]
+length = 1.2
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22, 23]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishingRod/RodSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.19999999, 0.39, 0.39999998, 0.59, 0.59999996, 0.78999996, 0.79999995, 0.98999995, 1, 1.1899999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8, -13), Vector2(8, -13), Vector2(8, -14), Vector2(8, -14), Vector2(8, -12), Vector2(8, -12), Vector2(8, -11), Vector2(8, -11), Vector2(8, -12), Vector2(8, -12), Vector2(8, -13), Vector2(8, -13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishingRod/FishingLine/LineStart:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.19999999, 0.39, 0.39999998, 0.59, 0.59999996, 0.78999996, 0.79999995, 0.98999995, 1, 1.1899999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -1), Vector2(0, -1), Vector2(0, 1), Vector2(0, 1), Vector2(0, 2), Vector2(0, 2), Vector2(0, 1), Vector2(0, 1), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xhtjm"]
+length = 1.2
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishingRod/RodSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.19999999, 0.39, 0.39999998, 0.59, 0.59999996, 0.78999996, 0.79999995, 0.98999995, 1, 1.1899999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(8, -13), Vector2(8, -13), Vector2(8, -14), Vector2(8, -14), Vector2(8, -12), Vector2(8, -12), Vector2(8, -11), Vector2(8, -11), Vector2(8, -12), Vector2(8, -12), Vector2(8, -13), Vector2(8, -13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishingRod/FishingLine/LineStart:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.19999999, 0.39, 0.39999998, 0.59, 0.59999996, 0.78999996, 0.79999995, 0.98999995, 1, 1.1899999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -1), Vector2(0, -1), Vector2(0, 1), Vector2(0, 1), Vector2(0, 2), Vector2(0, 2), Vector2(0, 1), Vector2(0, 1), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k4v7y"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_xrqxk"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g66nw"]
+_data = {
+&"RESET": SubResource("Animation_2l4js"),
+&"fishing_left": SubResource("Animation_jk2m4"),
+&"fishing_right": SubResource("Animation_xhtjm"),
+&"idle_left": SubResource("Animation_k4v7y"),
+&"idle_right": SubResource("Animation_xrqxk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76oj4"]
+size = Vector2(14, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyp2m"]
+shader = ExtResource("3_76oj4")
+shader_parameter/inner_radius = 0.2
+shader_parameter/outer_radius = 0.8
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6eyoc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eojnx"]
+gradient = SubResource("Gradient_6eyoc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.2)
+metadata/_snap_enabled = true
+
+[node name="Player" type="CharacterBody2D" unique_id=1423084509 groups=["Player"]]
+script = ExtResource("1_yewv4")
+
+[node name="StateLabel" type="Label" parent="." unique_id=2038638181]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -49.0
+offset_right = 23.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=902458812]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -16)
+texture = SubResource("PortableCompressedTexture2D_2l4js")
+hframes = 5
+vframes = 5
+frame = 18
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/textures/characters/player/player.aseprite",
+"source_uid": 4810173981717615722
+}
+metadata/_aseprite_wizard_source_file_hash_ = "e8820fafe1a44ed2a0ec9b9ee1e9aa69"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1208561843]
+position = Vector2(0.5, -6.5)
+shape = SubResource("RectangleShape2D_dyp2m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1011931821]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_g66nw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1911022542]
+unique_name_in_owner = true
+process_mode = 3
+limit_left = -320
+limit_right = 320
+
+[node name="InteractArea2D" type="Area2D" parent="." unique_id=1867857144]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea2D" unique_id=1161522135]
+shape = SubResource("RectangleShape2D_76oj4")
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=2116784824]
+
+[node name="DialogueUI" type="Control" parent="UICanvasLayer" unique_id=1363155323]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InteractVignette" type="ColorRect" parent="UICanvasLayer/DialogueUI" unique_id=1810522506]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_dyp2m")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="Control" parent="UICanvasLayer" unique_id=477351987]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_dyp2m")
+slot = ExtResource("5_atpat")
+hotbar = Array[ExtResource("6_6eyoc")]([ExtResource("7_eojnx")])
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UICanvasLayer/Inventory" unique_id=526985369]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HotbarContainer" type="HBoxContainer" parent="UICanvasLayer/Inventory/MarginContainer" unique_id=803957417]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+
+[node name="PauseMenu" parent="UICanvasLayer" unique_id=1002509039 instance=ExtResource("7_qgnko")]
+visible = false
+start_menu_scene = "res://scenes/ui/start_menu.tscn"
+
+[node name="DialogueHandler" type="Node2D" parent="." unique_id=1772429683]
+script = ExtResource("8_eojnx")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1757999762]
+position = Vector2(0, -16)
+energy = 0.5
+texture = SubResource("GradientTexture2D_eojnx")
+
+[node name="FishingRod" type="Node2D" parent="." unique_id=1482519485]
+unique_name_in_owner = true
+script = ExtResource("9_2l4js")
+
+[node name="RodSprite2D" type="Sprite2D" parent="FishingRod" unique_id=712481474]
+unique_name_in_owner = true
+visible = false
+z_index = 11
+y_sort_enabled = true
+position = Vector2(8, -13)
+texture = ExtResource("10_7vyk4")
+
+[node name="FishingLine" type="Node2D" parent="FishingRod" unique_id=802210674]
+unique_name_in_owner = true
+z_index = 10
+y_sort_enabled = true
+position = Vector2(13, -17)
+script = ExtResource("10_2l4js")
+
+[node name="LineStart" type="Node2D" parent="FishingRod/FishingLine" unique_id=1199454424]
+unique_name_in_owner = true
+
+[node name="LineEnd" type="Node2D" parent="FishingRod/FishingLine" unique_id=386411240]
+unique_name_in_owner = true
+position = Vector2(26, 48)

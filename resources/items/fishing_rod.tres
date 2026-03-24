@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://ji2b6rq4o206"]
+
+[ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/fishing_rod.png" id="1_2i2b8"]
+[ext_resource type="Script" uid="uid://cqflsm5366rkm" path="res://item.gd" id="2_2g1oe"]
+
+[resource]
+script = ExtResource("2_2g1oe")
+type = "Fishing Rod"
+desc = "Humble fishing gadget"
+icon = ExtResource("1_2i2b8")
+equippable = true
+metadata/_custom_type_script = "uid://cqflsm5366rkm"

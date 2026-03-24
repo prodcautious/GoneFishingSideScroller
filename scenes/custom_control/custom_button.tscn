@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dave306ws6hr4"]
+
+[ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="1_1tufs"]
+
+[node name="CustomButton" type="Button" unique_id=1244400870]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_type_variation = &"CustomButton"
+script = ExtResource("1_1tufs")
