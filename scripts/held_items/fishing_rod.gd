@@ -2,8 +2,11 @@ extends Node2D
 
 var player
 
+@export var rod_resource: FishingRod
+
 @onready var fishing_line: Node2D = %FishingLine
 @onready var rod_sprite_2d: Sprite2D = %RodSprite2D
+@onready var bobber_sprite_2d: Sprite2D = %BobberSprite2D
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -23,13 +26,23 @@ func _input(event: InputEvent) -> void:
 			print("Cant cast in/out.")
 
 func cast_out() -> void:
-	player.set_state(4)
-	rod_sprite_2d.show()
-	fishing_line.casted_out = true
-	fishing_line.queue_redraw()
+	if rod_resource:
+		player.set_state(4)
+		rod_sprite_2d.texture = rod_resource.icon
+		rod_sprite_2d.show()
+		bobber_sprite_2d.texture = rod_resource.bobber_sprite
+		bobber_sprite_2d.show()
+		fishing_line.casted_out = true
+		fishing_line.queue_redraw()
+	else:
+		print("No rod equipped.")
 
 func cast_in() -> void:
-	player.set_state(0)
-	rod_sprite_2d.hide()
-	fishing_line.casted_out = false
-	fishing_line.queue_redraw()
+	if rod_resource:
+		player.set_state(0)
+		rod_sprite_2d.hide()
+		bobber_sprite_2d.hide()
+		fishing_line.casted_out = false
+		fishing_line.queue_redraw()
+	else:
+		print("No rod equipped.")

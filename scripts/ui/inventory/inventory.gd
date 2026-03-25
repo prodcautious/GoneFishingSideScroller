@@ -5,6 +5,9 @@ extends Control
 var MAX_HOTBAR_SIZE: int = 5
 
 @onready var hotbar_container: HBoxContainer = %HotbarContainer
+@onready var fishing_rod: Node2D = %FishingRod
+
+var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,6 +56,11 @@ func grab_slot_focus(index: int) -> void:
 	for hotbar_slot in hotbar_container.get_children():
 		if i == index:
 			hotbar_slot.grab_focus()
+			if hotbar_slot.item is FishingRod:
+				print("Fishing rod equipped.")
+				fishing_rod.rod_resource = hotbar_slot.item
+			else:
+				fishing_rod.rod_resource = null
 			return
 		else:
 			i += 1
