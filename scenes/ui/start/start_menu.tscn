@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dl1v8as2px0x" path="res://assets/textures/icons/youtube_logo.png" id="3_i11hm"]
 [ext_resource type="Script" uid="uid://dq2l1pqx31x3i" path="res://scripts/custom_control/custom_texture_button.gd" id="4_2t0al"]
 [ext_resource type="Texture2D" uid="uid://b1m6ysp28mrbx" path="res://assets/textures/icons/itch_logo.png" id="5_hfk6u"]
-[ext_resource type="PackedScene" uid="uid://bjobcrvmtn8u3" path="res://scenes/ui/options_menu.tscn" id="6_x0g8l"]
+[ext_resource type="PackedScene" uid="uid://bjobcrvmtn8u3" path="res://scenes/ui/options/options_menu.tscn" id="6_x0g8l"]
 
 [node name="StartMenu" type="Control" unique_id=1667299012]
 layout_mode = 3

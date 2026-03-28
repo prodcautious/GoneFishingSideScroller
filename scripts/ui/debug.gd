@@ -13,6 +13,7 @@ var player
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
+	SceneTransition.transition_complete.connect(_on_transition_complete)
 	hide()
 
 func _process(delta: float) -> void:
@@ -27,11 +28,16 @@ func update_fps_label() -> void:
 		fps_label.text = "FPS: " + str(Engine.get_frames_per_second())
 
 func update_state_label() -> void:
-	old_state = new_state
-	new_state = player.get_current_state()
+	if player:
+		old_state = new_state
+		new_state = player.get_current_state()
+		
+		if old_state != new_state:
+			state_label.text = "State: " + player.get_current_state()
 	
-	if old_state != new_state:
-		state_label.text = "State: " + player.get_current_state()
+	else:
+		if state_label.text != "No player":
+			state_label.text = "No player"
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
@@ -39,3 +45,6 @@ func _input(event: InputEvent) -> void:
 			hide()
 		else:
 			show()
+
+func _on_transition_complete() -> void:
+	player = get_tree().get_first_node_in_group("Player")

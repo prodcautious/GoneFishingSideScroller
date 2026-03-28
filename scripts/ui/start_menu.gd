@@ -37,6 +37,7 @@ func connect_signals() -> void:
 func _on_start_button_pressed() -> void:
 	if main_scene:
 		SceneTransition.transition_scene(main_scene)
+		SignalManager.game_start.emit()
 
 func _on_options_button_pressed() -> void:
 	OptionsManager.load_options()

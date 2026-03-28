@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
+signal transition_complete
+
 var transitions = {
 	"default":
 		{
@@ -45,6 +47,7 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO) -> void:
 	animation_player.play(transitions[current_transition]["fade_out"])
 	await animation_player.animation_finished
 	get_tree().paused = false
+	transition_complete.emit()
 
 func randomize_current_transition():
 	current_transition = transitions.keys().pick_random()

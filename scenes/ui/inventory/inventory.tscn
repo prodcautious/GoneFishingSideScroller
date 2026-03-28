@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://vfeh6mwyb7tr"]
+
+[ext_resource type="Script" uid="uid://dl4kc6g6ccgen" path="res://scripts/ui/inventory/inventory.gd" id="1_pefhr"]
+[ext_resource type="PackedScene" uid="uid://c7tep62fenkq8" path="res://scenes/ui/inventory/inventory_slot.tscn" id="2_lobmi"]
+[ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="3_8ndef"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vyk4"]
+shader = ExtResource("3_8ndef")
+shader_parameter/lod = 1.0000000475
+
+[node name="Inventory" type="Control" unique_id=987926248]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pefhr")
+slot = ExtResource("2_lobmi")
+metadata/_edit_use_anchors_ = true
+
+[node name="BlurColorRect" type="ColorRect" parent="." unique_id=8035265]
+material = SubResource("ShaderMaterial_7vyk4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1908607899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HotbarContainer" type="HBoxContainer" parent="MarginContainer" unique_id=771094068]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1

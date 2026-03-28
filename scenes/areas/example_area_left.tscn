@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dblob4mbah13c" path="res://assets/textures/tiles/tileset.png" id="1_5vvj4"]
 [ext_resource type="Texture2D" uid="uid://d22wug6liwpj7" path="res://assets/textures/parallax/mountains_far.png" id="1_r6ag2"]
-[ext_resource type="Script" uid="uid://bgxlh3au7e07n" path="res://scripts/example_area_left.gd" id="1_syapt"]
+[ext_resource type="Script" uid="uid://bgxlh3au7e07n" path="res://scripts/areas/area.gd" id="1_syapt"]
 [ext_resource type="PackedScene" uid="uid://8ltgs66u20rw" path="res://scenes/nature/interactive_flower_1.tscn" id="2_cnm37"]
 [ext_resource type="Texture2D" uid="uid://bet6o5q4hopoa" path="res://assets/textures/parallax/mountains_close.png" id="2_gs6ab"]
 [ext_resource type="Texture2D" uid="uid://dhcfabyk1l13m" path="res://assets/textures/parallax/clouds.png" id="3_syapt"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://mv45ugn07256" path="res://assets/textures/misc/white_box.png" id="6_v6cte"]
 [ext_resource type="PackedScene" uid="uid://bhwrhc4ep1j4p" path="res://scenes/characters/player.tscn" id="7_y2lnx"]
 [ext_resource type="PackedScene" uid="uid://de7xhtvhrv8os" path="res://scenes/transitions/transition_area_2d.tscn" id="8_v6cte"]
-[ext_resource type="PackedScene" uid="uid://drco646kgct6y" path="res://scenes/ui/pause_menu.tscn" id="12_gs6ab"]
+[ext_resource type="PackedScene" uid="uid://drco646kgct6y" path="res://scenes/ui/pause/pause_menu.tscn" id="12_gs6ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gs6ab"]
 size = Vector2(20, 184)

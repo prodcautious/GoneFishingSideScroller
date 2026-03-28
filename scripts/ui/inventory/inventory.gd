@@ -14,6 +14,13 @@ func _ready() -> void:
 	populate_hotbar()
 
 func _input(event: InputEvent) -> void:
+	# Inventory toggle
+	if event.is_action_pressed("inventory"):
+		toggle_inventory()
+	elif event.is_action_pressed("esc"):
+		close_inventory()
+	
+	# Hotbar selection
 	if event.is_action_pressed("hotbar_1"):
 		grab_slot_focus(0)
 	elif event.is_action_pressed("hotbar_2"):
@@ -56,15 +63,22 @@ func grab_slot_focus(index: int) -> void:
 	for hotbar_slot in hotbar_container.get_children():
 		if i == index:
 			hotbar_slot.grab_focus()
-			if hotbar_slot.item is FishingRod:
-				print("Fishing rod equipped.")
-				fishing_rod.rod_resource = hotbar_slot.item
-			else:
-				fishing_rod.rod_resource = null
 			return
 		else:
 			i += 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func open_inventory() -> void:
+	show()
+	get_tree().paused = true
+	GameManager.inventory_open = true
+
+func close_inventory() -> void:
+	hide()
+	get_tree().paused = false
+	GameManager.inventory_open = false
+
+func toggle_inventory() -> void:
+	if visible:
+		close_inventory()
+	elif !visible && !GameManager.pause_menu_open:
+		open_inventory()

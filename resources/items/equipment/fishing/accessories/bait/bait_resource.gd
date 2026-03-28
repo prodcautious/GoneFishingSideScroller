@@ -1,0 +1,2 @@
+extends FishingAccessory
+class_name Bait

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dajax6ku2x8wq"]
 
-[ext_resource type="Script" uid="uid://bv56e6gfgm5aa" path="res://scripts/main.gd" id="1_a8y0u"]
+[ext_resource type="Script" uid="uid://bv56e6gfgm5aa" path="res://scripts/areas/main.gd" id="1_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://duplul2irf3kf" path="res://assets/textures/parallax/bg.png" id="2_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://bliktyxad88sq" path="res://assets/textures/parallax/planet_far.png" id="3_0ld40"]
 [ext_resource type="PackedScene" uid="uid://bhwrhc4ep1j4p" path="res://scenes/characters/player.tscn" id="3_jyhfs"]

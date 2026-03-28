@@ -13,12 +13,13 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cast_rod"):
-		# Start Fishing
+		# Cast rod out
 		if player.current_player_state not in [player.PLAYER_STATE.WALKING, 
 		player.PLAYER_STATE.JUMPING, 
 		player.PLAYER_STATE.INTERACTING,
 		player.PLAYER_STATE.FISHING]:
 			cast_out()
+		
 		# Cast rod in
 		elif player.current_player_state in [player.PLAYER_STATE.FISHING]:
 			cast_in()

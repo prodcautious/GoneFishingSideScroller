@@ -6,8 +6,8 @@ extends Node2D
 var bobber_noise := FastNoiseLite.new()
 var time: float = 0.0
 var origin_point: Vector2
-var strength := 32.0
-var speed := 0.4
+var strength : float = 16.0
+var speed : float = 0.4
 
 var casted_out: bool = false
 

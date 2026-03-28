@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dk7af6dkaugkn" path="res://assets/textures/fishing/bobbers/default_bobber.png" id="1_j2tlk"]
 [ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/fishing_rod.png" id="2_j4inr"]
-[ext_resource type="Script" uid="uid://qc4euosj4xut" path="res://resources/items/fishing/rods/fishing_rod_resource.gd" id="3_j2tlk"]
+[ext_resource type="Script" uid="uid://qc4euosj4xut" path="res://resources/items/equipment/fishing/rods/fishing_rod_resource.gd" id="3_j2tlk"]
 
 [resource]
 script = ExtResource("3_j2tlk")

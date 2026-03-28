@@ -33,10 +33,12 @@ func toggle_visibility() -> void:
 		hide()
 		get_tree().paused = false
 		AudioManager.muffle_music(false)
-	else:
+		GameManager.pause_menu_open = false
+	elif !visible && !GameManager.inventory_open:
 		show()
 		get_tree().paused = true
 		AudioManager.muffle_music(true)
+		GameManager.pause_menu_open = true
 
 func _on_resume_button_pressed() -> void:
 	toggle_visibility()

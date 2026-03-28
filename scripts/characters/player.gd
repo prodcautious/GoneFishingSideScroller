@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var camera_2d: Camera2D = %Camera2D
-@onready var state_label: Label = %StateLabel
 
 enum PLAYER_STATE {IDLE, WALKING, JUMPING, INTERACTING, FISHING}
 var current_player_state
@@ -66,24 +65,14 @@ func set_state(state: int) -> void:
 	match state:
 		0:
 			current_player_state = PLAYER_STATE.IDLE
-			state_label.text = "Idle"
-			print("Setting state to: Idle")
 		1:
 			current_player_state = PLAYER_STATE.WALKING
-			state_label.text = "Walking"
-			print("Setting state to: Walking")
 		2:
 			current_player_state = PLAYER_STATE.JUMPING
-			state_label.text = "Jumping"
-			print("Setting state to: Jumping")
 		3:
 			current_player_state = PLAYER_STATE.INTERACTING
-			state_label.text = "Interacting"
-			print("Setting state to: Interacting")
 		4:
 			current_player_state = PLAYER_STATE.FISHING
-			state_label.text = "Fishing"
-			print("Setting state to: Fishing")
 		_:
 			print("No state: ", state, " found")
 
@@ -121,7 +110,6 @@ func _update_animation() -> void:
 		PLAYER_STATE.INTERACTING:
 			anim_name = "idle_" + dir
 
-	# FIX: prevent restarting animation every frame
 	if animation_player.current_animation != anim_name:
 		animation_player.play(anim_name)
 #endregion
