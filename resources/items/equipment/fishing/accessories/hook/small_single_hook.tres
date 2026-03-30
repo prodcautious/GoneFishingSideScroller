@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Hook" format=3 uid="uid://cvjcugkypwdod"]
+
+[ext_resource type="Script" uid="uid://7mk8ojfc0adh" path="res://resources/items/equipment/fishing/accessories/hook/hook_resource.gd" id="1_t02dj"]
+
+[resource]
+script = ExtResource("1_t02dj")
+type = "Single Hook (Small)"
+catch_rate = 0.5
+metadata/_custom_type_script = "uid://7mk8ojfc0adh"

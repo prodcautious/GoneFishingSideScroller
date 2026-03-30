@@ -1,84 +1,91 @@
 extends Control
 
 @export var slot: PackedScene
-@export var hotbar: Array[Item]
-var MAX_HOTBAR_SIZE: int = 5
+@export var inventory: Array[Item]
+@export var player: CharacterBody2D
 
-@onready var hotbar_container: HBoxContainer = %HotbarContainer
+var MAX_INVENTORY_SIZE: int = 5
+
+@onready var inventory_container: HBoxContainer = %InventoryContainer
 @onready var fishing_rod: Node2D = %FishingRod
 
-var player
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	populate_hotbar()
+	hide()
+	populate_inventory()
 
-func _input(event: InputEvent) -> void:
-	# Inventory toggle
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
-		toggle_inventory()
-	elif event.is_action_pressed("esc"):
+		if GameManager.paused || GameManager.in_shop_ui || GameManager.controls_open:
+			return
+		get_viewport().set_input_as_handled()
+		if player.current_player_state not in [player.PLAYER_STATE.FISHING, player.PLAYER_STATE.INTERACTING]:
+			toggle_inventory()
+	elif event.is_action_pressed("esc") && visible:
+		get_viewport().set_input_as_handled()
 		close_inventory()
-	
-	# Hotbar selection
-	if event.is_action_pressed("hotbar_1"):
-		grab_slot_focus(0)
-	elif event.is_action_pressed("hotbar_2"):
-		grab_slot_focus(1)
-	elif event.is_action_pressed("hotbar_3"):
-		grab_slot_focus(2)
-	elif event.is_action_pressed("hotbar_4"):
-		grab_slot_focus(3)
-	elif event.is_action_pressed("hotbar_5"):
-		grab_slot_focus(4)
 
-func populate_hotbar() -> void:
-	if hotbar.size() > MAX_HOTBAR_SIZE:
-		hotbar.resize(MAX_HOTBAR_SIZE)
-		print("Hotbar size exceeds max hotbar size, resizing...")
+func populate_inventory() -> void:
+	if inventory.size() > MAX_INVENTORY_SIZE:
+		inventory.resize(MAX_INVENTORY_SIZE)
+		print("Inventory size exceeds max inventory size, resizing...")
 	
 	if slot:
-		for i in MAX_HOTBAR_SIZE:
+		for i in MAX_INVENTORY_SIZE:
 			var item: Item = null
-			if i < hotbar.size():
-				item = hotbar[i]
-			instantiate_new_slot(item, i)
-			print("Added hotbar slot at index ", i)
+			if i < inventory.size():
+				item = inventory[i]
+			instantiate_new_slot(item)
 
-func instantiate_new_slot(item: Item, index: int) -> void:
+func instantiate_new_slot(item: Item) -> void:
+	var inventory_slot = slot.instantiate()
+	inventory_container.add_child(inventory_slot)
+	
 	if item != null:
 		var item_duplicate = item.duplicate()
-		var hotbar_slot = slot.instantiate()
-		hotbar_container.add_child(hotbar_slot)
-		hotbar_slot.item = item_duplicate
-		hotbar_slot.icon_texture_rect.texture = item_duplicate.icon
-		hotbar_slot.slot_number_label.text = str(index + 1)
-	else:
-		var hotbar_slot = slot.instantiate()
-		hotbar_container.add_child(hotbar_slot)
-		hotbar_slot.slot_number_label.text = str(index + 1)
+		inventory_slot.item = item_duplicate
+		inventory_slot.icon_texture_rect.texture = item_duplicate.icon
 
-func grab_slot_focus(index: int) -> void:
-	var i = 0
-	for hotbar_slot in hotbar_container.get_children():
-		if i == index:
-			hotbar_slot.grab_focus()
-			return
+func get_free_slots() -> int:
+	var count: int = 0
+	for inventory_slot in inventory_container.get_children():
+		if inventory_slot.item != null:
+			count += 1
+	return count
+
+func add_inventory_item(item: Item) -> void:
+	if inventory.size() >= MAX_INVENTORY_SIZE:
+		print("No slots available! Inventory is full.")
+		return
+	var new_item = item.duplicate()
+	new_item.set_price()
+	inventory.append(new_item)
+	update_inventory_slots()
+	print("Added " + new_item.get_type() + " to inventory.")
+
+func update_inventory_slots() -> void:
+	var slots = inventory_container.get_children()
+	for i in slots.size():
+		if i < inventory.size():
+			slots[i].item = inventory[i]
+			slots[i].icon_texture_rect.texture = inventory[i].get_icon()
+			slots[i].desc_label.text = inventory[i].get_type() + "(" + str(inventory[i].get_price()) + ")"
 		else:
-			i += 1
+			slots[i].item = null
+			slots[i].icon_texture_rect.texture = null
+			slots[i].desc_label.text = ""
 
 func open_inventory() -> void:
 	show()
-	get_tree().paused = true
 	GameManager.inventory_open = true
+	get_tree().paused = true
 
 func close_inventory() -> void:
 	hide()
-	get_tree().paused = false
 	GameManager.inventory_open = false
+	get_tree().paused = false
 
 func toggle_inventory() -> void:
 	if visible:
 		close_inventory()
-	elif !visible && !GameManager.pause_menu_open:
+	else:
 		open_inventory()

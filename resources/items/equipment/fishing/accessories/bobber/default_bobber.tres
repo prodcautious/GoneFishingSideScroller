@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Bobber" format=3 uid="uid://uqe6g841mxtj"]
+
+[ext_resource type="Script" uid="uid://c6nbhk8ucic1l" path="res://resources/items/equipment/fishing/accessories/bobber/bobber_resource.gd" id="1_7t06h"]
+
+[resource]
+script = ExtResource("1_7t06h")
+type = "Red Bobber"
+bite_detection_speed_range = Vector2(5, 10)
+max_bait_weight = 5.0
+metadata/_custom_type_script = "uid://c6nbhk8ucic1l"

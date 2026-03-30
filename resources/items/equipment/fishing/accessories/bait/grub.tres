@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Bait" format=3 uid="uid://140l2thheskn"]
+
+[ext_resource type="Script" uid="uid://biffhbd8lrkpv" path="res://resources/items/equipment/fishing/accessories/bait/bait_resource.gd" id="1_8fv3g"]
+
+[resource]
+script = ExtResource("1_8fv3g")
+type = "Grub"
+weight = 0.5
+metadata/_custom_type_script = "uid://biffhbd8lrkpv"

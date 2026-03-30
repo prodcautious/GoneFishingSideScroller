@@ -17,28 +17,31 @@ var facing_direction : float
 
 #region Built-In
 func _ready() -> void:
-	animation_player.play("idle_right") # FIXED
+	animation_player.play("idle_right")
 	current_player_state = PLAYER_STATE.IDLE
 
 func _physics_process(delta):
 	if current_player_state in [PLAYER_STATE.FISHING, PLAYER_STATE.INTERACTING]:
+		_apply_gravity(delta)
 		_update_animation()
+		move_and_slide()
 		return
 
-	if not is_on_floor():
-		if current_player_state not in [PLAYER_STATE.JUMPING]:
-			set_state(2)
-		velocity.y += gravity * delta
-	else:
-		if current_player_state == PLAYER_STATE.JUMPING:
-			set_state(0)
+	# Apply gravity
+	_apply_gravity(delta)
 
-	if is_on_floor() and velocity == Vector2.ZERO:
-		if current_player_state not in [PLAYER_STATE.IDLE]:
-			set_state(0)
-	elif is_on_floor() and velocity != Vector2.ZERO:
-		if current_player_state not in [PLAYER_STATE.WALKING]:
-			set_state(1)
+	# Handle jumping/falling state
+	if not is_on_floor():
+		if current_player_state != PLAYER_STATE.JUMPING:
+			set_state(2)
+	else:
+		# Only switch to idle/walk when grounded
+		if velocity.x == 0:
+			if current_player_state != PLAYER_STATE.IDLE:
+				set_state(0)
+		else:
+			if current_player_state != PLAYER_STATE.WALKING:
+				set_state(1)
 
 	_get_input()
 	_update_animation()
@@ -75,17 +78,26 @@ func set_state(state: int) -> void:
 			current_player_state = PLAYER_STATE.FISHING
 		_:
 			print("No state: ", state, " found")
-
 #endregion
 
 #region Private Helpers
 func _get_input():
 	var input_direction = Input.get_axis("left", "right")
 	velocity.x = input_direction * movement_speed
+	
 	if input_direction != 0.0:
 		facing_direction = input_direction
+
+	# ✅ Jump is back
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		set_state(2)
+
+func _apply_gravity(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
 
 func _update_animation() -> void:
 	var dir: String
@@ -100,13 +112,27 @@ func _update_animation() -> void:
 
 	match current_player_state:
 		PLAYER_STATE.IDLE:
-			anim_name = "idle_" + dir
+			if !fishing_rod.rod_equipped:
+				anim_name = "idle_" + dir
+			else:
+				anim_name = "fishing_" + dir
+
 		PLAYER_STATE.WALKING:
-			anim_name = "idle_" + dir
+			if !fishing_rod.rod_equipped:
+				anim_name = "idle_" + dir
+			else:
+				anim_name = "fishing_" + dir
+
 		PLAYER_STATE.JUMPING:
-			anim_name = "idle_" + dir
+			if !fishing_rod.rod_equipped:
+				anim_name = "idle_" + dir
+			else:
+				anim_name = "fishing_" + dir
+
+
 		PLAYER_STATE.FISHING:
 			anim_name = "fishing_" + dir
+
 		PLAYER_STATE.INTERACTING:
 			anim_name = "idle_" + dir
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dnxm8i8j8m1i7"
+path="res://.godot/imported/fishing_rod.aseprite-9a7fecf532bc3d440ea109d7406cc040.res"
+
+[deps]
+
+source_file="res://assets/textures/items/equipment/fishing/rods/fishing_rod.aseprite"
+dest_files=["res://.godot/imported/fishing_rod.aseprite-9a7fecf532bc3d440ea109d7406cc040.res"]
+
+[params]
+

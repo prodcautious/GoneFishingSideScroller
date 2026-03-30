@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dbcqn4vkkcaia"]
+
+[ext_resource type="Script" uid="uid://dyjdifiu76ds6" path="res://scripts/ui/shops/shopkeeper_shop.gd" id="1_yh0ks"]
+[ext_resource type="PackedScene" uid="uid://c7tep62fenkq8" path="res://scenes/ui/inventory/inventory_slot.tscn" id="2_kacwe"]
+[ext_resource type="Texture2D" uid="uid://dtkdy2cagk7jp" path="res://assets/textures/icons/keybinds/keybind_icons.png" id="3_dknag"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jlkp"]
+atlas = ExtResource("3_dknag")
+region = Rect2(0, 48, 24, 12)
+
+[node name="ShopkeeperShop" type="Control" unique_id=1238331736]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yh0ks")
+inventory_slot = ExtResource("2_kacwe")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1238391292]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=160227272]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=28258174]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1666173648]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ShopLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=924715248]
+layout_mode = 2
+text = "Wilson's Shop"
+
+[node name="ShopItemGridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1494357698]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+columns = 8
+
+[node name="InventoryLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=494087164]
+layout_mode = 2
+text = "Inventory"
+
+[node name="InventoryGridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1230817640]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+columns = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=4624635]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1945116878]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_1jlkp")
+stretch_mode = 2
+
+[node name="EscCloseLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=878899931]
+layout_mode = 2
+text = "Close"

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://cnfhm6ycrywrq"]
+
+[ext_resource type="Script" uid="uid://b0x0kuckflia2" path="res://scripts/ui/fishing_rod/fishing_rod_ui.gd" id="1_lryfh"]
+[ext_resource type="Texture2D" uid="uid://bfjv1haipml4w" path="res://assets/textures/items/equipment/fishing/rods/icons/fishing_rod_icon.png" id="2_idnws"]
+[ext_resource type="Texture2D" uid="uid://dtkdy2cagk7jp" path="res://assets/textures/icons/keybinds/keybind_icons.png" id="3_0c76t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5u7e"]
+atlas = ExtResource("3_0c76t")
+region = Rect2(60, 0, 12, 12)
+
+[node name="FishingRodUI" type="Control" unique_id=625143201]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_lryfh")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=796105415]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1164854744]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1218617869]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=224149922]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2095560399]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Name"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1493980243]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" unique_id=702285094]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=277287701]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_idnws")
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=562999634]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2083936144]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m5u7e")
+
+[node name="TooltipLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=687579]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Equip"
+horizontal_alignment = 1

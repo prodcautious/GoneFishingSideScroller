@@ -5,14 +5,13 @@ extends CharacterBody2D
 
 @onready var detect_area_2d: Area2D = %DetectArea2D
 @onready var name_label: Label = %NameLabel
-@onready var interact_label: Label = %InteractLabel
 @onready var interact_container: VBoxContainer = %InteractContainer
 
 var player
 var player_is_in_area: bool = false
 
 func _ready() -> void:
-	name_label.text = npc_name
+	name_label.text = "[E] " + npc_name
 	player = get_tree().get_first_node_in_group("Player")
 	connect_signals()
 

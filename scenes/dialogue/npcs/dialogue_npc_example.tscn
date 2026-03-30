@@ -10,11 +10,11 @@ size = Vector2(24, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_auq6m"]
 size = Vector2(16, 16)
 
-[sub_resource type="Gradient" id="Gradient_6eyoc"]
+[sub_resource type="Gradient" id="Gradient_fphh3"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fphh3"]
-gradient = SubResource("Gradient_6eyoc")
+gradient = SubResource("Gradient_fphh3")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.2, 0.2)
@@ -55,16 +55,6 @@ y_sort_enabled = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="InteractLabel" type="Label" parent="InteractContainer" unique_id=1413564239]
-unique_name_in_owner = true
-z_index = 2
-y_sort_enabled = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "[E] Talk"
 horizontal_alignment = 1
 vertical_alignment = 1
 

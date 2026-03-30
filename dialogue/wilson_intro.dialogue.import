@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://jvdda7esawh8"
+path="res://.godot/imported/wilson_intro.dialogue-148f941aa794522c8d82fd55b3f4ec89.tres"
+
+[deps]
+
+source_file="res://dialogue/wilson_intro.dialogue"
+dest_files=["res://.godot/imported/wilson_intro.dialogue-148f941aa794522c8d82fd55b3f4ec89.tres"]
+
+[params]
+
+defaults=true

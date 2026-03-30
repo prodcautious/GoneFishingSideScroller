@@ -1,0 +1,7 @@
+~ start
+Wilson: [[Hi|'Sup|Duck]], interested in buying anything?
+- Yes
+	Wilson: Lovely!
+- No
+	Wilson: Go on now.
+=> END

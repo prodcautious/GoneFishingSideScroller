@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://drco646kgct6y"]
+
+[ext_resource type="Script" uid="uid://bb4lu8xr3s6p5" path="res://scripts/ui/menus/pause_menu.gd" id="1_idy5m"]
+[ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="2_hf471"]
+[ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="3_2f5f3"]
+[ext_resource type="PackedScene" uid="uid://bjobcrvmtn8u3" path="res://scenes/ui/menus/options_menu.tscn" id="4_a3xc8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bnpd"]
+shader = ExtResource("2_hf471")
+shader_parameter/lod = 1.0000000475
+
+[node name="PauseMenu" type="Control" unique_id=1002509039]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idy5m")
+start_menu_scene = "res://scenes/ui/menus/start_menu.tscn"
+
+[node name="BlurColorRect" type="ColorRect" parent="." unique_id=376671013]
+material = SubResource("ShaderMaterial_0bnpd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=943446874]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=419037158]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=450963148]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=2087217103]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=889266259]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=375505560]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"CustomButton"
+theme_override_font_sizes/font_size = 8
+text = "Resume"
+script = ExtResource("3_2f5f3")
+metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1384757672]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"CustomButton"
+theme_override_font_sizes/font_size = 8
+text = "Options"
+script = ExtResource("3_2f5f3")
+metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=560479405]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"CustomButton"
+theme_override_font_sizes/font_size = 8
+text = "Main Menu"
+script = ExtResource("3_2f5f3")
+metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=529906903]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"CustomButton"
+theme_override_font_sizes/font_size = 8
+text = "Quit"
+script = ExtResource("3_2f5f3")
+metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
+
+[node name="OptionsMenu" parent="." unique_id=1705903237 instance=ExtResource("4_a3xc8")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

@@ -20,7 +20,6 @@ func _connect_signals() -> void:
 	interact_area_2d.area_exited.connect(_on_interact_area_exited)
 	
 func _on_dialogue_started(_resource: DialogueResource) -> void:
-	inventory.hide()
 	print("player: ", player)
 	print("camera: ", player.camera_2d)
 	if tween:
@@ -44,7 +43,6 @@ func _on_dialogue_ended(_resource: DialogueResource) -> void:
 	tween.tween_property(player.camera_2d, "zoom", Vector2(1.0, 1.0), 0.2)
 	tween.tween_property(player.camera_2d, "offset", Vector2.ZERO, 0.2)
 	interact_vignette.hide()
-	inventory.show()
 
 func _on_interact_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("NPC"):
