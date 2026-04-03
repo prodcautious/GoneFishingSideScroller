@@ -6,21 +6,17 @@ extends Control
 @onready var shop_item_grid_container: GridContainer = %ShopItemGridContainer
 @onready var inventory_grid_container: GridContainer = %InventoryGridContainer
 
-var inventory_node
-var MAX_INVENTORY_SIZE
 var player
 
 func _ready() -> void:
 	await get_tree().process_frame
-	inventory_node = get_tree().get_first_node_in_group("Inventory")
-	MAX_INVENTORY_SIZE = inventory_node.MAX_INVENTORY_SIZE
 	populate_inventory_grid()
 
 func populate_inventory_grid() -> void:
-	for i in MAX_INVENTORY_SIZE:
+	for i in InventoryManager.MAX_INVENTORY_SIZE:
 		var item: Item = null
-		if i < inventory_node.inventory.size():
-			item = inventory_node.inventory[i]
+		if i < InventoryManager.inventory.size():
+			item = InventoryManager.inventory[i]
 		instantiate_new_slot(item)
 
 func instantiate_new_slot(item: Item) -> void:
@@ -29,7 +25,10 @@ func instantiate_new_slot(item: Item) -> void:
 	if item != null:
 		new_slot.item = item
 		new_slot.icon_texture_rect.texture = item.get_icon()
-		new_slot.desc_label.text = item.get_type() + " (" + str(item.get_price()) + ")"
+		new_slot.sell_button.disabled = false
+		new_slot.sell_button.text = "Sell (" + str(item.get_price()) + ")"
+
+		new_slot.desc_label.text = item.get_type()
 		new_slot.can_sell = true
 
 func _input(event: InputEvent) -> void:

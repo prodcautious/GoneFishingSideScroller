@@ -3,9 +3,6 @@ extends Control
 @onready var resolution_option_button: CustomOptionButton = %ResolutionOptionButton
 @onready var window_mode_option_button: CustomOptionButton = %WindowModeOptionButton
 @onready var v_sync_check_box: CustomCheckBox = %VSyncCheckBox
-@onready var back_button: CustomButton = %BackButton
-@onready var back_button_2: CustomButton = %BackButton2
-@onready var back_button_3: CustomButton = %BackButton3
 
 @onready var master_h_slider: HSlider = %MasterHSlider
 @onready var music_h_slider: HSlider = %MusicHSlider
@@ -25,20 +22,15 @@ func _input(event: InputEvent) -> void:
 			hide()
 
 func connect_signals() -> void:
-	# Game
-	back_button.pressed.connect(_on_back_button_pressed)
-
 	# Video
 	resolution_option_button.item_selected.connect(_on_resolution_selected)
 	window_mode_option_button.item_selected.connect(_on_window_mode_selected)
 	v_sync_check_box.toggled.connect(_on_v_sync_check_box_toggled)
-	back_button_2.pressed.connect(_on_back_button_pressed)
 	
 	# Audio
 	master_h_slider.value_changed.connect(_on_master_volume_changed)
 	music_h_slider.value_changed.connect(_on_music_volume_changed)
 	sfx_h_slider.value_changed.connect(_on_sfx_volume_changed)
-	back_button_3.pressed.connect(_on_back_button_pressed)
 
 func set_up_default_settings() -> void:
 	# Video
@@ -114,10 +106,6 @@ func _on_v_sync_check_box_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-
-func _on_back_button_pressed() -> void:
-	OptionsManager.save_options()
-	hide()
 #endregion
 
 #region Audio

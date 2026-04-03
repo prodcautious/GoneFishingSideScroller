@@ -21,7 +21,6 @@ fill_to = Vector2(0.2, 0.2)
 metadata/_snap_enabled = true
 
 [node name="DialogueNPCExample" type="CharacterBody2D" unique_id=2051625574 groups=["NPC"]]
-z_index = -1
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_qn8kt")

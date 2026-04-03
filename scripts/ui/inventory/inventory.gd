@@ -1,16 +1,15 @@
 extends Control
 
 @export var slot: PackedScene
-@export var inventory: Array[Item]
 @export var player: CharacterBody2D
-
-var MAX_INVENTORY_SIZE: int = 5
 
 @onready var inventory_container: HBoxContainer = %InventoryContainer
 @onready var fishing_rod: Node2D = %FishingRod
 
 func _ready() -> void:
 	hide()
+	InventoryManager.item_added.connect(update_inventory_slots)
+	InventoryManager.item_sold.connect(update_inventory_slots)
 	populate_inventory()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -25,15 +24,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		close_inventory()
 
 func populate_inventory() -> void:
-	if inventory.size() > MAX_INVENTORY_SIZE:
-		inventory.resize(MAX_INVENTORY_SIZE)
+	if InventoryManager.inventory.size() > InventoryManager.MAX_INVENTORY_SIZE:
+		InventoryManager.inventory.resize(InventoryManager.MAX_INVENTORY_SIZE)
 		print("Inventory size exceeds max inventory size, resizing...")
 	
 	if slot:
-		for i in MAX_INVENTORY_SIZE:
+		for i in InventoryManager.MAX_INVENTORY_SIZE:
 			var item: Item = null
-			if i < inventory.size():
-				item = inventory[i]
+			if i < InventoryManager.inventory.size():
+				item = InventoryManager.inventory[i]
 			instantiate_new_slot(item)
 
 func instantiate_new_slot(item: Item) -> void:
@@ -44,7 +43,8 @@ func instantiate_new_slot(item: Item) -> void:
 		var item_duplicate = item.duplicate()
 		inventory_slot.item = item_duplicate
 		inventory_slot.icon_texture_rect.texture = item_duplicate.icon
-
+		inventory_slot.sell_button.disabled = true
+		
 func get_free_slots() -> int:
 	var count: int = 0
 	for inventory_slot in inventory_container.get_children():
@@ -52,23 +52,13 @@ func get_free_slots() -> int:
 			count += 1
 	return count
 
-func add_inventory_item(item: Item) -> void:
-	if inventory.size() >= MAX_INVENTORY_SIZE:
-		print("No slots available! Inventory is full.")
-		return
-	var new_item = item.duplicate()
-	new_item.set_price()
-	inventory.append(new_item)
-	update_inventory_slots()
-	print("Added " + new_item.get_type() + " to inventory.")
-
 func update_inventory_slots() -> void:
 	var slots = inventory_container.get_children()
 	for i in slots.size():
-		if i < inventory.size():
-			slots[i].item = inventory[i]
-			slots[i].icon_texture_rect.texture = inventory[i].get_icon()
-			slots[i].desc_label.text = inventory[i].get_type() + "(" + str(inventory[i].get_price()) + ")"
+		if i < InventoryManager.inventory.size():
+			slots[i].item = InventoryManager.inventory[i]
+			slots[i].icon_texture_rect.texture = InventoryManager.inventory[i].get_icon()
+			slots[i].desc_label.text = InventoryManager.inventory[i].get_type()
 		else:
 			slots[i].item = null
 			slots[i].icon_texture_rect.texture = null

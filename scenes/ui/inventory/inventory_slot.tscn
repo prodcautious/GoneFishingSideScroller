@@ -28,6 +28,7 @@ horizontal_alignment = 1
 
 [node name="IconTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=885203288]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -36,10 +37,10 @@ stretch_mode = 2
 
 [node name="SellButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1074374561]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"CustomButton"
 theme_override_font_sizes/font_size = 8
+disabled = true
 text = "SELL"

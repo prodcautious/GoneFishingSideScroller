@@ -3,7 +3,6 @@ extends Node2D
 # Player and UI References
 @export var player: CharacterBody2D
 @export var fishing_rod_ui: Control
-@export var inventory: Control
 
 # Resources
 @export var rod_resource: FishingRod
@@ -46,7 +45,7 @@ func toggle_rod_equip() -> void:
 	fishing_rod_ui.update_rod_ui()
 
 func toggle_cast() -> void:
-	if inventory.get_free_slots() >= inventory.MAX_INVENTORY_SIZE:
+	if InventoryManager.inventory.size() >= InventoryManager.MAX_INVENTORY_SIZE:
 		print("Inventory full. Try selling some items first")
 		return
 	
@@ -127,7 +126,7 @@ func try_catch_fish() -> void:
 		print("You caught: ", fish_on_hook.type)
 		print("Random float chance: ", rand_f)
 		print("Your catch chance: ", catch_chance)
-		inventory.add_inventory_item(fish_on_hook)
+		InventoryManager.add_inventory_item(fish_on_hook)
 		cast_in()
 		return
 

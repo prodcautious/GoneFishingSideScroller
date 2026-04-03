@@ -88,7 +88,6 @@ func _get_input():
 	if input_direction != 0.0:
 		facing_direction = input_direction
 
-	# ✅ Jump is back
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		set_state(2)

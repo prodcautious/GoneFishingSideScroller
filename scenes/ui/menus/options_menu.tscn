@@ -4,7 +4,6 @@
 [ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="2_0ejsc"]
 [ext_resource type="Script" uid="uid://bwfwklror663o" path="res://scripts/custom_control/custom_option_button.gd" id="2_wj2x4"]
 [ext_resource type="Script" uid="uid://dm3x470i8khp7" path="res://scripts/custom_control/custom_check_box.gd" id="3_c4822"]
-[ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="3_imaij"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snsgv"]
 shader = ExtResource("2_0ejsc")
@@ -67,18 +66,6 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="BackButton" type="Button" parent="MarginContainer/TabContainer/Game/MarginContainer" unique_id=1131321056]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 24)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 16
-text = "Back"
-script = ExtResource("3_imaij")
-metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
 
 [node name="Video" type="TabBar" parent="MarginContainer/TabContainer" unique_id=300332133]
 layout_mode = 2
@@ -187,18 +174,6 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("3_c4822")
 metadata/_custom_type_script = "uid://dm3x470i8khp7"
-
-[node name="BackButton2" type="Button" parent="MarginContainer/TabContainer/Video/MarginContainer" unique_id=119281798]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 24)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 16
-text = "Back"
-script = ExtResource("3_imaij")
-metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
 
 [node name="Audio" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1834776276]
 visible = false
@@ -323,15 +298,3 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "100%"
-
-[node name="BackButton3" type="Button" parent="MarginContainer/TabContainer/Audio/MarginContainer" unique_id=1465828515]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 24)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 16
-text = "Back"
-script = ExtResource("3_imaij")
-metadata/_custom_type_script = "uid://c60fyhdmfnyx0"

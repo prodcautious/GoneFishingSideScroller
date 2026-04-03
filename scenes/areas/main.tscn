@@ -242,7 +242,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jkv2x"]
 shader = ExtResource("4_tefeu")
-shader_parameter/water_color = Color(0.029999971, 0.8706668, 1, 0.9098039)
+shader_parameter/water_color = Color(1, 0.029999971, 0.04616642, 0.9098039)
 shader_parameter/wave_noise = SubResource("NoiseTexture2D_ya4ey")
 shader_parameter/edge_wave_height = 0.2000000095
 shader_parameter/edge_wave_speed = 0.2000000095
@@ -309,12 +309,12 @@ centered = false
 [node name="Player" parent="Characters" unique_id=1423084509 instance=ExtResource("3_jyhfs")]
 position = Vector2(0, -24)
 
-[node name="DialogueNPCExample" parent="Characters" unique_id=2051625574 instance=ExtResource("9_85g3d")]
-position = Vector2(-96, -24)
-npc_name = "Voyager Von"
-
 [node name="ShopkeeperNPC" parent="Characters" unique_id=2031077565 instance=ExtResource("8_lxew3")]
-position = Vector2(48, -24)
+position = Vector2(-280, -24)
+
+[node name="DialogueNPCExample" parent="Characters" unique_id=2051625574 instance=ExtResource("9_85g3d")]
+position = Vector2(-192, -24)
+npc_name = "Fisherman Bloo"
 
 [node name="Lighting" type="Node2D" parent="." unique_id=75531440]
 
@@ -392,6 +392,7 @@ tile_map_data = PackedByteArray("AAADAP7/AgAAAAYAAAAEAP7/AgABAAYAAAAFAP7/AgACAAY
 tile_set = SubResource("TileSet_tipki")
 
 [node name="ObjectsFG" type="TileMapLayer" parent="Tiles" unique_id=757706654]
+z_index = 1
 tile_map_data = PackedByteArray("AAADAP7/AgAAAAgAAAADAP//AgAAAAkAAAAEAP7/AgABAAgAAAAFAP7/AgACAAgAAAAGAP7/AgADAAgAAAAHAP7/AgAEAAgAAAAHAP//AgAEAAkAAAA=")
 tile_set = SubResource("TileSet_tipki")
 
@@ -401,6 +402,7 @@ tile_map_data = PackedByteArray("AAD4//z/AQAAAAAAAgABAPz/AQAAAAAAAgD1//7/AQAAAAA
 tile_set = SubResource("TileSet_tipki")
 
 [node name="FoliageFG" type="TileMapLayer" parent="Tiles" unique_id=857282759]
+z_index = 1
 tile_map_data = PackedByteArray("AADu//7/AQAAAAAABgD0//7/AQAAAAAABgD4//7/AQAAAAAABgD+//7/AQAAAAAABgAIAP7/AQAAAAAABgANAP7/AQAAAAAABgAWAP7/AQAAAAAABgAgAP7/AQAAAAAABgApAP7/AQAAAAAABgAuAP7/AQAAAAAABgAjAP7/AQAAAAAABgAsAP7/AQAAAAAABwAcAP7/AQAAAAAABwASAP7/AQAAAAAABwAKAP7/AQAAAAAABwD7//7/AQAAAAAABwDy//7/AQAAAAAABwDs//7/AQAAAAAABwA=")
 tile_set = SubResource("TileSet_tipki")
 

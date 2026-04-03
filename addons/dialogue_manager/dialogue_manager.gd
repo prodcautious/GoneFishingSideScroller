@@ -67,6 +67,7 @@ var _dotnet_dialogue_manager: RefCounted
 
 var _expression_parser: DMExpressionParser = DMExpressionParser.new()
 
+var wants_to_sell: bool = true
 
 func _ready() -> void:
 	# Cache the known Node2D properties
@@ -1619,3 +1620,7 @@ func _get_resource_uid(resource: DialogueResource) -> String:
 
 func _get_id_with_resource(resource: DialogueResource, id: String) -> String:
 	return id if "@" in id else "%s@%s" % [_get_resource_uid(resource), id]
+
+
+func set_wants_to_sell(value: bool) -> void:
+	wants_to_sell = value

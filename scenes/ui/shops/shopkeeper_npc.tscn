@@ -22,6 +22,8 @@ fill_to = Vector2(0.2, 0.2)
 metadata/_snap_enabled = true
 
 [node name="ShopkeeperNPC" type="CharacterBody2D" unique_id=2031077565]
+y_sort_enabled = true
+collision_layer = 2
 script = ExtResource("1_qmhcl")
 dialogue_resource = ExtResource("2_7trwf")
 npc_name = "Wilson"

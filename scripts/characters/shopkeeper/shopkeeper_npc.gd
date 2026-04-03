@@ -41,9 +41,12 @@ func connect_signals() -> void:
 	detect_area_2d.area_exited.connect(_on_detect_area_exited)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
-func _on_dialogue_ended(_resource: DialogueResource) -> void:
-	get_tree().paused = false
-	var new_shop = shop_scene.instantiate()
-	var canvas_layer = get_tree().get_first_node_in_group("UICanvas")
-	canvas_layer.add_child(new_shop)
-	GameManager.in_shop_ui = true
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	if resource == dialogue_resource:
+		get_tree().paused = false
+		if DialogueManager.wants_to_sell:
+			var new_shop = shop_scene.instantiate()
+			var canvas_layer = get_tree().get_first_node_in_group("UICanvas")
+			canvas_layer.add_child(new_shop)
+			GameManager.in_shop_ui = true
+		DialogueManager.wants_to_sell = false

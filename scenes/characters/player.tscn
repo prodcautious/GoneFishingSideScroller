@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://qc4euosj4xut" path="res://resources/items/equipment/fishing/rods/fishing_rod_resource.gd" id="3_qgnko"]
 [ext_resource type="Script" uid="uid://biffhbd8lrkpv" path="res://resources/items/equipment/fishing/accessories/bait/bait_resource.gd" id="3_xhtjm"]
 [ext_resource type="Script" uid="uid://c6nbhk8ucic1l" path="res://resources/items/equipment/fishing/accessories/bobber/bobber_resource.gd" id="4_k4v7y"]
-[ext_resource type="PackedScene" uid="uid://dwm0d6ino7u7j" path="res://scenes/ui/menus/controls_menu.tscn" id="5_eojnx"]
 [ext_resource type="Script" uid="uid://7mk8ojfc0adh" path="res://resources/items/equipment/fishing/accessories/hook/hook_resource.gd" id="5_xrqxk"]
 [ext_resource type="PackedScene" uid="uid://vfeh6mwyb7tr" path="res://scenes/ui/inventory/inventory.tscn" id="6_6eyoc"]
 [ext_resource type="PackedScene" uid="uid://drco646kgct6y" path="res://scenes/ui/menus/pause_menu.tscn" id="7_qgnko"]
@@ -233,6 +232,8 @@ shader_parameter/outer_radius = 0.8
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1423084509 groups=["Player"]]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_yewv4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=902458812]
@@ -273,12 +274,11 @@ process_mode = 3
 limit_left = -320
 limit_right = 320
 
-[node name="FishingRod" type="Node2D" parent="." unique_id=1482519485 node_paths=PackedStringArray("player", "fishing_rod_ui", "inventory")]
+[node name="FishingRod" type="Node2D" parent="." unique_id=1482519485 node_paths=PackedStringArray("player", "fishing_rod_ui")]
 unique_name_in_owner = true
 script = ExtResource("9_2l4js")
 player = NodePath("..")
 fishing_rod_ui = NodePath("../UICanvasLayer/FishingRodUI")
-inventory = NodePath("../UICanvasLayer/Inventory")
 rod_resource = SubResource("Resource_qgnko")
 
 [node name="RodSprite2D" type="Sprite2D" parent="FishingRod" unique_id=712481474]
@@ -334,8 +334,7 @@ process_mode = 3
 libraries/ = SubResource("AnimationLibrary_g66nw")
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="." unique_id=2116784824 groups=["UICanvas"]]
-
-[node name="ControlsUI" parent="UICanvasLayer" unique_id=255128333 instance=ExtResource("5_eojnx")]
+process_mode = 3
 
 [node name="DialogueUI" type="Control" parent="UICanvasLayer" unique_id=1363155323]
 layout_mode = 3
@@ -367,3 +366,4 @@ player = NodePath("../..")
 
 [node name="FishingRodUI" parent="UICanvasLayer" unique_id=625143201 node_paths=PackedStringArray("rod") instance=ExtResource("11_2l4js")]
 rod = NodePath("../../FishingRod")
+metadata/_edit_use_anchors_ = true

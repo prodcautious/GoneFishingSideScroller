@@ -1,10 +1,10 @@
 extends Control
-
 @export var rod: Node2D
-
 @onready var name_label: Label = %NameLabel
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var tooltip_label: Label = %TooltipLabel
+
+var dialogue_active: bool = false
 
 func _ready() -> void:
 	connect_signals()
@@ -15,18 +15,20 @@ func connect_signals() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _on_dialogue_started(_resource: DialogueResource) -> void:
-	hide()
+	dialogue_active = true
+	update_visibility()
 
 func _on_dialogue_ended(_resource: DialogueResource) -> void:
-	show()
+	dialogue_active = false
+	update_visibility()
 
 func _process(_delta: float) -> void:
-	if GameManager.in_shop_ui && visible:
-		hide()
-		return
-	elif !GameManager.in_shop_ui && !visible:
-		show()
-		return
+	update_visibility()
+
+func update_visibility() -> void:
+	var should_be_visible = !GameManager.paused && !GameManager.in_shop_ui && !dialogue_active && !GameManager.inventory_open
+	if visible != should_be_visible:
+		visible = should_be_visible
 
 func update_rod_ui() -> void:
 	var fishing_rod_resource = rod.rod_resource

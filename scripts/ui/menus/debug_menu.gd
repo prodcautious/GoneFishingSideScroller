@@ -2,12 +2,16 @@ extends CanvasLayer
 
 @onready var fps_label: Label = %FPSLabel
 @onready var state_label: Label = %StateLabel
+@onready var coins_label: Label = %CoinsLabel
 
 var old_fps
 var new_fps
 
 var old_state
 var new_state
+
+var old_coins
+var new_coins
 
 var player
 
@@ -19,6 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update_fps_label()
 	update_state_label()
+	update_coins_label()
 
 func update_fps_label() -> void:
 	old_fps = new_fps
@@ -38,6 +43,13 @@ func update_state_label() -> void:
 	else:
 		if state_label.text != "No player":
 			state_label.text = "No player"
+
+func update_coins_label() -> void:
+	old_coins = new_coins
+	new_coins = GameManager.coins
+	
+	if old_coins != new_coins:
+		coins_label.text = "Coins: " + str(new_coins)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):

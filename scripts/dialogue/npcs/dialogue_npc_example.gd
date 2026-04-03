@@ -40,5 +40,6 @@ func connect_signals() -> void:
 	detect_area_2d.area_exited.connect(_on_detect_area_exited)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
-func _on_dialogue_ended(_resource: DialogueResource) -> void:
-	get_tree().paused = false
+func _on_dialogue_ended(resource: DialogueResource) -> void:
+	if resource == dialogue_resource:
+		get_tree().paused = false

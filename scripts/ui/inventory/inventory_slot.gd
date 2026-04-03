@@ -10,13 +10,19 @@ var item: Item
 
 func _ready() -> void:
 	await get_tree().process_frame
-	sell_button.pressed.connect(_on_sell_button_pressed)
-	sell_button.visible = can_sell
+	if item:
+		sell_button.pressed.connect(_on_sell_button_pressed)
+	else:
+		sell_button.disabled = true
 
 func _on_sell_button_pressed() -> void:
-	GameManager.money += item.get_price()
+	GameManager.coins += item.get_price()
+	InventoryManager.inventory.erase(item)
+	print(InventoryManager.inventory)
 	desc_label.text = ""
 	icon_texture_rect.texture = null
-	sell_button.visible = false
+	sell_button.disabled = true
+	sell_button.text = "SELL"
 	can_sell = false
 	item = null
+	InventoryManager.item_sold.emit()

@@ -1,7 +1,9 @@
 ~ start
-Wilson: [[Hi|'Sup|Duck]], interested in buying anything?
+Wilson: [[Hi|'Sup|Duck]], interested in sellin' anything?
 - Yes
+	do DialogueManager.set_wants_to_sell(true)
 	Wilson: Lovely!
 - No
+	do DialogueManager.set_wants_to_sell(false)
 	Wilson: Go on now.
 => END

@@ -4,11 +4,17 @@ extends Control
 
 @onready var resume_button: CustomButton = %ResumeButton
 @onready var options_button: CustomButton = %OptionsButton
+@onready var controls_button: CustomButton = %ControlsButton
 @onready var main_menu_button: CustomButton = %MainMenuButton
 @onready var quit_button: CustomButton = %QuitButton
+
+@onready var panel_container: PanelContainer = %PanelContainer
+
 @onready var options_menu: Control = %OptionsMenu
+@onready var controls_menu: Control = %ControlsMenu
 
 var options_menu_opened: bool = false
+var controls_menu_opened: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,12 +24,13 @@ func _ready() -> void:
 func connect_signals() -> void:
 	resume_button.pressed.connect(_on_resume_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
+	controls_button.pressed.connect(_on_controls_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc"):
-		if GameManager.controls_open || GameManager.inventory_open || GameManager.in_shop_ui:
+		if GameManager.inventory_open || GameManager.in_shop_ui:
 			return
 		else:
 			get_viewport().set_input_as_handled()
@@ -32,6 +39,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func toggle_visibility() -> void:
 	if options_menu_opened:
 		options_menu_opened = false
+		panel_container.show()
+		return
+	
+	if controls_menu_opened:
+		controls_menu_opened = false
+		panel_container.show()
 		return
 
 	if visible:
@@ -52,7 +65,13 @@ func _on_options_button_pressed() -> void:
 	OptionsManager.load_options()
 	options_menu_opened = true
 	options_menu.show()
+	panel_container.hide()
 	options_menu.set_up_default_settings()
+
+func _on_controls_button_pressed() -> void:
+	controls_menu_opened = true
+	controls_menu.show()
+	panel_container.hide()
 
 func _on_main_menu_button_pressed() -> void:
 	AudioManager.muffle_music(false)
