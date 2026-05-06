@@ -57,7 +57,7 @@ func update_inventory_slots() -> void:
 			var current_inventory_index = InventoryManager.inventory[i]
 			slots[i].item = current_inventory_index
 			slots[i].icon_texture_rect.texture = current_inventory_index.get_icon()
-			slots[i].desc_label.text = current_inventory_index.get_type() + "\n" + "(" + current_inventory_index.get_weight() + "kg.)"
+			slots[i].desc_label.text = current_inventory_index.get_type() + "\n" + "(" + current_inventory_index.get_weight() + ")"
 			await get_tree().process_frame
 			slots[i].sell_button.text = "$" + str(slots[i].item.get_price())
 		else:

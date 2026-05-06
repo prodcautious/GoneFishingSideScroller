@@ -15,6 +15,7 @@ extends Node2D
 @onready var ui_animation_player: AnimationPlayer = %UIAnimationPlayer
 @onready var caught_fish_sprite: Sprite2D = %CaughtFishSprite
 @onready var caught_fish_label: Label = %CaughtFishLabel
+@onready var didnt_catch_fish_label: Label = %DidntCatchFishLabel
 
 var rod_equipped: bool = false
 
@@ -199,7 +200,7 @@ func try_catch_fish() -> void:
 	
 	# Check if bait slipped off
 	if bait.get_weight() > bobber.get_max_bait_weight():
-		print("Your bait slipped off! Try getting a larger hook.")
+		_did_not_catch_fish_animation("Your bait slipped off! Try getting a larger hook.")
 		_cast_in()
 		return
 	
@@ -207,7 +208,7 @@ func try_catch_fish() -> void:
 	var fish_on_hook = get_fish_on_hook(bait.type, current_catch_modifier)
 	
 	if fish_on_hook == null:
-		print("Nothing's biting with this setup.")
+		_did_not_catch_fish_animation("Nothing's biting with this setup.")
 		_cast_in()
 		return
 
@@ -215,7 +216,7 @@ func try_catch_fish() -> void:
 	
 	# Check if fish is too heavy
 	if fish_on_hook["weight"] > line.get_max_weight():
-		print("Line snapped! Fish was too heavy.")
+		_did_not_catch_fish_animation("Line snapped! Fish was too heavy.")
 		_cast_in()
 		return
 	
@@ -235,7 +236,7 @@ func try_catch_fish() -> void:
 
 	# Unsuccessful
 	else:
-		print("Darn! It got away.")
+		_did_not_catch_fish_animation("Darn! It got away.")
 		print("Random float chance: ", rand_f)
 		print("Your catch chance: ", catch_chance)
 		_cast_in()
@@ -308,4 +309,19 @@ func _catch_fish_animation(fish: Fish) -> void:
 	ui_animation_player.play("fish_caught")
 	await ui_animation_player.animation_finished
 	get_tree().paused = false
+
+func _did_not_catch_fish_animation(reason: String) -> void:
+	casted_out = false
+
+	player.set_state(0)
+
+	if rod_equipped:
+		toggle_rod_equip()
+
+	player.set_state(0)
+
+	didnt_catch_fish_label.text = reason
+
+	AudioManager.play_sfx("fish_got_away")
+	ui_animation_player.play("fish_not_caught")
 #endregion

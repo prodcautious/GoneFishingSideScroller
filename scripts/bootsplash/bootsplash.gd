@@ -11,7 +11,7 @@ func _ready() -> void:
 	animation_player.animation_finished.connect(_on_bootsplash_finished)
 	animation_player.play("bootsplash")
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("skip_animation"):
 		if has_skipped:
 			return
@@ -21,6 +21,7 @@ func _input(event):
 
 func _on_bootsplash_finished(_anim_name: String) -> void:
 	if !next_scene:
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
+		get_tree().change_scene_to_file("res://scenes/ui/menus/start_menu.tscn")
 	else:
 		get_tree().change_scene_to_file(next_scene)
+	get_parent().queue_free()

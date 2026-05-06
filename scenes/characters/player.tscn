@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bfjv1haipml4w" path="res://assets/textures/items/equipment/fishing/rods/icons/fishing_rod_icon.png" id="3_jk2m4"]
 [ext_resource type="Script" uid="uid://biffhbd8lrkpv" path="res://resources/items/equipment/fishing/accessories/bait/bait_resource.gd" id="3_k4v7y"]
 [ext_resource type="Script" uid="uid://qc4euosj4xut" path="res://resources/items/equipment/fishing/rods/fishing_rod_resource.gd" id="3_qgnko"]
-[ext_resource type="Resource" uid="uid://uqe6g841mxtj" path="res://resources/items/equipment/fishing/accessories/bobber/default_bobber.tres" id="4_xrqxk"]
+[ext_resource type="Script" uid="uid://c6nbhk8ucic1l" path="res://resources/items/equipment/fishing/accessories/bobber/bobber_resource.gd" id="4_k4v7y"]
 [ext_resource type="Script" uid="uid://7mk8ojfc0adh" path="res://resources/items/equipment/fishing/accessories/hook/hook_resource.gd" id="6_xrqxk"]
 [ext_resource type="Script" uid="uid://dfdms81c6l80e" path="res://scripts/characters/player/dialogue_handler.gd" id="8_eojnx"]
 [ext_resource type="Resource" uid="uid://dew6uy3pm6fvq" path="res://resources/items/equipment/fishing/accessories/line/two_pound_line.tres" id="8_rpnd8"]
@@ -26,6 +26,13 @@ count = 100
 weight = 0.5
 metadata/_custom_type_script = "uid://biffhbd8lrkpv"
 
+[sub_resource type="Resource" id="Resource_xrqxk"]
+script = ExtResource("4_k4v7y")
+type = "Red Bobber"
+bite_detection_speed_range = Vector2(5, 10)
+max_bait_weight = 5.0
+metadata/_custom_type_script = "uid://c6nbhk8ucic1l"
+
 [sub_resource type="Resource" id="Resource_rpnd8"]
 script = ExtResource("6_xrqxk")
 type = "Single Hook (Small)"
@@ -36,7 +43,7 @@ metadata/_custom_type_script = "uid://7mk8ojfc0adh"
 [sub_resource type="Resource" id="Resource_qgnko"]
 script = ExtResource("3_qgnko")
 hook = SubResource("Resource_rpnd8")
-bobber = ExtResource("4_xrqxk")
+bobber = SubResource("Resource_xrqxk")
 bait = SubResource("Resource_g66nw")
 line = ExtResource("8_rpnd8")
 held_texture = ExtResource("3_7vyk4")
@@ -335,6 +342,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(-46, -64)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3wg1y"]
 resource_name = "fish_caught"
@@ -413,6 +444,35 @@ tracks/5/keys = {
 "values": [Vector2(-46, -64), Vector2(-46, -64), Vector2(-46, -76)]
 }
 
+[sub_resource type="Animation" id="Animation_g66nw"]
+resource_name = "fish_not_caught"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_d6tgn"]
 resource_name = "perfect_cast"
 step = 0.05
@@ -457,6 +517,7 @@ tracks/2/keys = {
 _data = {
 &"RESET": SubResource("Animation_rpnd8"),
 &"fish_caught": SubResource("Animation_3wg1y"),
+&"fish_not_caught": SubResource("Animation_g66nw"),
 &"perfect_cast": SubResource("Animation_d6tgn")
 }
 
@@ -582,7 +643,7 @@ anchor_bottom = 0.5
 offset_left = -46.0
 offset_top = -64.0
 offset_right = 46.0
-offset_bottom = -48.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 8
@@ -639,6 +700,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueHandler/CanvasLayer" unique_id=1881210119]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DidntCatchFishLabel" type="Label" parent="DialogueHandler/CanvasLayer/MarginContainer" unique_id=157604864]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1208561843]
 position = Vector2(0.5, -6.5)

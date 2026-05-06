@@ -71,7 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.18039216, 0.13333334, 0.18431373, 1)
+color = Color(0.019607844, 0.03529412, 0.078431375, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1937909081]
 unique_name_in_owner = true
