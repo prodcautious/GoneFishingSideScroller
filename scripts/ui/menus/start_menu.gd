@@ -15,8 +15,9 @@ extends Control
 var tween: Tween
 
 func _ready() -> void:
-	if !AudioManager.music_player:
-		AudioManager.play_music("default")
+	MenuManager.register_menu(MenuManager.MenuState.START, self)
+	MenuManager.show_menu(MenuManager.MenuState.START)
+	
 	connect_signals()
 	pivot_offset = size / 2
 	scale = Vector2.ZERO
@@ -36,6 +37,7 @@ func connect_signals() -> void:
 
 func _on_start_button_pressed() -> void:
 	if main_scene:
+		MenuManager.close_current_menu()
 		SceneTransition.transition_scene(main_scene)
 		SignalManager.game_start.emit()
 

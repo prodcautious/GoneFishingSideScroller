@@ -18,11 +18,14 @@ func _ready() -> void:
 func _on_sell_button_pressed() -> void:
 	GameManager.coins += item.get_price()
 	InventoryManager.inventory.erase(item)
-	print(InventoryManager.inventory)
+	InventoryManager.item_sold.emit()
+	_reset_slot()
+
+func _reset_slot() -> void:
 	desc_label.text = ""
 	icon_texture_rect.texture = null
 	sell_button.disabled = true
-	sell_button.text = "SELL"
+	sell_button.text = ""
 	can_sell = false
 	item = null
-	InventoryManager.item_sold.emit()
+	

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var dialogue_resource: DialogueResource
 @export var npc_name: String
+
+@export var shop_name: String
 @export var shop_scene: PackedScene
 
 @onready var detect_area_2d: Area2D = %DetectArea2D
@@ -10,6 +12,7 @@ extends CharacterBody2D
 
 var player
 var player_is_in_area: bool = false
+var shop_disabled: bool = false
 
 func _ready() -> void:
 	name_label.text = "[E] " + npc_name
@@ -17,12 +20,19 @@ func _ready() -> void:
 	connect_signals()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") && player_is_in_area:
-		if player.current_player_state == player.PLAYER_STATE.FISHING || GameManager.in_shop_ui:
+	if !player:
+		player = get_tree().get_first_node_in_group("Player")
+
+	if event.is_action_pressed("interact") and player_is_in_area:
+
+		if MenuManager.is_menu_open():
 			return
-		else:
-			get_tree().paused = true
-			DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
+
+		if player.current_player_state == player.PLAYER_STATE.FISHING:
+			return
+
+		get_tree().paused = true
+		DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 
 func _on_detect_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
@@ -42,11 +52,16 @@ func connect_signals() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
-	if resource == dialogue_resource:
-		get_tree().paused = false
-		if DialogueManager.wants_to_sell:
-			var new_shop = shop_scene.instantiate()
-			var canvas_layer = get_tree().get_first_node_in_group("UICanvas")
-			canvas_layer.add_child(new_shop)
-			GameManager.in_shop_ui = true
-		DialogueManager.wants_to_sell = false
+	if resource != dialogue_resource:
+		return
+
+	get_tree().paused = false
+
+	if MenuManager.is_open(MenuManager.MenuState.SHOP):
+		return
+
+	var new_shop = shop_scene.instantiate()
+	Ui.add_child(new_shop)
+
+	new_shop.buy_shop_label.text = shop_name
+	new_shop.sell_shop_label.text = shop_name

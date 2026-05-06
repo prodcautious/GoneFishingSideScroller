@@ -10,4 +10,3 @@ func _unhandled_input(event: InputEvent) -> void:
 func close_controls() -> void:
 	hide()
 	get_tree().paused = false
-	GameManager.controls_open = false

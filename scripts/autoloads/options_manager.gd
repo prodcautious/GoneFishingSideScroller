@@ -1,9 +1,10 @@
 extends Node
 
-var resolution_index: int = 2 #0 = 1920x1080 #1 = 960x540 #2 = 480 x 270 (Native)
+var resolution_index: int = 2 #0 = 1920x1080 #1 = 960x540 #2 = 640 x 360 (Native) #3 = 480 x 270 
 const RESOLUTIONS = [
 	Vector2i(1920, 1080),
 	Vector2i(960, 540),
+	Vector2i(640,360),
 	Vector2i(480, 270)
 ]
 

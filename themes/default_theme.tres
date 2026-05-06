@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ccshq021fm533" path="res://assets/fonts/gone_fishing_drop_shadow.png" id="1_e1x85"]
 [ext_resource type="Texture2D" uid="uid://ckifgym1m168" path="res://assets/textures/custom_control/checkbox/checkbox_checked.png" id="1_vj6dk"]
 [ext_resource type="FontFile" uid="uid://dtq2looqtdg1y" path="res://assets/fonts/gone_fishing_bold_drop_shadow.png" id="4_110ce"]
+[ext_resource type="Texture2D" uid="uid://bl8wf3nupbldp" path="res://assets/textures/ui/ui_button_normal.png" id="5_nwjvr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjfk0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -94,6 +95,46 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r3xux"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxkhk"]
+texture = SubResource("CompressedTexture2D_r3xux")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.75, 0.75, 0.75, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pvobe"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j1oap"]
+texture = SubResource("CompressedTexture2D_pvobe")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n85q8"]
+texture = ExtResource("5_nwjvr")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swyot"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s7hap"]
+texture = SubResource("CompressedTexture2D_swyot")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.5, 0.5, 0.5, 1)
+
 [resource]
 CheckBox/icons/checked = ExtResource("1_vj6dk")
 CheckBox/icons/unchecked = ExtResource("1_cjfk0")
@@ -127,3 +168,11 @@ TabBar/font_sizes/font_size = 32
 TabBar/fonts/font = ExtResource("1_e1x85")
 TabContainer/font_sizes/font_size = 32
 TabContainer/fonts/font = ExtResource("1_e1x85")
+UIButton/base_type = &"Button"
+UIButton/colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+UIButton/font_sizes/font_size = 8
+UIButton/fonts/font = ExtResource("1_e1x85")
+UIButton/styles/hover = SubResource("StyleBoxTexture_oxkhk")
+UIButton/styles/hover_pressed = SubResource("StyleBoxTexture_j1oap")
+UIButton/styles/normal = SubResource("StyleBoxTexture_n85q8")
+UIButton/styles/pressed = SubResource("StyleBoxTexture_s7hap")

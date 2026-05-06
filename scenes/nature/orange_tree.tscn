@@ -35,6 +35,31 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.2, 0.2)
 metadata/_snap_enabled = true
 
+[sub_resource type="Curve" id="Curve_cf6ku"]
+_data = [Vector2(0.0027173907, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dp3eg"]
+curve = SubResource("Curve_cf6ku")
+
+[sub_resource type="Curve" id="Curve_b6fcs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7472826, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gqmmt"]
+curve = SubResource("Curve_b6fcs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vcutw"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 64.0
+gravity = Vector3(5, 5, 0)
+scale_curve = SubResource("CurveTexture_gqmmt")
+color = Color(2.454227, 2.2163856, 1.2650199, 1)
+alpha_curve = SubResource("CurveTexture_dp3eg")
+turbulence_enabled = true
+
 [node name="OrangeTree" type="Node2D" unique_id=211830029]
 material = SubResource("ShaderMaterial_1j018")
 
@@ -49,3 +74,13 @@ position = Vector2(0, 8)
 energy = 0.5
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_cf6ku")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1560631360]
+z_index = 10
+y_sort_enabled = true
+amount = 3
+amount_ratio = 0.75
+lifetime = 5.0
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_vcutw")

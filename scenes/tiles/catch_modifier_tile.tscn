@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://b7ip1u5ow23u5"]
+
+[ext_resource type="Script" uid="uid://ccmdu5cs04aly" path="res://scripts/tiles/catch_modifier_tile.gd" id="1_ex2rv"]
+[ext_resource type="Texture2D" uid="uid://8mv3gsopylu6" path="res://assets/textures/tiles/animated_campfire.png" id="2_espng"]
+[ext_resource type="Texture2D" uid="uid://fld86c84gd7j" path="res://assets/textures/particles/smoke_particle.png" id="3_gcoru"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e5qb"]
+atlas = ExtResource("2_espng")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jfre"]
+atlas = ExtResource("2_espng")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly55k"]
+atlas = ExtResource("2_espng")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geegm"]
+atlas = ExtResource("2_espng")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5x7w"]
+atlas = ExtResource("2_espng")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uikk3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e5qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jfre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly55k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geegm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5x7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ltfke"]
+offsets = PackedFloat32Array(0, 0.70604396)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rgkup"]
+gradient = SubResource("Gradient_ltfke")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rgkup"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_w7vhv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vp1ll"]
+curve = SubResource("Curve_w7vhv")
+
+[sub_resource type="Curve" id="Curve_hi837"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.5028901, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5xo0d"]
+curve = SubResource("Curve_hi837")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ejp23"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(3, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -30, 0)
+linear_accel_min = 0.99999774
+linear_accel_max = 19.999998
+linear_accel_curve = SubResource("CurveTexture_5xo0d")
+alpha_curve = SubResource("CurveTexture_vp1ll")
+anim_speed_min = 1.0
+anim_speed_max = 1.5
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgkup"]
+radius = 32.0
+
+[node name="CatchEffectorTile" type="Node2D" unique_id=262387760]
+script = ExtResource("1_ex2rv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=869274932]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_uikk3")
+frame_progress = 0.16508414
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=431642477]
+unique_name_in_owner = true
+scale = Vector2(0.9, 0.9)
+color = Color(0.92941177, 0.48235294, 0.22352941, 1)
+texture = SubResource("GradientTexture2D_rgkup")
+
+[node name="FlickerTimer" type="Timer" parent="." unique_id=217269854]
+unique_name_in_owner = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1840356875]
+z_index = 1
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_rgkup")
+position = Vector2(0, -8)
+amount = 2
+texture = ExtResource("3_gcoru")
+lifetime = 5.0
+explosiveness = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ejp23")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=675398965]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=820492810]
+shape = SubResource("CircleShape2D_rgkup")

@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var fps_label: Label = %FPSLabel
 @onready var state_label: Label = %StateLabel
 @onready var coins_label: Label = %CoinsLabel
+@onready var position_label: Label = %PositionLabel
 
 var old_fps
 var new_fps
@@ -13,6 +14,9 @@ var new_state
 var old_coins
 var new_coins
 
+var old_position
+var new_position
+
 var player
 
 func _ready() -> void:
@@ -20,11 +24,14 @@ func _ready() -> void:
 	SceneTransition.transition_complete.connect(_on_transition_complete)
 	hide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if !player:
+		return
 	update_fps_label()
 	update_state_label()
 	update_coins_label()
-
+	update_position_label()
+	
 func update_fps_label() -> void:
 	old_fps = new_fps
 	new_fps = Engine.get_frames_per_second()
@@ -50,6 +57,16 @@ func update_coins_label() -> void:
 	
 	if old_coins != new_coins:
 		coins_label.text = "Coins: " + str(new_coins)
+
+func update_position_label() -> void:
+	old_position = new_position
+	new_position = player.position
+	
+	if old_position != new_position:
+		var tile_x = int(new_position.x / 16)
+		var tile_y = int(new_position.y / 16)
+
+		position_label.text = "Position: " + str(tile_x) + "," + str(tile_y)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):

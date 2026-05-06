@@ -2,16 +2,15 @@ extends Item
 class_name Fish
 
 @export var required_bait: Array[String]
+@export var water_type: Array[String]
 @export var encounter_rate: float
 @export var weight: float
 @export var base_price: int
-var price: int
+@export var price: int = 0
 
 func get_price() -> int:
 	return price
 
-func set_price() -> void:
-	price = int(base_price * (weight + 1))
-	print("Set fish price to ", str(price))
-
-	
+func get_weight() -> String:
+	var weight_to_hundredth = "%.2f" % weight
+	return weight_to_hundredth + "kg."

@@ -11,12 +11,13 @@ enum PLAYER_STATE {IDLE, WALKING, JUMPING, INTERACTING, FISHING}
 var current_player_state
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var facing_direction : float
+var facing_direction : float = 1.0
 
-@onready var fishing_rod: Node2D = %FishingRod
+var fishing_rod
 
 #region Built-In
 func _ready() -> void:
+	fishing_rod = get_tree().get_first_node_in_group("FishingRod")
 	animation_player.play("idle_right")
 	current_player_state = PLAYER_STATE.IDLE
 
@@ -30,18 +31,12 @@ func _physics_process(delta):
 	# Apply gravity
 	_apply_gravity(delta)
 
-	# Handle jumping/falling state
-	if not is_on_floor():
-		if current_player_state != PLAYER_STATE.JUMPING:
-			set_state(2)
+	if velocity.x == 0:
+		if current_player_state != PLAYER_STATE.IDLE:
+			set_state(0)
 	else:
-		# Only switch to idle/walk when grounded
-		if velocity.x == 0:
-			if current_player_state != PLAYER_STATE.IDLE:
-				set_state(0)
-		else:
-			if current_player_state != PLAYER_STATE.WALKING:
-				set_state(1)
+		if current_player_state != PLAYER_STATE.WALKING:
+			set_state(1)
 
 	_get_input()
 	_update_animation()
@@ -55,8 +50,8 @@ func get_current_state() -> String:
 			return "Idle"
 		PLAYER_STATE.WALKING:
 			return "Walking"
-		PLAYER_STATE.JUMPING:
-			return "Jumping"
+		#PLAYER_STATE.JUMPING:
+			#return "Jumping"
 		PLAYER_STATE.INTERACTING:
 			return "Interacting"
 		PLAYER_STATE.FISHING:
@@ -70,14 +65,16 @@ func set_state(state: int) -> void:
 			current_player_state = PLAYER_STATE.IDLE
 		1:
 			current_player_state = PLAYER_STATE.WALKING
-		2:
-			current_player_state = PLAYER_STATE.JUMPING
+		#2:
+			#current_player_state = PLAYER_STATE.JUMPING
 		3:
 			current_player_state = PLAYER_STATE.INTERACTING
 		4:
 			current_player_state = PLAYER_STATE.FISHING
 		_:
 			print("No state: ", state, " found")
+
+	_update_animation()
 #endregion
 
 #region Private Helpers
@@ -88,15 +85,22 @@ func _get_input():
 	if input_direction != 0.0:
 		facing_direction = input_direction
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-		set_state(2)
+	#if Input.is_action_just_pressed("jump") and is_on_floor():
+		#velocity.y = jump_velocity
+		#set_state(2)
 
 func _apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
+
+func face_direction(dir: float) -> void:
+	if dir == 0.0:
+		return
+	
+	facing_direction = dir
+	_update_animation()
 
 func _update_animation() -> void:
 	var dir: String
@@ -122,12 +126,11 @@ func _update_animation() -> void:
 			else:
 				anim_name = "fishing_" + dir
 
-		PLAYER_STATE.JUMPING:
-			if !fishing_rod.rod_equipped:
-				anim_name = "idle_" + dir
-			else:
-				anim_name = "fishing_" + dir
-
+		#PLAYER_STATE.JUMPING:
+			#if !fishing_rod.rod_equipped:
+				#anim_name = "idle_" + dir
+			#else:
+				#anim_name = "fishing_" + dir
 
 		PLAYER_STATE.FISHING:
 			anim_name = "fishing_" + dir

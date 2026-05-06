@@ -1,13 +1,15 @@
 extends Node
 
 var music = {
-	"anubis": preload("res://assets/audio/music/anubis.ogg"),
-	"default": preload("res://assets/audio/music/default.ogg"),
-	"background": preload("res://assets/audio/music/background.ogg"),
+	"greava_theme": preload("res://assets/audio/music/greava_theme.ogg"),
+	"tackle_shop_theme": preload("res://assets/audio/music/tackle_shop_theme.ogg")
 }
 
 var sfx = {
 	"ui_pressed": preload("res://assets/audio/sfx/ui_pressed.ogg"),
+	"cast_progress": preload("res://assets/audio/sfx/cast_progress.ogg"),
+	"perfect_cast": preload("res://assets/audio/sfx/perfect_cast.ogg"),
+	"fish_caught": preload("res://assets/audio/sfx/fish_caught.ogg")
 }
 
 var music_player: AudioStreamPlayer
@@ -50,7 +52,7 @@ func play_music(song_name: String) -> void:
 	music_player.play()
 	print("Playing Music: " + song_name + " | " + str(song))
 
-func play_sfx(sfx_name: String) -> void:
+func play_sfx(sfx_name: String, pitch: float = 1.0) -> void:
 	if sfx_player:
 		sfx_player.queue_free()
 	
@@ -61,6 +63,9 @@ func play_sfx(sfx_name: String) -> void:
 	
 	var sound_effect = sfx[sfx_name]
 	sfx_player.stream = sound_effect
+	
+	if pitch:
+		sfx_player.pitch_scale = pitch
 	
 	sfx_player.play()
 	print("Playing SFX: " + sfx_name + " | " + str(sound_effect))
@@ -103,12 +108,3 @@ func fade_in_audio(duration: float = 1.0) -> void:
 		target_db,
 		duration
 	)
-
-func muffle_music(muffle: bool) -> void:
-	var music_bus_index = AudioServer.get_bus_index("Music")
-	if muffle:
-		var low_pass_filter = AudioEffectLowPassFilter.new()
-		low_pass_filter.cutoff_hz = 1500
-		AudioServer.add_bus_effect(music_bus_index, low_pass_filter)
-	else:
-		AudioServer.remove_bus_effect(music_bus_index, 0)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Hook" format=3 uid="uid://f7gbh6eououc"]
+
+[ext_resource type="Script" uid="uid://7mk8ojfc0adh" path="res://resources/items/equipment/fishing/accessories/hook/hook_resource.gd" id="1_5aqwu"]
+
+[resource]
+script = ExtResource("1_5aqwu")
+type = "Debug Hook"
+catch_rate = 1.0
+count = 1000
+weedless = true
+metadata/_custom_type_script = "uid://7mk8ojfc0adh"

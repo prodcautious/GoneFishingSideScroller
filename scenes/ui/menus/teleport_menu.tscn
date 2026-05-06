@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cewgqkt1lk17j"]
+
+[ext_resource type="Script" uid="uid://cg0t1ni5iiqn0" path="res://scripts/ui/menus/teleport_menu.gd" id="1_1aj6y"]
+[ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="2_4w6xq"]
+[ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="2_j00ao"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7rjq"]
+shader = ExtResource("2_4w6xq")
+shader_parameter/lod = 1.0000000475
+
+[node name="TeleportMenu" type="Control" unique_id=1762051657]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1aj6y")
+
+[node name="BlurColorRect" type="ColorRect" parent="." unique_id=77093585]
+material = SubResource("ShaderMaterial_s7rjq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1444474628]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1261391355]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=1182465745]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=681574912]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1355911961]
+layout_mode = 2
+text = "Teleport"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GreavaMainButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2126404006]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"CustomButton"
+theme_override_font_sizes/font_size = 8
+text = "Greava Main"
+script = ExtResource("2_j00ao")
+metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
+
+[node name="ShopButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=313390679]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"CustomButton"
+theme_override_font_sizes/font_size = 8
+text = "Shop"
+script = ExtResource("2_j00ao")
+metadata/_custom_type_script = "uid://c60fyhdmfnyx0"

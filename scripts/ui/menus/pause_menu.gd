@@ -16,9 +16,15 @@ extends Control
 var options_menu_opened: bool = false
 var controls_menu_opened: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
+
+	MenuManager.register_menu(MenuManager.MenuState.PAUSE, panel_container)
+	MenuManager.register_menu(MenuManager.MenuState.OPTIONS, options_menu)
+	MenuManager.register_menu(MenuManager.MenuState.CONTROLS, controls_menu)
+	MenuManager.hide_all_menus()
+	MenuManager.current_menu = MenuManager.MenuState.NONE
+	
 	connect_signals()
 
 func connect_signals() -> void:
@@ -30,52 +36,40 @@ func connect_signals() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc"):
-		if GameManager.inventory_open || GameManager.in_shop_ui:
-			return
-		else:
-			get_viewport().set_input_as_handled()
-			toggle_visibility()
+		get_viewport().set_input_as_handled()
+		toggle_visibility()
 
 func toggle_visibility() -> void:
-	if options_menu_opened:
-		options_menu_opened = false
-		panel_container.show()
+	if MenuManager.current_menu == MenuManager.MenuState.START:
 		return
-	
-	if controls_menu_opened:
-		controls_menu_opened = false
-		panel_container.show()
+
+	if visible and MenuManager.current_menu != MenuManager.MenuState.PAUSE :
+		get_tree().paused = true
+		MenuManager.show_menu(MenuManager.MenuState.PAUSE, true)
 		return
 
 	if visible:
 		hide()
 		get_tree().paused = false
-		GameManager.paused = false
-		AudioManager.muffle_music(false)
+		MenuManager.close_current_menu()
 	else:
 		show()
-		get_tree().paused = true
-		GameManager.paused = true
-		AudioManager.muffle_music(true)
+		MenuManager.show_menu(MenuManager.MenuState.PAUSE, true)
 
 func _on_resume_button_pressed() -> void:
 	toggle_visibility()
 
 func _on_options_button_pressed() -> void:
+	MenuManager.show_menu(MenuManager.MenuState.OPTIONS, true)
 	OptionsManager.load_options()
-	options_menu_opened = true
-	options_menu.show()
-	panel_container.hide()
 	options_menu.set_up_default_settings()
 
 func _on_controls_button_pressed() -> void:
-	controls_menu_opened = true
-	controls_menu.show()
-	panel_container.hide()
+	MenuManager.show_menu(MenuManager.MenuState.CONTROLS, true)
 
 func _on_main_menu_button_pressed() -> void:
-	AudioManager.muffle_music(false)
 	if start_menu_scene:
 		SceneTransition.transition_scene(start_menu_scene)
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

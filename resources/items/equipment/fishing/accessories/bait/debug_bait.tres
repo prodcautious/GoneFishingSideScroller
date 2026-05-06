@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Bait" format=3 uid="uid://kfpxjensjdb7"]
+
+[ext_resource type="Script" uid="uid://biffhbd8lrkpv" path="res://resources/items/equipment/fishing/accessories/bait/bait_resource.gd" id="1_ue63p"]
+
+[resource]
+script = ExtResource("1_ue63p")
+type = "Debug Bait"
+count = 1000
+metadata/_custom_type_script = "uid://biffhbd8lrkpv"

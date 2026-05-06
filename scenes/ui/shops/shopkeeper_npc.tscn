@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://mv45ugn07256" path="res://assets/textures/misc/white_box.png" id="1_o62te"]
 [ext_resource type="Script" uid="uid://cjwgboavnsbin" path="res://scripts/characters/shopkeeper/shopkeeper_npc.gd" id="1_qmhcl"]
-[ext_resource type="Resource" uid="uid://jvdda7esawh8" path="res://dialogue/wilson_intro.dialogue" id="2_7trwf"]
 [ext_resource type="PackedScene" uid="uid://dbcqn4vkkcaia" path="res://scenes/ui/shops/shopkeeper_shop.tscn" id="3_da8k3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmhcl"]
@@ -25,8 +24,6 @@ metadata/_snap_enabled = true
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_qmhcl")
-dialogue_resource = ExtResource("2_7trwf")
-npc_name = "Wilson"
 shop_scene = ExtResource("3_da8k3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=525297730]

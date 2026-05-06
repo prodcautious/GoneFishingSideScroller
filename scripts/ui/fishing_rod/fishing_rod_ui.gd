@@ -6,7 +6,12 @@ extends Control
 
 var dialogue_active: bool = false
 
+var fishing_rod
+var fishing_rod_resource
+
 func _ready() -> void:
+	fishing_rod = get_tree().get_first_node_in_group("FishingRod")
+	fishing_rod_resource = fishing_rod.rod_resource
 	connect_signals()
 	update_rod_ui()
 
@@ -16,26 +21,23 @@ func connect_signals() -> void:
 
 func _on_dialogue_started(_resource: DialogueResource) -> void:
 	dialogue_active = true
-	update_visibility()
+	toggle_visibility()
 
 func _on_dialogue_ended(_resource: DialogueResource) -> void:
 	dialogue_active = false
-	update_visibility()
+	toggle_visibility()
 
 func _process(_delta: float) -> void:
-	update_visibility()
+	toggle_visibility()
 
-func update_visibility() -> void:
-	var should_be_visible = !GameManager.paused && !GameManager.in_shop_ui && !dialogue_active && !GameManager.inventory_open
-	if visible != should_be_visible:
-		visible = should_be_visible
+func toggle_visibility() -> void:
+	visible = !visible
 
 func update_rod_ui() -> void:
-	var fishing_rod_resource = rod.rod_resource
 	if fishing_rod_resource != null:
 		name_label.text = fishing_rod_resource.type
 		texture_rect.texture = fishing_rod_resource.icon
-		if rod.rod_equipped:
+		if fishing_rod.rod_equipped:
 			tooltip_label.text = "Unequip"
 		else:
 			tooltip_label.text = "Equip"

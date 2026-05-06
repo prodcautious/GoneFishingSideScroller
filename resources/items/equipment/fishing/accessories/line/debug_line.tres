@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Line" format=3 uid="uid://cl177u65tx7uk"]
+
+[ext_resource type="Script" uid="uid://30hjoj6ncoao" path="res://resources/items/equipment/fishing/accessories/line/line_resource.gd" id="1_xu75h"]
+
+[resource]
+script = ExtResource("1_xu75h")
+type = "Debug Line"
+max_weight = 1000.0
+metadata/_custom_type_script = "uid://30hjoj6ncoao"

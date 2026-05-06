@@ -1,5 +1,9 @@
 extends Node2D
 
+@export_group("Fishing Properties")
+@export var can_fish: bool
+@export var water_type: String
+
 @export_group("Area Limits")
 @export var limit_left: int
 @export var limit_right: int
@@ -7,6 +11,7 @@ extends Node2D
 var player
 
 func _ready() -> void:
+
 	player = get_tree().get_first_node_in_group("Player")
 	set_up_area_limits(player)
 

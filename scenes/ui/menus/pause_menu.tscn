@@ -59,7 +59,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=889266259]
+[node name="Header" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=889266259]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Paused"
@@ -132,4 +132,5 @@ layout_mode = 1
 
 [node name="ControlsMenu" parent="." unique_id=255128333 instance=ExtResource("5_hf471")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bb36jnui701j4"
+path="res://.godot/imported/bait_and_tackle.dialogue-34134bdc47f842bdb4c779a9bee10edb.tres"
+
+[deps]
+
+source_file="res://dialogue/bait_and_tackle.dialogue"
+dest_files=["res://.godot/imported/bait_and_tackle.dialogue-34134bdc47f842bdb4c779a9bee10edb.tres"]
+
+[params]
+
+defaults=true

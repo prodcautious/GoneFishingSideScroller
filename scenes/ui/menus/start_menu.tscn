@@ -36,10 +36,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="MenuMarginContainer/VBoxContainer" unique_id=1040500882]
+[node name="Header" type="Label" parent="MenuMarginContainer/VBoxContainer" unique_id=1040500882]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Game Title"
+text = "Gone Fishing"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -48,8 +48,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(96, 24)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 16
+theme_type_variation = &"UIButton"
 text = "Start"
 script = ExtResource("2_x0g8l")
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
