@@ -51,4 +51,5 @@ func _on_item_button_pressed() -> void:
 		GameManager.increase_balance(fish.get_price())
 		InventoryManager.inventory.erase(fish)
 		InventoryManager.item_sold.emit()
+		reset_slot()
 #endregion

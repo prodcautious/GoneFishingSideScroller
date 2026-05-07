@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bredtffkqimge"]
 
 [ext_resource type="PackedScene" uid="uid://dn4oqj4d83w61" path="res://scenes/ui/inventory/rod_accessory_slot.tscn" id="1_h6vx1"]
-[ext_resource type="Script" uid="uid://blol3qda08736" path="res://scripts/ui/fishing_rod/fishing_rod_info_ui.gd" id="1_rhdxf"]
+[ext_resource type="Script" uid="uid://blol3qda08736" path="res://scripts/fishing/fishing_rod/fishing_rod_info_ui.gd" id="1_rhdxf"]
 
 [node name="FishingRodInfoUI" type="Control" unique_id=1750365825]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -17,6 +17,7 @@ custom_minimum_size = Vector2(96, 96)
 layout_mode = 1
 offset_right = 96.0
 offset_bottom = 96.0
+focus_mode = 0
 theme_type_variation = &"UIButton"
 script = ExtResource("2_gbfhx")
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"

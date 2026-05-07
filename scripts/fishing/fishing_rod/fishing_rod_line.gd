@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var fishing_node: Node2D = %FishingNode
 @onready var line_start: Node2D = %LineStart
 @onready var line_end: Node2D = %LineEnd
 
@@ -15,14 +16,14 @@ func _ready() -> void:
 	set_up_bobber()
 
 func _draw():
-	if get_parent().casted_out:
+	if fishing_node.casted_out:
 		draw_line(line_start.position, line_end.position, Color.WHITE, 0.5)
 
 func _process(delta: float) -> void:
 	time += delta
 	line_end.position = origin_point + Vector2(bobber_noise.get_noise_2d(time * speed, 0.0),
 	bobber_noise.get_noise_2d(0.0, time * speed)) * strength
-	if get_parent().casted_out:
+	if fishing_node.casted_out:
 		queue_redraw()
 
 func set_up_bobber() -> void:

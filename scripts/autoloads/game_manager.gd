@@ -1,6 +1,6 @@
 extends Node
 
-var balance: int = 0
+var balance: int = 100
 
 signal balance_changed(total_count: int)
 

@@ -45,11 +45,11 @@ func _populate_shop() -> void:
 		shop_v_box_container.add_child(label)
 		label.text = category.get_category_name()
 		shop_v_box_container.add_child(scroll_container)
-		scroll_container.custom_minimum_size.y = 96
+		scroll_container.custom_minimum_size.y = 48
 		scroll_container.clip_contents = false
 		scroll_container.add_child(h_box_container)
 		h_box_container.alignment = BoxContainer.ALIGNMENT_CENTER
-		h_box_container.custom_minimum_size.y = 96
+		h_box_container.custom_minimum_size.y = 48
 		for item in category.items:
 			var new_shop_slot = shop_slot.instantiate()
 			h_box_container.add_child(new_shop_slot)

@@ -117,13 +117,16 @@ func toggle_rod_equip() -> void:
 
 #region Casting Minigame
 func _begin_cast() -> void:
+	if not _has_bait_and_hook():
+		_did_not_catch_fish_animation("No bait or hooks. Try getting some at the market.")
+		return
+
 	cast_progress_bar.show()
-	is_casting    = true
-	is_decaying   = false
+	is_casting = true
+	is_decaying = false
 	cast_progress = 0.0
 	cast_time_held = 0.0
 	cast_progress_bar.value = 0.0
-	cast_progress = 0.0
 	next_sfx_progress = 0.1
 	
 func _release_cast() -> void:
@@ -173,19 +176,21 @@ func _cast_in(lose_bait: bool = false) -> void:
 	if lose_bait:
 		bait.set_count(bait.get_count() - 1)
 		hook.set_count(hook.get_count() - 1)
+		if bait.get_count() <= 0:
+			fishing_rod.set_bait(null)
+		if hook.get_count() <= 0:
+			fishing_rod.set_hook(null)
+		
 	
 func cast_out() -> void:
 	if rod_equipped:
-		if InventoryManager.fishing_rod.get_bait().get_count() > 0 && InventoryManager.fishing_rod.get_hook().get_count() > 0:
-			var base_wait = InventoryManager.fishing_rod.get_bobber().get_bite_detection_speed()
-			try_catch_fish_timer.wait_time = base_wait * lerp(1.0, 1.0 - BITE_SPEED_BONUS, cast_power)
-			casted_out = true
-			print(casted_out)
-			player.set_state(4)
-			fishing_line.queue_redraw()
-			try_catch_fish_timer.start()
-		else:
-			print("No bait or hooks. Try getting some at the market.")
+		var base_wait = InventoryManager.fishing_rod.get_bobber().get_bite_detection_speed()
+		try_catch_fish_timer.wait_time = base_wait * lerp(1.0, 1.0 - BITE_SPEED_BONUS, cast_power)
+		casted_out = true
+		print(casted_out)
+		player.set_state(4)
+		fishing_line.queue_redraw()
+		try_catch_fish_timer.start()
 	else:
 		print("No rod equipped.")
 #endregion
@@ -298,12 +303,8 @@ func make_fish_resource(fish_name: String, fish_data: Dictionary) -> Fish:
 func _catch_fish_animation(fish: Fish) -> void:
 	casted_out = false
 
-	player.set_state(0)
-
 	if rod_equipped:
 		toggle_rod_equip()
-
-	player.set_state(0)
 
 	caught_fish_sprite.texture = fish.icon
 	caught_fish_label.text = "+ " + fish.type + "(" + fish.get_weight() + ")"
@@ -313,6 +314,8 @@ func _catch_fish_animation(fish: Fish) -> void:
 	ui_animation_player.play("fish_caught")
 	await ui_animation_player.animation_finished
 	get_tree().paused = false
+
+	player.set_state(0)
 
 func _did_not_catch_fish_animation(reason: String) -> void:
 	casted_out = false
@@ -328,4 +331,18 @@ func _did_not_catch_fish_animation(reason: String) -> void:
 
 	AudioManager.play_sfx("fish_got_away")
 	ui_animation_player.play("fish_not_caught")
+	
+func _has_bait_and_hook() -> bool:
+	var rod: FishingRod = InventoryManager.fishing_rod
+	
+	if rod == null:
+		return false
+	
+	var bait = rod.get_bait()
+	var hook = rod.get_hook()
+	
+	if bait == null or hook == null:
+		return false
+	
+	return bait.get_count() > 0 and hook.get_count() > 0
 #endregion

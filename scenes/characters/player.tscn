@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cpxlq1rlfmqor" path="res://scripts/characters/player.gd" id="1_yewv4"]
 [ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/equipment/fishing/rods/fishing_rod.png" id="3_eojnx"]
 [ext_resource type="Script" uid="uid://dfdms81c6l80e" path="res://scripts/characters/player/dialogue_handler.gd" id="8_eojnx"]
-[ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/fishing.gd" id="9_2l4js"]
-[ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/fishing_rod_line.gd" id="10_2l4js"]
+[ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/fishing/fishing.gd" id="9_2l4js"]
+[ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/fishing/fishing_rod/fishing_rod_line.gd" id="10_2l4js"]
 [ext_resource type="FontFile" uid="uid://ccshq021fm533" path="res://assets/fonts/gone_fishing_drop_shadow.png" id="11_rpnd8"]
 [ext_resource type="Texture2D" uid="uid://dkr7ghuhrugjx" path="res://assets/textures/items/fish/red_snapper.png" id="13_xrqxk"]
 [ext_resource type="Shader" uid="uid://dogrmsj3anntm" path="res://shaders/ui/vignette.gdshader" id="14_k4v7y"]
@@ -48,7 +48,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/RodSprite2D:position")
+tracks/0/path = NodePath("FishingNode/RodHolder/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +60,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingNode/RodHolder/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -77,7 +77,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/RodSprite2D:position")
+tracks/0/path = NodePath("FishingNode/RodHolder/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +89,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingNode/RodHolder/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -118,7 +118,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/RodSprite2D:position")
+tracks/0/path = NodePath("FishingNode/RodHolder/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -130,7 +130,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingNode/RodHolder/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -519,7 +519,7 @@ position = Vector2(0, -16)
 texture = SubResource("PortableCompressedTexture2D_xrqxk")
 hframes = 5
 vframes = 5
-frame = 6
+frame = 12
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -555,7 +555,10 @@ unique_name_in_owner = true
 script = ExtResource("9_2l4js")
 player = NodePath("..")
 
-[node name="RodSprite2D" type="Sprite2D" parent="FishingNode" unique_id=712481474]
+[node name="RodHolder" type="Node2D" parent="FishingNode" unique_id=281149695]
+unique_name_in_owner = true
+
+[node name="RodSprite2D" type="Sprite2D" parent="FishingNode/RodHolder" unique_id=712481474]
 unique_name_in_owner = true
 visible = false
 z_index = 11
@@ -563,21 +566,21 @@ y_sort_enabled = true
 position = Vector2(8, -13)
 texture = ExtResource("3_eojnx")
 
-[node name="FishingLine" type="Node2D" parent="FishingNode" unique_id=802210674]
+[node name="FishingLine" type="Node2D" parent="FishingNode/RodHolder" unique_id=802210674]
 unique_name_in_owner = true
 z_index = 10
 y_sort_enabled = true
 position = Vector2(13, -17)
 script = ExtResource("10_2l4js")
 
-[node name="LineStart" type="Node2D" parent="FishingNode/FishingLine" unique_id=1199454424]
+[node name="LineStart" type="Node2D" parent="FishingNode/RodHolder/FishingLine" unique_id=1199454424]
 unique_name_in_owner = true
 
-[node name="LineEnd" type="Node2D" parent="FishingNode/FishingLine" unique_id=386411240]
+[node name="LineEnd" type="Node2D" parent="FishingNode/RodHolder/FishingLine" unique_id=386411240]
 unique_name_in_owner = true
 position = Vector2(26, 48)
 
-[node name="BobberSprite2D" type="Sprite2D" parent="FishingNode/FishingLine/LineEnd" unique_id=9597147]
+[node name="BobberSprite2D" type="Sprite2D" parent="FishingNode/RodHolder/FishingLine/LineEnd" unique_id=9597147]
 unique_name_in_owner = true
 visible = false
 

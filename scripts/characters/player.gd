@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var camera_2d: Camera2D = %Camera2D
 @onready var fishing_node: Node2D = %FishingNode
+@onready var rod_holder: Node2D = %RodHolder
 
 enum PLAYER_STATE {IDLE, WALKING, JUMPING, INTERACTING, FISHING}
 var current_player_state
@@ -104,10 +105,10 @@ func _update_animation() -> void:
 	var dir: String
 	if facing_direction >= 0.0:
 		dir = "right"
-		fishing_node.rod_sprite_2d.scale.x = 1.0
+		rod_holder.scale.x = 1.0
 	else:
 		dir = "left"
-		fishing_node.rod_sprite_2d.scale.x = -1.0
+		rod_holder.scale.x = -1.0
 
 	var anim_name: String
 

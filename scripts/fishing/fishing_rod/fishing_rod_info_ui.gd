@@ -12,12 +12,17 @@ func _ready() -> void:
 	_register_menu()
 
 func _unhandled_input(event: InputEvent) -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	if player.current_player_state == player.PLAYER_STATE.FISHING:
+		return
+	
 	if event.is_action_pressed("open_accessories"):
 		get_viewport().set_input_as_handled()
 		_toggle_visibility()
 
 func _toggle_visibility() -> void:
 	if MenuManager.current_menu == MenuManager.MenuState.START:
+		print("currently on start")
 		return
 
 	if visible:

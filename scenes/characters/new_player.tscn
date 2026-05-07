@@ -1,0 +1,523 @@
+[gd_scene format=4 uid="uid://npmkvg11hpsk"]
+
+[ext_resource type="Script" uid="uid://bew6dtnujuud1" path="res://scripts/characters/new_player.gd" id="1_7oefr"]
+[ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/equipment/fishing/rods/fishing_rod.png" id="1_rgxnu"]
+[ext_resource type="Script" path="res://scripts/fishing/fishing_minigame.gd" id="2_3oex6"]
+[ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/fishing/fishing_rod/fishing_rod_line.gd" id="2_wwgad"]
+[ext_resource type="FontFile" uid="uid://ccshq021fm533" path="res://assets/fonts/gone_fishing_drop_shadow.png" id="3_wwgad"]
+[ext_resource type="Texture2D" uid="uid://dkr7ghuhrugjx" path="res://assets/textures/items/fish/red_snapper.png" id="4_gavma"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_4h1rk"]
+_data = PackedByteArray("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")
+size_override = Vector2(160, 160)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gavma"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oefr"]
+bg_color = Color(0, 1, 0.01666665, 1)
+
+[sub_resource type="Animation" id="Animation_7oefr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("States/Fishing/FishingMinigame/RodHolder/FishingRodSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, -13)]
+}
+
+[sub_resource type="Animation" id="Animation_cu3w8"]
+length = 1.2
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22, 23]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("States/Fishing/FishingMinigame/RodHolder/FishingRodSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.21, 0.39, 0.41, 0.99, 1, 1.1899999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-8, -13), Vector2(-8, -13), Vector2(-8, -14), Vector2(-8, -14), Vector2(-8, -11), Vector2(-8, -11), Vector2(-8, -13), Vector2(-8, -13)]
+}
+
+[sub_resource type="Animation" id="Animation_rgxnu"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("States/Fishing/FishingMinigame/RodHolder/FishingRodSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.21, 0.39, 0.41, 0.99, 1, 1.1899999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-8, -13), Vector2(-8, -13), Vector2(-8, -14), Vector2(-8, -14), Vector2(-8, -11), Vector2(-8, -11), Vector2(-8, -13), Vector2(-8, -13)]
+}
+
+[sub_resource type="Animation" id="Animation_wwgad"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_gavma"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7oefr"]
+_data = {
+&"RESET": SubResource("Animation_7oefr"),
+&"fishing_left": SubResource("Animation_cu3w8"),
+&"fishing_right": SubResource("Animation_rgxnu"),
+&"idle_left": SubResource("Animation_wwgad"),
+&"idle_right": SubResource("Animation_gavma")
+}
+
+[sub_resource type="Animation" id="Animation_3oex6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../States/Fishing/FishingMinigame/PerfectCatchLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../States/Fishing/FishingMinigame/PerfectCatchLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../States/Fishing/FishingMinigame/PerfectCatchLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, -42)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%CastProgressBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%CaughtFishLabel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%CaughtFishLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../States/Fishing/FishingMinigame/CaughtFishSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../States/Fishing/FishingMinigame/CaughtFishSprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_07fsh"]
+resource_name = "fish_caught"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%CaughtFishLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%CaughtFishLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../States/Fishing/FishingMinigame/CaughtFishSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../States/Fishing/FishingMinigame/CaughtFishSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_31mks"]
+resource_name = "perfect_cast"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../States/Fishing/FishingMinigame/PerfectCatchLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../States/Fishing/FishingMinigame/PerfectCatchLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../States/Fishing/FishingMinigame/PerfectCatchLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-20, -42), Vector2(-20, -50), Vector2(-20, -50), Vector2(-20, -42)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%CastProgressBar:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2cfs"]
+_data = {
+&"RESET": SubResource("Animation_3oex6"),
+&"fish_caught": SubResource("Animation_07fsh"),
+&"perfect_cast": SubResource("Animation_31mks")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h1rk"]
+size = Vector2(8, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu3w8"]
+size = Vector2(8, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgxnu"]
+size = Vector2(12, 30)
+
+[sub_resource type="Gradient" id="Gradient_xrqxk"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4h1rk"]
+gradient = SubResource("Gradient_xrqxk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.2)
+metadata/_snap_enabled = true
+
+[node name="NewPlayer" type="CharacterBody2D" unique_id=344425126 groups=["Player"]]
+script = ExtResource("1_7oefr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1154343982]
+
+[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=506416273]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -16)
+texture = SubResource("PortableCompressedTexture2D_4h1rk")
+hframes = 5
+vframes = 5
+frame = 18
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/textures/characters/player/player.aseprite",
+"source_uid": 4810173981717615722
+}
+metadata/_aseprite_wizard_source_file_hash_ = "89f76b4f6adef4a0e10be331ba5ad2f1"
+
+[node name="States" type="Node" parent="." unique_id=739008150]
+
+[node name="Interacting" type="Node" parent="States" unique_id=249768514]
+
+[node name="Fishing" type="Node" parent="States" unique_id=437441182]
+
+[node name="FishingMinigame" type="Node2D" parent="States/Fishing" unique_id=443878749 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("2_3oex6")
+player = NodePath("../../..")
+
+[node name="RodHolder" type="Node2D" parent="States/Fishing/FishingMinigame" unique_id=444080174]
+unique_name_in_owner = true
+
+[node name="FishingRodSprite" type="Sprite2D" parent="States/Fishing/FishingMinigame/RodHolder" unique_id=670982413]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-8, -13)
+texture = ExtResource("1_rgxnu")
+flip_h = true
+
+[node name="LineStart" type="Node2D" parent="States/Fishing/FishingMinigame/RodHolder/FishingRodSprite" unique_id=1483527358]
+position = Vector2(-5, -5)
+
+[node name="LineEnd" type="Node2D" parent="States/Fishing/FishingMinigame/RodHolder" unique_id=173448464]
+
+[node name="LineController" type="Node2D" parent="States/Fishing/FishingMinigame" unique_id=1498142809 node_paths=PackedStringArray("fishing_minigame", "start", "end")]
+unique_name_in_owner = true
+script = ExtResource("2_wwgad")
+fishing_minigame = NodePath("..")
+start = NodePath("../RodHolder/FishingRodSprite/LineStart")
+end = NodePath("../RodHolder/LineEnd")
+
+[node name="TryCatchFishTimer" type="Timer" parent="States/Fishing/FishingMinigame" unique_id=737764245]
+unique_name_in_owner = true
+
+[node name="CastProgressBar" type="ProgressBar" parent="States/Fishing/FishingMinigame" unique_id=1739858997]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(32, 12)
+offset_left = -16.0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = -36.0
+theme_override_fonts/font = ExtResource("3_wwgad")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_gavma")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7oefr")
+show_percentage = false
+
+[node name="PerfectCatchLabel" type="Label" parent="States/Fishing/FishingMinigame" unique_id=1164896881]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "Perfect"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CaughtFishSprite" type="Sprite2D" parent="States/Fishing/FishingMinigame" unique_id=320582378]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -48)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gavma")
+
+[node name="CaughtFishLabel" type="Label" parent="States/Fishing" unique_id=1521471027]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -366.0
+offset_top = -222.0
+offset_right = -274.0
+offset_bottom = -214.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "+ Red Snapper (0.2kg)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayers" type="Node" parent="." unique_id=1007158392]
+
+[node name="StateAnimationPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=1720050413]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_7oefr")
+
+[node name="FishingAnimationPlayer" type="AnimationPlayer" parent="AnimationPlayers" unique_id=721753302]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_f2cfs")
+
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="." unique_id=431543791]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_4h1rk")
+
+[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="." unique_id=127036721]
+position = Vector2(0, -31)
+shape = SubResource("RectangleShape2D_cu3w8")
+
+[node name="InteractArea2D" type="Area2D" parent="." unique_id=1556977458]
+
+[node name="InteractCollisionShape2D" type="CollisionShape2D" parent="InteractArea2D" unique_id=1962438926]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_rgxnu")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=134270079]
+position = Vector2(0, -16)
+color = Color(0.98039216, 1, 1, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_4h1rk")
