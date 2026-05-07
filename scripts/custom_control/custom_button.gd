@@ -16,6 +16,8 @@ func connect_signals() -> void:
 	button_up.connect(_on_button_up)
 
 func tween_in() -> void:
+	if disabled:
+		return
 	if tween:
 		tween.kill()
 	pivot_offset = size / 2
@@ -24,6 +26,8 @@ func tween_in() -> void:
 	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.1)
 
 func _on_mouse_entered() -> void:
+	if disabled:
+		return
 	if tween:
 		tween.kill()
 	pivot_offset = size / 2
@@ -31,6 +35,8 @@ func _on_mouse_entered() -> void:
 	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
 
 func _on_focus_entered() -> void:
+	if disabled:
+		return
 	if tween:
 		tween.kill()
 	pivot_offset = size / 2
@@ -38,6 +44,8 @@ func _on_focus_entered() -> void:
 	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
 
 func _on_mouse_exited() -> void:
+	if disabled:
+		return
 	if tween:
 		tween.kill()
 	pivot_offset = size / 2
@@ -45,6 +53,8 @@ func _on_mouse_exited() -> void:
 	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.1)
 
 func _on_focus_exited() -> void:
+	if disabled:
+		return
 	if tween:
 		tween.kill()
 	pivot_offset = size / 2
@@ -52,6 +62,8 @@ func _on_focus_exited() -> void:
 	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.1)
 
 func _on_button_down() -> void:
+	if disabled:
+		return
 	AudioManager.play_sfx("ui_pressed")
 	if tween:
 		tween.kill()
@@ -60,6 +72,8 @@ func _on_button_down() -> void:
 	tween.tween_property(self, "scale", Vector2(0.9,0.9), 0.1)
 
 func _on_button_up() -> void:
+	if disabled:
+		return
 	if tween:
 		tween.kill()
 	pivot_offset = size / 2

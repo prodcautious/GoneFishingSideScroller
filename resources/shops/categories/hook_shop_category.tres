@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopCategory" format=3 uid="uid://doo44ldxfhvs8"]
+
+[ext_resource type="Script" uid="uid://cqflsm5366rkm" path="res://resources/items/item_resource.gd" id="1_048px"]
+[ext_resource type="Resource" uid="uid://cvjcugkypwdod" path="res://resources/items/equipment/fishing/accessories/hook/small_single_hook.tres" id="2_prccl"]
+[ext_resource type="Script" uid="uid://dntijrvceigtr" path="res://resources/shops/categories/shop_category.gd" id="3_0xlgk"]
+
+[resource]
+script = ExtResource("3_0xlgk")
+category_name = "Hooks"
+items = Array[ExtResource("1_048px")]([ExtResource("2_prccl")])
+metadata/_custom_type_script = "uid://dntijrvceigtr"

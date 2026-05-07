@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopCategory" format=3 uid="uid://bvat3rhwh7xht"]
+
+[ext_resource type="Script" uid="uid://cqflsm5366rkm" path="res://resources/items/item_resource.gd" id="1_h3bfi"]
+[ext_resource type="Script" uid="uid://dntijrvceigtr" path="res://resources/shops/categories/shop_category.gd" id="2_1y4fi"]
+[ext_resource type="Resource" uid="uid://dew6uy3pm6fvq" path="res://resources/items/equipment/fishing/accessories/line/two_pound_line.tres" id="2_aem3o"]
+
+[resource]
+script = ExtResource("2_1y4fi")
+category_name = "Line"
+items = Array[ExtResource("1_h3bfi")]([ExtResource("2_aem3o")])
+metadata/_custom_type_script = "uid://dntijrvceigtr"

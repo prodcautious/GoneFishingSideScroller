@@ -1,31 +1,54 @@
-extends PanelContainer
+extends Control
 
-@onready var desc_label: Label = %DescLabel
 @onready var icon_texture_rect: TextureRect = %IconTextureRect
-@onready var sell_button: Button = %SellButton
+@onready var item_stats: Label = %ItemStats
+@onready var item_button: Button = %ItemButton
+@onready var desc_panel_container: PanelContainer = %DescPanelContainer
 
-var can_sell: bool = false
+var fish: Fish
+var can_sell = false
 
-var item: Item
-
+#region Built-In
 func _ready() -> void:
 	await get_tree().process_frame
-	if item:
-		sell_button.pressed.connect(_on_sell_button_pressed)
+	_connect_signals()
+#endregion
+
+#region Helpers
+func _connect_signals() -> void:
+	item_button.mouse_entered.connect(_on_item_button_mouse_entered)
+	item_button.mouse_exited.connect(_on_item_button_mouse_exited)
+	item_button.pressed.connect(_on_item_button_pressed)
+
+func set_up_slot(sellable: bool = false) -> void:
+	can_sell = sellable
+	if fish:
+		icon_texture_rect.texture = fish.get_icon()
+		item_stats.text = fish.get_stats()
 	else:
-		sell_button.disabled = true
+		reset_slot()
 
-func _on_sell_button_pressed() -> void:
-	GameManager.coins += item.get_price()
-	InventoryManager.inventory.erase(item)
-	InventoryManager.item_sold.emit()
-	_reset_slot()
-
-func _reset_slot() -> void:
-	desc_label.text = ""
+func reset_slot() -> void:
 	icon_texture_rect.texture = null
-	sell_button.disabled = true
-	sell_button.text = ""
+	item_stats.text = ""
+	fish = null
+	desc_panel_container.hide()
 	can_sell = false
-	item = null
-	
+#endregion
+
+#region Signals
+func _on_item_button_mouse_entered() -> void:
+	if fish:
+		desc_panel_container.show()
+
+func _on_item_button_mouse_exited() -> void:
+	if fish:
+		desc_panel_container.hide()
+
+func _on_item_button_pressed() -> void:
+	if can_sell and fish:
+		print("Sold: ", fish.get_type() + "($" + str(fish.get_price()) + ")")
+		GameManager.increase_balance(fish.get_price())
+		InventoryManager.inventory.erase(fish)
+		InventoryManager.item_sold.emit()
+#endregion

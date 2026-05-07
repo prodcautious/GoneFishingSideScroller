@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopCategory" format=3 uid="uid://bh12y2fwjdkl8"]
+
+[ext_resource type="Script" uid="uid://cqflsm5366rkm" path="res://resources/items/item_resource.gd" id="1_41gad"]
+[ext_resource type="Resource" uid="uid://uqe6g841mxtj" path="res://resources/items/equipment/fishing/accessories/bobber/default_bobber.tres" id="2_x81il"]
+[ext_resource type="Script" uid="uid://dntijrvceigtr" path="res://resources/shops/categories/shop_category.gd" id="3_3tqux"]
+
+[resource]
+script = ExtResource("3_3tqux")
+category_name = "Bobbers"
+items = Array[ExtResource("1_41gad")]([ExtResource("2_x81il")])
+metadata/_custom_type_script = "uid://dntijrvceigtr"

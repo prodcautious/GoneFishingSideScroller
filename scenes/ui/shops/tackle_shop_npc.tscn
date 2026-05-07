@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://kcf0wukq7t5x"]
 
 [ext_resource type="Script" uid="uid://cjwgboavnsbin" path="res://scripts/characters/shopkeeper/shopkeeper_npc.gd" id="1_mx3xv"]
-[ext_resource type="Resource" uid="uid://jvdda7esawh8" path="res://dialogue/wilson_intro.dialogue" id="2_taecv"]
+[ext_resource type="Resource" uid="uid://bb36jnui701j4" path="res://dialogue/bait_and_tackle.dialogue" id="2_taecv"]
+[ext_resource type="Resource" uid="uid://cdnxpx41qlhvl" path="res://resources/shops/bait_and_tackle_shop.tres" id="3_8vqpq"]
 [ext_resource type="PackedScene" uid="uid://dbcqn4vkkcaia" path="res://scenes/ui/shops/shopkeeper_shop.tscn" id="3_vqgpy"]
 [ext_resource type="Texture2D" uid="uid://bvk4axvc7su1h" path="res://assets/textures/characters/shopkeepers/tackle_shopkeeper.png" id="4_mx3xv"]
 
@@ -26,7 +27,8 @@ y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_mx3xv")
 dialogue_resource = ExtResource("2_taecv")
-npc_name = "Wilson"
+npc_name = "???"
+shop = ExtResource("3_8vqpq")
 shop_scene = ExtResource("3_vqgpy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=525297730]

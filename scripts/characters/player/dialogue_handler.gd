@@ -8,7 +8,6 @@ var current_camera_zoom: Vector2
 
 @onready var interact_vignette: ColorRect = %InteractVignette
 @onready var interact_area_2d: Area2D = %InteractArea2D
-@onready var inventory: Control = %Inventory
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -54,7 +53,6 @@ func _on_dialogue_ended(_resource: DialogueResource) -> void:
 func _on_interact_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("NPC"):
 		current_npc = area.get_parent()
-
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("NPC"):

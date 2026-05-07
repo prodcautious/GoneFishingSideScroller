@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopCategory" format=3 uid="uid://bpe8a18j3nfnm"]
+
+[ext_resource type="Script" uid="uid://cqflsm5366rkm" path="res://resources/items/item_resource.gd" id="1_pflkr"]
+[ext_resource type="Resource" uid="uid://140l2thheskn" path="res://resources/items/equipment/fishing/accessories/bait/grub.tres" id="2_vxnei"]
+[ext_resource type="Script" uid="uid://dntijrvceigtr" path="res://resources/shops/categories/shop_category.gd" id="3_jrhrm"]
+
+[resource]
+script = ExtResource("3_jrhrm")
+category_name = "Bait"
+items = Array[ExtResource("1_pflkr")]([ExtResource("2_vxnei")])
+metadata/_custom_type_script = "uid://dntijrvceigtr"

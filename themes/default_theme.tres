@@ -71,29 +71,101 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 2
 border_color = Color(0.4, 0.16800001, 0.16800001, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mihib"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.22352941, 0.22352941, 0.22352941, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nwjvr"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rmny"]
-content_margin_left = 8.0
-content_margin_top = 4.0
-content_margin_right = 8.0
-content_margin_bottom = 4.0
-bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3xux"]
+texture = SubResource("CompressedTexture2D_nwjvr")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.75, 0.75, 0.75, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oxkhk"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6rshi"]
+texture = SubResource("CompressedTexture2D_oxkhk")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.75, 0.75, 0.75, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pvobe"]
+texture = ExtResource("5_nwjvr")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lg2qf"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdu6j"]
+texture = SubResource("CompressedTexture2D_lg2qf")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.75, 0.75, 0.75, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s7hap"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4775a"]
+texture = SubResource("CompressedTexture2D_s7hap")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n85q8"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lg2qf"]
+texture = SubResource("CompressedTexture2D_n85q8")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nwjvr"]
+texture = ExtResource("5_nwjvr")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwjvr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3xux"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxkhk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvobe"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j1oap"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swyot"]
+texture = SubResource("CompressedTexture2D_j1oap")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6rshi"]
+load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rxt7e"]
+texture = SubResource("CompressedTexture2D_6rshi")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+modulate_color = Color(0.5, 0.5, 0.5, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r3xux"]
 load_path = "res://.godot/imported/ui_button_normal.png-aecc10f5826a0af59c273a1fc600125f.ctex"
@@ -135,6 +207,11 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 modulate_color = Color(0.5, 0.5, 0.5, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1oap"]
+bg_color = Color(1, 0.8117647, 0.5568628, 1)
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+
 [resource]
 CheckBox/icons/checked = ExtResource("1_vj6dk")
 CheckBox/icons/unchecked = ExtResource("1_cjfk0")
@@ -154,25 +231,44 @@ DialogueChoiceButton/styles/normal = SubResource("StyleBoxFlat_6cw85")
 DialogueChoiceButton/styles/pressed = SubResource("StyleBoxFlat_504p6")
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_e1x85")
+OptionButton/colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
+OptionButton/colors/font_hover_color = Color(0.75, 0.6125001, 0.42000002, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.7490196, 0.6117647, 0.41960785, 1)
+OptionButton/colors/font_pressed_color = Color(0.7490196, 0.6117647, 0.41960785, 1)
 OptionButton/font_sizes/font_size = 16
 OptionButton/fonts/font = ExtResource("1_e1x85")
-OptionButton/styles/hover = SubResource("StyleBoxFlat_mihib")
-OptionButton/styles/normal = SubResource("StyleBoxFlat_1rmny")
+OptionButton/styles/hover = SubResource("StyleBoxTexture_r3xux")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxTexture_6rshi")
+OptionButton/styles/normal = SubResource("StyleBoxTexture_pvobe")
+OptionButton/styles/pressed = SubResource("StyleBoxTexture_wdu6j")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_4775a")
 PopupMenu/font_sizes/font_separator_size = 16
 PopupMenu/font_sizes/font_size = 16
 PopupMenu/fonts/font = ExtResource("1_e1x85")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_lg2qf")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/fonts/bold_font = ExtResource("4_110ce")
 RichTextLabel/fonts/normal_font = ExtResource("1_e1x85")
 TabBar/font_sizes/font_size = 32
 TabBar/fonts/font = ExtResource("1_e1x85")
+TabContainer/colors/font_hovered_color = Color(0.98039216, 1, 1, 1)
+TabContainer/colors/font_selected_color = Color(1, 0.8117647, 0.5568628, 1)
+TabContainer/colors/font_unselected_color = Color(0.9607843, 0.6313726, 0.3647059, 1)
 TabContainer/font_sizes/font_size = 32
 TabContainer/fonts/font = ExtResource("1_e1x85")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_nwjvr")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_nwjvr")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxEmpty_r3xux")
+TabContainer/styles/tab_selected = SubResource("StyleBoxEmpty_oxkhk")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxEmpty_pvobe")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxTexture_swyot")
 UIButton/base_type = &"Button"
 UIButton/colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
 UIButton/font_sizes/font_size = 8
 UIButton/fonts/font = ExtResource("1_e1x85")
+UIButton/styles/disabled = SubResource("StyleBoxTexture_rxt7e")
 UIButton/styles/hover = SubResource("StyleBoxTexture_oxkhk")
 UIButton/styles/hover_pressed = SubResource("StyleBoxTexture_j1oap")
 UIButton/styles/normal = SubResource("StyleBoxTexture_n85q8")
 UIButton/styles/pressed = SubResource("StyleBoxTexture_s7hap")
+VSeparator/styles/separator = SubResource("StyleBoxFlat_j1oap")

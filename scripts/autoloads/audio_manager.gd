@@ -10,7 +10,8 @@ var sfx = {
 	"cast_progress": preload("res://assets/audio/sfx/cast_progress.ogg"),
 	"perfect_cast": preload("res://assets/audio/sfx/perfect_cast.ogg"),
 	"fish_caught": preload("res://assets/audio/sfx/fish_caught.ogg"),
-	"fish_got_away": preload("res://assets/audio/sfx/fish_got_away.ogg")
+	"fish_got_away": preload("res://assets/audio/sfx/fish_got_away.ogg"),
+	"sell_item": preload("res://assets/audio/sfx/sell_item.ogg")
 }
 
 var music_player: AudioStreamPlayer

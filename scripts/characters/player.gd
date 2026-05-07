@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var camera_2d: Camera2D = %Camera2D
+@onready var fishing_node: Node2D = %FishingNode
 
 enum PLAYER_STATE {IDLE, WALKING, JUMPING, INTERACTING, FISHING}
 var current_player_state
@@ -13,11 +14,8 @@ var current_player_state
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_direction : float = 1.0
 
-var fishing_rod
-
 #region Built-In
 func _ready() -> void:
-	fishing_rod = get_tree().get_first_node_in_group("FishingRod")
 	animation_player.play("idle_right")
 	current_player_state = PLAYER_STATE.IDLE
 
@@ -50,8 +48,8 @@ func get_current_state() -> String:
 			return "Idle"
 		PLAYER_STATE.WALKING:
 			return "Walking"
-		#PLAYER_STATE.JUMPING:
-			#return "Jumping"
+		PLAYER_STATE.JUMPING:
+			return "Jumping"
 		PLAYER_STATE.INTERACTING:
 			return "Interacting"
 		PLAYER_STATE.FISHING:
@@ -65,8 +63,8 @@ func set_state(state: int) -> void:
 			current_player_state = PLAYER_STATE.IDLE
 		1:
 			current_player_state = PLAYER_STATE.WALKING
-		#2:
-			#current_player_state = PLAYER_STATE.JUMPING
+		2:
+			current_player_state = PLAYER_STATE.JUMPING
 		3:
 			current_player_state = PLAYER_STATE.INTERACTING
 		4:
@@ -85,9 +83,9 @@ func _get_input():
 	if input_direction != 0.0:
 		facing_direction = input_direction
 
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = jump_velocity
-		#set_state(2)
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
+		set_state(2)
 
 func _apply_gravity(delta):
 	if not is_on_floor():
@@ -106,31 +104,31 @@ func _update_animation() -> void:
 	var dir: String
 	if facing_direction >= 0.0:
 		dir = "right"
-		fishing_rod.scale.x = 1.0
+		fishing_node.rod_sprite_2d.scale.x = 1.0
 	else:
 		dir = "left"
-		fishing_rod.scale.x = -1.0
+		fishing_node.rod_sprite_2d.scale.x = -1.0
 
 	var anim_name: String
 
 	match current_player_state:
 		PLAYER_STATE.IDLE:
-			if !fishing_rod.rod_equipped:
+			if !fishing_node.rod_equipped:
 				anim_name = "idle_" + dir
 			else:
 				anim_name = "fishing_" + dir
 
 		PLAYER_STATE.WALKING:
-			if !fishing_rod.rod_equipped:
+			if !fishing_node.rod_equipped:
 				anim_name = "idle_" + dir
 			else:
 				anim_name = "fishing_" + dir
 
-		#PLAYER_STATE.JUMPING:
-			#if !fishing_rod.rod_equipped:
-				#anim_name = "idle_" + dir
-			#else:
-				#anim_name = "fishing_" + dir
+		PLAYER_STATE.JUMPING:
+			if !fishing_node.rod_equipped:
+				anim_name = "idle_" + dir
+			else:
+				anim_name = "fishing_" + dir
 
 		PLAYER_STATE.FISHING:
 			anim_name = "fishing_" + dir

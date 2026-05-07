@@ -14,3 +14,8 @@ func get_price() -> int:
 func get_weight() -> String:
 	var weight_to_hundredth = "%.2f" % weight
 	return weight_to_hundredth + "kg."
+
+func get_stats() -> String:
+	return get_type() + "\n
+	(" + get_weight() + ")" + "\n
+	$" + str(get_price())

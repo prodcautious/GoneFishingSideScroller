@@ -3,13 +3,20 @@
 [ext_resource type="Script" uid="uid://bggc4tboqd25k" path="res://scripts/ui/menus/options_menu.gd" id="1_ta2k2"]
 [ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="2_0ejsc"]
 [ext_resource type="Script" uid="uid://bwfwklror663o" path="res://scripts/custom_control/custom_option_button.gd" id="2_wj2x4"]
+[ext_resource type="Theme" uid="uid://1eytnr65412j" path="res://themes/default_theme.tres" id="3_5av45"]
 [ext_resource type="Script" uid="uid://dm3x470i8khp7" path="res://scripts/custom_control/custom_check_box.gd" id="3_c4822"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snsgv"]
 shader = ExtResource("2_0ejsc")
 shader_parameter/lod = 1.0000000475
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5av45"]
+bg_color = Color(1, 0.8117647, 0.5568628, 1)
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+
 [node name="OptionsMenu" type="Control" unique_id=1705903237]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,12 +48,15 @@ theme_override_constants/margin_bottom = 8
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer" unique_id=1578886441]
 layout_mode = 2
+theme_override_constants/tab_separation = 16
 theme_override_font_sizes/font_size = 16
+tab_alignment = 1
 current_tab = 1
 
 [node name="Game" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1454119086]
 visible = false
 layout_mode = 2
+theme = ExtResource("3_5av45")
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Game" unique_id=1795774442]
@@ -96,6 +106,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1497141783]
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
 theme_override_font_sizes/font_size = 16
 text = "Window Mode"
 
@@ -111,6 +122,7 @@ custom_minimum_size = Vector2(196, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16
+alignment = 1
 selected = 1
 item_count = 3
 popup/item_0/text = "Fullscreen"
@@ -129,6 +141,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=656061485]
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
 theme_override_font_sizes/font_size = 16
 text = "Resolution"
 
@@ -137,11 +150,13 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_5av45")
 
 [node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=377817508]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(196, 32)
 layout_mode = 2
+alignment = 1
 selected = 2
 item_count = 4
 popup/item_0/text = "1920x1080"
@@ -162,6 +177,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=895535682]
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
 theme_override_font_sizes/font_size = 16
 text = "V-Sync"
 
@@ -170,6 +186,7 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxFlat_5av45")
 
 [node name="VSyncCheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=682888255]
 unique_name_in_owner = true
@@ -207,6 +224,7 @@ theme_override_constants/separation = 16
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer" unique_id=775807717]
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
 theme_override_font_sizes/font_size = 16
 text = "Master"
 
@@ -241,6 +259,7 @@ theme_override_constants/separation = 16
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1410163908]
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
 theme_override_font_sizes/font_size = 16
 text = "Music"
 
@@ -275,6 +294,7 @@ theme_override_constants/separation = 16
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=648775148]
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
 theme_override_font_sizes/font_size = 16
 text = "SFX"
 

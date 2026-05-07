@@ -1,44 +1,83 @@
 extends Control
 
-@export var shopkeeper_slot: PackedScene
 @export var inventory_slot: PackedScene
+@export var shop_slot: PackedScene
+
 @onready var buy_shop_label: Label = %BuyShopLabel
 @onready var sell_shop_label: Label = %SellShopLabel
-
 @onready var inventory_container: HBoxContainer = %InventoryContainer
+@onready var shop_v_box_container: VBoxContainer = %ShopVBoxContainer
+@onready var tooltip_layer: Control = %TooltipLayer
 
-var player
+var shop : Shop
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
+	tooltip_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	MenuManager.register_menu(MenuManager.MenuState.SHOP, self)
-	MenuManager.show_menu(MenuManager.MenuState.SHOP)
-	
+
+	hide()
+
 	await get_tree().process_frame
-	populate_inventory_grid()
+	_populate_shop()
+	_populate_inventory()
 
-func populate_inventory_grid() -> void:
+func _populate_inventory() -> void:
+	if inventory_slot == null:
+		return
+
 	for i in InventoryManager.MAX_INVENTORY_SIZE:
-		var item: Item = null
-		if i < InventoryManager.inventory.size():
-			item = InventoryManager.inventory[i]
-		instantiate_new_slot(item)
+		var fish: Fish = null
 
-func instantiate_new_slot(item: Item) -> void:
+		if i < InventoryManager.inventory.size():
+			fish = InventoryManager.inventory[i]
+
+		_instantiate_new_slot(fish)
+
+func _populate_shop() -> void:
+	if !shop:
+		return
+	
+	for category in shop.categories:
+		var label := Label.new()
+		var scroll_container := ScrollContainer.new()
+		var h_box_container := HBoxContainer.new()
+		shop_v_box_container.add_child(label)
+		label.text = category.get_category_name()
+		shop_v_box_container.add_child(scroll_container)
+		scroll_container.custom_minimum_size.y = 96
+		scroll_container.clip_contents = false
+		scroll_container.add_child(h_box_container)
+		h_box_container.alignment = BoxContainer.ALIGNMENT_CENTER
+		h_box_container.custom_minimum_size.y = 96
+		for item in category.items:
+			var new_shop_slot = shop_slot.instantiate()
+			h_box_container.add_child(new_shop_slot)
+			new_shop_slot.set_up_slot(item)
+			new_shop_slot.tooltip_layer = tooltip_layer
+
+func _update_inventory_slots() -> void:
+	var slots = inventory_container.get_children()
+
+	for i in slots.size():
+		if i < InventoryManager.inventory.size():
+			slots[i].fish = InventoryManager.inventory[i]
+			slots[i].set_up_slot(true)
+		else:
+			slots[i].reset_slot()
+
+func _instantiate_new_slot(fish: Fish) -> void:
 	var new_slot = inventory_slot.instantiate()
 	inventory_container.add_child(new_slot)
-	if item != null:
-		new_slot.item = item
-		new_slot.icon_texture_rect.texture = item.get_icon()
-		new_slot.sell_button.disabled = false
-		new_slot.sell_button.text = "Sell (" + str(item.get_price()) + ")"
 
-		new_slot.desc_label.text = item.get_type()
-		new_slot.can_sell = true
+	if fish:
+		new_slot.fish = fish
+		new_slot.set_up_slot(true)
+	else:
+		new_slot.reset_slot()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("esc"):
+	if event.is_action_pressed("esc") and visible:
 		get_viewport().set_input_as_handled()
 		MenuManager.close_current_menu()
 		queue_free()

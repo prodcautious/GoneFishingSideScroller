@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Shop" format=3 uid="uid://cdnxpx41qlhvl"]
+
+[ext_resource type="Script" uid="uid://dntijrvceigtr" path="res://resources/shops/categories/shop_category.gd" id="1_rmbh6"]
+[ext_resource type="Resource" uid="uid://bpe8a18j3nfnm" path="res://resources/shops/categories/bait_shop_category.tres" id="2_0xqb3"]
+[ext_resource type="Script" uid="uid://cwahv3xw6b7gx" path="res://resources/shops/shop_resource.gd" id="2_l8gbj"]
+[ext_resource type="Resource" uid="uid://bh12y2fwjdkl8" path="res://resources/shops/categories/bobbers_shop_category.tres" id="3_tvc2p"]
+[ext_resource type="Resource" uid="uid://doo44ldxfhvs8" path="res://resources/shops/categories/hook_shop_category.tres" id="4_xsbvp"]
+[ext_resource type="Resource" uid="uid://bvat3rhwh7xht" path="res://resources/shops/categories/line_shop_category.tres" id="5_dihnp"]
+
+[resource]
+script = ExtResource("2_l8gbj")
+shop_name = "Bait & Tackle"
+categories = Array[ExtResource("1_rmbh6")]([ExtResource("2_0xqb3"), ExtResource("3_tvc2p"), ExtResource("4_xsbvp"), ExtResource("5_dihnp")])
+metadata/_custom_type_script = "uid://cwahv3xw6b7gx"

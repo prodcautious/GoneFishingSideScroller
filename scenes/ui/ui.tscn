@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://drco646kgct6y" path="res://scenes/ui/menus/pause_menu.tscn" id="2_pfayw"]
 [ext_resource type="PackedScene" uid="uid://vfeh6mwyb7tr" path="res://scenes/ui/inventory/inventory.tscn" id="3_7vp6q"]
+[ext_resource type="PackedScene" uid="uid://bjobcrvmtn8u3" path="res://scenes/ui/menus/options_menu.tscn" id="4_0dwhk"]
+[ext_resource type="PackedScene" uid="uid://dwm0d6ino7u7j" path="res://scenes/ui/menus/controls_menu.tscn" id="5_pfayw"]
 [ext_resource type="PackedScene" uid="uid://cewgqkt1lk17j" path="res://scenes/ui/menus/teleport_menu.tscn" id="5_uegxj"]
 
 [node name="UI" type="CanvasLayer" unique_id=1743719295]
@@ -28,3 +30,9 @@ z_index = 1
 [node name="TeleportMenu" parent="." unique_id=1762051657 instance=ExtResource("5_uegxj")]
 visible = false
 z_index = 1
+
+[node name="OptionsMenu" parent="." unique_id=1705903237 instance=ExtResource("4_0dwhk")]
+visible = false
+
+[node name="ControlsMenu" parent="." unique_id=255128333 instance=ExtResource("5_pfayw")]
+visible = false

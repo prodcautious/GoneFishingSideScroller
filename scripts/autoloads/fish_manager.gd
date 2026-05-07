@@ -4,7 +4,7 @@ var fish = {
 	"Red Snapper": {
 		"bait": ["Grub", "Debug Bait"],
 		"water_type": ["Red Lake"],
-		"catch_chance": 0.25,
+		"catch_chance": 0.75,
 		"catch_modifier": [],
 		"weight": Vector2(0.5, 2.0),
 		"base_price": 5,

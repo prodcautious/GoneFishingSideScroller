@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dyjdifiu76ds6" path="res://scripts/ui/shops/shopkeeper_shop.gd" id="1_yh0ks"]
 [ext_resource type="PackedScene" uid="uid://c7tep62fenkq8" path="res://scenes/ui/inventory/inventory_slot.tscn" id="2_kacwe"]
+[ext_resource type="PackedScene" uid="uid://dcis7030a8jdf" path="res://scenes/ui/shops/shop_slot.tscn" id="3_1jlkp"]
+[ext_resource type="Script" uid="uid://byox3ijlx5o82" path="res://scripts/ui/balance_label.gd" id="3_dknag"]
 
 [node name="ShopkeeperShop" type="Control" unique_id=1238331736]
 layout_mode = 3
@@ -12,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yh0ks")
 inventory_slot = ExtResource("2_kacwe")
+shop_slot = ExtResource("3_1jlkp")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1238391292]
 layout_mode = 1
@@ -27,6 +30,8 @@ theme_override_constants/margin_bottom = 8
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer" unique_id=1267813417]
 layout_mode = 2
+theme_override_constants/tab_separation = 16
+tab_alignment = 1
 current_tab = 0
 
 [node name="Buy" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1072986022]
@@ -48,11 +53,39 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Buy/MarginContainer" unique_id=764673083]
 layout_mode = 2
 
-[node name="BuyShopLabel" type="Label" parent="MarginContainer/TabContainer/Buy/MarginContainer/VBoxContainer" unique_id=1169701947]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Buy/MarginContainer/VBoxContainer" unique_id=915413613]
+layout_mode = 2
+
+[node name="BuyShopLabel" type="Label" parent="MarginContainer/TabContainer/Buy/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1169701947]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
+theme_override_font_sizes/font_size = 16
 text = "Shopkeeper's Shop"
+
+[node name="BalanceLabel" type="Label" parent="MarginContainer/TabContainer/Buy/MarginContainer/VBoxContainer/HBoxContainer" unique_id=533251437]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
+text = "$0"
+horizontal_alignment = 2
+script = ExtResource("3_dknag")
+metadata/_custom_type_script = "uid://byox3ijlx5o82"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/Buy/MarginContainer/VBoxContainer" unique_id=320212060]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ShopVBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Buy/MarginContainer/VBoxContainer/ScrollContainer" unique_id=862591844]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TooltipLayer" type="Control" parent="MarginContainer/TabContainer/Buy/MarginContainer" unique_id=1604726435]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Sell" type="TabBar" parent="MarginContainer/TabContainer" unique_id=858660675]
 visible = false
@@ -66,19 +99,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Sell/MarginContainer" unique_id=1477657521]
 layout_mode = 2
 
-[node name="SellShopLabel" type="Label" parent="MarginContainer/TabContainer/Sell/MarginContainer/VBoxContainer" unique_id=688108958]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Sell/MarginContainer/VBoxContainer" unique_id=992127051]
+layout_mode = 2
+
+[node name="SellShopLabel" type="Label" parent="MarginContainer/TabContainer/Sell/MarginContainer/VBoxContainer/HBoxContainer" unique_id=688108958]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
+theme_override_font_sizes/font_size = 16
 text = "Shopkeeper's Shop"
+
+[node name="BalanceLabel" type="Label" parent="MarginContainer/TabContainer/Sell/MarginContainer/VBoxContainer/HBoxContainer" unique_id=278693728]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
+text = "$0"
+horizontal_alignment = 2
+script = ExtResource("3_dknag")
+metadata/_custom_type_script = "uid://byox3ijlx5o82"
 
 [node name="InventoryContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Sell/MarginContainer/VBoxContainer" unique_id=613282892]
 unique_name_in_owner = true

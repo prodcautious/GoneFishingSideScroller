@@ -1,10 +1,15 @@
 [gd_resource type="Resource" script_class="Bobber" format=3 uid="uid://uqe6g841mxtj"]
 
+[ext_resource type="Texture2D" uid="uid://dk7af6dkaugkn" path="res://assets/textures/items/equipment/fishing/accessories/bobbers/default_bobber_icon.png" id="1_3h8li"]
 [ext_resource type="Script" uid="uid://c6nbhk8ucic1l" path="res://resources/items/equipment/fishing/accessories/bobber/bobber_resource.gd" id="1_7t06h"]
+[ext_resource type="Texture2D" uid="uid://ddmv8nt6pahhl" path="res://assets/textures/items/equipment/fishing/accessories/bobbers/default_bobber.png" id="2_7libm"]
 
 [resource]
 script = ExtResource("1_7t06h")
-type = "Red Bobber"
+overworld_texture = ExtResource("2_7libm")
 bite_detection_speed_range = Vector2(5, 10)
 max_bait_weight = 5.0
+type = "Red Bobber"
+desc = "A fye starter bob"
+icon = ExtResource("1_3h8li")
 metadata/_custom_type_script = "uid://c6nbhk8ucic1l"

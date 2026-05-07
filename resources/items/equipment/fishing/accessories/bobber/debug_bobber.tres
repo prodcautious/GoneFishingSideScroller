@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_6tu43")
-type = "Debug Bobber"
 bite_detection_speed_range = Vector2(0.5, 2)
 max_bait_weight = 1000.0
+type = "Debug Bobber"
 metadata/_custom_type_script = "uid://c6nbhk8ucic1l"

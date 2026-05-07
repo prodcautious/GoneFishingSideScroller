@@ -1,16 +1,9 @@
 [gd_scene format=4 uid="uid://bhwrhc4ep1j4p"]
 
 [ext_resource type="Script" uid="uid://cpxlq1rlfmqor" path="res://scripts/characters/player.gd" id="1_yewv4"]
-[ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/equipment/fishing/rods/fishing_rod.png" id="3_7vyk4"]
-[ext_resource type="Texture2D" uid="uid://bfjv1haipml4w" path="res://assets/textures/items/equipment/fishing/rods/icons/fishing_rod_icon.png" id="3_jk2m4"]
-[ext_resource type="Script" uid="uid://biffhbd8lrkpv" path="res://resources/items/equipment/fishing/accessories/bait/bait_resource.gd" id="3_k4v7y"]
-[ext_resource type="Script" uid="uid://qc4euosj4xut" path="res://resources/items/equipment/fishing/rods/fishing_rod_resource.gd" id="3_qgnko"]
-[ext_resource type="Script" uid="uid://c6nbhk8ucic1l" path="res://resources/items/equipment/fishing/accessories/bobber/bobber_resource.gd" id="4_k4v7y"]
-[ext_resource type="Script" uid="uid://7mk8ojfc0adh" path="res://resources/items/equipment/fishing/accessories/hook/hook_resource.gd" id="6_xrqxk"]
 [ext_resource type="Script" uid="uid://dfdms81c6l80e" path="res://scripts/characters/player/dialogue_handler.gd" id="8_eojnx"]
-[ext_resource type="Resource" uid="uid://dew6uy3pm6fvq" path="res://resources/items/equipment/fishing/accessories/line/two_pound_line.tres" id="8_rpnd8"]
-[ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/held_items/fishing_rod.gd" id="9_2l4js"]
-[ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/held_items/fishing_rod_line.gd" id="10_2l4js"]
+[ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/fishing.gd" id="9_2l4js"]
+[ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/fishing_rod_line.gd" id="10_2l4js"]
 [ext_resource type="FontFile" uid="uid://ccshq021fm533" path="res://assets/fonts/gone_fishing_drop_shadow.png" id="11_rpnd8"]
 [ext_resource type="Texture2D" uid="uid://dkr7ghuhrugjx" path="res://assets/textures/items/fish/red_snapper.png" id="13_xrqxk"]
 [ext_resource type="Shader" uid="uid://dogrmsj3anntm" path="res://shaders/ui/vignette.gdshader" id="14_k4v7y"]
@@ -18,39 +11,6 @@
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_xrqxk"]
 _data = PackedByteArray("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")
 size_override = Vector2(160, 160)
-
-[sub_resource type="Resource" id="Resource_g66nw"]
-script = ExtResource("3_k4v7y")
-type = "Grub"
-count = 100
-weight = 0.5
-metadata/_custom_type_script = "uid://biffhbd8lrkpv"
-
-[sub_resource type="Resource" id="Resource_xrqxk"]
-script = ExtResource("4_k4v7y")
-type = "Red Bobber"
-bite_detection_speed_range = Vector2(5, 10)
-max_bait_weight = 5.0
-metadata/_custom_type_script = "uid://c6nbhk8ucic1l"
-
-[sub_resource type="Resource" id="Resource_rpnd8"]
-script = ExtResource("6_xrqxk")
-type = "Single Hook (Small)"
-catch_rate = 0.5
-count = 100
-metadata/_custom_type_script = "uid://7mk8ojfc0adh"
-
-[sub_resource type="Resource" id="Resource_qgnko"]
-script = ExtResource("3_qgnko")
-hook = SubResource("Resource_rpnd8")
-bobber = SubResource("Resource_xrqxk")
-bait = SubResource("Resource_g66nw")
-line = ExtResource("8_rpnd8")
-held_texture = ExtResource("3_7vyk4")
-type = "Fishing Rod"
-desc = "Ol' Trusty"
-icon = ExtResource("3_jk2m4")
-metadata/_custom_type_script = "uid://qc4euosj4xut"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6tgn"]
 
@@ -87,7 +47,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Fishing/FishingRod/RodSprite2D:position")
+tracks/0/path = NodePath("FishingNode/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,7 +59,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Fishing/FishingRod/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingNode/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +76,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Fishing/FishingRod/RodSprite2D:position")
+tracks/0/path = NodePath("FishingNode/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -128,7 +88,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Fishing/FishingRod/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingNode/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -157,7 +117,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Fishing/FishingRod/RodSprite2D:position")
+tracks/0/path = NodePath("FishingNode/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -169,7 +129,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Fishing/FishingRod/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingNode/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -237,7 +197,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Fishing/PerfectLabel:modulate")
+tracks/0/path = NodePath("FishingNode/PerfectLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -249,7 +209,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Fishing/PerfectLabel:position")
+tracks/1/path = NodePath("FishingNode/PerfectLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -261,7 +221,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Fishing/PerfectLabel:visible")
+tracks/2/path = NodePath("FishingNode/PerfectLabel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -273,7 +233,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Fishing/CaughtFishSprite:visible")
+tracks/3/path = NodePath("FishingNode/CaughtFishSprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -285,7 +245,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Fishing/CaughtFishSprite:modulate")
+tracks/4/path = NodePath("FishingNode/CaughtFishSprite:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -297,7 +257,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Fishing/CaughtFishSprite:position")
+tracks/5/path = NodePath("FishingNode/CaughtFishSprite:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -309,7 +269,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Fishing/CaughtFishLabel:visible")
+tracks/6/path = NodePath("FishingNode/CaughtFishLabel:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -321,7 +281,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Fishing/CaughtFishLabel:modulate")
+tracks/7/path = NodePath("FishingNode/CaughtFishLabel:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -333,7 +293,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Fishing/CaughtFishLabel:position")
+tracks/8/path = NodePath("FishingNode/CaughtFishLabel:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -366,19 +326,31 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera2D:zoom")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_3wg1y"]
 resource_name = "fish_caught"
-length = 2.0
+length = 3.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Fishing/CaughtFishSprite:visible")
+tracks/0/path = NodePath("FishingNode/CaughtFishSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -386,35 +358,35 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Fishing/CaughtFishSprite:modulate")
+tracks/1/path = NodePath("FishingNode/CaughtFishSprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Fishing/CaughtFishSprite:position")
+tracks/2/path = NodePath("FishingNode/CaughtFishSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -40), Vector2(0, -40), Vector2(0, -52)]
+"values": [Vector2(0, -40), Vector2(0, -40), Vector2(0, -40), Vector2(0, -52)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Fishing/CaughtFishLabel:visible")
+tracks/3/path = NodePath("FishingNode/CaughtFishLabel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -422,26 +394,38 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Fishing/CaughtFishLabel:modulate")
+tracks/4/path = NodePath("FishingNode/CaughtFishLabel:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Fishing/CaughtFishLabel:position")
+tracks/5/path = NodePath("FishingNode/CaughtFishLabel:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-46, -64), Vector2(-46, -64), Vector2(-46, -76)]
+"values": [Vector2(-46, -64), Vector2(-46, -64), Vector2(-46, -64), Vector2(-46, -76)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera2D:zoom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_g66nw"]
@@ -479,7 +463,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Fishing/PerfectLabel:modulate")
+tracks/0/path = NodePath("FishingNode/PerfectLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -491,7 +475,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Fishing/PerfectLabel:position")
+tracks/1/path = NodePath("FishingNode/PerfectLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -503,7 +487,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Fishing/PerfectLabel:visible")
+tracks/2/path = NodePath("FishingNode/PerfectLabel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -565,43 +549,39 @@ position = Vector2(0, -16)
 limit_left = -320
 limit_right = 320
 
-[node name="Fishing" type="Node2D" parent="." unique_id=1241350377]
-
-[node name="FishingRod" type="Node2D" parent="Fishing" unique_id=1482519485 node_paths=PackedStringArray("player") groups=["FishingRod"]]
+[node name="FishingNode" type="Node2D" parent="." unique_id=1241350377 node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 script = ExtResource("9_2l4js")
-player = NodePath("../..")
-rod_resource = SubResource("Resource_qgnko")
+player = NodePath("..")
 
-[node name="RodSprite2D" type="Sprite2D" parent="Fishing/FishingRod" unique_id=712481474]
+[node name="RodSprite2D" type="Sprite2D" parent="FishingNode" unique_id=712481474]
 unique_name_in_owner = true
-visible = false
 z_index = 11
 y_sort_enabled = true
 position = Vector2(8, -13)
 
-[node name="FishingLine" type="Node2D" parent="Fishing/FishingRod" unique_id=802210674]
+[node name="FishingLine" type="Node2D" parent="FishingNode" unique_id=802210674]
 unique_name_in_owner = true
 z_index = 10
 y_sort_enabled = true
 position = Vector2(13, -17)
 script = ExtResource("10_2l4js")
 
-[node name="LineStart" type="Node2D" parent="Fishing/FishingRod/FishingLine" unique_id=1199454424]
+[node name="LineStart" type="Node2D" parent="FishingNode/FishingLine" unique_id=1199454424]
 unique_name_in_owner = true
 
-[node name="LineEnd" type="Node2D" parent="Fishing/FishingRod/FishingLine" unique_id=386411240]
+[node name="LineEnd" type="Node2D" parent="FishingNode/FishingLine" unique_id=386411240]
 unique_name_in_owner = true
 position = Vector2(26, 48)
 
-[node name="BobberSprite2D" type="Sprite2D" parent="Fishing/FishingRod/FishingLine/LineEnd" unique_id=9597147]
+[node name="BobberSprite2D" type="Sprite2D" parent="FishingNode/FishingLine/LineEnd" unique_id=9597147]
 unique_name_in_owner = true
 visible = false
 
-[node name="TryCatchFishTimer" type="Timer" parent="Fishing/FishingRod" unique_id=2120373071]
+[node name="TryCatchFishTimer" type="Timer" parent="FishingNode" unique_id=2120373071]
 unique_name_in_owner = true
 
-[node name="PerfectLabel" type="Label" parent="Fishing" unique_id=1366715600]
+[node name="PerfectLabel" type="Label" parent="FishingNode" unique_id=1366715600]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -619,7 +599,7 @@ text = "Perfect"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CastProgressBar" type="ProgressBar" parent="Fishing" unique_id=1575416344]
+[node name="CastProgressBar" type="ProgressBar" parent="FishingNode" unique_id=1575416344]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 12)
 offset_left = -16.0
@@ -632,7 +612,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_d6tgn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3wg1y")
 show_percentage = false
 
-[node name="CaughtFishLabel" type="Label" parent="Fishing" unique_id=1763481366]
+[node name="CaughtFishLabel" type="Label" parent="FishingNode" unique_id=1763481366]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 8
@@ -651,7 +631,7 @@ text = "+ Red Snapper (0.2kg)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CaughtFishSprite" type="Sprite2D" parent="Fishing" unique_id=1395263783]
+[node name="CaughtFishSprite" type="Sprite2D" parent="FishingNode" unique_id=1395263783]
 unique_name_in_owner = true
 process_mode = 3
 visible = false

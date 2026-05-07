@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dl4kc6g6ccgen" path="res://scripts/ui/inventory/inventory.gd" id="1_pefhr"]
 [ext_resource type="PackedScene" uid="uid://c7tep62fenkq8" path="res://scenes/ui/inventory/inventory_slot.tscn" id="2_lobmi"]
 [ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="3_8ndef"]
+[ext_resource type="Script" uid="uid://byox3ijlx5o82" path="res://scripts/ui/balance_label.gd" id="4_lobmi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vyk4"]
 shader = ExtResource("3_8ndef")
@@ -58,11 +59,24 @@ layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=168720412]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1976918764]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=168720412]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
 theme_override_font_sizes/font_size = 16
 text = "Inventory"
-horizontal_alignment = 1
+
+[node name="BalanceLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=437322732]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+text = "$0"
+horizontal_alignment = 2
+script = ExtResource("4_lobmi")
+metadata/_custom_type_script = "uid://byox3ijlx5o82"
 
 [node name="InventoryContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=771094068]
 unique_name_in_owner = true

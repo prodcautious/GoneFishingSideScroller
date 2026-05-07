@@ -60,7 +60,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 
-[node name="CoinsLabel" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=696811758]
+[node name="BalanceLabel" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=696811758]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8

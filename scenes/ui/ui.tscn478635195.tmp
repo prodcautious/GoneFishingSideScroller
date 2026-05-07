@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cicy5wju2riow"]
+
+[ext_resource type="PackedScene" uid="uid://drco646kgct6y" path="res://scenes/ui/menus/pause_menu.tscn" id="2_pfayw"]
+[ext_resource type="PackedScene" uid="uid://vfeh6mwyb7tr" path="res://scenes/ui/inventory/inventory.tscn" id="3_7vp6q"]
+[ext_resource type="PackedScene" uid="uid://bjobcrvmtn8u3" path="res://scenes/ui/menus/options_menu.tscn" id="4_0dwhk"]
+[ext_resource type="PackedScene" uid="uid://dwm0d6ino7u7j" path="res://scenes/ui/menus/controls_menu.tscn" id="5_pfayw"]
+[ext_resource type="PackedScene" uid="uid://cewgqkt1lk17j" path="res://scenes/ui/menus/teleport_menu.tscn" id="5_uegxj"]
+
+[node name="UI" type="CanvasLayer" unique_id=1743719295]
+
+[node name="DialogueUI" type="Control" parent="." unique_id=172745799]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PauseMenu" parent="." unique_id=1002509039 instance=ExtResource("2_pfayw")]
+visible = false
+z_index = 1
+
+[node name="Inventory" parent="." unique_id=987926248 groups=["Inventory"] instance=ExtResource("3_7vp6q")]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+
+[node name="TeleportMenu" parent="." unique_id=1762051657 instance=ExtResource("5_uegxj")]
+visible = false
+z_index = 1
+
+[node name="OptionsMenu" parent="." unique_id=1705903237 instance=ExtResource("4_0dwhk")]
+visible = false
+
+[node name="ControlsMenu" parent="." unique_id=255128333 instance=ExtResource("5_pfayw")]
+visible = false

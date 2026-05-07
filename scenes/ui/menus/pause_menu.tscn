@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://bb4lu8xr3s6p5" path="res://scripts/ui/menus/pause_menu.gd" id="1_idy5m"]
 [ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="2_hf471"]
 [ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="3_2f5f3"]
-[ext_resource type="PackedScene" uid="uid://bjobcrvmtn8u3" path="res://scenes/ui/menus/options_menu.tscn" id="4_a3xc8"]
-[ext_resource type="PackedScene" uid="uid://dwm0d6ino7u7j" path="res://scenes/ui/menus/controls_menu.tscn" id="5_hf471"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bnpd"]
 shader = ExtResource("2_hf471")
@@ -61,76 +59,67 @@ alignment = 1
 
 [node name="Header" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=889266259]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
 theme_override_font_sizes/font_size = 16
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=375505560]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 16)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 8
+theme_type_variation = &"UIButton"
+theme_override_font_sizes/font_size = 16
 text = "Resume"
 script = ExtResource("3_2f5f3")
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1384757672]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 16)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 8
+theme_type_variation = &"UIButton"
+theme_override_font_sizes/font_size = 16
 text = "Options"
 script = ExtResource("3_2f5f3")
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
 
 [node name="ControlsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1081462822]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 16)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 8
+theme_type_variation = &"UIButton"
+theme_override_font_sizes/font_size = 16
 text = "Controls"
 script = ExtResource("3_2f5f3")
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
 
 [node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=560479405]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 16)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 8
+theme_type_variation = &"UIButton"
+theme_override_font_sizes/font_size = 16
 text = "Main Menu"
 script = ExtResource("3_2f5f3")
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=529906903]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 16)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_type_variation = &"CustomButton"
-theme_override_font_sizes/font_size = 8
+theme_type_variation = &"UIButton"
+theme_override_font_sizes/font_size = 16
 text = "Quit"
 script = ExtResource("3_2f5f3")
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
-
-[node name="OptionsMenu" parent="." unique_id=1705903237 instance=ExtResource("4_a3xc8")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-
-[node name="ControlsMenu" parent="." unique_id=255128333 instance=ExtResource("5_hf471")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
