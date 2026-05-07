@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bhwrhc4ep1j4p"]
 
 [ext_resource type="Script" uid="uid://cpxlq1rlfmqor" path="res://scripts/characters/player.gd" id="1_yewv4"]
+[ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/equipment/fishing/rods/fishing_rod.png" id="3_eojnx"]
 [ext_resource type="Script" uid="uid://dfdms81c6l80e" path="res://scripts/characters/player/dialogue_handler.gd" id="8_eojnx"]
 [ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/fishing.gd" id="9_2l4js"]
 [ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/fishing_rod_line.gd" id="10_2l4js"]
@@ -556,9 +557,11 @@ player = NodePath("..")
 
 [node name="RodSprite2D" type="Sprite2D" parent="FishingNode" unique_id=712481474]
 unique_name_in_owner = true
+visible = false
 z_index = 11
 y_sort_enabled = true
 position = Vector2(8, -13)
+texture = ExtResource("3_eojnx")
 
 [node name="FishingLine" type="Node2D" parent="FishingNode" unique_id=802210674]
 unique_name_in_owner = true

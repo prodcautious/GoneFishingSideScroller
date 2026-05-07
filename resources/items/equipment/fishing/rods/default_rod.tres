@@ -1,7 +1,21 @@
 [gd_resource type="Resource" script_class="FishingRod" format=3 uid="uid://l5u5l4a4fapl"]
 
 [ext_resource type="Script" uid="uid://qc4euosj4xut" path="res://resources/items/equipment/fishing/rods/fishing_rod_resource.gd" id="1_4iie0"]
+[ext_resource type="Resource" uid="uid://140l2thheskn" path="res://resources/items/equipment/fishing/accessories/bait/grub.tres" id="1_pt6fw"]
+[ext_resource type="Resource" uid="uid://uqe6g841mxtj" path="res://resources/items/equipment/fishing/accessories/bobber/default_bobber.tres" id="2_t2fka"]
+[ext_resource type="Resource" uid="uid://cvjcugkypwdod" path="res://resources/items/equipment/fishing/accessories/hook/small_single_hook.tres" id="3_1ldc5"]
+[ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/equipment/fishing/rods/fishing_rod.png" id="3_rhdxy"]
+[ext_resource type="Resource" uid="uid://dew6uy3pm6fvq" path="res://resources/items/equipment/fishing/accessories/line/two_pound_line.tres" id="4_rhdxy"]
+[ext_resource type="Texture2D" uid="uid://bfjv1haipml4w" path="res://assets/textures/items/equipment/fishing/rods/icons/fishing_rod_icon.png" id="5_to533"]
 
 [resource]
 script = ExtResource("1_4iie0")
+hook = ExtResource("3_1ldc5")
+bobber = ExtResource("2_t2fka")
+bait = ExtResource("1_pt6fw")
+line = ExtResource("4_rhdxy")
+held_texture = ExtResource("3_rhdxy")
+type = "Default Rod"
+desc = "Ol' Trusty"
+icon = ExtResource("5_to533")
 metadata/_custom_type_script = "uid://qc4euosj4xut"

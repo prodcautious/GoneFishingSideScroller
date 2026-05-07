@@ -10,6 +10,8 @@ class_name FishingRod
 @export_group("Properties")
 @export var durability: int = 100
 
+var catch_modifier: String
+
 #region Getters
 func get_hook() -> Hook:
 	return hook
@@ -25,6 +27,9 @@ func get_line() -> Line:
 
 func get_durability() -> int:
 	return durability
+
+func get_catch_modifier() -> String:
+	return catch_modifier
 #endregion
 
 #region Setters
@@ -42,4 +47,16 @@ func set_line(new_line: Line) -> void:
 
 func set_durability(new_durability: int) -> void:
 	durability = new_durability
+
+func set_catch_modifier(new_catch_modifier) -> void:
+	catch_modifier = new_catch_modifier
 #endregion
+
+func is_missing_equipment() -> bool:
+	var current_bait = get_bait()
+	var current_hook = get_hook()
+	
+	if !current_bait.get_count() <= 0 || !current_hook.get_count() <= 0:
+		return false
+	else:
+		return true

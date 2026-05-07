@@ -17,7 +17,6 @@ extends Node2D
 var rod_equipped: bool = false
 
 var casted_out: bool = false
-var current_catch_modifier: String
 
 # Casting-minigame variables
 var is_casting: bool = false
@@ -160,15 +159,21 @@ func perform_cast(power: float) -> void:
 #endregion
 
 #region Actual Casting
-func _cast_in() -> void:
-	InventoryManager.fishing_rod.get_bait().set_count(InventoryManager.fishing_rod.get_bait().get_count() - 1)
-	InventoryManager.fishing_rod.get_hook().set_count(InventoryManager.fishing_rod.get_hook().get_count() - 1)
+func _cast_in(lose_bait: bool = false) -> void:
+	var fishing_rod = InventoryManager.fishing_rod
+	var bait = fishing_rod.get_bait()
+	var hook = fishing_rod.get_hook()
+	
 	try_catch_fish_timer.stop()
 	casted_out = false
 	print(casted_out)
 	player.set_state(0)
 	fishing_line.queue_redraw()
-
+	
+	if lose_bait:
+		bait.set_count(bait.get_count() - 1)
+		hook.set_count(hook.get_count() - 1)
+	
 func cast_out() -> void:
 	if rod_equipped:
 		if InventoryManager.fishing_rod.get_bait().get_count() > 0 && InventoryManager.fishing_rod.get_hook().get_count() > 0:
@@ -190,19 +195,21 @@ func _on_try_catch_fish_timer_timeout() -> void:
 	try_catch_fish()
 
 func try_catch_fish() -> void:
-	var bait = InventoryManager.fishing_rod.get_bait()
-	var bobber = InventoryManager.fishing_rod.get_bobber()
-	var hook = InventoryManager.fishing_rod.get_hook()
-	var line = InventoryManager.fishing_rod.get_line()
+	var fishing_rod = InventoryManager.fishing_rod
+	
+	var bait = fishing_rod.get_bait()
+	var bobber = fishing_rod.get_bobber()
+	var hook = fishing_rod.get_hook()
+	var line = fishing_rod.get_line()
 	
 	# Check if bait slipped off
 	if bait.get_weight() > bobber.get_max_bait_weight():
 		_did_not_catch_fish_animation("Your bait slipped off! Try getting a larger hook.")
-		_cast_in()
+		_cast_in(true)
 		return
 	
 	# Determine fish
-	var fish_on_hook = get_fish_on_hook(bait.type, current_catch_modifier)
+	var fish_on_hook = get_fish_on_hook(bait.type, fishing_rod.get_catch_modifier())
 	
 	if fish_on_hook == null:
 		_did_not_catch_fish_animation("Nothing's biting with this setup.")
@@ -228,7 +235,7 @@ func try_catch_fish() -> void:
 		print("Your catch chance: ", catch_chance)
 		InventoryManager.add_inventory_item(fish_on_hook)
 		await _catch_fish_animation(fish_on_hook)
-		_cast_in()
+		_cast_in(true)
 		return
 
 	# Unsuccessful
@@ -236,7 +243,7 @@ func try_catch_fish() -> void:
 		_did_not_catch_fish_animation("Darn! It got away.")
 		print("Random float chance: ", rand_f)
 		print("Your catch chance: ", catch_chance)
-		_cast_in()
+		_cast_in(true)
 		return
 
 func get_fish_on_hook(bait_type: String, catch_modifier: String) -> Fish:

@@ -12,10 +12,16 @@ func get_catch_rate() -> float:
 func get_count() -> int:
 	return count
 
-func get_stats() -> String:
-	return "Catch rate: " + str(get_catch_rate() * 100) + "%\n
-	Count: " + str(get_count()) + "\n
-	$" + str(get_price())
+func get_stats(include_price: bool = false) -> String:
+	if include_price:
+		return get_type() + "\n
+		Catch rate: " + str(get_catch_rate() * 100) + "%\n
+		Count: " + str(get_count()) + "\n
+		$" + str(get_price())
+	else:
+		return get_type() + "\n
+		Catch rate: " + str(get_catch_rate() * 100) + "%\n
+		Count: " + str(get_count())
 #endregion
 
 #region Setters

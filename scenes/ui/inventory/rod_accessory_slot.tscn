@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dn4oqj4d83w61"]
+
+[ext_resource type="Script" uid="uid://bcupyhorrajw1" path="res://scripts/ui/inventory/rod_accessory_slot.gd" id="1_5wccd"]
+[ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="2_81ai2"]
+
+[node name="RodAccessorySlot" type="Control" unique_id=1816319162]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 96.0
+script = ExtResource("1_5wccd")
+
+[node name="AccessoryButton" type="Button" parent="." unique_id=1880193116]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+offset_right = 96.0
+offset_bottom = 96.0
+theme_type_variation = &"UIButton"
+script = ExtResource("2_81ai2")
+metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
+
+[node name="MarginContainer" type="MarginContainer" parent="AccessoryButton" unique_id=230777212]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 92.0
+offset_bottom = 92.0
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="IconTextureRect" type="TextureRect" parent="AccessoryButton/MarginContainer" unique_id=885203288]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="DescPanelContainer" type="PanelContainer" parent="." unique_id=1378130117]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(192, 96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -152.0
+offset_right = 96.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DescPanelContainer" unique_id=680781524]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AccessoryStats" type="Label" parent="DescPanelContainer/MarginContainer" unique_id=1357870406]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
