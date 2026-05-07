@@ -15,16 +15,10 @@ func get_bite_detection_speed() -> float:
 func get_max_bait_weight() -> float:
 	return max_bait_weight
 
-func get_stats(include_price: bool = false) -> String:
-	if include_price:
-		return get_type() + "\n
-		Bite Speed: " + str(bite_detection_speed_range) + "sec \n
-		Max Bait Weight: " + str(get_max_bait_weight()) + "\n
-		$" + str(get_price())
-	else:
-		return get_type() + "\n
-		Bite Speed: " + str(bite_detection_speed_range) + "sec \n
-		Max Bait Weight: " + str(get_max_bait_weight())
+func get_stats() -> String:
+	return get_accessory_name() + "\n
+	Bite Speed: " + str(bite_detection_speed_range) + "sec \n
+	Max Bait Weight: " + str(get_max_bait_weight())
 #endregion
 
 #region Setters

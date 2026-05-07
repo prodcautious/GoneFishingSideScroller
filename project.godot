@@ -30,6 +30,7 @@ FishManager="*uid://cum3qn145vumh"
 InventoryManager="*uid://dhawxons0ruql"
 MenuManager="*uid://dyvyld65devdc"
 Ui="*uid://cicy5wju2riow"
+FishingRodManager="*uid://chnnbpvi3t676"
 
 [dialogue_manager]
 

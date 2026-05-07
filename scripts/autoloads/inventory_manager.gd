@@ -3,8 +3,6 @@ extends Node
 var inventory: Array[Fish]
 var MAX_INVENTORY_SIZE = 5
 
-var fishing_rod : FishingRod = preload("res://resources/items/equipment/fishing/rods/default_rod.tres")
-
 signal item_added
 signal item_sold
 

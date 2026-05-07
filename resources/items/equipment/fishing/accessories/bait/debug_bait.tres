@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_ue63p")
-type = "Debug Bait"
 count = 1000
+accessory_name = "Debug Bait"
 metadata/_custom_type_script = "uid://biffhbd8lrkpv"

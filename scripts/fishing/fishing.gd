@@ -102,7 +102,7 @@ func _process(delta: float) -> void:
 
 #region Rod-Equip Visuals
 func toggle_rod_equip() -> void:
-	if !InventoryManager.fishing_rod || player.current_player_state in [player.PLAYER_STATE.FISHING]:
+	if !FishingRodManager.fishing_rod || player.current_player_state in [player.PLAYER_STATE.FISHING]:
 		return
 
 	if rod_equipped:
@@ -111,7 +111,7 @@ func toggle_rod_equip() -> void:
 		rod_sprite_2d.texture = null
 	else:
 		rod_equipped = true
-		rod_sprite_2d.texture = InventoryManager.fishing_rod.held_texture
+		rod_sprite_2d.texture = FishingRodManager.fishing_rod.held_texture
 		rod_sprite_2d.show()
 #endregion
 
@@ -163,28 +163,21 @@ func perform_cast(power: float) -> void:
 
 #region Actual Casting
 func _cast_in(lose_bait: bool = false) -> void:
-	var fishing_rod = InventoryManager.fishing_rod
-	var bait = fishing_rod.get_bait()
-	var hook = fishing_rod.get_hook()
-	
+	var fishing_rod = FishingRodManager.fishing_rod
+
 	try_catch_fish_timer.stop()
 	casted_out = false
 	print(casted_out)
+
 	player.set_state(0)
 	fishing_line.queue_redraw()
-	
-	if lose_bait:
-		bait.set_count(bait.get_count() - 1)
-		hook.set_count(hook.get_count() - 1)
-		if bait.get_count() <= 0:
-			fishing_rod.set_bait(null)
-		if hook.get_count() <= 0:
-			fishing_rod.set_hook(null)
-		
+
+	if lose_bait and fishing_rod != null:
+		fishing_rod.consume_bait_and_hook()
 	
 func cast_out() -> void:
 	if rod_equipped:
-		var base_wait = InventoryManager.fishing_rod.get_bobber().get_bite_detection_speed()
+		var base_wait = FishingRodManager.fishing_rod.get_current_bobber().get_bite_detection_speed()
 		try_catch_fish_timer.wait_time = base_wait * lerp(1.0, 1.0 - BITE_SPEED_BONUS, cast_power)
 		casted_out = true
 		print(casted_out)
@@ -200,12 +193,12 @@ func _on_try_catch_fish_timer_timeout() -> void:
 	try_catch_fish()
 
 func try_catch_fish() -> void:
-	var fishing_rod = InventoryManager.fishing_rod
+	var fishing_rod = FishingRodManager.fishing_rod
 	
-	var bait = fishing_rod.get_bait()
-	var bobber = fishing_rod.get_bobber()
-	var hook = fishing_rod.get_hook()
-	var line = fishing_rod.get_line()
+	var bait = fishing_rod.get_current_bait()
+	var bobber = fishing_rod.get_current_bobber()
+	var hook = fishing_rod.get_current_hook()
+	var line = fishing_rod.get_current_line()
 	
 	# Check if bait slipped off
 	if bait.get_weight() > bobber.get_max_bait_weight():
@@ -214,7 +207,7 @@ func try_catch_fish() -> void:
 		return
 	
 	# Determine fish
-	var fish_on_hook = get_fish_on_hook(bait.type, fishing_rod.get_catch_modifier())
+	var fish_on_hook = get_fish_on_hook(bait.get_accessory_name(), fishing_rod.get_catch_modifier())
 	
 	if fish_on_hook == null:
 		_did_not_catch_fish_animation("Nothing's biting with this setup.")
@@ -333,13 +326,13 @@ func _did_not_catch_fish_animation(reason: String) -> void:
 	ui_animation_player.play("fish_not_caught")
 	
 func _has_bait_and_hook() -> bool:
-	var rod: FishingRod = InventoryManager.fishing_rod
+	var rod = FishingRodManager.fishing_rod
 	
 	if rod == null:
 		return false
 	
-	var bait = rod.get_bait()
-	var hook = rod.get_hook()
+	var bait = rod.get_current_bait()
+	var hook = rod.get_current_hook()
 	
 	if bait == null or hook == null:
 		return false

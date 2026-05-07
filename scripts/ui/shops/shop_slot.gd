@@ -43,23 +43,23 @@ func _on_item_button_pressed() -> void:
 	if GameManager.balance >= listing.get_price():
 		
 		var item = listing.get_item()
-		var fishing_rod = InventoryManager.fishing_rod
+		var fishing_rod = FishingRodManager.fishing_rod
 
 		if item is Bait:
-			var bait = fishing_rod.get_bait()
+			var bait = fishing_rod.get_current_bait()
 			if bait == null:
 				fishing_rod.set_bait(item.duplicate())
-				fishing_rod.get_bait().set_count(listing.get_count())
+				fishing_rod.get_current_bait().set_count(listing.get_count())
 			else:
 				bait.set_count(bait.get_count() + listing.get_count())
 				
 			GameManager.decrease_balance(listing.get_price())
 		elif item is Hook:
-			var hook = fishing_rod.get_hook()
+			var hook = fishing_rod.get_current_hook()
 		
 			if hook == null:
 				fishing_rod.set_hook(item.duplicate())
-				fishing_rod.get_hook().set_count(listing.get_count())
+				fishing_rod.get_current_hook().set_count(listing.get_count())
 			else:
 				hook.set_count(hook.get_count() + listing.get_count())
 

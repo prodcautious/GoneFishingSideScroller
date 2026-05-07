@@ -7,7 +7,6 @@
 script = ExtResource("1_8fv3g")
 count = 1
 weight = 0.5
-type = "Grub"
-desc = "Dug up from the dirt"
+accessory_name = "Grub"
 icon = ExtResource("1_28kw5")
 metadata/_custom_type_script = "uid://biffhbd8lrkpv"

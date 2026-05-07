@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_5aqwu")
-type = "Debug Hook"
 catch_rate = 1.0
 count = 1000
 weedless = true
+accessory_type = 2
+accessory_name = "Debug Hook"
 metadata/_custom_type_script = "uid://7mk8ojfc0adh"

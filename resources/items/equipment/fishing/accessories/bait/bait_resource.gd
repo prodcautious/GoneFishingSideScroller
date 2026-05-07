@@ -11,16 +11,10 @@ func get_count() -> int:
 func get_weight() -> float:
 	return weight
 
-func get_stats(include_price: bool = false) -> String:
-	if include_price:
-		return get_type() + "\n
-		Count: " + str(get_count()) + "\n
-		Weight: " + str(get_weight()) + "\n
-		$" + str(get_price())
-	else:
-		return get_type() + "\n
-		Count: " + str(get_count()) + "\n
-		Weight: " + str(get_weight())
+func get_stats() -> String:
+	return get_accessory_name() + "\n
+	Count: " + str(get_count()) + "\n
+	Weight: " + str(get_weight())
 #endregion
 
 #region Setters

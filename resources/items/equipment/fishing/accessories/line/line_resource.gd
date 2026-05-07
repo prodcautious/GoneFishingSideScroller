@@ -7,14 +7,9 @@ class_name Line
 func get_max_weight() -> float:
 	return max_weight
 
-func get_stats(include_price: bool = false) -> String:
-	if include_price:
-		return get_type() + "\n
-		Max Weight: " + str(get_max_weight()) + "\n
-		$" + str(get_price())
-	else:
-		return get_type() + "\n
-		Max Weight: " + str(get_max_weight())
+func get_stats() -> String:
+	return get_accessory_name() + "\n
+	Max Weight: " + str(get_max_weight())
 #endregion
 
 #region Setters

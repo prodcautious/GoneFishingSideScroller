@@ -24,8 +24,8 @@ func _on_flicker_timer_timeout() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Player"):
-		InventoryManager.fishing_rod.set_catch_modifier(catch_modifier)
+		FishingRodManager.fishing_rod.set_catch_modifier(catch_modifier)
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Player"):
-		InventoryManager.fishing_rod.set_catch_modifier("")
+		FishingRodManager.fishing_rod.set_catch_modifier("")
