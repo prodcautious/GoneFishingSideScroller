@@ -6,11 +6,11 @@ extends Control
 	%RodAccessorySlot,
 	%RodAccessorySlot2,
 	%RodAccessorySlot3,
-	%RodAccessorySlot4
 ]
 
 @onready var accessory_h_box_container: HBoxContainer = %AccessoryHBoxContainer
-@onready var accessory_panel_container: PanelContainer = $MarginContainer/PanelContainer/AccessoryPanelContainer
+@onready var accessory_panel_container: PanelContainer = %AccessoryPanelContainer
+@onready var accessory_header_label: Label = %AccessoryHeaderLabel
 
 var current_category: FishingAccessory.AccessoryType
 var accessory_panel_open: bool = false
@@ -114,7 +114,6 @@ func load_rod_accessories() -> void:
 
 	var current_accessories: Array[FishingAccessory] = [
 		rod.get_current_hook(),
-		rod.get_current_bobber(),
 		rod.get_current_bait(),
 		rod.get_current_line()
 	]
@@ -142,7 +141,7 @@ func _on_equipped_slot_pressed(accessory: FishingAccessory) -> void:
 	if accessory == null:
 		return
 
-	show_accessories_for_type(accessory.get_type())
+	show_accessories_for_type(accessory.get_accessory_type())
 
 func show_accessories_for_type(type: FishingAccessory.AccessoryType) -> void:
 	var rod := FishingRodManager.fishing_rod
@@ -158,6 +157,8 @@ func show_accessories_for_type(type: FishingAccessory.AccessoryType) -> void:
 
 func display_accessories(accessories: Array, current_accessory: FishingAccessory) -> void:
 	clear_accessory_choices()
+	
+	accessory_header_label.text = get_accessory_header_text(current_accessory.get_accessory_type())
 
 	for accessory in accessories:
 		if accessory == null:
@@ -189,4 +190,15 @@ func _on_selection_slot_pressed(accessory: FishingAccessory) -> void:
 	rod.equip_accessory(accessory)
 
 	load_rod_accessories()
-	show_accessories_for_type(accessory.get_type())
+	show_accessories_for_type(accessory.get_accessory_type())
+
+func get_accessory_header_text(type: FishingAccessory.AccessoryType) -> String:
+	match type:
+		FishingAccessory.AccessoryType.BAIT:
+			return "Bait"
+		FishingAccessory.AccessoryType.HOOK:
+			return "Hooks"
+		FishingAccessory.AccessoryType.LINE:
+			return "Line"
+		_:
+			return "Accessories"

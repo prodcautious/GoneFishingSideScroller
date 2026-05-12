@@ -32,6 +32,7 @@ func _input(event: InputEvent) -> void:
 			return
 
 		get_tree().paused = true
+		player.set_state(2)
 		DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 #endregion
 
@@ -72,8 +73,8 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		return
 
 	var new_shop_scene = shop_scene.instantiate()
-	Ui.add_child(new_shop_scene)
 	new_shop_scene.shop = shop
+	Ui.add_child(new_shop_scene)
 
 	MenuManager.show_menu(MenuManager.MenuState.SHOP, true)
 #endregion

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var icon_texture_rect: TextureRect = %IconTextureRect
+@onready var item_type: Label = %ItemType
 @onready var item_stats: Label = %ItemStats
 @onready var item_button: Button = %ItemButton
 @onready var desc_panel_container: PanelContainer = %DescPanelContainer
@@ -24,6 +25,7 @@ func set_up_slot(sellable: bool = false) -> void:
 	can_sell = sellable
 	if fish:
 		icon_texture_rect.texture = fish.get_icon()
+		item_type.text = fish.get_type()
 		item_stats.text = fish.get_stats()
 	else:
 		reset_slot()
@@ -50,6 +52,7 @@ func _on_item_button_pressed() -> void:
 		print("Sold: ", fish.get_type() + "($" + str(fish.get_price()) + ")")
 		GameManager.increase_balance(fish.get_price())
 		InventoryManager.inventory.erase(fish)
+		print(InventoryManager.inventory)
 		InventoryManager.item_sold.emit()
 		reset_slot()
 #endregion

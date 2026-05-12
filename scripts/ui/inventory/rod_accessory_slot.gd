@@ -8,6 +8,8 @@ enum SlotMode {
 @onready var accessory_button: CustomButton = %AccessoryButton
 @onready var icon_texture_rect: TextureRect = %IconTextureRect
 @onready var desc_panel_container: PanelContainer = %DescPanelContainer
+@onready var accessory_type: Label = %AccessoryType
+@onready var count_label: Label = %CountLabel
 @onready var accessory_stats: Label = %AccessoryStats
 
 var accessory: FishingAccessory
@@ -35,15 +37,12 @@ func set_up_slot(new_accessory: FishingAccessory, new_mode: SlotMode, is_equippe
 		return
 
 	icon_texture_rect.texture = accessory.get_icon()
+	accessory_type.text = accessory.get_type()
 	accessory_stats.text = accessory.get_stats()
-
-	update_equipped_visual()
-
-func update_equipped_visual() -> void:
-	if equipped:
-		modulate = Color(1.3, 1.3, 1.3)
-	else:
-		modulate = Color.WHITE
+	
+	if accessory.get_accessory_type() == FishingAccessory.AccessoryType.BAIT || accessory.get_accessory_type() == FishingAccessory.AccessoryType.HOOK:
+		count_label.show()
+		count_label.text = str(accessory.get_count())
 
 func reset_slot() -> void:
 	icon_texture_rect.texture = null
@@ -51,7 +50,6 @@ func reset_slot() -> void:
 	accessory = null
 	equipped = false
 	desc_panel_container.hide()
-	update_equipped_visual()
 
 func _on_accessory_button_mouse_entered() -> void:
 	if accessory:

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ShopCategory" format=3 uid="uid://bh12y2fwjdkl8"]
-
-[ext_resource type="Script" uid="uid://bde8fikokke12" path="res://resources/shops/shop_listing_resource.gd" id="1_41gad"]
-[ext_resource type="Script" uid="uid://dntijrvceigtr" path="res://resources/shops/categories/shop_category.gd" id="3_3tqux"]
-
-[resource]
-script = ExtResource("3_3tqux")
-category_name = "Bobbers"
-metadata/_custom_type_script = "uid://dntijrvceigtr"

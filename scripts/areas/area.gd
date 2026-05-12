@@ -14,6 +14,7 @@ var player
 
 func _ready() -> void:
 	AudioManager.play_music(song_name)
+	set_up_area()
 
 func set_up_area() -> void:
 	player = get_tree().get_first_node_in_group("Player")

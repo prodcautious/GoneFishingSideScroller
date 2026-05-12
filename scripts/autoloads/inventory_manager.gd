@@ -13,5 +13,5 @@ func add_inventory_item(item: Item) -> void:
 	var new_item = item.duplicate()
 	InventoryManager.inventory.append(new_item)
 	item_added.emit()
-	print("Added " + new_item.get_type() + "( " + str(new_item.get_weight()) + "kg.)" + " to inventory. Price: " + str(new_item.get_price()))
+	print("Added " + new_item.get_type() + "( " + new_item.get_weight() + "kg.)" + " to inventory. Price: " + str(new_item.get_price()))
 	print(inventory)

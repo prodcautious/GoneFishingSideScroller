@@ -8,8 +8,7 @@ func get_max_weight() -> float:
 	return max_weight
 
 func get_stats() -> String:
-	return get_accessory_name() + "\n
-	Max Weight: " + str(get_max_weight())
+	return "Max Weight: " + str(get_max_weight())
 #endregion
 
 #region Setters

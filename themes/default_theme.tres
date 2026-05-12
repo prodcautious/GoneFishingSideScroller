@@ -213,6 +213,10 @@ expand_margin_left = 1.0
 expand_margin_right = 1.0
 
 [resource]
+BalanceLabel/base_type = &"Label"
+BalanceLabel/colors/font_color = Color(1, 0.72156864, 0.2901961, 1)
+BalanceLabel/font_sizes/font_size = 16
+BalanceLabel/fonts/font = ExtResource("4_110ce")
 CheckBox/icons/checked = ExtResource("1_vj6dk")
 CheckBox/icons/unchecked = ExtResource("1_cjfk0")
 CustomButton/base_type = &"Button"

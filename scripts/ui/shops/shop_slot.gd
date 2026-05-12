@@ -24,7 +24,17 @@ func _connect_signals() -> void:
 func set_up_slot(new_listing: ShopListing) -> void:
 	listing = new_listing
 
-	icon_texture_rect.texture = listing.item.get_icon()
+	if listing == null:
+		push_error("ShopSlot received null ShopListing.")
+		return
+
+	var slot_item := listing.get_item()
+
+	if slot_item == null:
+		push_error("ShopListing has no item assigned. Listing: " + str(listing))
+		return
+
+	icon_texture_rect.texture = slot_item.get_icon()
 	item_stats.text = listing.get_stats()
 #endregion
 
@@ -54,6 +64,7 @@ func _on_item_button_pressed() -> void:
 				bait.set_count(bait.get_count() + listing.get_count())
 				
 			GameManager.decrease_balance(listing.get_price())
+
 		elif item is Hook:
 			var hook = fishing_rod.get_current_hook()
 		

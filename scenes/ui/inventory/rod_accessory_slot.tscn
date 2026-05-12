@@ -43,6 +43,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
+[node name="CountLabel" type="Label" parent="AccessoryButton/MarginContainer" unique_id=1343502489]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DescPanelContainer" type="PanelContainer" parent="." unique_id=1378130117]
 unique_name_in_owner = true
 visible = false
@@ -68,7 +80,19 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="AccessoryStats" type="Label" parent="DescPanelContainer/MarginContainer" unique_id=1357870406]
+[node name="VBoxContainer" type="VBoxContainer" parent="DescPanelContainer/MarginContainer" unique_id=712591609]
+layout_mode = 2
+alignment = 1
+
+[node name="AccessoryType" type="Label" parent="DescPanelContainer/MarginContainer/VBoxContainer" unique_id=1409612815]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.72156864, 0.2901961, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccessoryStats" type="Label" parent="DescPanelContainer/MarginContainer/VBoxContainer" unique_id=1357870406]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)

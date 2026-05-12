@@ -46,6 +46,7 @@ water_type = "Red Lake"
 song_name = "greava_theme"
 limit_left = -320
 limit_right = 320
+camera_zoom = Vector2(2, 2)
 
 [node name="Parallax" type="Node2D" parent="." unique_id=235504899]
 light_mask = 2

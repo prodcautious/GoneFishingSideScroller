@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_ue63p")
 count = 1000
-accessory_name = "Debug Bait"
+bite_detection_speed = 1.0
 metadata/_custom_type_script = "uid://biffhbd8lrkpv"

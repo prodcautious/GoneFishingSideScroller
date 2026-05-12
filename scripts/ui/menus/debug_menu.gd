@@ -2,7 +2,6 @@ extends CanvasLayer
 
 @onready var fps_label: Label = %FPSLabel
 @onready var state_label: Label = %StateLabel
-@onready var balance_label: Label = %BalanceLabel
 @onready var position_label: Label = %PositionLabel
 
 var old_fps
@@ -10,9 +9,6 @@ var new_fps
 
 var old_state
 var new_state
-
-var old_balance
-var new_balance
 
 var old_position
 var new_position
@@ -29,7 +25,6 @@ func _process(_delta: float) -> void:
 		return
 	update_fps_label()
 	update_state_label()
-	update_balance_label()
 	update_position_label()
 	
 func update_fps_label() -> void:
@@ -50,13 +45,6 @@ func update_state_label() -> void:
 	else:
 		if state_label.text != "No player":
 			state_label.text = "No player"
-
-func update_balance_label() -> void:
-	old_balance = new_balance
-	new_balance = GameManager.balance
-	
-	if old_balance != new_balance:
-		balance_label.text = "Balance: " + str(new_balance)
 
 func update_position_label() -> void:
 	old_position = new_position

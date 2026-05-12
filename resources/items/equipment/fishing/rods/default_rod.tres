@@ -3,25 +3,18 @@
 [ext_resource type="Script" uid="uid://qc4euosj4xut" path="res://resources/items/equipment/fishing/rods/fishing_rod_resource.gd" id="1_4iie0"]
 [ext_resource type="Resource" uid="uid://140l2thheskn" path="res://resources/items/equipment/fishing/accessories/bait/grub.tres" id="1_pt6fw"]
 [ext_resource type="Script" uid="uid://biffhbd8lrkpv" path="res://resources/items/equipment/fishing/accessories/bait/bait_resource.gd" id="1_rknga"]
-[ext_resource type="Resource" uid="uid://uqe6g841mxtj" path="res://resources/items/equipment/fishing/accessories/bobber/default_bobber.tres" id="2_t2fka"]
-[ext_resource type="Resource" uid="uid://cvjcugkypwdod" path="res://resources/items/equipment/fishing/accessories/hook/small_single_hook.tres" id="3_1ldc5"]
-[ext_resource type="Script" uid="uid://c6nbhk8ucic1l" path="res://resources/items/equipment/fishing/accessories/bobber/bobber_resource.gd" id="3_l0geg"]
-[ext_resource type="Resource" uid="uid://kfpxjensjdb7" path="res://resources/items/equipment/fishing/accessories/bait/debug_bait.tres" id="3_mnrjw"]
 [ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/equipment/fishing/rods/fishing_rod.png" id="3_rhdxy"]
 [ext_resource type="Resource" uid="uid://dew6uy3pm6fvq" path="res://resources/items/equipment/fishing/accessories/line/two_pound_line.tres" id="4_rhdxy"]
+[ext_resource type="Resource" uid="uid://cvjcugkypwdod" path="res://resources/items/equipment/fishing/accessories/hook/small_hook.tres" id="5_6f5vc"]
 [ext_resource type="Texture2D" uid="uid://bfjv1haipml4w" path="res://assets/textures/items/equipment/fishing/rods/icons/fishing_rod_icon.png" id="5_to533"]
-[ext_resource type="Resource" uid="uid://0wlvb7pvb28v" path="res://resources/items/equipment/fishing/accessories/bobber/debug_bobber.tres" id="6_qn4md"]
 [ext_resource type="Script" uid="uid://7mk8ojfc0adh" path="res://resources/items/equipment/fishing/accessories/hook/hook_resource.gd" id="6_usqtt"]
 [ext_resource type="Script" uid="uid://30hjoj6ncoao" path="res://resources/items/equipment/fishing/accessories/line/line_resource.gd" id="9_sg3f0"]
-[ext_resource type="Resource" uid="uid://f7gbh6eououc" path="res://resources/items/equipment/fishing/accessories/hook/debug_hook.tres" id="10_c2ndy"]
-[ext_resource type="Resource" uid="uid://cl177u65tx7uk" path="res://resources/items/equipment/fishing/accessories/line/debug_line.tres" id="14_1hkbq"]
 
 [resource]
 script = ExtResource("1_4iie0")
-bait_array = Array[ExtResource("1_rknga")]([ExtResource("1_pt6fw"), ExtResource("3_mnrjw")])
-bobber_array = Array[ExtResource("3_l0geg")]([ExtResource("2_t2fka"), ExtResource("6_qn4md")])
-hook_array = Array[ExtResource("6_usqtt")]([ExtResource("3_1ldc5"), ExtResource("10_c2ndy")])
-line_array = Array[ExtResource("9_sg3f0")]([ExtResource("4_rhdxy"), ExtResource("14_1hkbq")])
+bait_array = Array[ExtResource("1_rknga")]([ExtResource("1_pt6fw")])
+hook_array = Array[ExtResource("6_usqtt")]([ExtResource("5_6f5vc")])
+line_array = Array[ExtResource("9_sg3f0")]([ExtResource("4_rhdxy")])
 held_texture = ExtResource("3_rhdxy")
 type = "Default Rod"
 desc = "Ol' Trusty"

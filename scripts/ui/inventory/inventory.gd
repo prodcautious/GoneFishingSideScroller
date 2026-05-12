@@ -81,6 +81,7 @@ func _instantiate_new_slot(fish: Fish) -> void:
 
 func _open_inventory() -> void:
 	MenuManager.show_menu(MenuManager.MenuState.INVENTORY)
+	_update_inventory_slots()
 
 func _close_inventory() -> void:
 	MenuManager.close_current_menu()

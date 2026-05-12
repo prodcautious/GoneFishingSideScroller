@@ -3,12 +3,10 @@ class_name FishingRod
 
 @export_group("Accessories")
 @export var bait_array: Array[Bait]
-@export var bobber_array: Array[Bobber]
 @export var hook_array: Array[Hook]
 @export var line_array: Array[Line]
 
 var current_bait: Bait
-var current_bobber: Bobber
 var current_hook: Hook
 var current_line: Line
 
@@ -20,9 +18,6 @@ func initialize_equipment() -> void:
 	if bait_array.size() > 0:
 		current_bait = bait_array[0]
 
-	if bobber_array.size() > 0:
-		current_bobber = bobber_array[0]
-
 	if hook_array.size() > 0:
 		current_hook = hook_array[0]
 
@@ -33,14 +28,10 @@ func equip_accessory(accessory: FishingAccessory) -> void:
 	if accessory == null:
 		return
 
-	match accessory.get_type():
+	match accessory.get_accessory_type():
 		FishingAccessory.AccessoryType.BAIT:
 			if bait_array.has(accessory):
 				current_bait = accessory
-
-		FishingAccessory.AccessoryType.BOBBER:
-			if bobber_array.has(accessory):
-				current_bobber = accessory
 
 		FishingAccessory.AccessoryType.HOOK:
 			if hook_array.has(accessory):
@@ -57,12 +48,6 @@ func get_hooks() -> Array:
 func get_current_hook() -> Hook:
 	return current_hook
 
-func get_bobbers() -> Array:
-	return bobber_array
-
-func get_current_bobber() -> Bobber:
-	return current_bobber
-
 func get_bait() -> Array:
 	return bait_array
 
@@ -75,13 +60,10 @@ func get_lines() -> Array:
 func get_current_line() -> Line:
 	return current_line
 
-func get_accessories_by_type(type: FishingAccessory.AccessoryType) -> Array:
-	match type:
+func get_accessories_by_type(accessory_type: FishingAccessory.AccessoryType) -> Array:
+	match accessory_type:
 		FishingAccessory.AccessoryType.BAIT:
 			return bait_array
-
-		FishingAccessory.AccessoryType.BOBBER:
-			return bobber_array
 
 		FishingAccessory.AccessoryType.HOOK:
 			return hook_array
@@ -92,13 +74,10 @@ func get_accessories_by_type(type: FishingAccessory.AccessoryType) -> Array:
 		_:
 			return []
 
-func get_current_accessory_by_type(type: FishingAccessory.AccessoryType) -> FishingAccessory:
-	match type:
+func get_current_accessory_by_type(accessory_type: FishingAccessory.AccessoryType) -> FishingAccessory:
+	match accessory_type:
 		FishingAccessory.AccessoryType.BAIT:
 			return current_bait
-
-		FishingAccessory.AccessoryType.BOBBER:
-			return current_bobber
 
 		FishingAccessory.AccessoryType.HOOK:
 			return current_hook
@@ -118,20 +97,20 @@ func consume_bait_and_hook() -> void:
 func _consume_accessory(
 	accessory: FishingAccessory,
 	accessory_array: Array,
-	type: FishingAccessory.AccessoryType
+	accessory_type: FishingAccessory.AccessoryType
 ) -> void:
 	if accessory == null:
-		_equip_next_available(type)
+		_equip_next_available(accessory_type)
 		return
 
 	accessory.set_count(accessory.get_count() - 1)
 
 	if accessory.get_count() <= 0:
 		accessory_array.erase(accessory)
-		_equip_next_available(type)
+		_equip_next_available(accessory_type)
 	
-func _equip_next_available(type: FishingAccessory.AccessoryType) -> void:
-	var accessories := get_accessories_by_type(type)
+func _equip_next_available(accessory_type: FishingAccessory.AccessoryType) -> void:
+	var accessories := get_accessories_by_type(accessory_type)
 
 	var next_accessory: FishingAccessory = null
 
@@ -147,9 +126,6 @@ func _equip_next_available(type: FishingAccessory.AccessoryType) -> void:
 		FishingAccessory.AccessoryType.HOOK:
 			current_hook = next_accessory
 
-		FishingAccessory.AccessoryType.BOBBER:
-			current_bobber = next_accessory
-
 		FishingAccessory.AccessoryType.LINE:
 			current_line = next_accessory
 
@@ -161,10 +137,6 @@ func get_catch_modifier() -> String:
 func set_current_bait(bait: Bait) -> void:
 	if bait_array.has(bait):
 		current_bait = bait
-
-func set_current_bobber(bobber: Bobber) -> void:
-	if bobber_array.has(bobber):
-		current_bobber = bobber
 
 func set_current_hook(hook: Hook) -> void:
 	if hook_array.has(hook):

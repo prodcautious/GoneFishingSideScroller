@@ -5,8 +5,10 @@
 
 [resource]
 script = ExtResource("1_8fv3g")
-count = 1
+count = 10
 weight = 0.5
-accessory_name = "Grub"
+bite_detection_speed = 5.0
+type = "Grub"
+desc = "Pulled from the ground"
 icon = ExtResource("1_28kw5")
 metadata/_custom_type_script = "uid://biffhbd8lrkpv"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Hook" format=3 uid="uid://cvjcugkypwdod"]
+
+[ext_resource type="Texture2D" uid="uid://cmylc6m1fub6d" path="res://assets/textures/items/equipment/fishing/accessories/hooks/small_hook_icon.png" id="1_xbrtc"]
+[ext_resource type="Script" uid="uid://7mk8ojfc0adh" path="res://resources/items/equipment/fishing/accessories/hook/hook_resource.gd" id="2_x1uxa"]
+
+[resource]
+script = ExtResource("2_x1uxa")
+catch_rate = 1.0
+count = 10
+max_bait_weight = 2.0
+weedless = true
+accessory_type = 1
+type = "Small Hook"
+desc = "A beginner's hook"
+icon = ExtResource("1_xbrtc")
+metadata/_custom_type_script = "uid://7mk8ojfc0adh"

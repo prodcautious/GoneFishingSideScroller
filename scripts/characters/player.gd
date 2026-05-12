@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var movement_speed = 150
+@export var movement_speed = 80
 @export var jump_velocity = -300
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var fishing_node: Node2D = %FishingNode
 @onready var rod_holder: Node2D = %RodHolder
 
-enum PLAYER_STATE {IDLE, WALKING, JUMPING, INTERACTING, FISHING}
+enum PLAYER_STATE {IDLE, WALKING, INTERACTING, FISHING}
 var current_player_state
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -49,8 +49,6 @@ func get_current_state() -> String:
 			return "Idle"
 		PLAYER_STATE.WALKING:
 			return "Walking"
-		PLAYER_STATE.JUMPING:
-			return "Jumping"
 		PLAYER_STATE.INTERACTING:
 			return "Interacting"
 		PLAYER_STATE.FISHING:
@@ -65,10 +63,8 @@ func set_state(state: int) -> void:
 		1:
 			current_player_state = PLAYER_STATE.WALKING
 		2:
-			current_player_state = PLAYER_STATE.JUMPING
-		3:
 			current_player_state = PLAYER_STATE.INTERACTING
-		4:
+		3:
 			current_player_state = PLAYER_STATE.FISHING
 		_:
 			print("No state: ", state, " found")
@@ -83,10 +79,6 @@ func _get_input():
 	
 	if input_direction != 0.0:
 		facing_direction = input_direction
-
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-		set_state(2)
 
 func _apply_gravity(delta):
 	if not is_on_floor():
@@ -121,13 +113,7 @@ func _update_animation() -> void:
 
 		PLAYER_STATE.WALKING:
 			if !fishing_node.rod_equipped:
-				anim_name = "idle_" + dir
-			else:
-				anim_name = "fishing_" + dir
-
-		PLAYER_STATE.JUMPING:
-			if !fishing_node.rod_equipped:
-				anim_name = "idle_" + dir
+				anim_name = "walk_" + dir
 			else:
 				anim_name = "fishing_" + dir
 

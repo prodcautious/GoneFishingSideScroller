@@ -4,8 +4,12 @@ class_name EquippableItem
 @export_group("Equippable Item Properties")
 @export var held_texture: Texture2D
 
+#region Getters
 func get_held_texture() -> Texture2D:
 	return held_texture
+#endregion
 
+#region Setters
 func set_held_texture(new_held_texture: Texture2D) -> void:
 	held_texture = new_held_texture
+#endregion
