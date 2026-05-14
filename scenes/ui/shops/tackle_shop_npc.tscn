@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cjwgboavnsbin" path="res://scripts/characters/shopkeeper/shopkeeper_npc.gd" id="1_mx3xv"]
 [ext_resource type="Resource" uid="uid://bb36jnui701j4" path="res://dialogue/bait_and_tackle.dialogue" id="2_taecv"]
 [ext_resource type="PackedScene" uid="uid://dbcqn4vkkcaia" path="res://scenes/ui/shops/shopkeeper_shop.tscn" id="3_vqgpy"]
-[ext_resource type="Texture2D" uid="uid://bvk4axvc7su1h" path="res://assets/textures/characters/shopkeepers/tackle_shopkeeper.png" id="4_mx3xv"]
+[ext_resource type="Texture2D" uid="uid://bvk4axvc7su1h" path="res://assets/textures/characters/npcs/shopkeepers/tackle_shopkeeper.png" id="4_mx3xv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmhcl"]
 size = Vector2(24, 24)

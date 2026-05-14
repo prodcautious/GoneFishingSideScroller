@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Shop" format=3 uid="uid://cq8ituvn1xo2w"]
+
+[ext_resource type="Script" uid="uid://dntijrvceigtr" path="res://resources/shops/categories/shop_category.gd" id="1_vhk2o"]
+[ext_resource type="Resource" uid="uid://vijy64ruvr0h" path="res://resources/shops/categories/hook_category.tres" id="2_kk7uu"]
+[ext_resource type="Script" uid="uid://cwahv3xw6b7gx" path="res://resources/shops/shop_resource.gd" id="2_p60np"]
+
+[resource]
+script = ExtResource("2_p60np")
+shop_name = "Test Shop"
+categories = Array[ExtResource("1_vhk2o")]([ExtResource("2_kk7uu")])
+metadata/_custom_type_script = "uid://cwahv3xw6b7gx"

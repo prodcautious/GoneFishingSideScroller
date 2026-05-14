@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvk4axvc7su1h"
-path="res://.godot/imported/tackle_shopkeeper.png-65e0d660faf2c3a18b0f6bec4fec3e87.ctex"
+path="res://.godot/imported/tackle_shopkeeper.png-ef5a3f5a1b74e01984bc304e8cc0df7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/characters/shopkeepers/tackle_shopkeeper.png"
-dest_files=["res://.godot/imported/tackle_shopkeeper.png-65e0d660faf2c3a18b0f6bec4fec3e87.ctex"]
+source_file="res://assets/textures/characters/npcs/shopkeepers/tackle_shopkeeper.png"
+dest_files=["res://.godot/imported/tackle_shopkeeper.png-ef5a3f5a1b74e01984bc304e8cc0df7a.ctex"]
 
 [params]
 

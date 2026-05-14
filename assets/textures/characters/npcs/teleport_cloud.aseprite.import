@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bwuhhdmfkyvlw"
+path="res://.godot/imported/teleport_cloud.aseprite-bd8d097382c09c73cac50b07e0295f43.res"
+
+[deps]
+
+source_file="res://assets/textures/characters/npcs/teleport_cloud.aseprite"
+dest_files=["res://.godot/imported/teleport_cloud.aseprite-bd8d097382c09c73cac50b07e0295f43.res"]
+
+[params]
+

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://kpnb1fefxdbq"
+path="res://.godot/imported/teleport_cloud_greava.dialogue-13fb7ac3a745462da1bd3a4d9fd6c7b7.tres"
+
+[deps]
+
+source_file="res://dialogue/teleport_cloud/teleport_cloud_greava.dialogue"
+dest_files=["res://.godot/imported/teleport_cloud_greava.dialogue-13fb7ac3a745462da1bd3a4d9fd6c7b7.tres"]
+
+[params]
+
+defaults=true

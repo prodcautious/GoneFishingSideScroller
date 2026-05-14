@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dthqgbsu2a16b" path="res://assets/textures/parallax/planet_middle.png" id="4_dp3eg"]
 [ext_resource type="Shader" uid="uid://couabvrqd30dk" path="res://shaders/environment/water.gdshader" id="4_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bxhism48hdoad" path="res://assets/textures/parallax/planet_close.png" id="5_yc10j"]
+[ext_resource type="PackedScene" uid="uid://cbexiu5iam7jc" path="res://scenes/dialogue/npcs/teleport_cloud_npc.tscn" id="7_irocd"]
 [ext_resource type="TileSet" uid="uid://cpa1mggujibhf" path="res://scenes/tileset.tres" id="9_it57t"]
 [ext_resource type="PackedScene" uid="uid://b7ip1u5ow23u5" path="res://scenes/tiles/catch_modifier_tile.tscn" id="16_b8hkb"]
 
@@ -96,6 +97,10 @@ centered = false
 
 [node name="Player" parent="Characters" unique_id=1423084509 instance=ExtResource("3_jyhfs")]
 position = Vector2(-304, -16)
+
+[node name="TeleportCloudNPC" parent="Characters" unique_id=2051625574 instance=ExtResource("7_irocd")]
+position = Vector2(-192, -16)
+spawn_coords = Vector2(11, 6)
 
 [node name="Lighting" type="Node2D" parent="." unique_id=75531440]
 

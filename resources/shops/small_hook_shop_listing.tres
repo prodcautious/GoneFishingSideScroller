@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopListing" format=3 uid="uid://byiv4dk2px4ye"]
+
+[ext_resource type="Script" uid="uid://bde8fikokke12" path="res://resources/shops/shop_listing_resource.gd" id="1_gk6q4"]
+[ext_resource type="Resource" uid="uid://cvjcugkypwdod" path="res://resources/items/equipment/fishing/accessories/hook/small_hook.tres" id="1_y2ng7"]
+
+[resource]
+script = ExtResource("1_gk6q4")
+item = ExtResource("1_y2ng7")
+count = 10
+price = 100
+metadata/_custom_type_script = "uid://bde8fikokke12"

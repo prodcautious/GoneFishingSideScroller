@@ -27,7 +27,7 @@ var cast_power: float = 0.0
 
 const MAX_CHARGE_TIME: float = 1.5
 const MIN_CAST_HOLD_TIME: float = 0.4
-const PERFECT_CAST_THRESHOLD: float = 0.99
+const PERFECT_CAST_THRESHOLD: float = 0.98
 const EXPO_FACTOR: float = 3.0
 const DECAY_RATE: float = 0.20 
 const BITE_SPEED_BONUS: float = 0.25

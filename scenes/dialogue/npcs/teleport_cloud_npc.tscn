@@ -1,0 +1,147 @@
+[gd_scene format=4 uid="uid://cbexiu5iam7jc"]
+
+[ext_resource type="Script" uid="uid://bwxnrifdmf1xl" path="res://scripts/dialogue/npcs/teleport_cloud_npc.gd" id="1_4nj1r"]
+[ext_resource type="Resource" uid="uid://dt8x161e4x0vf" path="res://dialogue/teleport_cloud/teleport_cloud_shop.dialogue" id="2_j42px"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_j42px"]
+_data = PackedByteArray("AAADAAUAAAABAAAAAAEAAMAAAAByBAAAUklGRmoEAABXRUJQVlA4TF4EAAAv/8AvEFegKJKk5vJpyW8M4N8NX2yoimyDutcjhCBKCKObMGIo4EtRJCkOSQd/REQV+K9CxgWCbJvKjuqwDwD4/w+Anvdijw3h7c4NqXXT8CjQlW27bSxdSVWspqI24yOJPVZRV4eT2/x9gKL7GE70Jn2WddARx+NmbcZ/JgGxcPpivIvoPwRHkhxF2UBjBpRVnPmD/PfQWFs7ozFGrYgF43vxyyVmSSu2hJZNWkDL9uKYa7RJ3AJisVaI1loAIt2LWy4xmI2GcnEDoiECOCJ78cs1BsACAoBCQsDhHNG98LlKiZiZQjBDz/fC5yoEczSsFhqXXsb79EZfRk29oPfgMSIC8nPQKgFCxMG5vinTNgAw9JMW34tHrhGIAdm5ocwbwC/Iz6mK8L045HoM/HSF7FyvTZHWMBEmMi2+F4dcgn4iJgq99wqcAMDJhAjfi0Mu0QGvPQHSuUJv1eEXZOGgwvfikmuvmr6S7Hsp9proh1+SFt8LmYsQ/+EKSHIqhbP/se9VP9NJi+/FKZc8uhpUHz3UpthrOpsQ4Xtxy/XpQ000Uu51GInvxS2XpEruZfheyFy/+vnff/4JjrW1Mxpj1IpYML4Xv1xilrRiS2jZpAW0bC+OuUabxC0gFmuFaK0FINK9uOUSg9loKBc3IBoigCOyF79cYwAsIAAoJAQczhHdC5+rlIiZKQQz9HwvfK5CgBgQQ6Ip1LKEFXtJAOxAu7+HXMW9RgRk4mXEDwLSOaIXIB1wyyWZkaGcx4gPEg8SWvy9RMA4YCA4sLKMEvEw86Av05LHwCcA8FVCPXKNQESagKHMG3Ojyv1a5L045HqMOXFtirQGAOFQi+/FIZegn4gWir33OqstwvfikEt0AICTJxOF3pqJZXIqfC8uufaqAPpMnPIaMi2+Fy4XK665d6H50PeaRoTvxSmXKIYsV1PupQdXvhe3XHs90GK8JBu+FzoXJd4s5D6G74XK9faWFFuvFlL1bHbnNGdSOXfdr5zLbkdyfXFcPW8sSVb1sxMSqZ3ulGdR+5Eti6yldm6WQq/a55ZG1r/7SPUvyK9+/g+f0X7FucySVmzd8cs1mrViAdH//W65DGajAfBfXrnGAFhAAOC/+VylRMyMO/eQqxAgBsSQaNzxyRUARAQken/4XMXAUDkwEBxYWYb/Q49cIxCRJmCAVvCKQ67HmJleK9geudBPRAsTWsP2yKUDAJw8mahhu+TaqwLoazntk0uzZhSo4rRXLsWgaSrYbrn2Ws3VL9fktJCqR/XtLSm2XlXOZnfO8r4cV85dx3InUve67HYkF9f188by185OOFayluO6Ob0HKr/ZbEkupH5ulizXciyVc86yrp3T28sl+8766bi1WovIom663a+czZblOqPuRT69knX93JHU/0FyeUtT+96cb3cste/NWcdxIdeL2h+fsv94V/WznZ7m1vrX8ArJG1I7t8tfO7ste1nXTrc77UikeqZZ/prpsvmVIQ==")
+size_override = Vector2(256, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn8kt"]
+size = Vector2(24, 24)
+
+[sub_resource type="Animation" id="Animation_r3fb1"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_e8j4a"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 8, 9, 7, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_naf7y"]
+_data = {
+&"idle": SubResource("Animation_r3fb1"),
+&"teleport": SubResource("Animation_e8j4a")
+}
+
+[sub_resource type="Curve" id="Curve_j42px"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99248123, 0.49806947), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r3fb1"]
+curve = SubResource("Curve_j42px")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j42px"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_over_velocity_curve = SubResource("CurveTexture_r3fb1")
+color = Color(0.47058824, 0.84313726, 1, 1)
+
+[node name="TeleportCloudNPC" type="CharacterBody2D" unique_id=2051625574 groups=["NPC"]]
+process_mode = 3
+z_index = 1
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_4nj1r")
+dialogue_resource = ExtResource("2_j42px")
+teleport_area_path = "res://scenes/areas/tackle_shop.tscn"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=18279261]
+z_index = 2
+texture_filter = 1
+position = Vector2(0, -32)
+texture = SubResource("PortableCompressedTexture2D_j42px")
+hframes = 4
+vframes = 3
+frame = 4
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/textures/characters/npcs/teleport_cloud.aseprite",
+"source_uid": 3972300494666920416
+}
+metadata/_aseprite_wizard_source_file_hash_ = "e8dd1f811cf2277146b86b2abb7ea441"
+
+[node name="InteractContainer" type="VBoxContainer" parent="." unique_id=90531932]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -77.0
+offset_right = 20.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="InteractContainer" unique_id=588765366]
+unique_name_in_owner = true
+z_index = 2
+y_sort_enabled = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DetectArea2D" type="Area2D" parent="." unique_id=1616301391]
+unique_name_in_owner = true
+position = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D" unique_id=1334782388]
+shape = SubResource("RectangleShape2D_qn8kt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1002818321]
+libraries/ = SubResource("AnimationLibrary_naf7y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=147516023]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -32)
+process_material = SubResource("ParticleProcessMaterial_j42px")

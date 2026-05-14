@@ -1,0 +1,9 @@
+~ start
+Rainy Cloud: *sniff* *sniff*.
+Rainy Cloud: What do you want?
+- Teleport (Greava)
+	$> request_teleport()
+	Rainy Cloud: That's all they ever want!
+- Nothing.
+	Rainy Cloud: Oh... okay.
+=> END

@@ -22,22 +22,20 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	if current_player_state in [PLAYER_STATE.FISHING, PLAYER_STATE.INTERACTING]:
+		velocity.x = 0
 		_apply_gravity(delta)
 		_update_animation()
 		move_and_slide()
 		return
 
-	# Apply gravity
 	_apply_gravity(delta)
+	_get_input()
 
 	if velocity.x == 0:
-		if current_player_state != PLAYER_STATE.IDLE:
-			set_state(0)
+		set_state(0)
 	else:
-		if current_player_state != PLAYER_STATE.WALKING:
-			set_state(1)
+		set_state(1)
 
-	_get_input()
 	_update_animation()
 	move_and_slide()
 #endregion
@@ -64,8 +62,10 @@ func set_state(state: int) -> void:
 			current_player_state = PLAYER_STATE.WALKING
 		2:
 			current_player_state = PLAYER_STATE.INTERACTING
+			velocity.x = 0
 		3:
 			current_player_state = PLAYER_STATE.FISHING
+			velocity.x = 0
 		_:
 			print("No state: ", state, " found")
 
