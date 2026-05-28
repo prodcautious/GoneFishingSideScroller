@@ -49,10 +49,6 @@ func _on_item_button_mouse_exited() -> void:
 
 func _on_item_button_pressed() -> void:
 	if can_sell and fish:
-		print("Sold: ", fish.get_type() + "($" + str(fish.get_price()) + ")")
-		GameManager.increase_balance(fish.get_price())
-		InventoryManager.inventory.erase(fish)
-		print(InventoryManager.inventory)
-		InventoryManager.item_sold.emit()
+		InventoryManager.sell_fish(fish)
 		reset_slot()
 #endregion

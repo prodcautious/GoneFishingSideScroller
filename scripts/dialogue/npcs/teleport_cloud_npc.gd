@@ -3,13 +3,13 @@ extends CharacterBody2D
 @export var dialogue_resource: DialogueResource
 @export var teleport_area_path: String
 @export var spawn_coords: Vector2
+@export var player : CharacterBody2D
 
 @onready var detect_area_2d: Area2D = %DetectArea2D
 @onready var name_label: Label = %NameLabel
 @onready var interact_container: VBoxContainer = %InteractContainer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var player
 var player_is_in_area: bool = false
 var is_teleporting: bool = false
 var should_teleport: bool = false

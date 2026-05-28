@@ -1,7 +1,5 @@
 extends Control
 
-@export var next_scene: String = ""
-
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var skip_tooltip_h_box_container: HBoxContainer = %SkipTooltipHBoxContainer
 
@@ -20,8 +18,5 @@ func _input(_event):
 			has_skipped = true
 
 func _on_bootsplash_finished(_anim_name: String) -> void:
-	if !next_scene:
-		get_tree().change_scene_to_file("res://scenes/ui/menus/start_menu.tscn")
-	else:
-		get_tree().change_scene_to_file(next_scene)
+	AudioManager.play_song("start_menu_theme")
 	get_parent().queue_free()

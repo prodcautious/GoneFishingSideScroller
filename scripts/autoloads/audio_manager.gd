@@ -1,6 +1,7 @@
 extends Node
 
 var music = {
+	"start_menu_theme": preload("res://assets/audio/music/start_menu_theme.ogg"),
 	"greava_theme": preload("res://assets/audio/music/greava_theme.ogg"),
 	"tackle_shop_theme": preload("res://assets/audio/music/tackle_shop_theme.ogg")
 }
@@ -17,28 +18,7 @@ var sfx = {
 var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
 
-func pick_background_music() -> void:
-	if music_player:
-		music_player.queue_free()
-	
-	music_player = AudioStreamPlayer.new()
-	add_child(music_player)
-	
-	music_player.bus = "Music"
-	
-	var options = []
-	
-	for song in music:
-		if song.contains("background"):
-			options.append(music[song])
-	
-	if !options.is_empty():
-		var song = options.pick_random()
-		music_player.stream = song
-		music_player.play()
-		print("Playing Random Background Music: " + str(song))
-
-func play_music(song_name: String) -> void:
+func play_song(song_name: String, fade_in_time: float = 0) -> void:
 	if music_player:
 		music_player.queue_free()
 	
@@ -52,7 +32,8 @@ func play_music(song_name: String) -> void:
 	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	music_player.play()
-	print("Playing Music: " + song_name + " | " + str(song))
+	fade_in_audio(fade_in_time)
+	print("Playing Song: " + song_name + " | " + str(song))
 
 func play_sfx(sfx_name: String, pitch: float = 1.0) -> void:
 	if sfx_player:
@@ -110,3 +91,25 @@ func fade_in_audio(duration: float = 1.0) -> void:
 		target_db,
 		duration
 	)
+
+# Not really being utilized yet :P
+func pick_background_music() -> void:
+	if music_player:
+		music_player.queue_free()
+	
+	music_player = AudioStreamPlayer.new()
+	add_child(music_player)
+	
+	music_player.bus = "Music"
+	
+	var options = []
+	
+	for song in music:
+		if song.contains("background"):
+			options.append(music[song])
+	
+	if !options.is_empty():
+		var song = options.pick_random()
+		music_player.stream = song
+		music_player.play()
+		print("Playing Random Background Music: " + str(song))

@@ -1,7 +1,10 @@
 extends Node
 
+var current_version: float = 0.01
+
 var balance: int = 100
 
+signal game_start
 signal balance_changed(total_count: int)
 
 func increase_balance(amount: int) -> void:

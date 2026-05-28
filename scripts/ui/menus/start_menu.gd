@@ -4,11 +4,9 @@ extends Control
 @onready var start_button: CustomButton = %StartButton
 @onready var options_button: CustomButton = %OptionsButton
 @onready var quit_button: CustomButton = %QuitButton
-@onready var options_menu: Control = %OptionsMenu
-@onready var youtube_label: Label = %YoutubeLabel
 @onready var youtube_texture_button: CustomTextureButton = %YoutubeTextureButton
-@onready var itch_label: Label = %ItchLabel
 @onready var itch_texture_button: CustomTextureButton = %ItchTextureButton
+@onready var version_label: Label = %VersionLabel
 
 @export var main_scene: String = ""
 
@@ -19,6 +17,8 @@ func _ready() -> void:
 	MenuManager.show_menu(MenuManager.MenuState.START)
 	
 	connect_signals()
+	version_label.text = "v " + str(GameManager.current_version)
+
 	pivot_offset = size / 2
 	scale = Vector2.ZERO
 	tween = create_tween()
@@ -30,33 +30,15 @@ func connect_signals() -> void:
 	start_button.pressed.connect(_on_start_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
-	youtube_texture_button.mouse_entered.connect(_on_youtube_button_mouse_entered)
-	youtube_texture_button.mouse_exited.connect(_on_youtube_button_mouse_exited)
-	itch_texture_button.mouse_entered.connect(_on_itch_button_mouse_entered)
-	itch_texture_button.mouse_exited.connect(_on_itch_button_mouse_exited)
-
+	
 func _on_start_button_pressed() -> void:
 	if main_scene:
-		MenuManager.close_current_menu()
 		SceneTransition.transition_scene(main_scene)
-		SignalManager.game_start.emit()
+		GameManager.game_start.emit()
 
 func _on_options_button_pressed() -> void:
 	OptionsManager.load_options()
-	options_menu.show()
-	options_menu.set_up_default_settings()
+	MenuManager.push_menu(MenuManager.MenuState.OPTIONS)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
-
-func _on_youtube_button_mouse_entered() -> void:
-	youtube_label.show()
-
-func _on_youtube_button_mouse_exited() -> void:
-	youtube_label.hide()
-
-func _on_itch_button_mouse_entered() -> void:
-	itch_label.show()
-
-func _on_itch_button_mouse_exited() -> void:
-	itch_label.hide()

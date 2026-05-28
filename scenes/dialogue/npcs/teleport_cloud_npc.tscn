@@ -10,9 +10,13 @@ size_override = Vector2(256, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn8kt"]
 size = Vector2(24, 24)
 
+[sub_resource type="Animation" id="Animation_j42px"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_r3fb1"]
 length = 0.8
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,6 +32,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_e8j4a"]
 length = 2.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -43,6 +48,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_naf7y"]
 _data = {
+&"RESET": SubResource("Animation_j42px"),
 &"idle": SubResource("Animation_r3fb1"),
 &"teleport": SubResource("Animation_e8j4a")
 }
@@ -79,7 +85,7 @@ position = Vector2(0, -32)
 texture = SubResource("PortableCompressedTexture2D_j42px")
 hframes = 4
 vframes = 3
-frame = 4
+frame = 8
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }

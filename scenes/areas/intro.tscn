@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b11m78b3vr8eg"]
+
+[ext_resource type="Script" uid="uid://cwu2w6d5xulmh" path="res://scripts/areas/intro.gd" id="1_wab87"]
+[ext_resource type="Resource" uid="uid://brs37kjqc3sor" path="res://dialogue/intro/intro.dialogue" id="2_dao11"]
+
+[node name="Intro" type="Node2D" unique_id=656218291]
+script = ExtResource("1_wab87")
+dialogue_resource = ExtResource("2_dao11")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=430043371]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

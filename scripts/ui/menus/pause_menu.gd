@@ -30,7 +30,7 @@ func _connect_signals() -> void:
 	controls_button.pressed.connect(_on_controls_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
-	SignalManager.game_start.connect(_on_game_start)
+	GameManager.game_start.connect(_on_game_start)
 
 func _register_menu() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.PAUSE, self)
@@ -62,16 +62,16 @@ func _on_resume_button_pressed() -> void:
 	_toggle_visibility()
 
 func _on_options_button_pressed() -> void:
-	print("opening optinons menu")
-	MenuManager.show_menu(MenuManager.MenuState.OPTIONS, true)
+	MenuManager.push_menu(MenuManager.MenuState.OPTIONS)
 	OptionsManager.load_options()
 
 func _on_controls_button_pressed() -> void:
-	MenuManager.show_menu(MenuManager.MenuState.CONTROLS, true)
+	MenuManager.push_menu(MenuManager.MenuState.CONTROLS)
 
 func _on_main_menu_button_pressed() -> void:
 	if start_menu_scene:
 		SceneTransition.transition_scene(start_menu_scene)
+		AudioManager.play_song("start_menu_theme")
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

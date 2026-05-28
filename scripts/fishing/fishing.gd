@@ -27,7 +27,7 @@ var cast_power: float = 0.0
 
 const MAX_CHARGE_TIME: float = 1.5
 const MIN_CAST_HOLD_TIME: float = 0.4
-const PERFECT_CAST_THRESHOLD: float = 0.98
+const PERFECT_CAST_THRESHOLD: float = 0.99
 const EXPO_FACTOR: float = 3.0
 const DECAY_RATE: float = 0.20 
 const BITE_SPEED_BONUS: float = 0.25
@@ -51,6 +51,7 @@ func _input(event: InputEvent) -> void:
 	var current_area = get_tree().get_first_node_in_group("Area")
 	
 	if current_area == null or !current_area.can_fish:
+		print("Can't fish")
 		return
 
 	if event.is_action_pressed("cast_rod"):
@@ -242,7 +243,7 @@ func try_catch_fish() -> void:
 		print("You caught: ", fish_on_hook.type)
 		print("Random float chance: ", rand_f)
 		print("Your catch chance: ", catch_chance)
-		InventoryManager.add_inventory_item(fish_on_hook)
+		InventoryManager.add_fish_to_inventory(fish_on_hook)
 		await _catch_fish_animation(fish_on_hook)
 		_end_fishing(true)
 		return

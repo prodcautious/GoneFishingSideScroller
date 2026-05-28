@@ -31,7 +31,9 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 	animation_player.play(transitions[current_transition]["fade_in"])
 	await animation_player.animation_finished
 	await get_tree().process_frame
-
+	
+	MenuManager.close_current_menu()
+	
 	var traveling_player = get_tree().get_first_node_in_group("Player")
 	if traveling_player:
 		traveling_player.get_parent().remove_child(traveling_player)

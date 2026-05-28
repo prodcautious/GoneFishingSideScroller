@@ -15,20 +15,19 @@ var is_setting_up : bool = false
 
 #region Built-In
 func _ready() -> void:
+	MenuManager.register_menu(MenuManager.MenuState.OPTIONS, self)
 	_connect_signals()
-	_register_menu()
-	_set_up_default_settings()
+	set_up_default_settings()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") and visible:
 		get_viewport().set_input_as_handled()
 		OptionsManager.save_options()
-		MenuManager.close_current_menu()
+		MenuManager.pop_menu()
 
 func _on_visibility_changed() -> void:
 	if visible:
-		OptionsManager.load_options()
-		_set_up_default_settings()
+		set_up_default_settings()
 #endregion
 
 #region Helpers
@@ -43,10 +42,11 @@ func _connect_signals() -> void:
 	music_h_slider.value_changed.connect(_on_music_volume_changed)
 	sfx_h_slider.value_changed.connect(_on_sfx_volume_changed)
 
-func _register_menu() -> void:
+func register_menu() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.OPTIONS, self)
+	MenuManager.show_menu(MenuManager.MenuState.OPTIONS, true)
 
-func _set_up_default_settings() -> void:
+func set_up_default_settings() -> void:
 	is_setting_up = true
 
 	window_mode_option_button.select(OptionsManager.window_mode)
@@ -62,85 +62,58 @@ func _set_up_default_settings() -> void:
 	sfx_percentage_label.text = str(int(OptionsManager.sfx_volume * 100)) + "%"
 
 	is_setting_up = false
-
-func _center_window() -> void:
-	var window = get_window()
-	var screen = window.current_screen
-	
-	var screen_pos = DisplayServer.screen_get_position(screen)
-	var screen_size = DisplayServer.screen_get_size(screen)
-	
-	var window_size = window.get_size_with_decorations()
-	
-	window.set_position(screen_pos + (screen_size - window_size) / 2)
 #endregion
 
 #region Signals
 func _on_resolution_selected(index: int) -> void:
 	if is_setting_up:
 		return
-	var resolution = OptionsManager.RESOLUTIONS[index]
-	get_window().size = resolution
-	_center_window()
-	resolution_option_button.select(index)
+
 	OptionsManager.resolution_index = index
+	OptionsManager.apply_video_settings()
+	OptionsManager.save_options()
 
 func _on_window_mode_selected(index: int) -> void:
 	if is_setting_up:
 		return
-	match index:
-		0:
-			print("Options: Setting Window Mode to Fullscreen")
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			OptionsManager.window_mode = 0
-			window_mode_option_button.select(0)
-		1:
-			print("Options: Setting Window Mode to Windowed")
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			OptionsManager.window_mode = 1
-			window_mode_option_button.select(1)
-		2:
-			print("Options: Setting Window Mode to Borderless Windowed")
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-			OptionsManager.window_mode = 2
-			window_mode_option_button.select(2)
+
+	OptionsManager.window_mode = index
+	OptionsManager.apply_video_settings()
+	OptionsManager.save_options()
 
 func _on_v_sync_check_box_toggled(toggled_on: bool) -> void:
 	if is_setting_up:
 		return
+
 	OptionsManager.v_sync = toggled_on
-	if toggled_on:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	OptionsManager.apply_video_settings()
+	OptionsManager.save_options()
 
 func _on_master_volume_changed(value: float) -> void:
 	if is_setting_up:
 		return
-	var db = linear_to_db(value)
-	AudioServer.set_bus_volume_db(0, db)
 
-	master_percentage_label.text = str(int(value * 100)) + "%"
 	OptionsManager.master_volume = value
+	OptionsManager.apply_audio_settings()
+	OptionsManager.save_options()
+	master_percentage_label.text = str(int(value * 100)) + "%"
 
 func _on_music_volume_changed(value: float) -> void:
 	if is_setting_up:
 		return
-	var db = linear_to_db(value)
-	AudioServer.set_bus_volume_db(1, db)
 
-	music_percentage_label.text = str(int(value * 100)) + "%"
 	OptionsManager.music_volume = value
+	OptionsManager.apply_audio_settings()
+	OptionsManager.save_options()
+	music_percentage_label.text = str(int(value * 100)) + "%"
+
 	
 func _on_sfx_volume_changed(value: float) -> void:
 	if is_setting_up:
 		return
-	var db = linear_to_db(value)
-	AudioServer.set_bus_volume_db(2, db)
 
-	sfx_percentage_label.text = str(int(value * 100)) + "%"
 	OptionsManager.sfx_volume = value
+	OptionsManager.apply_audio_settings()
+	OptionsManager.save_options()
+	sfx_percentage_label.text = str(int(value * 100)) + "%"
 #endregion

@@ -45,7 +45,7 @@ func _register_to_menu_manager() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.INVENTORY, self)
 
 func _connect_signals() -> void:
-	InventoryManager.item_added.connect(_update_inventory_slots)
+	InventoryManager.fish_added.connect(_update_inventory_slots)
 
 func _populate_inventory() -> void:
 	if InventoryManager.inventory.size() > InventoryManager.MAX_INVENTORY_SIZE:
