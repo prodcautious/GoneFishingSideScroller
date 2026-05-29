@@ -5,7 +5,6 @@ extends Control
 
 @onready var resume_button: CustomButton = %ResumeButton
 @onready var options_button: CustomButton = %OptionsButton
-@onready var controls_button: CustomButton = %ControlsButton
 @onready var main_menu_button: CustomButton = %MainMenuButton
 @onready var quit_button: CustomButton = %QuitButton
 
@@ -27,7 +26,6 @@ func _unhandled_input(event: InputEvent) -> void:
 func _connect_signals() -> void:
 	resume_button.pressed.connect(_on_resume_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
-	controls_button.pressed.connect(_on_controls_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	GameManager.game_start.connect(_on_game_start)
@@ -64,9 +62,6 @@ func _on_resume_button_pressed() -> void:
 func _on_options_button_pressed() -> void:
 	MenuManager.push_menu(MenuManager.MenuState.OPTIONS)
 	OptionsManager.load_options()
-
-func _on_controls_button_pressed() -> void:
-	MenuManager.push_menu(MenuManager.MenuState.CONTROLS)
 
 func _on_main_menu_button_pressed() -> void:
 	if start_menu_scene:

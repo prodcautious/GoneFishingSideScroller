@@ -1,19 +1,18 @@
 ~ start
-???: Greetings traveller! 'Tis I, the galaxy's greatest fisherman!
-???: You must be here for a reason. Might you be interested in fishing yourself?
-- Yes!
-	???: Well alright!
-- Not really.
-	???: Well alright!
-???: Now listen here first.
-???: If you're expecting to spend your days just sitting around doing nothing, waiting for bites, you should quit while you're ahead.
-???: Our line of work requires someone with grit, someone willing to help others and do what is right.
-???: You? I don't know about you yet. I sense something, but I can't quite put my finger on it.
+???: Water's beautiful, isn't it?
+$> wait(2)
+???: You fish yerself?
+???: If ya do, take a listen.
+???: Fishin' isn't just for sport.
+???: This line of work requires grit, someone willing to help others and do what is right.
+???: You? I don't know. I sense something, but I can't quite put my finger on it.
 ???: What's yer name?
-???: Well <name>, a planet known as 'Greava' has been overrun with invasive fish in their waters. Do you think you can investigate?
-- Yes!
+$>
+???: Well {{GameManager.player_name}}, a planet known as 'Greava' has been overrun with invasive fish in their waters. Do you think you can investigate?
+- Yes! 
 	???: Well alright!
 - No.
 	???: Well alright!
 ???: I'll provide you with your first rod, but you'll need to be resourceful along the way.
+$> FishingRodManager.has_fishing_rod = true
 => END

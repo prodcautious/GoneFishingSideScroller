@@ -15,8 +15,14 @@ var sfx = {
 	"sell_item": preload("res://assets/audio/sfx/sell_item.ogg")
 }
 
+var voices = {
+	"fisherman": preload("res://assets/audio/voices/fisherman.ogg"),
+	"wilson": preload("res://assets/audio/voices/wilson.ogg")
+}
+
 var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
+var voice_player: AudioStreamPlayer
 
 func play_song(song_name: String, fade_in_time: float = 0) -> void:
 	if music_player:
@@ -55,23 +61,22 @@ func play_sfx(sfx_name: String, pitch: float = 1.0) -> void:
 	await sfx_player.finished
 	sfx_player.queue_free()
 
-func fade_out_audio(duration: float = 1.0) -> void:
-	var bus_index = AudioServer.get_bus_index("Music")
+func play_voice(voice_name: String, pitch: float = 1.0) -> void:
+	if voice_player:
+		voice_player.queue_free()
 	
-	var tween = create_tween()
-	tween.tween_method(
-		func(volume_db):
-			AudioServer.set_bus_volume_db(bus_index, volume_db),
-		AudioServer.get_bus_volume_db(bus_index),
-		-80.0,
-		duration
-	)
+	voice_player = AudioStreamPlayer.new()
+	add_child(voice_player)
 	
-	if music_player:
-		music_player.stream_paused = true
+	voice_player.bus = "Voice"
 	
-	if sfx_player:
-		sfx_player.queue_free()
+	var voice = voices[voice_name]
+	voice_player.stream = voice
+	
+	if pitch:
+		voice_player.pitch_scale = pitch
+	
+	voice_player.play()
 
 func fade_in_audio(duration: float = 1.0) -> void:
 	var bus_index = AudioServer.get_bus_index("Music")
@@ -91,6 +96,28 @@ func fade_in_audio(duration: float = 1.0) -> void:
 		target_db,
 		duration
 	)
+
+func fade_out_audio(duration: float = 1.0) -> void:
+	var bus_index = AudioServer.get_bus_index("Music")
+
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
+	tween.tween_method(
+		func(volume_db):
+			AudioServer.set_bus_volume_db(bus_index, volume_db),
+		AudioServer.get_bus_volume_db(bus_index),
+		-80.0,
+		duration
+	)
+
+	await tween.finished
+
+	if music_player:
+		music_player.stream_paused = true
+
+	if sfx_player:
+		sfx_player.queue_free()
 
 # Not really being utilized yet :P
 func pick_background_music() -> void:

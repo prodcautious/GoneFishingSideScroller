@@ -7,9 +7,12 @@ extends Control
 @onready var master_h_slider: HSlider = %MasterHSlider
 @onready var music_h_slider: HSlider = %MusicHSlider
 @onready var sfx_h_slider: HSlider = %SfxHSlider
+@onready var voice_h_slider: HSlider = %VoiceHSlider
+
 @onready var master_percentage_label: Label = %MasterPercentageLabel
 @onready var music_percentage_label: Label = %MusicPercentageLabel
 @onready var sfx_percentage_label: Label = %SfxPercentageLabel
+@onready var voice_percentage_label: Label = %VoicePercentageLabel
 
 var is_setting_up : bool = false
 
@@ -41,6 +44,7 @@ func _connect_signals() -> void:
 	master_h_slider.value_changed.connect(_on_master_volume_changed)
 	music_h_slider.value_changed.connect(_on_music_volume_changed)
 	sfx_h_slider.value_changed.connect(_on_sfx_volume_changed)
+	voice_h_slider.value_changed.connect(_on_voice_volume_changed)
 
 func register_menu() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.OPTIONS, self)
@@ -116,4 +120,13 @@ func _on_sfx_volume_changed(value: float) -> void:
 	OptionsManager.apply_audio_settings()
 	OptionsManager.save_options()
 	sfx_percentage_label.text = str(int(value * 100)) + "%"
+
+func _on_voice_volume_changed(value: float) -> void:
+	if is_setting_up:
+		return
+
+	OptionsManager.voice_volume = value
+	OptionsManager.apply_audio_settings()
+	OptionsManager.save_options()
+	voice_percentage_label.text = str(int(value * 100)) + "%"
 #endregion

@@ -48,10 +48,12 @@ func _ready() -> void:
 	cast_progress_bar.value = 0.0
 
 func _input(event: InputEvent) -> void:
+	if !FishingRodManager.has_fishing_rod:
+		return
+	
 	var current_area = get_tree().get_first_node_in_group("Area")
 	
 	if current_area == null or !current_area.can_fish:
-		print("Can't fish")
 		return
 
 	if event.is_action_pressed("cast_rod"):
@@ -312,13 +314,14 @@ func _catch_fish_animation(fish: Fish) -> void:
 
 	caught_fish_sprite.texture = fish.icon
 	caught_fish_label.text = "+ " + fish.get_type() + " (" + str(fish.get_weight()) + "kg.)"
+	caught_fish_label.show()
 
 	get_tree().paused = true
 	AudioManager.play_sfx("fish_caught")
 	ui_animation_player.play("fish_caught")
 	await ui_animation_player.animation_finished
 	get_tree().paused = false
-
+	caught_fish_label.hide()
 	_end_fishing()
 
 func _did_not_catch_fish_animation(reason: String) -> void:

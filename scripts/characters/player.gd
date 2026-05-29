@@ -15,12 +15,19 @@ var current_player_state
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_direction : float = 1.0
 
+var locked := false
+
 #region Built-In
 func _ready() -> void:
+	lock()
 	animation_player.play("idle_right")
 	current_player_state = PLAYER_STATE.IDLE
 
 func _physics_process(delta):
+	if locked:
+		velocity.x = 0
+		return
+		
 	if current_player_state in [PLAYER_STATE.FISHING, PLAYER_STATE.INTERACTING]:
 		velocity.x = 0
 		_apply_gravity(delta)
@@ -125,4 +132,13 @@ func _update_animation() -> void:
 
 	if animation_player.current_animation != anim_name:
 		animation_player.play(anim_name)
+
+func lock() -> void:
+	print("player locked")
+	locked = true
+	velocity.x = 0
+
+func unlock() -> void:
+	print("player unlocked")
+	locked = false
 #endregion

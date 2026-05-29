@@ -20,9 +20,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		if !player:
 			_grab_references()
-		
-		if get_tree().paused:
-			return
 
 		if MenuManager.is_menu_open() and not MenuManager.is_open(MenuManager.MenuState.INVENTORY):
 			return
@@ -32,7 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		_toggle_inventory()
 
-	elif event.is_action_pressed("esc") && visible:
+	elif event.is_action_pressed("esc") && visible || event.is_action_pressed("inventory") && visible:
 		get_viewport().set_input_as_handled()
 		_close_inventory()
 #endregion
@@ -80,7 +77,7 @@ func _instantiate_new_slot(fish: Fish) -> void:
 		inventory_slot.reset_slot()
 
 func _open_inventory() -> void:
-	MenuManager.show_menu(MenuManager.MenuState.INVENTORY)
+	MenuManager.show_menu(MenuManager.MenuState.INVENTORY, true)
 	_update_inventory_slots()
 
 func _close_inventory() -> void:

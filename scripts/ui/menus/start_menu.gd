@@ -11,6 +11,7 @@ extends Control
 @export var main_scene: String = ""
 
 var tween: Tween
+var start_button_pressed: bool = false
 
 func _ready() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.START, self)
@@ -32,9 +33,10 @@ func connect_signals() -> void:
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	
 func _on_start_button_pressed() -> void:
-	if main_scene:
+	if main_scene && !start_button_pressed:
 		SceneTransition.transition_scene(main_scene)
 		GameManager.game_start.emit()
+		start_button_pressed = true
 
 func _on_options_button_pressed() -> void:
 	OptionsManager.load_options()

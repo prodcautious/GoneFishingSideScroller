@@ -25,6 +25,7 @@ func _ready() -> void:
 	randomize()
 
 func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_direction: float = 1.0) -> void:
+	await AudioManager.fade_out_audio(0.5)
 	get_tree().paused = true
 	randomize_current_transition()
 
@@ -36,6 +37,7 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 	
 	var traveling_player = get_tree().get_first_node_in_group("Player")
 	if traveling_player:
+		traveling_player.lock()
 		traveling_player.get_parent().remove_child(traveling_player)
 
 	get_tree().change_scene_to_file(scene)
@@ -64,6 +66,7 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 		parent_node.set_up_area()
 		if traveling_player:
 			traveling_player.face_direction(facing_direction)
+			traveling_player.unlock()
 			print("turning player around")
 
 	await get_tree().create_timer(1.0).timeout
@@ -71,9 +74,9 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 	animation_player.play(transitions[current_transition]["fade_out"])
 	await animation_player.animation_finished
 	await get_tree().process_frame
-
 	get_tree().paused = false
 	transition_complete.emit()
+	AudioManager.fade_in_audio(0.5)
 
 func randomize_current_transition() -> void:
 	current_transition = transitions.keys().pick_random()

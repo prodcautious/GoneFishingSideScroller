@@ -13,9 +13,15 @@ extends Node2D
 var player
 
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
+	if player:
+		SceneTransition.transition_complete.connect(player.unlock, CONNECT_ONE_SHOT)
 	set_up_area()
 
 func set_up_area() -> void:
+	if song_name:
+		AudioManager.play_song(song_name)
+
 	player = get_tree().get_first_node_in_group("Player")
 	
 	if player == null:
@@ -27,9 +33,6 @@ func set_up_area() -> void:
 	
 	if limit_right:
 		player.camera_2d.limit_right = limit_right
-
-	if song_name:
-		AudioManager.play_song(song_name)
 
 	# Defaults to a 2x zoom or whatever it's changed to in export
 	player.camera_2d.zoom = camera_zoom

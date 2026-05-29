@@ -11,7 +11,11 @@ var player
 var player_is_in_area: bool = false
 
 func _ready() -> void:
-	name_label.text = "[E] " + npc_name
+	if npc_name:
+		name_label.text = "[E] " + npc_name
+	else:
+		name_label.text = "[E] Talk"
+
 	player = get_tree().get_first_node_in_group("Player")
 	connect_signals()
 

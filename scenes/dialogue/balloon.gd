@@ -22,6 +22,8 @@ extends CanvasLayer
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
+var current_voice: String = ""
+
 ## Temporary game states
 var temporary_game_states: Array = []
 
@@ -72,6 +74,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 func _ready() -> void:
 	balloon.hide()
+	dialogue_label.spoke.connect(_on_dialogue_label_spoke)
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 	# If the responses menu doesn't have a next action set, use this one
@@ -109,7 +112,7 @@ func _notification(what: int) -> void:
 
 
 ## Start some dialogue
-func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
+func start(with_dialogue_resource: DialogueResource = null, title: String = "", voice: String = "", extra_game_states: Array = []) -> void:
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	if is_instance_valid(with_dialogue_resource):
@@ -117,6 +120,7 @@ func start(with_dialogue_resource: DialogueResource = null, title: String = "", 
 	if not title.is_empty():
 		start_from_title = title
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)
+	current_voice = voice
 	show()
 
 
@@ -215,5 +219,7 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	AudioManager.play_sfx("ui_pressed")
 	next(response.next_id)
 
-
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	if letter not in [".", " ", ",", "!", "?"]:
+		AudioManager.play_voice(current_voice, randf_range(0.9, 1.1))
 #endregion

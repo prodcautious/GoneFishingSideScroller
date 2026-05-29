@@ -3,6 +3,7 @@ extends Node
 var current_version: float = 0.01
 
 var balance: int = 100
+var player_name: String
 
 signal game_start
 signal balance_changed(total_count: int)

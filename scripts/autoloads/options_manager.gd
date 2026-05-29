@@ -14,6 +14,7 @@ var v_sync: bool = true # VSync enabled (Native)
 var master_volume: float = 1.0 # Default 1
 var music_volume: float = 0.5 # Default 0.5
 var sfx_volume: float = 0.5 # Default 0.5
+var voice_volume: float = 0.5 # Default 0.5
 
 func _ready() -> void:
 	load_options()
@@ -35,6 +36,7 @@ func save_options() -> void:
 	file.store_var(master_volume)
 	file.store_var(music_volume)
 	file.store_var(sfx_volume)
+	file.store_var(voice_volume)
 
 func load_options() -> void:
 	if FileAccess.file_exists("user://save_game.dat"):
@@ -47,6 +49,7 @@ func load_options() -> void:
 			master_volume = file.get_var()
 			music_volume = file.get_var()
 			sfx_volume = file.get_var()
+			voice_volume = file.get_var()
 			
 			file.close()
 			print("Options loaded successfully")
@@ -59,6 +62,7 @@ func apply_audio_settings() -> void:
 	AudioServer.set_bus_volume_db(0, linear_to_db(master_volume))
 	AudioServer.set_bus_volume_db(1, linear_to_db(music_volume))
 	AudioServer.set_bus_volume_db(2, linear_to_db(sfx_volume))
+	AudioServer.set_bus_volume_db(3, linear_to_db(voice_volume))
 
 func apply_video_settings() -> void:
 	resolution_index = clampi(resolution_index, 0, RESOLUTIONS.size() - 1)

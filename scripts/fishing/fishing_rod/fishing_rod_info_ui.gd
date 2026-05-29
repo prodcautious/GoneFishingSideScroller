@@ -28,6 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("open_accessories"):
+		if !FishingRodManager.has_fishing_rod:
+			return
 		get_viewport().set_input_as_handled()
 
 		if MenuManager.is_menu_open() and not MenuManager.is_open(MenuManager.MenuState.ACCESSORIES):

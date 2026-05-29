@@ -1,5 +1,7 @@
 extends Node
 
+var has_fishing_rod: bool = false
+
 var fishing_rod : FishingRod = preload("res://resources/items/equipment/fishing/rods/default_rod.tres")
 
 func _ready() -> void:

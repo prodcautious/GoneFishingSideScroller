@@ -512,22 +512,22 @@ func show_example_dialogue_balloon(resource: DialogueResource, title: String = "
 
 
 ## Show the configured dialogue balloon
-func show_dialogue_balloon(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
+func show_dialogue_balloon(resource: DialogueResource, title: String = "", voice: String = "", extra_game_states: Array = []) -> Node:
 	var balloon_path: String = DMSettings.get_setting(DMSettings.BALLOON_PATH, _get_example_balloon_path())
 	if not ResourceLoader.exists(balloon_path):
 		balloon_path = _get_example_balloon_path()
-	return show_dialogue_balloon_scene(balloon_path, resource, title, extra_game_states)
+	return show_dialogue_balloon_scene(balloon_path, resource, title, voice, extra_game_states)
 
 
 ## Show a given balloon scene
-func show_dialogue_balloon_scene(balloon_scene, resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
+func show_dialogue_balloon_scene(balloon_scene, resource: DialogueResource, title: String = "", voice: String = "", extra_game_states: Array = []) -> Node:
 	if balloon_scene is String:
 		balloon_scene = load(balloon_scene)
 	if balloon_scene is PackedScene:
 		balloon_scene = balloon_scene.instantiate()
 
 	var balloon: Node = balloon_scene
-	_start_balloon.call_deferred(balloon, resource, title, extra_game_states)
+	_start_balloon.call_deferred(balloon, resource, title, voice, extra_game_states)
 	return balloon
 
 
@@ -544,15 +544,15 @@ func static_id_to_line_ids(resource: DialogueResource, static_id: String) -> Pac
 
 
 # Call "start" on the given balloon.
-func _start_balloon(balloon: Node, resource: DialogueResource, title: String, extra_game_states: Array) -> void:
+func _start_balloon(balloon: Node, resource: DialogueResource, title: String, voice: String, extra_game_states: Array) -> void:
 	dialogue_started.emit(resource)
 
 	get_current_scene.call().add_child(balloon)
 
 	if balloon.has_method(&"start"):
-		balloon.start(resource, title, extra_game_states)
+		balloon.start(resource, title, voice, extra_game_states)
 	elif balloon.has_method(&"Start"):
-		balloon.Start(resource, title, extra_game_states)
+		balloon.Start(resource, title, voice, extra_game_states)
 	else:
 		assert(false, DMConstants.translate(&"runtime.dialogue_balloon_missing_start_method"))
 

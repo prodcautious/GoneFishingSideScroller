@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bwfwklror663o" path="res://scripts/custom_control/custom_option_button.gd" id="2_wj2x4"]
 [ext_resource type="Theme" uid="uid://1eytnr65412j" path="res://themes/default_theme.tres" id="3_5av45"]
 [ext_resource type="Script" uid="uid://dm3x470i8khp7" path="res://scripts/custom_control/custom_check_box.gd" id="3_c4822"]
+[ext_resource type="Texture2D" uid="uid://dtkdy2cagk7jp" path="res://assets/textures/icons/keybinds/keybind_icons.png" id="6_0gyrj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snsgv"]
 shader = ExtResource("2_0ejsc")
@@ -14,6 +15,34 @@ shader_parameter/lod = 1.0000000475
 bg_color = Color(1, 0.8117647, 0.5568628, 1)
 expand_margin_left = 1.0
 expand_margin_right = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mjwn"]
+atlas = ExtResource("6_0gyrj")
+region = Rect2(56, 48, 24, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xydh"]
+atlas = ExtResource("6_0gyrj")
+region = Rect2(0, 48, 24, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jugju"]
+atlas = ExtResource("6_0gyrj")
+region = Rect2(60, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0uyi"]
+atlas = ExtResource("6_0gyrj")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icuyq"]
+atlas = ExtResource("6_0gyrj")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgeq1"]
+atlas = ExtResource("6_0gyrj")
+region = Rect2(60, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnt61"]
+atlas = ExtResource("6_0gyrj")
+region = Rect2(24, 60, 32, 12)
 
 [node name="OptionsMenu" type="Control" unique_id=1705903237]
 process_mode = 3
@@ -51,7 +80,7 @@ layout_mode = 2
 theme_override_constants/tab_separation = 16
 theme_override_font_sizes/font_size = 16
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 
 [node name="Game" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1454119086]
 visible = false
@@ -78,6 +107,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Video" type="TabBar" parent="MarginContainer/TabContainer" unique_id=300332133]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -195,7 +225,6 @@ script = ExtResource("3_c4822")
 metadata/_custom_type_script = "uid://dm3x470i8khp7"
 
 [node name="Audio" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1834776276]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -320,3 +349,174 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "100%"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer" unique_id=1120330165]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1415869399]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8117647, 0.5568628, 1)
+theme_override_font_sizes/font_size = 16
+text = "Voice"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1821642061]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="VoiceHSlider" type="HSlider" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1153305886]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="VoicePercentageLabel" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1145645636]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "100%"
+
+[node name="Controls" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1869311341]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Controls" unique_id=1031774607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Controls/MarginContainer" unique_id=1870677743]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ToggleInventory" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=1596807800]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/ToggleInventory" unique_id=1923331202]
+custom_minimum_size = Vector2(48, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_1mjwn")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/ToggleInventory" unique_id=98529395]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+text = "Open Inventory"
+horizontal_alignment = 2
+
+[node name="TogglePause" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=1902351909]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/TogglePause" unique_id=474382682]
+custom_minimum_size = Vector2(48, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_4xydh")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/TogglePause" unique_id=1434114122]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+text = "Open Pause Menu"
+horizontal_alignment = 2
+
+[node name="ToggleTeleport" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=345996581]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/ToggleTeleport" unique_id=314470184]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_jugju")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/ToggleTeleport" unique_id=50693413]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+text = "Open Teleport Menu"
+horizontal_alignment = 2
+
+[node name="MoveLeftRight" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=318036489]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/MoveLeftRight" unique_id=990900076]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_x0uyi")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/MoveLeftRight" unique_id=1967659772]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_icuyq")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/MoveLeftRight" unique_id=2021336873]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+text = "Move Left/Right"
+horizontal_alignment = 2
+
+[node name="FishingRodEquip" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=11574667]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/FishingRodEquip" unique_id=1439498567]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_rgeq1")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/FishingRodEquip" unique_id=1664447607]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+text = "Equip Rod"
+horizontal_alignment = 2
+
+[node name="FishingRodCast" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer" unique_id=995999234]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/FishingRodCast" unique_id=969491954]
+custom_minimum_size = Vector2(64, 24)
+layout_mode = 2
+texture = SubResource("AtlasTexture_mnt61")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/FishingRodCast" unique_id=1548840430]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9411765, 0.7607843, 0.5921569, 1)
+theme_override_font_sizes/font_size = 16
+text = "Cast Rod (Hold)"
+horizontal_alignment = 2

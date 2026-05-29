@@ -1,15 +1,111 @@
-[gd_scene format=3 uid="uid://b11m78b3vr8eg"]
+[gd_scene format=4 uid="uid://b11m78b3vr8eg"]
 
-[ext_resource type="Script" uid="uid://cwu2w6d5xulmh" path="res://scripts/areas/intro.gd" id="1_wab87"]
+[ext_resource type="Script" uid="uid://bgxlh3au7e07n" path="res://scripts/areas/area.gd" id="1_el4a1"]
 [ext_resource type="Resource" uid="uid://brs37kjqc3sor" path="res://dialogue/intro/intro.dialogue" id="2_dao11"]
+[ext_resource type="PackedScene" uid="uid://bhwrhc4ep1j4p" path="res://scenes/characters/player.tscn" id="3_el4a1"]
+[ext_resource type="TileSet" uid="uid://cpa1mggujibhf" path="res://scenes/tileset.tres" id="5_607nh"]
+[ext_resource type="Shader" uid="uid://couabvrqd30dk" path="res://shaders/environment/water.gdshader" id="6_v8g13"]
+[ext_resource type="PackedScene" uid="uid://8e0lunm5t3wo" path="res://scenes/dialogue/npcs/cutscene_npc_example.tscn" id="7_el4a1"]
+[ext_resource type="Texture2D" uid="uid://mv45ugn07256" path="res://assets/textures/misc/white_box.png" id="7_flbv8"]
+[ext_resource type="PackedScene" uid="uid://de7xhtvhrv8os" path="res://scenes/transitions/transition_area_2d.tscn" id="9_607nh"]
+
+[sub_resource type="Gradient" id="Gradient_ljiig"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wgyx0"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ya4ey"]
+noise = SubResource("FastNoiseLite_wgyx0")
+color_ramp = SubResource("Gradient_ljiig")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrv81"]
+shader = ExtResource("6_v8g13")
+shader_parameter/water_color = Color(0.83137256, 0.11764706, 0.23529412, 1)
+shader_parameter/wave_noise = SubResource("NoiseTexture2D_ya4ey")
+shader_parameter/edge_wave_height = 0.2000000095
+shader_parameter/edge_wave_speed = 0.2000000095
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/foam_thickness = 0.010000000475
+shader_parameter/foam_softness = 0.02000000095
+shader_parameter/foam_noise_scale = 5.00000021375
+shader_parameter/foam_noise_strength = 0.5
+
+[sub_resource type="Environment" id="Environment_601tu"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.5
+glow_bloom = 0.05
 
 [node name="Intro" type="Node2D" unique_id=656218291]
-script = ExtResource("1_wab87")
-dialogue_resource = ExtResource("2_dao11")
+script = ExtResource("1_el4a1")
+limit_left = -384
+limit_right = -144
+camera_zoom = Vector2(3, 3)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=430043371]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Characters" type="Node2D" parent="." unique_id=37953483 groups=["Characters"]]
+
+[node name="Player" parent="Characters" unique_id=1423084509 instance=ExtResource("3_el4a1")]
+position = Vector2(-368, -16)
+
+[node name="???" parent="Characters" unique_id=2051625574 instance=ExtResource("7_el4a1")]
+position = Vector2(-296, -24)
+dialogue_resource = ExtResource("2_dao11")
+detect_area_size = Vector2(48, 24)
+voice = "wilson"
+
+[node name="Tiles" type="Node2D" parent="." unique_id=1638110281]
+
+[node name="BG" type="TileMapLayer" parent="Tiles" unique_id=913241679]
+modulate = Color(0.5, 0.5, 0.5, 1)
+z_index = -1
+tile_map_data = PackedByteArray("AADp//r/AgAFAAEAAADp//v/AgAFAAEAAADp//z/AgAFAAEAAADp//3/AgAFAAEAAADp//7/AgAFAAEAAADq//r/AgAFAAEAAADq//v/AgAKAAEAAADq//z/AgAFAAEAAADq//3/AgAFAAEAAADq//7/AgAFAAEAAADr//r/AgAFAAEAAADr//v/AgAFAAEAAADr//z/AgAFAAEAAADr//3/AgAFAAEAAADr//7/AgAFAAEAAADs//r/AgALAAEAAADs//v/AgAFAAEAAADs//z/AgAFAAEAAADs//3/AgAFAAEAAADs//7/AgAFAAEAAADt//r/AgAFAAEAAADt//v/AgAFAAEAAADt//z/AgAFAAEAAADt//3/AgAFAAEAAADt//7/AgAFAAEAAADu//r/AgAFAAEAAADu//v/AgAFAAEAAADu//z/AgAFAAEAAADu//3/AgAFAAEAAADu//7/AgAKAAEAAADv//r/AgAKAAEAAADv//v/AgAFAAEAAADv//z/AgAFAAEAAADv//3/AgAFAAEAAADv//7/AgAMAAIAAADw//r/AgAFAAEAAADw//v/AgAFAAEAAADw//z/AgAFAAEAAADw//3/AgAFAAEAAADw//7/AgAFAAEAAADx//r/AgAFAAEAAADx//v/AgAFAAEAAADx//z/AgAFAAEAAADx//3/AgAGAAEAAADx//7/AgAFAAEAAADy//r/AgAFAAEAAADy//v/AgAFAAEAAADy//z/AgAFAAEAAADy//3/AgAFAAEAAADy//7/AgALAAEAAADz//r/AgAMAAIAAADz//v/AgAMAAIAAADz//z/AgAFAAEAAADz//3/AgAFAAEAAADz//7/AgAFAAEAAAD0//r/AgAFAAEAAAD0//v/AgAFAAEAAAD0//z/AgAFAAEAAAD0//3/AgAFAAEAAAD0//7/AgAFAAEAAAD1//r/AgALAAEAAAD1//v/AgAFAAEAAAD1//z/AgAFAAEAAAD1//3/AgAIAAEAAAD1//7/AgALAAIAAAD2//r/AgAFAAEAAAD2//v/AgALAAEAAAD2//z/AgAFAAEAAAD2//3/AgAFAAEAAAD2//7/AgAFAAEAAADo//r/AgAFAAEAAADo//v/AgAFAAEAAADo//z/AgAIAAEAAADo//3/AgAFAAEAAADo//7/AgAFAAEAAADr////AgAFAAEAAADs////AgAFAAEAAADt////AgAFAAEAAADu////AgAFAAEAAADv////AgAFAAEAAADv/wAAAgAFAAEAAADu/wAAAgAFAAEAAADt/wAAAgAFAAEAAADs/wAAAgAFAAEAAADr/wAAAgAFAAEAAAA=")
+tile_set = ExtResource("5_607nh")
+collision_enabled = false
+
+[node name="Ground" type="TileMapLayer" parent="Tiles" unique_id=9444492]
+tile_map_data = PackedByteArray("AAD2/wMAAgAFAAEAAAD3/wMAAgAFAAEAAAD4/wMAAgAFAAEAAADz////AgACAAEAAADy////AgACAAEAAADx////AgACAAEAAADw////AgABAAEAAADv////AgADAAcAAADu////AgACAAcAAADt////AgABAAcAAADs////AgACAAcAAADs/wAAAgAFAAEAAADs/wEAAgAFAAEAAADs/wIAAgAFAAEAAADs/wMAAgAFAAEAAADt/wAAAgAFAAEAAADt/wEAAgAFAAEAAADt/wIAAgAFAAEAAADt/wMAAgAFAAEAAADu/wAAAgAFAAEAAADu/wEAAgAFAAEAAADu/wIAAgAFAAEAAADu/wMAAgAFAAEAAADv/wAAAgAFAAEAAADv/wEAAgAFAAEAAADv/wIAAgAFAAEAAADv/wMAAgAFAAEAAADw/wAAAgAFAAEAAADw/wEAAgAFAAEAAADw/wIAAgAFAAEAAADw/wMAAgAFAAEAAADx/wAAAgAFAAEAAADx/wEAAgAFAAEAAADx/wIAAgAFAAEAAADx/wMAAgAFAAEAAADy/wAAAgAFAAEAAADy/wEAAgAFAAEAAADy/wIAAgAFAAEAAADy/wMAAgAFAAEAAADz/wAAAgAFAAEAAADz/wEAAgAFAAEAAADz/wIAAgAFAAEAAADz/wMAAgAFAAEAAAD0/wMAAgAFAAEAAAD1/wMAAgAFAAEAAADs/wQAAgAFAAEAAADs/wUAAgAFAAEAAADs/wYAAgAFAAEAAADs/wcAAgAFAAEAAADs/wgAAgAFAAEAAADs/wkAAgAFAAEAAADt/wQAAgAFAAEAAADt/wUAAgAFAAEAAADt/wYAAgAFAAEAAADt/wcAAgAFAAEAAADt/wgAAgAFAAEAAADt/wkAAgAFAAEAAADu/wQAAgAFAAEAAADu/wUAAgAFAAEAAADu/wYAAgAFAAEAAADu/wcAAgAFAAEAAADu/wgAAgAFAAEAAADu/wkAAgAFAAEAAADv/wQAAgAFAAEAAADv/wUAAgAFAAEAAADv/wYAAgAFAAEAAADv/wcAAgAFAAEAAADv/wgAAgAFAAEAAADv/wkAAgAFAAEAAADw/wQAAgAFAAEAAADw/wUAAgAFAAEAAADw/wYAAgAFAAEAAADw/wcAAgAFAAEAAADw/wgAAgAFAAEAAADw/wkAAgAFAAEAAADx/wQAAgAFAAEAAADx/wUAAgAFAAEAAADx/wYAAgAFAAEAAADx/wcAAgAFAAEAAADx/wgAAgAFAAEAAADx/wkAAgAFAAEAAADy/wQAAgAFAAEAAADy/wUAAgAFAAEAAADy/wYAAgAFAAEAAADy/wcAAgAFAAEAAADy/wgAAgAFAAEAAADy/wkAAgAFAAEAAADz/wQAAgAFAAEAAADz/wUAAgAFAAEAAADz/wYAAgAFAAEAAADz/wcAAgAFAAEAAADz/wgAAgAFAAEAAADz/wkAAgAFAAEAAAD0/wQAAgAFAAEAAAD0/wUAAgAFAAEAAAD0/wYAAgAFAAEAAAD0/wcAAgAFAAEAAAD0/wgAAgAFAAEAAAD0/wkAAgAFAAEAAAD1/wQAAgAFAAEAAAD1/wUAAgAFAAEAAAD1/wYAAgAFAAEAAAD1/wcAAgAFAAEAAAD1/wgAAgAFAAEAAAD1/wkAAgAFAAEAAAD2/wQAAgAFAAEAAAD2/wUAAgAFAAEAAAD2/wYAAgAFAAEAAAD2/wcAAgAFAAEAAAD2/wgAAgAFAAEAAAD2/wkAAgAFAAEAAAD3/wQAAgAFAAEAAAD3/wUAAgAFAAEAAAD3/wYAAgAFAAEAAAD3/wcAAgAFAAEAAAD3/wgAAgAFAAEAAAD3/wkAAgAFAAEAAAD4/wQAAgAFAAEAAAD4/wUAAgAFAAEAAAD4/wYAAgAFAAEAAAD4/wcAAgAFAAEAAAD4/wgAAgAFAAEAAAD4/wkAAgAFAAEAAADr////AgABAAcAAADq////AgABAAEAAADp////AgABAAEAAAD0////AgACAAEAAAD1////AgACAAEAAAD2////AgACAAEAAADn/wAAAgAFAAEAAADo/wAAAgAFAAEAAADo/wEAAgAFAAEAAADo/wIAAgAFAAEAAADo/wMAAgAFAAEAAADo/wQAAgAFAAEAAADo/wUAAgAFAAEAAADo/wYAAgAFAAEAAADo/wcAAgAFAAEAAADo/wgAAgAFAAEAAADo/wkAAgAFAAEAAADp/wAAAgAFAAEAAADp/wEAAgAFAAEAAADp/wIAAgAFAAEAAADp/wMAAgAFAAEAAADp/wQAAgAFAAEAAADp/wUAAgAFAAEAAADp/wYAAgAFAAEAAADp/wcAAgAFAAEAAADp/wgAAgAFAAEAAADp/wkAAgAFAAEAAADq/wAAAgAFAAEAAADq/wEAAgAFAAEAAADq/wIAAgAFAAEAAADq/wMAAgAFAAEAAADq/wQAAgAFAAEAAADq/wUAAgAFAAEAAADq/wYAAgAFAAEAAADq/wcAAgAFAAEAAADq/wgAAgAFAAEAAADq/wkAAgAFAAEAAADr/wAAAgAFAAEAAADr/wEAAgAFAAEAAADr/wIAAgAFAAEAAADr/wMAAgAFAAEAAADr/wQAAgAFAAEAAADr/wUAAgAFAAEAAADr/wYAAgAFAAEAAADr/wcAAgAFAAEAAADr/wgAAgAFAAEAAADr/wkAAgAFAAEAAAD0/wAAAgAFAAEAAAD0/wEAAgAFAAEAAAD0/wIAAgAFAAEAAAD1/wAAAgAFAAEAAAD1/wEAAgAFAAEAAAD1/wIAAgAFAAEAAAD2/wAAAgAFAAEAAAD2/wEAAgAFAAEAAAD2/wIAAgAFAAEAAAD3/wEAAgAFAAEAAAD3/wIAAgAFAAEAAADo////AgAAAAEAAADn//r/AgAFAAEAAADn//v/AgAFAAEAAADn//z/AgAFAAEAAADn//3/AgAFAAEAAADn//7/AgAFAAEAAADn////AgAFAAEAAAD3//r/AgAFAAEAAAD3//v/AgAFAAEAAAD3//z/AgAFAAEAAAD3//3/AgAFAAEAAAD3//7/AgAFAAEAAAD3////AgAFAAEAAAD3/wAAAgAFAAEAAAA=")
+tile_set = ExtResource("5_607nh")
+
+[node name="Grass" type="TileMapLayer" parent="Tiles" unique_id=605631373]
+tile_map_data = PackedByteArray("AADy//7/AgABAAAAAADx//7/AgACAAAAAADw//7/AgAAAAAAAAD2//7/AgADAAAAAAD1//7/AgACAAAAAAD0//7/AgACAAAAAADz//7/AgACAAAAAADq//7/AgADAAAAAADp//7/AgACAAAAAADo//7/AgAAAAAAAAA=")
+tile_set = ExtResource("5_607nh")
+
+[node name="ObjectsBG" type="TileMapLayer" parent="Tiles" unique_id=400174477]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AADx//z/AQAAAAAAAgDy//7/AgAGAAYAAADq//7/AgAAAAYAAADw//7/AgAEAAYAAADr//7/AgABAAYAAADv//7/AgADAAYAAADu//7/AgACAAYAAADt//7/AgACAAYAAADs//7/AgACAAYAAADq////AgAAAAcAAADw////AgAEAAcAAAA=")
+tile_set = ExtResource("5_607nh")
+
+[node name="ObjectsFG" type="TileMapLayer" parent="Tiles" unique_id=6009451]
+z_index = 1
+tile_map_data = PackedByteArray("AADp//7/AQAAAAAABgDx//7/AQAAAAAABwDr//r/AgANAAAAAADr//v/AgANAAEAAADy//r/AgAPAAAAAADy//v/AgAPAAEAAADv//r/AgAOAAAAAADq//7/AgAAAAgAAADq////AgAAAAkAAADr//7/AgABAAgAAADs//7/AgACAAgAAADt//7/AgACAAgAAADu//7/AgACAAgAAADv//7/AgADAAgAAADw//7/AgAEAAgAAADw////AgAEAAkAAAA=")
+tile_set = ExtResource("5_607nh")
+
+[node name="FoliageBG" type="TileMapLayer" parent="Tiles" unique_id=1286677231]
+z_index = -1
+tile_set = ExtResource("5_607nh")
+
+[node name="FoliageFG" type="TileMapLayer" parent="Tiles" unique_id=1129445705]
+z_index = 1
+tile_set = ExtResource("5_607nh")
+
+[node name="Water" type="Sprite2D" parent="Tiles" unique_id=496611586]
+z_index = 1
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_wrv81")
+position = Vector2(-256.00006, 160)
+scale = Vector2(25, 20)
+texture = ExtResource("7_flbv8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Tiles" unique_id=1672559338]
+environment = SubResource("Environment_601tu")
+
+[node name="TransitionAreas" type="Node2D" parent="." unique_id=416860582]
+
+[node name="TransitionArea2D" parent="TransitionAreas" unique_id=1051642874 instance=ExtResource("9_607nh")]
+position = Vector2(-136, 0)
+scene_name = "res://scenes/areas/greava/greava_landing_point.tscn"
+transition_coords = Vector2(-19, -2)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1996407112]
+color = Color(0.57254905, 0.56078434, 0.72156864, 1)

@@ -70,8 +70,8 @@ position = Vector2(0, 8)
 texture = SubResource("AtlasTexture_cf6ku")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=406164845]
-position = Vector2(0, 8)
-energy = 0.5
+position = Vector2(0, 24)
+color = Color(0.92941177, 0.29803923, 0.2509804, 1)
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_cf6ku")
 
