@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bc1xo5f5gg7fb"]
+
+[ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="1_3mwg2"]
+[ext_resource type="FontFile" uid="uid://ccshq021fm533" path="res://assets/fonts/gone_fishing_drop_shadow.png" id="1_mh7e4"]
+[ext_resource type="Script" uid="uid://hxjtjrsy63qr" path="res://scripts/ui/menus/name_input.gd" id="1_worf2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_worf2"]
+shader = ExtResource("1_3mwg2")
+shader_parameter/lod = 1.0000000475
+
+[node name="NameInput" type="Control" unique_id=1766933065]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_worf2")
+
+[node name="BlurColorRect" type="ColorRect" parent="." unique_id=682204271]
+material = SubResource("ShaderMaterial_worf2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuMarginContainer" type="MarginContainer" parent="." unique_id=1382917]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="LineEdit" type="LineEdit" parent="MenuMarginContainer" unique_id=1422774461]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.972549, 1, 0.72156864, 1)
+theme_override_colors/font_selected_color = Color(0.972549, 1, 0.72156864, 1)
+theme_override_colors/caret_color = Color(0.972549, 1, 0.72156864, 1)
+theme_override_fonts/font = ExtResource("1_mh7e4")
+placeholder_text = "Enter Name"
+alignment = 1

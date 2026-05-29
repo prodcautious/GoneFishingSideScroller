@@ -88,11 +88,14 @@ func get_current_accessory_by_type(accessory_type: FishingAccessory.AccessoryTyp
 		_:
 			return null
 
-func consume_bait_and_hook() -> void:
+func consume_bait() -> void:
 	_consume_accessory(current_bait, bait_array, FishingAccessory.AccessoryType.BAIT)
-	_consume_accessory(current_hook, hook_array, FishingAccessory.AccessoryType.HOOK)
-
 	equipment_changed.emit()
+
+func consume_hook() -> void:
+	_consume_accessory(current_hook, hook_array, FishingAccessory.AccessoryType.HOOK)
+	equipment_changed.emit()
+
 
 func _consume_accessory(
 	accessory: FishingAccessory,

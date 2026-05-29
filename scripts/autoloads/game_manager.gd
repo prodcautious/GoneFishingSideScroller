@@ -1,6 +1,6 @@
 extends Node
 
-var current_version: float = 0.01
+var current_version: float = 0.02
 
 var balance: int = 100
 var player_name: String

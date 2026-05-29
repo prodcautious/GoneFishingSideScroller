@@ -170,7 +170,7 @@ func perform_cast(power: float) -> void:
 #endregion
 
 #region Actual Casting
-func _end_fishing(lose_bait: bool = false) -> void:
+func _end_fishing(lose_bait: bool = false, lose_hook: bool = false) -> void:
 	var fishing_rod = FishingRodManager.fishing_rod
 
 	try_catch_fish_timer.stop()
@@ -186,8 +186,10 @@ func _end_fishing(lose_bait: bool = false) -> void:
 	fishing_line.queue_redraw()
 
 	if lose_bait and fishing_rod != null:
-		fishing_rod.consume_bait_and_hook()
-	
+		fishing_rod.consume_bait()
+	if lose_hook and fishing_rod != null:
+		fishing_rod.consume_hook()
+
 func cast_out() -> void:
 	var fishing_rod = FishingRodManager.fishing_rod
 
@@ -233,7 +235,8 @@ func try_catch_fish() -> void:
 	# Check if fish is too heavy
 	if fish_on_hook["weight"] > line.get_max_weight():
 		_did_not_catch_fish_animation("Line snapped! Fish was too heavy.")
-		_end_fishing()
+		# lose hook and bait on line snap
+		_end_fishing(true, true)
 		return
 	
 	# Try to catch
@@ -247,7 +250,8 @@ func try_catch_fish() -> void:
 		print("Your catch chance: ", catch_chance)
 		InventoryManager.add_fish_to_inventory(fish_on_hook)
 		await _catch_fish_animation(fish_on_hook)
-		_end_fishing(true)
+		# lose bait on catch
+		_end_fishing(true, false)
 		return
 
 	# Unsuccessful
@@ -255,7 +259,8 @@ func try_catch_fish() -> void:
 		_did_not_catch_fish_animation("Darn! It got away.")
 		print("Random float chance: ", rand_f)
 		print("Your catch chance: ", catch_chance)
-		_end_fishing(true)
+		# lose bait when fish gets away
+		_end_fishing(true, false)
 		return
 
 func get_fish_on_hook(bait_type: String, catch_modifier: String) -> Fish:

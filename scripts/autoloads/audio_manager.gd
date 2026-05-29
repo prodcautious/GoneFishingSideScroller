@@ -24,7 +24,7 @@ var music_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
 var voice_player: AudioStreamPlayer
 
-func play_song(song_name: String, fade_in_time: float = 0) -> void:
+func play_song(song_name: String) -> void:
 	if music_player:
 		music_player.queue_free()
 	
@@ -38,7 +38,6 @@ func play_song(song_name: String, fade_in_time: float = 0) -> void:
 	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	music_player.play()
-	fade_in_audio(fade_in_time)
 	print("Playing Song: " + song_name + " | " + str(song))
 
 func play_sfx(sfx_name: String, pitch: float = 1.0) -> void:

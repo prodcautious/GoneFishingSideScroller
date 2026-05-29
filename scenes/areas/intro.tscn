@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bgxlh3au7e07n" path="res://scripts/areas/area.gd" id="1_el4a1"]
 [ext_resource type="Resource" uid="uid://brs37kjqc3sor" path="res://dialogue/intro/intro.dialogue" id="2_dao11"]
+[ext_resource type="PackedScene" uid="uid://cakkw0hytwi5q" path="res://scenes/dialogue/npcs/wilson_intro.tscn" id="3_601tu"]
 [ext_resource type="PackedScene" uid="uid://bhwrhc4ep1j4p" path="res://scenes/characters/player.tscn" id="3_el4a1"]
 [ext_resource type="TileSet" uid="uid://cpa1mggujibhf" path="res://scenes/tileset.tres" id="5_607nh"]
 [ext_resource type="Shader" uid="uid://couabvrqd30dk" path="res://shaders/environment/water.gdshader" id="6_v8g13"]
-[ext_resource type="PackedScene" uid="uid://8e0lunm5t3wo" path="res://scenes/dialogue/npcs/cutscene_npc_example.tscn" id="7_el4a1"]
 [ext_resource type="Texture2D" uid="uid://mv45ugn07256" path="res://assets/textures/misc/white_box.png" id="7_flbv8"]
 [ext_resource type="PackedScene" uid="uid://de7xhtvhrv8os" path="res://scenes/transitions/transition_area_2d.tscn" id="9_607nh"]
 
@@ -48,7 +48,7 @@ camera_zoom = Vector2(3, 3)
 [node name="Player" parent="Characters" unique_id=1423084509 instance=ExtResource("3_el4a1")]
 position = Vector2(-368, -16)
 
-[node name="???" parent="Characters" unique_id=2051625574 instance=ExtResource("7_el4a1")]
+[node name="WilsonIntro" parent="Characters" unique_id=2051625574 instance=ExtResource("3_601tu")]
 position = Vector2(-296, -24)
 dialogue_resource = ExtResource("2_dao11")
 detect_area_size = Vector2(48, 24)

@@ -1,15 +1,19 @@
 ~ start
-???: Water's beautiful, isn't it?
 $> wait(2)
+???: Water's beautiful, isn't it?
+$> wait(1)
 ???: You fish yerself?
 ???: If ya do, take a listen.
 ???: Fishin' isn't just for sport.
 ???: This line of work requires grit, someone willing to help others and do what is right.
 ???: You? I don't know. I sense something, but I can't quite put my finger on it.
 ???: What's yer name?
-$>
-???: Well {{GameManager.player_name}}, a planet known as 'Greava' has been overrun with invasive fish in their waters. Do you think you can investigate?
-- Yes! 
+$> MenuManager.show_menu(MenuManager.MenuState.NAMEINPUT)
+=> END
+
+~ after_name
+???: {{GameManager.player_name}}, a planet known as 'Greava' has been overrun with invasive fish in their waters. Do you think you can investigate?
+- Yes!
 	???: Well alright!
 - No.
 	???: Well alright!

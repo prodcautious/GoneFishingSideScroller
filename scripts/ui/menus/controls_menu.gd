@@ -2,7 +2,6 @@ extends Control
 
 #region Built-In
 func _ready() -> void:
-	MenuManager.register_menu(MenuManager.MenuState.CONTROLS, self)
 	hide()
 
 func _input(event: InputEvent) -> void:

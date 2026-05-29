@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjobcrvmtn8u3" path="res://scenes/ui/menus/options_menu.tscn" id="4_0dwhk"]
 [ext_resource type="PackedScene" uid="uid://dwm0d6ino7u7j" path="res://scenes/ui/menus/controls_menu.tscn" id="5_pfayw"]
 [ext_resource type="PackedScene" uid="uid://bredtffkqimge" path="res://scenes/ui/fishing_rod/fishing_rod_info_ui.tscn" id="6_pfayw"]
+[ext_resource type="PackedScene" uid="uid://bc1xo5f5gg7fb" path="res://scenes/ui/menus/name_input.tscn" id="7_7vp6q"]
 
 [node name="UI" type="CanvasLayer" unique_id=1743719295]
 
@@ -27,4 +28,7 @@ visible = false
 visible = false
 
 [node name="FishingRodInfoUI" parent="." unique_id=1750365825 instance=ExtResource("6_pfayw")]
+visible = false
+
+[node name="NameInput" parent="." unique_id=1766933065 instance=ExtResource("7_7vp6q")]
 visible = false

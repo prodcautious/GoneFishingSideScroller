@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_xu75h")
 max_weight = 1000.0
-accessory_type = 3
-accessory_name = "Debug Line"
+accessory_type = 2
 metadata/_custom_type_script = "uid://30hjoj6ncoao"

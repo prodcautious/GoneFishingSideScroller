@@ -60,11 +60,13 @@ func set_up_default_settings() -> void:
 	master_h_slider.value = OptionsManager.master_volume
 	music_h_slider.value = OptionsManager.music_volume
 	sfx_h_slider.value = OptionsManager.sfx_volume
+	voice_h_slider.value = OptionsManager.voice_volume
 
 	master_percentage_label.text = str(int(OptionsManager.master_volume * 100)) + "%"
 	music_percentage_label.text = str(int(OptionsManager.music_volume * 100)) + "%"
 	sfx_percentage_label.text = str(int(OptionsManager.sfx_volume * 100)) + "%"
-
+	voice_percentage_label.text = str(int(OptionsManager.voice_volume * 100)) + "%"
+	
 	is_setting_up = false
 #endregion
 
