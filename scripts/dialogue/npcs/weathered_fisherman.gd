@@ -3,11 +3,13 @@ extends CharacterBody2D
 @export var dialogue_resource: DialogueResource
 @export var detect_area_size: Vector2
 @export var voice: String
+@export var default_animation: String = "idle_left"
 
 @onready var detect_area_2d: Area2D = %DetectArea2D
 @onready var name_label: Label = %NameLabel
 @onready var interact_container: VBoxContainer = %InteractContainer
 @onready var detect_collision_shape_2d: CollisionShape2D = %DetectCollisionShape2D
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 var player
 var player_is_in_area: bool = false
@@ -15,6 +17,9 @@ var cutscene_completed: bool = false
 var current_dialogue_title: String = ""
 
 func _ready() -> void:
+	if animation_player.has_animation(default_animation):
+		animation_player.play(default_animation)
+
 	player = get_tree().get_first_node_in_group("Player")
 	
 	if detect_area_size:
@@ -35,6 +40,7 @@ func _on_detect_area_entered(area: Area2D) -> void:
 	if parent.is_in_group("Player"):
 		get_tree().paused = true
 		# Set state to Interacting
+		player = get_tree().get_first_node_in_group("Player")
 		player.set_state(2)
 		
 		current_dialogue_title = "start"
@@ -54,6 +60,7 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 
 		"after_name":
 			get_tree().paused = false
+			player = get_tree().get_first_node_in_group("Player")
 			player.set_state(0)
 			player.unlock()
 			cutscene_completed = true

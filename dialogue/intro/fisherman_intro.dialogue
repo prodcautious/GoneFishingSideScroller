@@ -1,13 +1,13 @@
 ~ start
-$> wait(2)
+$> wait(1)
 ???: Water's beautiful, isn't it?
 $> wait(1)
-???: You fish yerself?
-???: If ya do, take a listen.
+???: You fish yourself?
+???: If you do, take a listen.
 ???: Fishin' isn't just for sport.
 ???: This line of work requires grit, someone willing to help others and do what is right.
 ???: You? I don't know. I sense something, but I can't quite put my finger on it.
-???: What's yer name?
+???: What's your name?
 $> MenuManager.show_menu(MenuManager.MenuState.NAMEINPUT)
 => END
 
@@ -18,5 +18,7 @@ $> MenuManager.show_menu(MenuManager.MenuState.NAMEINPUT)
 - No.
 	???: Well alright!
 ???: I'll provide you with your first rod, but you'll need to be resourceful along the way.
-$> FishingRodManager.has_fishing_rod = true
+???: Make friends and take their help. Don't be arrogant, {{GameManager.player_name}}.
+???: This journey is not yours alone.
+$> FishingRodManager.set_fishing_rod(load("res://resources/items/equipment/fishing/rods/default_rod.tres"))
 => END

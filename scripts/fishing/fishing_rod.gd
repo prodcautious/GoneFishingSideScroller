@@ -14,9 +14,8 @@ extends Node2D
 @onready var caught_fish_label: Label = %CaughtFishLabel
 @onready var didnt_catch_fish_label: Label = %DidntCatchFishLabel
 
-var rod_equipped: bool = false
-
 var casted_out: bool = false
+var rod_equipped: bool = false
 
 # Casting-minigame variables
 var is_casting: bool = false
@@ -48,7 +47,7 @@ func _ready() -> void:
 	cast_progress_bar.value = 0.0
 
 func _input(event: InputEvent) -> void:
-	if !FishingRodManager.has_fishing_rod:
+	if !FishingRodManager.has_fishing_rod():
 		return
 	
 	var current_area = get_tree().get_first_node_in_group("Area")
@@ -104,13 +103,14 @@ func _process(delta: float) -> void:
 	cast_progress_bar.value = cast_progress * 100.0
 #endregion
 
-#region Rod Visuals
+#region Rod Handling
 func _show_rod() -> void:
-	if FishingRodManager.fishing_rod == null:
+	var rod := FishingRodManager.fishing_rod
+	if rod == null:
 		return
 
 	rod_equipped = true
-	rod_sprite_2d.texture = FishingRodManager.fishing_rod.held_texture
+	rod_sprite_2d.texture = rod.held_texture
 	rod_sprite_2d.show()
 
 
@@ -171,7 +171,7 @@ func perform_cast(power: float) -> void:
 
 #region Actual Casting
 func _end_fishing(lose_bait: bool = false, lose_hook: bool = false) -> void:
-	var fishing_rod = FishingRodManager.fishing_rod
+	var rod := FishingRodManager.fishing_rod
 
 	try_catch_fish_timer.stop()
 	casted_out = false
@@ -185,19 +185,19 @@ func _end_fishing(lose_bait: bool = false, lose_hook: bool = false) -> void:
 	_hide_rod()
 	fishing_line.queue_redraw()
 
-	if lose_bait and fishing_rod != null:
-		fishing_rod.consume_bait()
-	if lose_hook and fishing_rod != null:
-		fishing_rod.consume_hook()
+	if lose_bait and rod != null:
+		rod.consume_bait()
+	if lose_hook and rod != null:
+		rod.consume_hook()
 
 func cast_out() -> void:
-	var fishing_rod = FishingRodManager.fishing_rod
+	var rod = FishingRodManager.fishing_rod
 
-	if fishing_rod == null:
+	if !FishingRodManager.has_fishing_rod():
 		print("No fishing rod.")
 		return
 
-	var bait = fishing_rod.get_current_bait()
+	var bait = rod.get_current_bait()
 
 	if bait == null:
 		_did_not_catch_fish_animation("No bait equipped.")
@@ -216,14 +216,14 @@ func _on_try_catch_fish_timer_timeout() -> void:
 	try_catch_fish()
 
 func try_catch_fish() -> void:
-	var fishing_rod = FishingRodManager.fishing_rod
+	var rod := FishingRodManager.fishing_rod
 	
-	var bait = fishing_rod.get_current_bait()
-	var hook = fishing_rod.get_current_hook()
-	var line = fishing_rod.get_current_line()
+	var bait = rod.get_current_bait()
+	var hook = rod.get_current_hook()
+	var line = rod.get_current_line()
 	
 	# Determine fish
-	var fish_on_hook = get_fish_on_hook(bait.get_type(), fishing_rod.get_catch_modifier())
+	var fish_on_hook = get_fish_on_hook(bait.get_type(), rod.get_catch_modifier())
 	
 	if fish_on_hook == null:
 		_did_not_catch_fish_animation("Nothing's biting with this setup.")
@@ -340,9 +340,8 @@ func _did_not_catch_fish_animation(reason: String) -> void:
 	await ui_animation_player.animation_finished
 
 func _has_bait_and_hook() -> bool:
-	var rod = FishingRodManager.fishing_rod
-	
-	if rod == null:
+	var rod := FishingRodManager.fishing_rod
+	if !FishingRodManager.has_fishing_rod():
 		return false
 	
 	var bait = rod.get_current_bait()

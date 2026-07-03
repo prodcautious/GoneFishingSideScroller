@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="2_x0g8l"]
 [ext_resource type="Shader" uid="uid://b67xhoa3we27d" path="res://shaders/ui/stars.gdshader" id="2_xlywr"]
 [ext_resource type="Texture2D" uid="uid://dl1v8as2px0x" path="res://assets/textures/icons/youtube_logo.png" id="3_i11hm"]
-[ext_resource type="FontFile" uid="uid://dtq2looqtdg1y" path="res://assets/fonts/gone_fishing_bold_drop_shadow.png" id="3_xlywr"]
 [ext_resource type="Script" uid="uid://dq2l1pqx31x3i" path="res://scripts/custom_control/custom_texture_button.gd" id="4_2t0al"]
+[ext_resource type="Texture2D" uid="uid://mp2msft34qa6" path="res://assets/textures/ui/title.png" id="4_pb47q"]
 [ext_resource type="Texture2D" uid="uid://b1m6ysp28mrbx" path="res://assets/textures/icons/itch_logo.png" id="5_hfk6u"]
 [ext_resource type="FontFile" uid="uid://ccshq021fm533" path="res://assets/fonts/gone_fishing_drop_shadow.png" id="9_pb47q"]
 
@@ -77,14 +77,10 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 
-[node name="Header" type="Label" parent="MenuMarginContainer/VBoxContainer" unique_id=1040500882]
+[node name="Header" type="TextureRect" parent="MenuMarginContainer/VBoxContainer" unique_id=1349121919]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.9607843, 0.2509804, 1)
-theme_override_fonts/font = ExtResource("3_xlywr")
-theme_override_font_sizes/font_size = 16
-text = "Gone
-Fishing"
-vertical_alignment = 1
+texture = ExtResource("4_pb47q")
+stretch_mode = 2
 
 [node name="StartButton" type="Button" parent="MenuMarginContainer/VBoxContainer" unique_id=33436875]
 unique_name_in_owner = true

@@ -1,17 +1,28 @@
 extends Control
 
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
 @onready var line_edit: LineEdit = %LineEdit
+@onready var grid_container: GridContainer = %GridContainer
 
 var letter_regex := RegEx.new()
 var player
 
 func _ready() -> void:
-
 	MenuManager.register_menu(MenuManager.MenuState.NAMEINPUT, self)
-	letter_regex.compile("^[A-Za-z]$")
-	visibility_changed.connect(_on_visibility_changed)
-	line_edit.text_changed.connect(_on_line_edit_text_changed)
-	line_edit.text_submitted.connect(_on_line_edit_text_submitted)
+	generate_alphabet_buttons()
+
+func generate_alphabet_buttons() -> void:
+	for i in alphabet.size():
+		var button := Button.new()
+		button.text = alphabet[i]
+		grid_container.add_child(button)
+
+
+
+
+
+
 
 func _on_visibility_changed() -> void:
 	player = get_tree().get_first_node_in_group("Player")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2q0sshv5sns3" path="res://assets/textures/items/equipment/fishing/rods/fishing_rod.png" id="3_eojnx"]
 [ext_resource type="Shader" uid="uid://650rk3i8ogc3" path="res://shaders/pixel/pixel_outline.gdshader" id="6_qgnko"]
 [ext_resource type="Script" uid="uid://dfdms81c6l80e" path="res://scripts/characters/player/dialogue_handler.gd" id="8_eojnx"]
-[ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/fishing/fishing.gd" id="9_2l4js"]
+[ext_resource type="Script" uid="uid://dp025vax31v0n" path="res://scripts/fishing/fishing_rod.gd" id="9_2l4js"]
 [ext_resource type="Script" uid="uid://c5f4bow4dpt8f" path="res://scripts/fishing/fishing_rod/fishing_rod_line.gd" id="10_2l4js"]
 [ext_resource type="FontFile" uid="uid://ccshq021fm533" path="res://assets/fonts/gone_fishing_drop_shadow.png" id="11_rpnd8"]
 [ext_resource type="Texture2D" uid="uid://dkr7ghuhrugjx" path="res://assets/textures/items/fish/red_snapper.png" id="13_xrqxk"]
@@ -30,11 +30,11 @@ shader_parameter/inner_radius = 0.2
 shader_parameter/outer_radius = 0.8
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyp2m"]
-size = Vector2(9, 13)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g66nw"]
 size = Vector2(8, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyp2m"]
+size = Vector2(12, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76oj4"]
 size = Vector2(14, 32)
@@ -44,7 +44,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/RodHolder/RodSprite2D:position")
+tracks/0/path = NodePath("FishingRod/RodHolder/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +56,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/RodHolder/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingRod/RodHolder/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -85,7 +85,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/RodHolder/RodSprite2D:position")
+tracks/0/path = NodePath("FishingRod/RodHolder/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/RodHolder/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingRod/RodHolder/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -126,7 +126,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/RodHolder/RodSprite2D:position")
+tracks/0/path = NodePath("FishingRod/RodHolder/RodSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,7 +138,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/RodHolder/FishingLine/LineStart:position")
+tracks/1/path = NodePath("FishingRod/RodHolder/FishingLine/LineStart:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -264,7 +264,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/PerfectLabel:modulate")
+tracks/0/path = NodePath("FishingRod/PerfectLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -276,7 +276,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/PerfectLabel:position")
+tracks/1/path = NodePath("FishingRod/PerfectLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -288,7 +288,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FishingNode/PerfectLabel:visible")
+tracks/2/path = NodePath("FishingRod/PerfectLabel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -300,7 +300,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FishingNode/CaughtFishSprite:visible")
+tracks/3/path = NodePath("FishingRod/CaughtFishSprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -312,7 +312,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FishingNode/CaughtFishSprite:modulate")
+tracks/4/path = NodePath("FishingRod/CaughtFishSprite:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -324,7 +324,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("FishingNode/CaughtFishSprite:position")
+tracks/5/path = NodePath("FishingRod/CaughtFishSprite:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -365,7 +365,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/CaughtFishSprite:visible")
+tracks/0/path = NodePath("FishingRod/CaughtFishSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -377,7 +377,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/CaughtFishSprite:modulate")
+tracks/1/path = NodePath("FishingRod/CaughtFishSprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -389,7 +389,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FishingNode/CaughtFishSprite:position")
+tracks/2/path = NodePath("FishingRod/CaughtFishSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -434,7 +434,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingNode/PerfectLabel:modulate")
+tracks/0/path = NodePath("FishingRod/PerfectLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -446,7 +446,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingNode/PerfectLabel:position")
+tracks/1/path = NodePath("FishingRod/PerfectLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -458,7 +458,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FishingNode/PerfectLabel:visible")
+tracks/2/path = NodePath("FishingRod/PerfectLabel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -521,15 +521,15 @@ zoom = Vector2(2, 2)
 limit_left = -320
 limit_right = 320
 
-[node name="FishingNode" type="Node2D" parent="." unique_id=1241350377 node_paths=PackedStringArray("player")]
+[node name="FishingRod" type="Node2D" parent="." unique_id=1241350377 node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 script = ExtResource("9_2l4js")
 player = NodePath("..")
 
-[node name="RodHolder" type="Node2D" parent="FishingNode" unique_id=281149695]
+[node name="RodHolder" type="Node2D" parent="FishingRod" unique_id=281149695]
 unique_name_in_owner = true
 
-[node name="RodSprite2D" type="Sprite2D" parent="FishingNode/RodHolder" unique_id=712481474]
+[node name="RodSprite2D" type="Sprite2D" parent="FishingRod/RodHolder" unique_id=712481474]
 unique_name_in_owner = true
 visible = false
 z_index = 11
@@ -537,28 +537,28 @@ y_sort_enabled = true
 position = Vector2(8, -13)
 texture = ExtResource("3_eojnx")
 
-[node name="FishingLine" type="Node2D" parent="FishingNode/RodHolder" unique_id=802210674]
+[node name="FishingLine" type="Node2D" parent="FishingRod/RodHolder" unique_id=802210674]
 unique_name_in_owner = true
 z_index = 10
 y_sort_enabled = true
 position = Vector2(13, -17)
 script = ExtResource("10_2l4js")
 
-[node name="LineStart" type="Node2D" parent="FishingNode/RodHolder/FishingLine" unique_id=1199454424]
+[node name="LineStart" type="Node2D" parent="FishingRod/RodHolder/FishingLine" unique_id=1199454424]
 unique_name_in_owner = true
 
-[node name="LineEnd" type="Node2D" parent="FishingNode/RodHolder/FishingLine" unique_id=386411240]
+[node name="LineEnd" type="Node2D" parent="FishingRod/RodHolder/FishingLine" unique_id=386411240]
 unique_name_in_owner = true
 position = Vector2(26, 48)
 
-[node name="BobberSprite2D" type="Sprite2D" parent="FishingNode/RodHolder/FishingLine/LineEnd" unique_id=9597147]
+[node name="BobberSprite2D" type="Sprite2D" parent="FishingRod/RodHolder/FishingLine/LineEnd" unique_id=9597147]
 unique_name_in_owner = true
 visible = false
 
-[node name="TryCatchFishTimer" type="Timer" parent="FishingNode" unique_id=2120373071]
+[node name="TryCatchFishTimer" type="Timer" parent="FishingRod" unique_id=2120373071]
 unique_name_in_owner = true
 
-[node name="PerfectLabel" type="Label" parent="FishingNode" unique_id=1366715600]
+[node name="PerfectLabel" type="Label" parent="FishingRod" unique_id=1366715600]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -576,7 +576,7 @@ text = "Perfect"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CastProgressBar" type="ProgressBar" parent="FishingNode" unique_id=1575416344]
+[node name="CastProgressBar" type="ProgressBar" parent="FishingRod" unique_id=1575416344]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(32, 12)
@@ -590,7 +590,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_d6tgn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3wg1y")
 show_percentage = false
 
-[node name="CaughtFishSprite" type="Sprite2D" parent="FishingNode" unique_id=1395263783]
+[node name="CaughtFishSprite" type="Sprite2D" parent="FishingRod" unique_id=1395263783]
 unique_name_in_owner = true
 process_mode = 3
 visible = false
@@ -624,9 +624,9 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "89f76b4f6adef4a0e10be331ba5ad2f1"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="FishingNode" unique_id=313350911]
+[node name="CanvasLayer" type="CanvasLayer" parent="FishingRod" unique_id=313350911]
 
-[node name="MarginContainer" type="MarginContainer" parent="FishingNode/CanvasLayer" unique_id=1075592661]
+[node name="MarginContainer" type="MarginContainer" parent="FishingRod/CanvasLayer" unique_id=1075592661]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -638,7 +638,7 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="CaughtFishLabel" type="Label" parent="FishingNode/CanvasLayer/MarginContainer" unique_id=1763481366]
+[node name="CaughtFishLabel" type="Label" parent="FishingRod/CanvasLayer/MarginContainer" unique_id=1763481366]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -688,13 +688,13 @@ theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HeadCollision" type="CollisionShape2D" parent="." unique_id=1208561843]
-position = Vector2(0.5, -6.5)
-shape = SubResource("RectangleShape2D_dyp2m")
-
-[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=128315400]
+[node name="HeadCollision" type="CollisionShape2D" parent="." unique_id=128315400]
 position = Vector2(0, -31)
 shape = SubResource("RectangleShape2D_g66nw")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1208561843]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_dyp2m")
 
 [node name="InteractArea2D" type="Area2D" parent="." unique_id=1867857144]
 unique_name_in_owner = true

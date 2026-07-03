@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var camera_2d: Camera2D = %Camera2D
-@onready var fishing_node: Node2D = %FishingNode
+@onready var fishing_rod: Node2D = %FishingRod
 @onready var rod_holder: Node2D = %RodHolder
 
 enum PLAYER_STATE {IDLE, WALKING, INTERACTING, FISHING}
@@ -19,7 +19,6 @@ var locked := false
 
 #region Built-In
 func _ready() -> void:
-	lock()
 	animation_player.play("idle_right")
 	current_player_state = PLAYER_STATE.IDLE
 
@@ -113,16 +112,16 @@ func _update_animation() -> void:
 
 	match current_player_state:
 		PLAYER_STATE.IDLE:
-			if !fishing_node.rod_equipped:
-				anim_name = "idle_" + dir
-			else:
+			if fishing_rod.rod_equipped:
 				anim_name = "fishing_" + dir
+			else:
+				anim_name = "idle_" + dir
 
 		PLAYER_STATE.WALKING:
-			if !fishing_node.rod_equipped:
-				anim_name = "walk_" + dir
-			else:
+			if fishing_rod.rod_equipped:
 				anim_name = "fishing_" + dir
+			else:
+				anim_name = "walk_" + dir
 
 		PLAYER_STATE.FISHING:
 			anim_name = "fishing_" + dir
@@ -134,11 +133,9 @@ func _update_animation() -> void:
 		animation_player.play(anim_name)
 
 func lock() -> void:
-	print("player locked")
 	locked = true
 	velocity.x = 0
 
 func unlock() -> void:
-	print("player unlocked")
 	locked = false
 #endregion

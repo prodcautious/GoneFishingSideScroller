@@ -17,7 +17,6 @@ var sfx = {
 
 var voices = {
 	"fisherman": preload("res://assets/audio/voices/fisherman.ogg"),
-	"wilson": preload("res://assets/audio/voices/wilson.ogg")
 }
 
 var music_player: AudioStreamPlayer
@@ -54,7 +53,7 @@ func play_sfx(sfx_name: String, pitch: float = 1.0) -> void:
 	
 	if pitch:
 		sfx_player.pitch_scale = pitch
-	
+
 	sfx_player.play()
 	print("Playing SFX: " + sfx_name + " | " + str(sound_effect))
 	await sfx_player.finished

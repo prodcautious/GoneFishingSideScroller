@@ -15,10 +15,9 @@ var start_button_pressed: bool = false
 
 func _ready() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.START, self)
-	MenuManager.show_menu(MenuManager.MenuState.START)
 	
 	connect_signals()
-	version_label.text = "v " + str(GameManager.current_version)
+	version_label.text = "V " + str(GameManager.current_version)
 
 	pivot_offset = size / 2
 	scale = Vector2.ZERO

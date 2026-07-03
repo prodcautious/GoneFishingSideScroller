@@ -35,7 +35,7 @@ func _on_dialogue_started(_resource: DialogueResource) -> void:
 	print("Current Camera Zoom: " + str(current_camera_zoom))
 	tween.tween_property(player.camera_2d, "zoom", current_camera_zoom * 1.5, 0.2)
 	original_camera_position = player.camera_2d.position
-	tween.tween_property(player.camera_2d, "position", Vector2(original_camera_position.x, original_camera_position.y + 15), 0.2)
+	tween.tween_property(player.camera_2d, "position", Vector2(original_camera_position.x, original_camera_position.y), 0.2)
 	if current_npc:
 		var offset_to_npc = (current_npc.global_position - player.global_position)
 		tween.tween_property(player.camera_2d, "offset", offset_to_npc, 0.2)

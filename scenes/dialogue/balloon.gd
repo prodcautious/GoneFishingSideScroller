@@ -24,6 +24,12 @@ extends CanvasLayer
 
 var current_voice: String = ""
 
+## Temporarily prevents skipping the typewriter effect.
+var can_skip_typing: bool = true
+
+## Temporarily prevents advancing to the next dialogue line.
+var can_advance_dialogue: bool = true
+
 ## Temporary game states
 var temporary_game_states: Array = []
 
@@ -196,16 +202,25 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	if dialogue_label.is_typing:
 		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
 		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
+
 		if mouse_was_clicked or skip_button_was_pressed:
 			get_viewport().set_input_as_handled()
-			dialogue_label.skip_typing()
+
+			if can_skip_typing:
+				dialogue_label.skip_typing()
+
 			return
 
-	if not is_waiting_for_input: return
-	if dialogue_line.responses.size() > 0: return
+	if not is_waiting_for_input:
+		return
 
-	# When there are no response options the balloon itself is the clickable thing
+	if dialogue_line.responses.size() > 0:
+		return
+
 	get_viewport().set_input_as_handled()
+
+	if not can_advance_dialogue:
+		return
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		AudioManager.play_sfx("ui_pressed")
@@ -213,7 +228,6 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		AudioManager.play_sfx("ui_pressed")
 		next(dialogue_line.next_id)
-
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	AudioManager.play_sfx("ui_pressed")

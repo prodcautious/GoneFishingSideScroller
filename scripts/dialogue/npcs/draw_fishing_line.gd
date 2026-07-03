@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var fishing_rod: Node2D = %FishingRod
 @onready var line_start: Node2D = %LineStart
 @onready var line_end: Node2D = %LineEnd
 
@@ -10,22 +9,15 @@ var origin_point: Vector2
 var strength : float = 16.0
 var speed : float = 0.4
 
-var casted_out: bool
-
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_up_bobber()
+		origin_point = line_end.position
 
 func _draw():
-	if fishing_rod.casted_out:
-		draw_line(line_start.position, line_end.position, Color.WHITE, 0.5)
+	draw_line(line_start.position, line_end.position, Color(0.776, 0.847, 0.192, 1.0), 0.5)
 
 func _process(delta: float) -> void:
 	time += delta
 	line_end.position = origin_point + Vector2(bobber_noise.get_noise_2d(time * speed, 0.0),
 	bobber_noise.get_noise_2d(0.0, time * speed)) * strength
-	if fishing_rod.casted_out:
-		queue_redraw()
-
-func set_up_bobber() -> void:
-	bobber_noise.seed = randi()
-	origin_point = line_end.position
+	queue_redraw()

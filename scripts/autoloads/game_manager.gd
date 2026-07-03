@@ -1,9 +1,11 @@
 extends Node
 
-var current_version: float = 0.02
+var current_version: float = 0.03
 
 var balance: int = 100
 var player_name: String
+
+var debug: bool = false
 
 signal game_start
 signal balance_changed(total_count: int)

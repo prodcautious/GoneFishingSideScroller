@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bredtffkqimge"]
 
 [ext_resource type="PackedScene" uid="uid://dn4oqj4d83w61" path="res://scenes/ui/inventory/rod_accessory_slot.tscn" id="1_h6vx1"]
-[ext_resource type="Script" uid="uid://blol3qda08736" path="res://scripts/fishing/fishing_rod/fishing_rod_info_ui.gd" id="1_rhdxf"]
+[ext_resource type="Script" uid="uid://blol3qda08736" path="res://scripts/fishing/fishing_rod/fishing_rod_accessory_ui.gd" id="1_rhdxf"]
 [ext_resource type="FontFile" uid="uid://dtq2looqtdg1y" path="res://assets/fonts/gone_fishing_bold_drop_shadow.png" id="3_cy6io"]
 [ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="3_pldkh"]
 

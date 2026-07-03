@@ -11,6 +11,7 @@
 [node name="UI" type="CanvasLayer" unique_id=1743719295]
 
 [node name="StartMenu" parent="." unique_id=1667299012 instance=ExtResource("1_pfayw")]
+visible = false
 
 [node name="PauseMenu" parent="." unique_id=1002509039 instance=ExtResource("2_pfayw")]
 visible = false

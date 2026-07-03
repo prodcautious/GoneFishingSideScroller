@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dthqgbsu2a16b" path="res://assets/textures/parallax/planet_middle.png" id="4_8n4g7"]
 [ext_resource type="Texture2D" uid="uid://bxhism48hdoad" path="res://assets/textures/parallax/planet_close.png" id="5_wwnl2"]
 [ext_resource type="TileSet" uid="uid://cpa1mggujibhf" path="res://scenes/tileset.tres" id="7_1welm"]
+[ext_resource type="PackedScene" uid="uid://bhwrhc4ep1j4p" path="res://scenes/characters/player.tscn" id="7_yu6xl"]
 [ext_resource type="Shader" uid="uid://couabvrqd30dk" path="res://shaders/environment/water.gdshader" id="8_vuiew"]
 [ext_resource type="Texture2D" uid="uid://mv45ugn07256" path="res://assets/textures/misc/white_box.png" id="9_ax7fa"]
 
@@ -33,15 +34,20 @@ seamless = true
 shader = ExtResource("8_vuiew")
 shader_parameter/water_color = Color(0.83137256, 0.11764706, 0.23529412, 1)
 shader_parameter/wave_noise = SubResource("NoiseTexture2D_ya4ey")
-shader_parameter/edge_wave_height = 0.2000000095
-shader_parameter/edge_wave_speed = 0.2000000095
-shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_thickness = 0.010000000475
-shader_parameter/foam_softness = 0.02000000095
-shader_parameter/foam_noise_scale = 5.00000021375
+shader_parameter/edge_wave_height = 0.10000000475
+shader_parameter/edge_wave_speed = 1.0000000475
+shader_parameter/foam_color = Color(0.54901963, 0.81960785, 0.81960785, 1)
+shader_parameter/foam_thickness = 0.0030000001425
+shader_parameter/foam_softness = 0.0010000000475
+shader_parameter/foam_noise_scale = 3.00000011875
 shader_parameter/foam_noise_strength = 0.5
+shader_parameter/reflection_strength = 0.45
+shader_parameter/reflection_fade = 1.25
+shader_parameter/reflection_stretch = 1.0
+shader_parameter/distortion_pixels = 3.0
+shader_parameter/reflection_surface_offset_pixels = 0.0
 
-[sub_resource type="Environment" id="Environment_yxo2v"]
+[sub_resource type="Environment" id="Environment_yl6xm"]
 background_mode = 3
 glow_enabled = true
 glow_strength = 0.5
@@ -103,6 +109,9 @@ centered = false
 
 [node name="Characters" type="Node2D" parent="." unique_id=200556153 groups=["Characters"]]
 
+[node name="Player" parent="Characters" unique_id=1423084509 instance=ExtResource("7_yu6xl")]
+position = Vector2(0, -16)
+
 [node name="Tiles" type="Node2D" parent="." unique_id=484939554]
 
 [node name="Ground" type="TileMapLayer" parent="Tiles" unique_id=2059177422]
@@ -131,7 +140,7 @@ z_index = 1
 tile_map_data = PackedByteArray("AADu//7/AQAAAAAABgD0//7/AQAAAAAABgD+//7/AQAAAAAABgAIAP7/AQAAAAAABgANAP7/AQAAAAAABgAWAP7/AQAAAAAABgAgAP7/AQAAAAAABgApAP7/AQAAAAAABgAuAP7/AQAAAAAABgAjAP7/AQAAAAAABgAsAP7/AQAAAAAABwAcAP7/AQAAAAAABwASAP7/AQAAAAAABwAKAP7/AQAAAAAABwD7//7/AQAAAAAABwDy//7/AQAAAAAABwDs//7/AQAAAAAABwA=")
 tile_set = ExtResource("7_1welm")
 
-[node name="Water" type="Sprite2D" parent="Tiles" unique_id=47176600]
+[node name="Water" type="Sprite2D" parent="Tiles" unique_id=1893680753]
 z_index = 1
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_oxy5g")
@@ -139,7 +148,10 @@ position = Vector2(-7.999999, 160)
 scale = Vector2(200, 20)
 texture = ExtResource("9_ax7fa")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1781278367]
-environment = SubResource("Environment_yxo2v")
-
 [node name="TransitionAreas" type="Node2D" parent="." unique_id=381270797]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1905422673]
+environment = SubResource("Environment_yl6xm")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1686380039]
+color = Color(0.57254905, 0.56078434, 0.72156864, 1)
