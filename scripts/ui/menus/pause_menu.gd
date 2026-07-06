@@ -8,7 +8,6 @@ extends Control
 @onready var main_menu_button: CustomButton = %MainMenuButton
 @onready var quit_button: CustomButton = %QuitButton
 
-@onready var panel_container: PanelContainer = %PanelContainer
 
 #region Built-In
 func _ready() -> void:

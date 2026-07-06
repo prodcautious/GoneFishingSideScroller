@@ -12,7 +12,10 @@ var sfx = {
 	"perfect_cast": preload("res://assets/audio/sfx/perfect_cast.ogg"),
 	"fish_caught": preload("res://assets/audio/sfx/fish_caught.ogg"),
 	"fish_got_away": preload("res://assets/audio/sfx/fish_got_away.ogg"),
-	"sell_item": preload("res://assets/audio/sfx/sell_item.ogg")
+	"sell_item": preload("res://assets/audio/sfx/sell_item.ogg"),
+	"footstep_grass": preload("res://assets/audio/sfx/footstep_grass.ogg"),
+	"footstep_wood": preload("res://assets/audio/sfx/footstep_wood.ogg"),
+	"footstep_rock": preload("res://assets/audio/sfx/footstep_rock.ogg")
 }
 
 var voices = {

@@ -12,6 +12,7 @@ $> MenuManager.show_menu(MenuManager.MenuState.NAMEINPUT)
 => END
 
 ~ after_name
+$> wait(1)
 ???: {{GameManager.player_name}}, a planet known as 'Greava' has been overrun with invasive fish in their waters. Do you think you can investigate?
 - Yes!
 	???: Well alright!

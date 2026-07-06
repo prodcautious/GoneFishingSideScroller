@@ -26,6 +26,8 @@ func _ready() -> void:
 		detect_collision_shape_2d.shape.size = detect_area_size
 		
 	_connect_signals()
+	
+	SignalManager.name_input.connect(_on_name_input_complete)
 
 func _connect_signals() -> void:
 	detect_area_2d.area_entered.connect(_on_detect_area_entered)
@@ -49,6 +51,9 @@ func _on_detect_area_entered(area: Area2D) -> void:
 func continue_after_name_input() -> void:
 	current_dialogue_title = "after_name"
 	DialogueManager.show_dialogue_balloon(dialogue_resource, current_dialogue_title, voice)
+
+func _on_name_input_complete() -> void:
+	continue_after_name_input()
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource != dialogue_resource:

@@ -48,11 +48,13 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if !FishingRodManager.has_fishing_rod():
+		#print("No fishing rod!")
 		return
 	
 	var current_area = get_tree().get_first_node_in_group("Area")
 	
 	if current_area == null or !current_area.can_fish:
+		#print("Cannot fish in this area.")
 		return
 
 	if event.is_action_pressed("cast_rod"):

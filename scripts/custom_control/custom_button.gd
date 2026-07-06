@@ -1,6 +1,8 @@
 extends Button
 class_name CustomButton
 
+@export var stretch_coords: Vector2 = Vector2(1.1, 1.1)
+
 var tween : Tween
 
 func _ready() -> void:
@@ -22,7 +24,7 @@ func tween_in() -> void:
 		tween.kill()
 	pivot_offset = size / 2
 	tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
+	tween.tween_property(self, "scale", Vector2(stretch_coords), 0.1)
 	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.1)
 
 func _on_mouse_entered() -> void:
@@ -32,7 +34,7 @@ func _on_mouse_entered() -> void:
 		tween.kill()
 	pivot_offset = size / 2
 	tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
+	tween.tween_property(self, "scale", Vector2(stretch_coords), 0.1)
 
 func _on_focus_entered() -> void:
 	if disabled:
@@ -41,7 +43,7 @@ func _on_focus_entered() -> void:
 		tween.kill()
 	pivot_offset = size / 2
 	tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
+	tween.tween_property(self, "scale", Vector2(stretch_coords), 0.1)
 
 func _on_mouse_exited() -> void:
 	if disabled:
@@ -69,7 +71,7 @@ func _on_button_down() -> void:
 		tween.kill()
 	pivot_offset = size / 2
 	tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(0.9,0.9), 0.1)
+	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.1)
 
 func _on_button_up() -> void:
 	if disabled:
@@ -78,5 +80,5 @@ func _on_button_up() -> void:
 		tween.kill()
 	pivot_offset = size / 2
 	tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
+	tween.tween_property(self, "scale", Vector2(stretch_coords), 0.1)
 	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.1)

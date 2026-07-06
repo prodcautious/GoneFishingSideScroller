@@ -71,10 +71,11 @@ folder_colors={
 [global_group]
 
 Tilemap=""
+Tilemap_Ground=""
 
 [gui]
 
-theme/custom="uid://1eytnr65412j"
+theme/custom="uid://rbfkgv8dwr1b"
 
 [input]
 

@@ -8,7 +8,6 @@ enum MenuState {
 	NAMEINPUT,
 	ACCESSORIES,
 	INVENTORY,
-	TELEPORT,
 	SHOP
 }
 
@@ -46,11 +45,10 @@ func close_current_menu() -> void:
 
 var menu_stack: Array[MenuState] = []
 
-func push_menu(menu_state: MenuState, pause_game: bool = false) -> void:
-	# Hides current menu but remembers its state
+func push_menu(menu_state: MenuState, pause_game: bool = false, hide_menu: bool = false) -> void:
 	if current_menu != MenuState.NONE:
 		menu_stack.push_back(current_menu)
-		if menus.has(current_menu):
+		if hide_menu and menus.has(current_menu):
 			menus[current_menu].hide()
 	current_menu = menu_state
 	if menus.has(menu_state):

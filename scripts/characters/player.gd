@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var camera_2d: Camera2D = %Camera2D
 @onready var fishing_rod: Node2D = %FishingRod
 @onready var rod_holder: Node2D = %RodHolder
+@onready var feet_ray_cast_2d: RayCast2D = %FeetRayCast2D
 
 enum PLAYER_STATE {IDLE, WALKING, INTERACTING, FISHING}
 var current_player_state
@@ -131,6 +132,30 @@ func _update_animation() -> void:
 
 	if animation_player.current_animation != anim_name:
 		animation_player.play(anim_name)
+
+func _play_footstep_sound() -> void:
+	feet_ray_cast_2d.force_raycast_update()
+	if not feet_ray_cast_2d.is_colliding():
+		return
+
+	var collider := feet_ray_cast_2d.get_collider()
+	if not (collider is TileMapLayer):
+		return
+
+	var ground_tilemap := collider as TileMapLayer
+	var collision_point := feet_ray_cast_2d.get_collision_point()
+	var cell: Vector2i = ground_tilemap.local_to_map(ground_tilemap.to_local(collision_point))
+	var tile_data: TileData = ground_tilemap.get_cell_tile_data(cell)
+	if tile_data == null:
+		return
+
+	var tile_set := ground_tilemap.tile_set
+	for i in tile_set.get_custom_data_layers_count():
+		var layer_name := tile_set.get_custom_data_layer_name(i)
+		if tile_data.get_custom_data(layer_name) == true:
+			AudioManager.play_sfx("footstep_" + layer_name, randf_range(0.9, 1.1))
+			print("playing footstep_" + layer_name)
+			return
 
 func lock() -> void:
 	locked = true

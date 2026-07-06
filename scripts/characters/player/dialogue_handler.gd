@@ -33,12 +33,12 @@ func _on_dialogue_started(_resource: DialogueResource) -> void:
 	current_camera_zoom = player.camera_2d.zoom
 	
 	print("Current Camera Zoom: " + str(current_camera_zoom))
-	tween.tween_property(player.camera_2d, "zoom", current_camera_zoom * 1.5, 0.2)
+	tween.tween_property(player.camera_2d, "zoom", current_camera_zoom * 1.5, 0.5)
 	original_camera_position = player.camera_2d.position
-	tween.tween_property(player.camera_2d, "position", Vector2(original_camera_position.x, original_camera_position.y), 0.2)
+	tween.tween_property(player.camera_2d, "position", Vector2(original_camera_position.x, original_camera_position.y), 0.5)
 	if current_npc:
 		var offset_to_npc = (current_npc.global_position - player.global_position)
-		tween.tween_property(player.camera_2d, "offset", offset_to_npc, 0.2)
+		tween.tween_property(player.camera_2d, "offset", offset_to_npc, 0.5)
 	
 	interact_vignette.show()
 
@@ -49,9 +49,9 @@ func _on_dialogue_ended(_resource: DialogueResource) -> void:
 	tween = create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.set_parallel(true)
-	tween.tween_property(player.camera_2d, "zoom", current_camera_zoom, 0.2)
-	tween.tween_property(player.camera_2d, "position", original_camera_position, 0.2)
-	tween.tween_property(player.camera_2d, "offset", Vector2.ZERO, 0.2)
+	tween.tween_property(player.camera_2d, "zoom", current_camera_zoom, 0.5)
+	tween.tween_property(player.camera_2d, "position", original_camera_position, 0.5)
+	tween.tween_property(player.camera_2d, "offset", Vector2.ZERO, 0.5)
 	interact_vignette.hide()
 
 func _on_interact_area_entered(area: Area2D) -> void:
