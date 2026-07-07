@@ -24,7 +24,7 @@ var current_transition: String
 func _ready() -> void:
 	randomize()
 
-func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_direction: float = 1.0) -> void:
+func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_direction: float = 1.0, close_menu: bool = false) -> void:
 	get_tree().paused = true
 	randomize_current_transition()
 
@@ -32,7 +32,8 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 	await animation_player.animation_finished
 	await get_tree().process_frame
 	
-	MenuManager.close_current_menu()
+	if close_menu:
+		MenuManager.close_current_menu()
 	
 	var traveling_player = get_tree().get_first_node_in_group("Player")
 	if traveling_player:
@@ -46,7 +47,7 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 	
 	if traveling_player:
 		var baked_player = get_tree().get_first_node_in_group("Player")
-		if baked_player:
+		if baked_player and baked_player != traveling_player:
 			baked_player.queue_free()
 
 		var characters_node = get_tree().get_first_node_in_group("Characters")

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var voice: String
 @export var default_animation: String = "idle_left"
 
+
 @onready var detect_area_2d: Area2D = %DetectArea2D
 @onready var name_label: Label = %NameLabel
 @onready var interact_container: VBoxContainer = %InteractContainer
@@ -34,6 +35,9 @@ func _connect_signals() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _on_detect_area_entered(area: Area2D) -> void:
+	if GameManager.debug:
+		return
+
 	if cutscene_completed:
 		return
 	

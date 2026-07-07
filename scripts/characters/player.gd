@@ -144,7 +144,11 @@ func _play_footstep_sound() -> void:
 
 	var ground_tilemap := collider as TileMapLayer
 	var collision_point := feet_ray_cast_2d.get_collision_point()
-	var cell: Vector2i = ground_tilemap.local_to_map(ground_tilemap.to_local(collision_point))
+	var collision_normal := feet_ray_cast_2d.get_collision_normal()
+
+	var sample_point := collision_point - collision_normal * 1.0
+
+	var cell: Vector2i = ground_tilemap.local_to_map(ground_tilemap.to_local(sample_point))
 	var tile_data: TileData = ground_tilemap.get_cell_tile_data(cell)
 	if tile_data == null:
 		return
@@ -163,4 +167,10 @@ func lock() -> void:
 
 func unlock() -> void:
 	locked = false
+
+func reset_physics_after_transition() -> void:
+	velocity = Vector2.ZERO
+	
+	if feet_ray_cast_2d:
+		feet_ray_cast_2d.force_raycast_update()
 #endregion

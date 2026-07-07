@@ -29,7 +29,8 @@ func _on_mouse_entered() -> void:
 	pivot_offset = size / 2
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1.1,1.1), 0.1)
-	
+	AudioManager.play_sfx("ui_hover")
+
 func _on_mouse_exited() -> void:
 	if tween:
 		tween.kill()
@@ -45,7 +46,8 @@ func _on_button_down() -> void:
 	pivot_offset = size / 2
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(0.9,0.9), 0.1)
-	
+	AudioManager.play_sfx("ui_pressed")
+
 func _on_button_up() -> void:
 	if tween:
 		tween.kill()

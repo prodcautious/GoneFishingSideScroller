@@ -64,8 +64,10 @@ func _on_options_button_pressed() -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	if start_menu_scene:
-		SceneTransition.transition_scene(start_menu_scene)
+		MenuManager.close_current_menu()
+		await SceneTransition.transition_scene(start_menu_scene, Vector2.ZERO, 1.0, false)
 		AudioManager.play_song("start_menu_theme")
+		MenuManager.show_menu(MenuManager.MenuState.START)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

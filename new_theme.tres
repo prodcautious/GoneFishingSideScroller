@@ -1,7 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://rbfkgv8dwr1b"]
 
 [ext_resource type="FontFile" uid="uid://dt7jr8yp1rgqu" path="res://assets/fonts/monogram.ttf" id="1_78ylj"]
-[ext_resource type="FontFile" uid="uid://b6et11ddvv48p" path="res://assets/fonts/NicoClean-Regular.ttf" id="1_i7eh4"]
 [ext_resource type="Texture2D" uid="uid://ccntsauypftrd" path="res://assets/textures/ui/new_ui.png" id="2_78ylj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aggjg"]
@@ -109,6 +108,9 @@ region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2wyf"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i7eh4"]
+color = Color(1, 0.9607843, 0.2509804, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hms4"]
 atlas = ExtResource("2_78ylj")
 region = Rect2(23, 16, 2, 16)
@@ -145,6 +147,34 @@ texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7eh4"]
+atlas = ExtResource("2_78ylj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8iapp"]
+load_path = "res://.godot/imported/new_ui.png-af6251b7d99a887951fb601bb27e062a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsxcp"]
+atlas = SubResource("CompressedTexture2D_8iapp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4p1b7"]
+bg_color = Color(0.17254902, 0.39215687, 0.36862746, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y7p3"]
+atlas = ExtResource("2_78ylj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_drp83"]
+texture = SubResource("AtlasTexture_3y7p3")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gf2og"]
+color = Color(0.17254902, 0.39215687, 0.36862746, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb47q"]
 atlas = ExtResource("2_78ylj")
@@ -230,6 +260,10 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 modulate_color = Color(0.5, 0.5, 0.5, 1)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5av45"]
+color = Color(1, 0.9607843, 0.2509804, 1)
+vertical = true
+
 [resource]
 Button/colors/font_color = Color(0.98039216, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.245, 0.25, 0.25, 1)
@@ -246,7 +280,7 @@ Button/styles/hover_pressed = SubResource("StyleBoxTexture_8iapp")
 Button/styles/normal = SubResource("StyleBoxTexture_n6c5v")
 Button/styles/pressed = SubResource("StyleBoxTexture_3y7p3")
 CheckBox/font_sizes/font_size = 16
-CheckBox/fonts/font = ExtResource("1_i7eh4")
+CheckBox/fonts/font = ExtResource("1_78ylj")
 CheckBox/icons/checked = SubResource("AtlasTexture_melu1")
 CheckBox/icons/unchecked = SubResource("AtlasTexture_lf7me")
 CheckBox/styles/disabled = SubResource("StyleBoxEmpty_4wv8g")
@@ -255,6 +289,7 @@ CheckBox/styles/hover = SubResource("StyleBoxEmpty_aw2gq")
 CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_ndson")
 CheckBox/styles/normal = SubResource("StyleBoxEmpty_h7dq0")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_f2wyf")
+HSeparator/styles/separator = SubResource("StyleBoxLine_i7eh4")
 HSlider/icons/grabber = SubResource("AtlasTexture_0hms4")
 HSlider/icons/grabber_highlight = SubResource("AtlasTexture_8iapp")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_78ylj")
@@ -267,6 +302,12 @@ Label/constants/shadow_outline_size = 0
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_78ylj")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_lobmi")
+PopupMenu/fonts/font = ExtResource("1_78ylj")
+PopupMenu/icons/radio_checked = SubResource("AtlasTexture_i7eh4")
+PopupMenu/icons/radio_unchecked = SubResource("AtlasTexture_bsxcp")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_4p1b7")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_drp83")
+PopupMenu/styles/separator = SubResource("StyleBoxLine_gf2og")
 TabContainer/colors/font_disabled_color = Color(0.245, 0.25, 0.25, 1)
 TabContainer/colors/font_hovered_color = Color(0.735, 0.75, 0.75, 1)
 TabContainer/colors/font_selected_color = Color(0.98039216, 1, 1, 1)
@@ -280,3 +321,4 @@ TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_i66g5")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_0xefo")
 TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_nkfox")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_lyb8g")
+VSeparator/styles/separator = SubResource("StyleBoxLine_5av45")

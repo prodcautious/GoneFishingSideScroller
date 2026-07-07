@@ -697,10 +697,6 @@ shape = SubResource("RectangleShape2D_g66nw")
 position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_dyp2m")
 
-[node name="FeetRayCast2D" type="RayCast2D" parent="." unique_id=716319010]
-unique_name_in_owner = true
-target_position = Vector2(0, 5)
-
 [node name="InteractArea2D" type="Area2D" parent="." unique_id=1867857144]
 unique_name_in_owner = true
 position = Vector2(0, -16)
@@ -708,12 +704,9 @@ position = Vector2(0, -16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea2D" unique_id=1161522135]
 shape = SubResource("RectangleShape2D_76oj4")
 
-[node name="InteractArea2D2" type="Area2D" parent="." unique_id=1745950219]
+[node name="FeetRayCast2D" type="RayCast2D" parent="." unique_id=716319010]
 unique_name_in_owner = true
-position = Vector2(0, -16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea2D2" unique_id=1709551998]
-shape = SubResource("RectangleShape2D_76oj4")
+target_position = Vector2(0, 5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1011931821]
 unique_name_in_owner = true

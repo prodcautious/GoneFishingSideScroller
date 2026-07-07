@@ -33,7 +33,8 @@ func connect_signals() -> void:
 	
 func _on_start_button_pressed() -> void:
 	if main_scene && !start_button_pressed:
-		SceneTransition.transition_scene(main_scene)
+		await get_tree().create_timer(0.5).timeout
+		SceneTransition.transition_scene(main_scene, Vector2(0,0), 1.0, true)
 		GameManager.game_start.emit()
 		start_button_pressed = true
 

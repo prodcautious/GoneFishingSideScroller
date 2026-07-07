@@ -65,7 +65,7 @@ theme_override_constants/margin_bottom = 8
 [node name="TabContainer" type="TabContainer" parent="MarginContainer" unique_id=470974085]
 layout_mode = 2
 theme = ExtResource("3_0gyrj")
-current_tab = 0
+current_tab = 1
 tab_0/icon = SubResource("AtlasTexture_0gyrj")
 tab_1/icon = SubResource("AtlasTexture_4xydh")
 tab_2/icon = SubResource("AtlasTexture_x0uyi")
@@ -73,6 +73,7 @@ script = ExtResource("5_4xydh")
 metadata/_custom_type_script = "uid://cpl3gqnkximai"
 
 [node name="Game" type="TabBar" parent="MarginContainer/TabContainer" unique_id=232266822]
+visible = false
 layout_mode = 2
 script = ExtResource("5_1mjwn")
 metadata/_custom_type_script = "uid://dsmcn7cf8jcu6"
@@ -197,7 +198,6 @@ theme_override_font_sizes/font_size = 16
 text = "Cast Rod (Hold)"
 
 [node name="Video" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1522101266]
-visible = false
 layout_mode = 2
 script = ExtResource("5_1mjwn")
 metadata/_custom_type_script = "uid://dsmcn7cf8jcu6"

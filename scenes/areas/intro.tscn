@@ -12,12 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://dt2smi58hqia0" path="res://assets/audio/sfx/waves_3.ogg" id="11_wgyx0"]
 [ext_resource type="Script" uid="uid://cv2n1k64l12qb" path="res://scripts/audio/random_audio_player.gd" id="12_ljiig"]
 
-[sub_resource type="Environment" id="Environment_601tu"]
-background_mode = 3
-glow_enabled = true
-glow_strength = 0.5
-glow_bloom = 0.05
-
 [sub_resource type="Gradient" id="Gradient_607nh"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_v8g13"]
@@ -44,6 +38,12 @@ shader_parameter/reflection_fade = 1.25
 shader_parameter/reflection_stretch = 1.0
 shader_parameter/distortion_pixels = 3.0000001425
 shader_parameter/reflection_surface_offset_pixels = 0.0
+
+[sub_resource type="Environment" id="Environment_601tu"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.5
+glow_bloom = 0.05
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wrv81"]
 streams_count = 3
@@ -100,9 +100,6 @@ tile_set = ExtResource("5_607nh")
 z_index = 1
 tile_set = ExtResource("5_607nh")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Tiles" unique_id=1672559338]
-environment = SubResource("Environment_601tu")
-
 [node name="Water" type="Sprite2D" parent="Tiles" unique_id=751310803]
 z_index = 1
 y_sort_enabled = true
@@ -121,7 +118,10 @@ transition_coords = Vector2(-19, -2)
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1996407112]
 color = Color(0.57254905, 0.56078434, 0.72156864, 1)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1388171791]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1672559338]
+environment = SubResource("Environment_601tu")
+
+[node name="WavesSFX" type="AudioStreamPlayer" parent="." unique_id=1388171791]
 process_mode = 3
 stream = SubResource("AudioStreamRandomizer_wrv81")
 volume_db = -20.0

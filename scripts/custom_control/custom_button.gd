@@ -35,6 +35,7 @@ func _on_mouse_entered() -> void:
 	pivot_offset = size / 2
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(stretch_coords), 0.1)
+	AudioManager.play_sfx("ui_hover")
 
 func _on_focus_entered() -> void:
 	if disabled:
@@ -44,6 +45,7 @@ func _on_focus_entered() -> void:
 	pivot_offset = size / 2
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(stretch_coords), 0.1)
+	AudioManager.play_sfx("ui_hover")
 
 func _on_mouse_exited() -> void:
 	if disabled:

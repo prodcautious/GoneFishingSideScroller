@@ -93,7 +93,7 @@ _data = {
 
 [node name="WeatheredFisherman" type="CharacterBody2D" unique_id=2051625574 groups=["NPC", "Wilson"]]
 process_mode = 3
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_s8pvx")
 dialogue_resource = ExtResource("2_52c3a")
 detect_area_size = Vector2(48, 24)

@@ -38,10 +38,11 @@ func is_menu_open() -> bool:
 func is_open(menu_state: MenuState) -> bool:
 	return current_menu == menu_state
 
-func close_current_menu() -> void:
+func close_current_menu(unpause_game: bool = false) -> void:
 	hide_all_menus()
 	current_menu = MenuState.NONE
-	get_tree().paused = false
+	if unpause_game:
+		get_tree().paused = false
 
 var menu_stack: Array[MenuState] = []
 

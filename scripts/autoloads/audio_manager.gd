@@ -8,6 +8,7 @@ var music = {
 
 var sfx = {
 	"ui_pressed": preload("res://assets/audio/sfx/ui_pressed.ogg"),
+	"ui_hover": preload("res://assets/audio/sfx/ui_hover.ogg"),
 	"cast_progress": preload("res://assets/audio/sfx/cast_progress.ogg"),
 	"perfect_cast": preload("res://assets/audio/sfx/perfect_cast.ogg"),
 	"fish_caught": preload("res://assets/audio/sfx/fish_caught.ogg"),
@@ -40,7 +41,7 @@ func play_song(song_name: String) -> void:
 	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	music_player.play()
-	print("Playing Song: " + song_name + " | " + str(song))
+	#print("Playing Song: " + song_name + " | " + str(song))
 
 func play_sfx(sfx_name: String, pitch: float = 1.0) -> void:
 	if sfx_player:
@@ -58,7 +59,7 @@ func play_sfx(sfx_name: String, pitch: float = 1.0) -> void:
 		sfx_player.pitch_scale = pitch
 
 	sfx_player.play()
-	print("Playing SFX: " + sfx_name + " | " + str(sound_effect))
+	#print("Playing SFX: " + sfx_name + " | " + str(sound_effect))
 	await sfx_player.finished
 	sfx_player.queue_free()
 
