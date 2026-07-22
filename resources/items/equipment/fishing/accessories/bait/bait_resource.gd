@@ -16,7 +16,7 @@ func get_bite_detection_speed() -> float:
 	return bite_detection_speed
 
 func get_stats() -> String:
-	return "Weight: " + str(get_weight())
+	return "Weight: " + str(get_weight()) + "kg."
 #endregion
 
 #region Setters

@@ -37,10 +37,10 @@ func update_fps_label() -> void:
 func update_state_label() -> void:
 	if player:
 		old_state = new_state
-		new_state = player.get_current_state()
+		new_state = player.player_state
 		
 		if old_state != new_state:
-			state_label.text = "State: " + player.get_current_state()
+			state_label.text = str(player.player_state)
 	
 	else:
 		if state_label.text != "No player":

@@ -8,6 +8,7 @@ extends Control
 @onready var main_menu_button: CustomButton = %MainMenuButton
 @onready var quit_button: CustomButton = %QuitButton
 
+var player
 
 #region Built-In
 func _ready() -> void:
@@ -17,6 +18,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc"):
+		get_viewport().set_input_as_handled()
+		_toggle_visibility()
+	elif event.is_action_pressed("close_menu") && visible:
 		get_viewport().set_input_as_handled()
 		_toggle_visibility()
 #endregion
@@ -33,17 +37,24 @@ func _register_menu() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.PAUSE, self)
 
 func _toggle_visibility() -> void:
+	if SceneTransition.is_transitioning:
+		return
+
 	if MenuManager.current_menu == MenuManager.MenuState.START:
 		return
 
 	if visible and MenuManager.current_menu != MenuManager.MenuState.PAUSE :
 		get_tree().paused = true
+		player = get_tree().get_first_node_in_group("Player")
+		player.lock()
 		MenuManager.show_menu(MenuManager.MenuState.PAUSE, true)
 		return
 
 	if visible:
 		hide()
 		get_tree().paused = false
+		player = get_tree().get_first_node_in_group("Player")
+		player.unlock()
 		MenuManager.close_current_menu()
 	else:
 		show()
@@ -59,7 +70,7 @@ func _on_resume_button_pressed() -> void:
 	_toggle_visibility()
 
 func _on_options_button_pressed() -> void:
-	MenuManager.push_menu(MenuManager.MenuState.OPTIONS)
+	MenuManager.push_menu(MenuManager.MenuState.OPTIONS, true)
 	OptionsManager.load_options()
 
 func _on_main_menu_button_pressed() -> void:

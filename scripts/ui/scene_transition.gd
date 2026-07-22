@@ -21,10 +21,13 @@ var transitions = {
 
 var current_transition: String
 
+var is_transitioning: bool = false
+
 func _ready() -> void:
 	randomize()
 
 func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_direction: float = 1.0, close_menu: bool = false) -> void:
+	is_transitioning = true
 	get_tree().paused = true
 	randomize_current_transition()
 
@@ -59,15 +62,11 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 			var coords_y = coords.y * 16
 
 			traveling_player.set_deferred("position", Vector2(coords_x, coords_y))
-
+			
 	await get_tree().process_frame
 	
 	if parent_node:
 		parent_node.set_up_area()
-		if traveling_player:
-			traveling_player.face_direction(facing_direction)
-			traveling_player.unlock()
-			print("turning player around")
 
 	await get_tree().create_timer(1.0).timeout
 	
@@ -75,7 +74,11 @@ func transition_scene(scene: String, coords: Vector2 = Vector2.ZERO, facing_dire
 	await animation_player.animation_finished
 	await get_tree().process_frame
 	get_tree().paused = false
+	if traveling_player:
+		traveling_player.unlock()
 	transition_complete.emit()
+	is_transitioning = false
+
 
 func randomize_current_transition() -> void:
 	current_transition = transitions.keys().pick_random()

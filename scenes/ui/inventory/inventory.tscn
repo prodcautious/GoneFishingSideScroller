@@ -4,10 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://c7tep62fenkq8" path="res://scenes/ui/inventory/inventory_slot.tscn" id="2_lobmi"]
 [ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="3_8ndef"]
 [ext_resource type="Script" uid="uid://byox3ijlx5o82" path="res://scripts/ui/balance_label.gd" id="4_lobmi"]
+[ext_resource type="Texture2D" uid="uid://cttrk0y14k4o7" path="res://assets/textures/ui/new_keyboard_icons.png" id="5_8ndef"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vyk4"]
 shader = ExtResource("3_8ndef")
 shader_parameter/lod = 1.0000000475
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi1cf"]
+atlas = ExtResource("5_8ndef")
+region = Rect2(32, 0, 16, 16)
 
 [node name="Inventory" type="Control" unique_id=987926248]
 process_mode = 3
@@ -83,3 +88,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
+
+[node name="CloseTooltip" type="HBoxContainer" parent="MarginContainer" unique_id=474991101]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CloseTooltip" unique_id=555156952]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wi1cf")
+
+[node name="Label" type="Label" parent="MarginContainer/CloseTooltip" unique_id=944191932]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Close"

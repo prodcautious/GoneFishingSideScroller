@@ -40,7 +40,7 @@ func _on_start_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	OptionsManager.load_options()
-	MenuManager.push_menu(MenuManager.MenuState.OPTIONS)
+	MenuManager.push_menu(MenuManager.MenuState.OPTIONS, true, false)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

@@ -1,9 +1,6 @@
 extends Control
-
 @export var slot: PackedScene
-
 @onready var inventory_container: HBoxContainer = %InventoryContainer
-
 var player
 
 #region Built-In
@@ -17,19 +14,8 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
 		get_viewport().set_input_as_handled()
-		
-		if !player:
-			_grab_references()
-
-		if MenuManager.is_menu_open() and not MenuManager.is_open(MenuManager.MenuState.INVENTORY):
-			return
-
-		if player && player.current_player_state in [player.PLAYER_STATE.FISHING, player.PLAYER_STATE.INTERACTING]:
-			return
-
 		_toggle_inventory()
-
-	elif event.is_action_pressed("esc") && visible || event.is_action_pressed("inventory") && visible:
+	elif visible and event.is_action_pressed("esc") || visible and event.is_action_pressed("close_menu"):
 		get_viewport().set_input_as_handled()
 		_close_inventory()
 #endregion
@@ -44,11 +30,19 @@ func _register_to_menu_manager() -> void:
 func _connect_signals() -> void:
 	InventoryManager.fish_added.connect(_update_inventory_slots)
 
+func _can_open_inventory() -> bool:
+	if !player:
+		_grab_references()
+	if MenuManager.is_menu_open() and not MenuManager.is_open(MenuManager.MenuState.INVENTORY):
+		return false
+	if player and player.player_state in [player.states.states.fishing, player.states.states.interacting]:
+		return false
+	return true
+
 func _populate_inventory() -> void:
 	if InventoryManager.inventory.size() > InventoryManager.MAX_INVENTORY_SIZE:
 		InventoryManager.inventory.resize(InventoryManager.MAX_INVENTORY_SIZE)
 		print("Inventory size exceeds max inventory size, resizing...")
-
 	if slot:
 		for i in InventoryManager.MAX_INVENTORY_SIZE:
 			var fish: Fish = null
@@ -58,7 +52,6 @@ func _populate_inventory() -> void:
 
 func _update_inventory_slots() -> void:
 	var slots = inventory_container.get_children()
-
 	for i in slots.size():
 		if i < InventoryManager.inventory.size():
 			slots[i].fish = InventoryManager.inventory[i]
@@ -69,7 +62,6 @@ func _update_inventory_slots() -> void:
 func _instantiate_new_slot(fish: Fish) -> void:
 	var inventory_slot = slot.instantiate()
 	inventory_container.add_child(inventory_slot)
-
 	if fish:
 		inventory_slot.fish = fish.duplicate()
 		inventory_slot.set_up_slot()
@@ -81,11 +73,11 @@ func _open_inventory() -> void:
 	_update_inventory_slots()
 
 func _close_inventory() -> void:
-	MenuManager.close_current_menu()
+	MenuManager.close_current_menu(true)
 
 func _toggle_inventory() -> void:
 	if MenuManager.is_open(MenuManager.MenuState.INVENTORY):
 		_close_inventory()
-	else:
+	elif _can_open_inventory():
 		_open_inventory()
 #endregion

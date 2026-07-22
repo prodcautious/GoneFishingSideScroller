@@ -4,10 +4,15 @@
 [ext_resource type="Shader" uid="uid://1cv46jk6xdts" path="res://assets/shaders/ui/canvas_blur.gdshader" id="2_hf471"]
 [ext_resource type="Script" uid="uid://c60fyhdmfnyx0" path="res://scripts/custom_control/custom_button.gd" id="3_2f5f3"]
 [ext_resource type="Theme" uid="uid://rbfkgv8dwr1b" path="res://new_theme.tres" id="3_idy5m"]
+[ext_resource type="Texture2D" uid="uid://cttrk0y14k4o7" path="res://assets/textures/ui/new_keyboard_icons.png" id="5_hf471"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bnpd"]
 shader = ExtResource("2_hf471")
 shader_parameter/lod = 1.0000000475
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f5f3"]
+atlas = ExtResource("5_hf471")
+region = Rect2(32, 0, 16, 16)
 
 [node name="PauseMenu" type="Control" unique_id=1002509039]
 process_mode = 3
@@ -99,3 +104,18 @@ text = "Quit"
 script = ExtResource("3_2f5f3")
 stretch_coords = Vector2(1, 1.1)
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
+
+[node name="CloseTooltip" type="HBoxContainer" parent="MarginContainer" unique_id=1911601434]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CloseTooltip" unique_id=2039079096]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2f5f3")
+
+[node name="Label" type="Label" parent="MarginContainer/CloseTooltip" unique_id=1011662280]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Return To Game"

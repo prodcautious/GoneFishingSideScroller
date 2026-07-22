@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ccntsauypftrd" path="res://assets/textures/ui/new_ui.png" id="4_0gyrj"]
 [ext_resource type="Script" uid="uid://dsmcn7cf8jcu6" path="res://scripts/custom_control/custom_tab_bar.gd" id="5_1mjwn"]
 [ext_resource type="Script" uid="uid://cpl3gqnkximai" path="res://scripts/custom_control/custom_tab_container.gd" id="5_4xydh"]
+[ext_resource type="Texture2D" uid="uid://cttrk0y14k4o7" path="res://assets/textures/ui/new_keyboard_icons.png" id="7_jugju"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_snsgv"]
 shader = ExtResource("2_0ejsc")
@@ -30,6 +31,34 @@ load_path = "res://.godot/imported/new_ui.png-af6251b7d99a887951fb601bb27e062a.c
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0uyi"]
 atlas = SubResource("CompressedTexture2D_jugju")
 region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jugju"]
+atlas = ExtResource("7_jugju")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icuyq"]
+atlas = ExtResource("7_jugju")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xvdf"]
+atlas = ExtResource("7_jugju")
+region = Rect2(0, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvkk5"]
+atlas = ExtResource("7_jugju")
+region = Rect2(0, 80, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgeq1"]
+atlas = ExtResource("7_jugju")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnt61"]
+atlas = ExtResource("7_jugju")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ypey"]
+atlas = ExtResource("7_jugju")
+region = Rect2(32, 0, 16, 16)
 
 [node name="OptionsMenu" type="Control" unique_id=1705903237]
 process_mode = 3
@@ -90,7 +119,7 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ControlsLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer" unique_id=2089690806]
+[node name="GameLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer" unique_id=2089690806]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -105,21 +134,20 @@ size_flags_vertical = 4
 theme_override_constants/separation = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=2005496550]
-custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ControlLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1015042491]
-custom_minimum_size = Vector2(56, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "A/D"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer" unique_id=214158933]
-custom_minimum_size = Vector2(0, 32)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1447376864]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 32
+texture = SubResource("AtlasTexture_jugju")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer" unique_id=274061159]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_icuyq")
+stretch_mode = 2
 
 [node name="DescLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1695727564]
 custom_minimum_size = Vector2(64, 0)
@@ -127,22 +155,31 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Move Left/Right"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=1945558146]
-custom_minimum_size = Vector2(0, 48)
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=1939763411]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ControlLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=612953961]
-custom_minimum_size = Vector2(56, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Tab"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=764884799]
-custom_minimum_size = Vector2(0, 32)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=126089416]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 32
+texture = SubResource("AtlasTexture_8xvdf")
+stretch_mode = 2
+
+[node name="DescLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=385434318]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Jump"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=1945558146]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1776977790]
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_dvkk5")
+stretch_mode = 2
 
 [node name="DescLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1275313902]
 custom_minimum_size = Vector2(64, 0)
@@ -151,21 +188,14 @@ theme_override_font_sizes/font_size = 16
 text = "Toggle Inventory"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=1838403305]
-custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ControlLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1808752654]
-custom_minimum_size = Vector2(56, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "R"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1496284080]
-custom_minimum_size = Vector2(0, 32)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=409180935]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 32
+texture = SubResource("AtlasTexture_rgeq1")
+stretch_mode = 2
 
 [node name="DescLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=167802585]
 custom_minimum_size = Vector2(64, 0)
@@ -174,27 +204,35 @@ theme_override_font_sizes/font_size = 16
 text = "Open Accessory Menu"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=661400063]
-custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ControlLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2000818734]
-custom_minimum_size = Vector2(56, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Space"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1050135537]
-custom_minimum_size = Vector2(0, 32)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=586567832]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 32
+texture = SubResource("AtlasTexture_mnt61")
+stretch_mode = 2
 
 [node name="DescLabel" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=327575855]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Cast Rod (Hold)"
+
+[node name="CloseTooltip" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer" unique_id=2094683263]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Game/MarginContainer/CloseTooltip" unique_id=1577626742]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8ypey")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/CloseTooltip" unique_id=1156740351]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Close"
 
 [node name="Video" type="TabBar" parent="MarginContainer/TabContainer" unique_id=1522101266]
 visible = false
@@ -234,7 +272,7 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1497141783]
-custom_minimum_size = Vector2(106, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Window Mode"
@@ -267,7 +305,7 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=656061485]
-custom_minimum_size = Vector2(106, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Resolution"
@@ -300,7 +338,7 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=895535682]
-custom_minimum_size = Vector2(106, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "V-Sync"
@@ -315,6 +353,21 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("3_c4822")
 metadata/_custom_type_script = "uid://dm3x470i8khp7"
+
+[node name="CloseTooltip" type="HBoxContainer" parent="MarginContainer/TabContainer/Video/MarginContainer" unique_id=1304310568]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Video/MarginContainer/CloseTooltip" unique_id=1942471532]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8ypey")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Video/MarginContainer/CloseTooltip" unique_id=467093304]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Close"
 
 [node name="Audio" type="TabBar" parent="MarginContainer/TabContainer" unique_id=250450636]
 visible = false
@@ -483,3 +536,18 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "100%"
+
+[node name="CloseTooltip" type="HBoxContainer" parent="MarginContainer/TabContainer/Audio/MarginContainer" unique_id=553791461]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TabContainer/Audio/MarginContainer/CloseTooltip" unique_id=1854300995]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8ypey")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer/CloseTooltip" unique_id=794573882]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Close"

@@ -17,7 +17,7 @@ func get_max_bait_weight() -> float:
 	return max_bait_weight
 
 func get_stats() -> String:
-	return "Catch rate: " + str(get_catch_rate() * 100) + "%\nMax Bait Weight: " + str(get_max_bait_weight())
+	return "Catch rate: " + str(get_catch_rate() * 100) + "%\nMax Bait Weight: " + str(get_max_bait_weight()) + "kg."
 #endregion
 
 #region Setters

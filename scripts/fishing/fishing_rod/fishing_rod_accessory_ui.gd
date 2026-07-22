@@ -26,21 +26,21 @@ func _ready() -> void:
 	hide()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if _player_is_fishing():
-		return
+#func _unhandled_input(event: InputEvent) -> void:
+	#if _player_is_fishing():
+		#return
 
-	if event.is_action_pressed("open_accessories"):
-		get_viewport().set_input_as_handled()
+	#if event.is_action_pressed("open_accessories"):
+		#get_viewport().set_input_as_handled()
 
-		if not _can_open_accessories():
-			return
+		#if not _can_open_accessories():
+			#return
 
-		_handle_accessory_menu_input()
+		#_handle_accessory_menu_input()
 
-	elif event.is_action_pressed("esc") and visible:
-		get_viewport().set_input_as_handled()
-		_handle_escape_input()
+	#elif event.is_action_pressed("esc") and visible:
+		#get_viewport().set_input_as_handled()
+		#_handle_escape_input()
 #endregion
 
 
@@ -72,13 +72,13 @@ func _can_open_accessories() -> bool:
 	return _get_rod() != null
 
 
-func _player_is_fishing() -> bool:
-	var player = get_tree().get_first_node_in_group("Player")
+#func _player_is_fishing() -> bool:
+	#var player = get_tree().get_first_node_in_group("Player")
 
-	if player == null:
-		return false
+	#if player == null:
+		#return false
 
-	return player.current_player_state == player.PLAYER_STATE.FISHING
+	#return player.current_player_state == player.PLAYER_STATE.FISHING
 #endregion
 
 

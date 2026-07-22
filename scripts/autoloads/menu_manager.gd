@@ -56,7 +56,7 @@ func push_menu(menu_state: MenuState, pause_game: bool = false, hide_menu: bool 
 		menus[menu_state].show()
 	get_tree().paused = pause_game
 
-func pop_menu() -> void:
+func pop_menu(pause_game: bool = false) -> void:
 	if menus.has(current_menu):
 		menus[current_menu].hide()
 	if menu_stack.is_empty():
@@ -66,3 +66,4 @@ func pop_menu() -> void:
 		current_menu = menu_stack.pop_back()
 		if menus.has(current_menu):
 			menus[current_menu].show()
+	get_tree().paused = pause_game

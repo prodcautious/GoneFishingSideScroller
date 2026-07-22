@@ -23,10 +23,13 @@ func _ready() -> void:
 	set_up_default_settings()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("esc") and visible:
+	if event.is_action_pressed("esc") and visible || event.is_action_pressed("close_menu") and visible:
 		get_viewport().set_input_as_handled()
 		OptionsManager.save_options()
-		MenuManager.pop_menu()
+		if MenuManager.current_menu == MenuManager.MenuState.START:
+			MenuManager.pop_menu()
+		else:
+			MenuManager.pop_menu(true)
 
 func _on_visibility_changed() -> void:
 	if visible:

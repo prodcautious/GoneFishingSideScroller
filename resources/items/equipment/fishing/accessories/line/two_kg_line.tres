@@ -7,7 +7,7 @@
 script = ExtResource("1_66v7o")
 max_weight = 2.0
 accessory_type = 2
-type = "2kg Line"
+type = "2kg. Line"
 desc = "Not the strongest"
 icon = ExtResource("1_4p1yy")
 metadata/_custom_type_script = "uid://30hjoj6ncoao"

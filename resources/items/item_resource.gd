@@ -11,7 +11,7 @@ func get_type() -> String:
 	return type
 
 func get_desc() -> String:
-	return desc
+	return "\"" + desc + "\""
 
 func get_icon() -> Texture2D:
 	return icon
