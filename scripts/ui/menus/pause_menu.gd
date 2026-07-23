@@ -8,7 +8,10 @@ extends Control
 @onready var main_menu_button: CustomButton = %MainMenuButton
 @onready var quit_button: CustomButton = %QuitButton
 
+@onready var margin_container: MarginContainer = %MarginContainer
+
 var player
+var tween: Tween
 
 #region Built-In
 func _ready() -> void:
@@ -48,17 +51,38 @@ func _toggle_visibility() -> void:
 		player = get_tree().get_first_node_in_group("Player")
 		player.lock()
 		MenuManager.show_menu(MenuManager.MenuState.PAUSE, true)
+		_tween_in()
 		return
 
 	if visible:
 		hide()
+		_tween_out()
 		get_tree().paused = false
 		player = get_tree().get_first_node_in_group("Player")
 		player.unlock()
 		MenuManager.close_current_menu()
 	else:
 		show()
+		_tween_in()
 		MenuManager.show_menu(MenuManager.MenuState.PAUSE, true)
+
+func _tween_in() -> void:
+	if tween:
+		tween.kill()
+
+	margin_container.pivot_offset = size / 2
+	tween = create_tween()
+	tween.tween_property(margin_container, "scale", Vector2(1.1,1.1), 0.1)
+	tween.tween_property(margin_container, "scale", Vector2(1.0,1.0), 0.1)
+
+func _tween_out() -> void:
+	if tween:
+		tween.kill()
+
+	margin_container.pivot_offset = size / 2
+	tween = create_tween()
+	tween.tween_property(margin_container, "scale", Vector2(1.1,1.1), 0.1)
+	tween.tween_property(margin_container, "scale", Vector2(0.0,0.0), 0.1)
 #endregion
 
 #region Signals

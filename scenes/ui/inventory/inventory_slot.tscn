@@ -20,6 +20,7 @@ offset_bottom = 8.0
 focus_mode = 0
 theme_type_variation = &"InventoryButton"
 script = ExtResource("2_gbfhx")
+stretch_coords = Vector2(1.1, 1)
 metadata/_custom_type_script = "uid://c60fyhdmfnyx0"
 
 [node name="MarginContainer" type="MarginContainer" parent="ItemButton" unique_id=230777212]
@@ -67,18 +68,20 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 alignment = 1
 
-[node name="ItemType" type="Label" parent="DescPanelContainer/MarginContainer/VBoxContainer" unique_id=1534650871]
+[node name="ItemType" type="RichTextLabel" parent="DescPanelContainer/MarginContainer/VBoxContainer" unique_id=1562961761]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.019607844, 0.03529412, 0.078431375, 1)
-theme_override_font_sizes/font_size = 16
+bbcode_enabled = true
+text = "Type"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemStats" type="Label" parent="DescPanelContainer/MarginContainer/VBoxContainer" unique_id=1357870406]
+[node name="ItemStats" type="RichTextLabel" parent="DescPanelContainer/MarginContainer/VBoxContainer" unique_id=1863942495]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.019607844, 0.03529412, 0.078431375, 1)
-theme_override_font_sizes/font_size = 16
+bbcode_enabled = true
+text = "Stats"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -174,43 +174,43 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FishingRod/PerfectLabel:modulate")
+tracks/0/path = NodePath("FishingRod/CaughtFishSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FishingRod/PerfectLabel:position")
+tracks/1/path = NodePath("FishingRod/CaughtFishSprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-20, -48)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FishingRod/PerfectLabel:visible")
+tracks/2/path = NodePath("FishingRod/CaughtFishSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, -12)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FishingRod/CaughtFishSprite:visible")
+tracks/3/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -222,46 +222,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FishingRod/CaughtFishSprite:modulate")
+tracks/4/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FishingRod/CaughtFishSprite:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -12)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("DialogueHandler/CanvasLayer/MarginContainer/DidntCatchFishLabel:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -341,42 +305,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_d6tgn"]
 resource_name = "perfect_cast"
 step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FishingRod/PerfectLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FishingRod/PerfectLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-20, -48), Vector2(-20, -64), Vector2(-20, -64), Vector2(-20, -48)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FishingRod/PerfectLabel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3wg1y"]
 _data = {
@@ -468,24 +396,6 @@ visible = false
 [node name="TryCatchFishTimer" type="Timer" parent="FishingRod" unique_id=2120373071]
 unique_name_in_owner = true
 
-[node name="PerfectLabel" type="Label" parent="FishingRod" unique_id=1366715600]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -48.0
-offset_right = 20.0
-offset_bottom = -32.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "Perfect"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CastProgressBar" type="ProgressBar" parent="FishingRod" unique_id=1575416344]
 unique_name_in_owner = true
 visible = false
@@ -550,12 +460,9 @@ theme_override_constants/margin_bottom = 8
 
 [node name="CaughtFishLabel" type="Label" parent="FishingRod/CanvasLayer/MarginContainer" unique_id=1763481366]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 8
-text = "+ Red Snapper (0.2kg)"
 horizontal_alignment = 1
 vertical_alignment = 1
 

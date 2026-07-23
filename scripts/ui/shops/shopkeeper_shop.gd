@@ -57,5 +57,4 @@ func _input(event: InputEvent) -> void:
 		var player = get_tree().get_first_node_in_group("Player")
 		get_viewport().set_input_as_handled()
 		MenuManager.close_current_menu()
-		player.set_state(0)
 		queue_free()

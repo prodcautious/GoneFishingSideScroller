@@ -1,13 +1,12 @@
 extends Control
 
 @onready var icon_texture_rect: TextureRect = %IconTextureRect
-@onready var item_type: Label = %ItemType
-@onready var item_stats: Label = %ItemStats
+@onready var item_type: RichTextLabel = %ItemType
+@onready var item_stats: RichTextLabel = %ItemStats
 @onready var item_button: Button = %ItemButton
 @onready var desc_panel_container: PanelContainer = %DescPanelContainer
 
 var fish: Fish
-var can_sell = false
 
 #region Built-In
 func _ready() -> void:
@@ -21,8 +20,7 @@ func _connect_signals() -> void:
 	item_button.mouse_exited.connect(_on_item_button_mouse_exited)
 	item_button.pressed.connect(_on_item_button_pressed)
 
-func set_up_slot(sellable: bool = false) -> void:
-	can_sell = sellable
+func set_up_slot() -> void:
 	if fish:
 		icon_texture_rect.texture = fish.get_icon()
 		item_type.text = fish.get_type()
@@ -35,7 +33,6 @@ func reset_slot() -> void:
 	item_stats.text = ""
 	fish = null
 	desc_panel_container.hide()
-	can_sell = false
 #endregion
 
 #region Signals
@@ -48,7 +45,7 @@ func _on_item_button_mouse_exited() -> void:
 		desc_panel_container.hide()
 
 func _on_item_button_pressed() -> void:
-	if can_sell and fish:
+	if fish:
 		InventoryManager.sell_fish(fish)
 		reset_slot()
 #endregion

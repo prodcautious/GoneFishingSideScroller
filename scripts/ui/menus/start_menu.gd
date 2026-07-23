@@ -7,6 +7,7 @@ extends Control
 @onready var youtube_texture_button: CustomTextureButton = %YoutubeTextureButton
 @onready var itch_texture_button: CustomTextureButton = %ItchTextureButton
 @onready var version_label: Label = %VersionLabel
+@onready var v_box_container: VBoxContainer = %VBoxContainer
 
 @export var main_scene: String = ""
 
@@ -19,12 +20,16 @@ func _ready() -> void:
 	connect_signals()
 	version_label.text = "V " + str(GameManager.current_version)
 
-	pivot_offset = size / 2
-	scale = Vector2.ZERO
+	_tween_in()
+
+func _tween_in() -> void:
+	if tween:
+		tween.kill()
+
+	v_box_container.pivot_offset = size / 2
 	tween = create_tween()
-	tween.tween_property(self, "scale", Vector2.ONE, 0.1)
-	tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.1)
-	tween.tween_property(self, "scale", Vector2.ONE, 0.1)
+	tween.tween_property(v_box_container, "scale", Vector2(1.1,1.1), 0.1)
+	tween.tween_property(v_box_container, "scale", Vector2(1.0,1.0), 0.1)
 
 func connect_signals() -> void:
 	start_button.pressed.connect(_on_start_button_pressed)

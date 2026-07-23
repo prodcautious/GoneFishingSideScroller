@@ -32,7 +32,6 @@ func _input(event: InputEvent) -> void:
 			return
 
 		get_tree().paused = true
-		player.set_state(2)
 		DialogueManager.show_dialogue_balloon(dialogue_resource, "start")
 #endregion
 

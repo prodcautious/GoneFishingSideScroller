@@ -32,12 +32,10 @@ func _on_detect_area_entered(area: Area2D) -> void:
 	if parent.is_in_group("Player"):
 		get_tree().paused = true
 		# Set state to Interacting
-		player.set_state(2)
 		DialogueManager.show_dialogue_balloon(dialogue_resource, "start", voice)
 
 func _on_dialogue_ended(resource: DialogueResource) -> void:
 	if resource == dialogue_resource:
 		get_tree().paused = false
 		# Back to Idle
-		player.set_state(0)
 		cutscene_completed = true

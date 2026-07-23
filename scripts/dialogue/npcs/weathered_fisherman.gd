@@ -47,7 +47,6 @@ func _on_detect_area_entered(area: Area2D) -> void:
 		get_tree().paused = true
 		# Set state to Interacting
 		player = get_tree().get_first_node_in_group("Player")
-		player.set_state(2)
 		
 		current_dialogue_title = "start"
 		DialogueManager.show_dialogue_balloon(dialogue_resource, current_dialogue_title, voice)
@@ -70,7 +69,6 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		"after_name":
 			get_tree().paused = false
 			player = get_tree().get_first_node_in_group("Player")
-			player.set_state(0)
 			player.unlock()
 			cutscene_completed = true
 

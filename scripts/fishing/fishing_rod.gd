@@ -58,9 +58,6 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("cast_rod"):
-		if player.current_player_state == player.PLAYER_STATE.WALKING:
-			return
-
 		if InventoryManager.inventory.size() >= InventoryManager.MAX_INVENTORY_SIZE:
 			print("Inventory full. Try selling some items first")
 			return
@@ -135,7 +132,6 @@ func _begin_cast() -> void:
 	cast_time_held = 0.0
 	cast_progress_bar.value = 0.0
 	next_sfx_progress = 0.1
-	player.set_state(3)
 	
 func _release_cast() -> void:
 	# Ignore spam clicks
@@ -144,7 +140,6 @@ func _release_cast() -> void:
 		is_decaying = false
 		cast_progress_bar.hide()
 		cast_progress_bar.value = 0.0
-		player.set_state(0)
 		_hide_rod()
 		return
 	is_casting  = false
@@ -183,7 +178,6 @@ func _end_fishing(lose_bait: bool = false, lose_hook: bool = false) -> void:
 	cast_progress_bar.hide()
 	cast_progress_bar.value = 0.0
 
-	player.set_state(0)
 	_hide_rod()
 	fishing_line.queue_redraw()
 
@@ -293,12 +287,12 @@ func get_fish_on_hook(bait_type: String, catch_modifier: String) -> Fish:
 	for entry in eligible_fish:
 		cumulative_chance += entry["data"]["catch_chance"]
 		if roll < cumulative_chance:
-			return make_fish_resource(entry["name"], entry["data"])
+			return _make_fish_resource(entry["name"], entry["data"])
 
 	var fallback = eligible_fish.back()
-	return make_fish_resource(fallback["name"], fallback["data"])
+	return _make_fish_resource(fallback["name"], fallback["data"])
 
-func make_fish_resource(fish_name: String, fish_data: Dictionary) -> Fish:
+func _make_fish_resource(fish_name: String, fish_data: Dictionary) -> Fish:
 	var new_fish = Fish.new()
 	new_fish.type = fish_name
 	for water_type in fish_data["water_type"]:
@@ -307,7 +301,10 @@ func make_fish_resource(fish_name: String, fish_data: Dictionary) -> Fish:
 		if !new_fish.accepted_bait.has(bait):
 			new_fish.accepted_bait.append(bait)
 	new_fish.encounter_rate = fish_data["catch_chance"]
-
+	
+	var weight_range = fish_data["weight"]
+	new_fish.weight_range = weight_range
+	
 	var base_weight := randf_range(fish_data["weight"].x, fish_data["weight"].y)
 	new_fish.weight = lerp(base_weight, fish_data["weight"].y, cast_power * WEIGHT_BIAS)
 
@@ -333,7 +330,6 @@ func _catch_fish_animation(fish: Fish) -> void:
 
 func _did_not_catch_fish_animation(reason: String) -> void:
 	casted_out = false
-	player.set_state(0)
 	_hide_rod()
 
 	didnt_catch_fish_label.text = reason

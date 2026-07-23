@@ -5,6 +5,7 @@ class_name Fish
 @export var water_type: Array[String]
 @export var encounter_rate: float
 @export var weight: float
+@export var weight_range: Vector2
 @export var base_price: int
 @export var price: int = 0
 
@@ -22,14 +23,28 @@ func get_weight() -> String:
 	var padded_weight = str(weight).pad_decimals(2)
 	return padded_weight
 
+func get_weight_range() -> Vector2:
+	return weight_range
+
 func get_base_price() -> int:
 	return base_price
 
 func get_price() -> int:
 	return price
 
+func get_weight_color() -> String:
+	var weight_percent = inverse_lerp(weight_range.x, weight_range.y, weight)
+	
+	if weight_percent <= 0.25:
+		return "[color=#73263d]"
+	elif weight_percent >= 0.75:
+		return "[color=#3dff6e]"
+	
+	else:
+		return "[color=#c7d4e1]"
+
 func get_stats() -> String:
-	return "(" + get_weight() + "kg.)\n" + "$" + str(get_price())
+	return "[color=#c7d4e1]Weight: " + get_weight_color() + get_weight() + "kg.[/color]\n" + "[color=#c7d4e1]Value: " + "[color=#3dff6e]$" + str(get_price()) + "[/color]"
 #endregion
 
 #region Setters

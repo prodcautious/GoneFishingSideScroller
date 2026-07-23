@@ -33,10 +33,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and player_is_in_area:
 		should_teleport = false
 		get_tree().paused = true
-		player.set_state(2)
 		interact_container.hide()
 
-		DialogueManager.show_dialogue_balloon(dialogue_resource, "start", [self])
 
 func request_teleport() -> void:
 	should_teleport = true
@@ -63,7 +61,6 @@ func _on_dialogue_ended(resource: DialogueResource) -> void:
 		return
 
 	get_tree().paused = false
-	player.set_state(0)
 
 	if not should_teleport:
 		return
