@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var fps_label: Label = %FPSLabel
 @onready var state_label: Label = %StateLabel
@@ -18,7 +18,24 @@ var player
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	SceneTransition.transition_complete.connect(_on_transition_complete)
+	MenuManager.register_menu(MenuManager.MenuState.DEBUG, self)
 	hide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug"):
+		_toggle_visibility()
+
+func _toggle_visibility() -> void:
+	if !OptionsManager.debug:
+		return
+	
+	if MenuManager.current_menu == MenuManager.MenuState.START || MenuManager.current_menu == MenuManager.MenuState.PAUSE:
+		return
+	
+	if visible:
+		hide()
+	else:
+		show()
 
 func _process(_delta: float) -> void:
 	if !player:
@@ -55,13 +72,6 @@ func update_position_label() -> void:
 		var tile_y = int(new_position.y / 16)
 
 		position_label.text = "Position: " + str(tile_x) + "," + str(tile_y)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug"):
-		if visible:
-			hide()
-		else:
-			show()
 
 func _on_transition_complete() -> void:
 	player = get_tree().get_first_node_in_group("Player")

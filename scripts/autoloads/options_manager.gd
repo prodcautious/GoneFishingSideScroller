@@ -8,6 +8,8 @@ const RESOLUTIONS = [
 	Vector2i(480, 270)
 ]
 
+var debug: bool = false # Debug disabled by default
+
 var window_mode: int = 1 #0 = Fullscreen #1 = Windowed #2 (Native) = Borderless Windowed
 var v_sync: bool = true # VSync enabled (Native)
 
@@ -29,6 +31,8 @@ func _notification(what: int) -> void:
 
 func save_options() -> void:
 	var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
+	file.store_var(debug)
+	
 	file.store_var(resolution_index)
 	file.store_var(window_mode)
 	file.store_var(v_sync)
@@ -42,6 +46,7 @@ func load_options() -> void:
 	if FileAccess.file_exists("user://save_game.dat"):
 		var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
 		if file:
+			debug = file.get_var()
 			resolution_index = file.get_var()
 			window_mode = file.get_var()
 			v_sync = file.get_var()

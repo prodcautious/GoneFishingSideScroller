@@ -5,8 +5,6 @@ var current_version: float = 0.04
 var balance: int = 0
 var player_name: String
 
-var debug: bool = true
-
 signal game_start
 signal balance_changed(total_count: int)
 

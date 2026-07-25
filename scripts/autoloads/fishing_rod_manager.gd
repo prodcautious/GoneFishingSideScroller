@@ -7,7 +7,7 @@ var debug_fishing_rod: FishingRod = preload("res://resources/items/equipment/fis
 var fishing_rod: FishingRod = null
 
 func _ready() -> void:
-	if GameManager.debug:
+	if OptionsManager.debug:
 		set_fishing_rod(debug_fishing_rod)
 
 func set_fishing_rod(rod: FishingRod) -> void:

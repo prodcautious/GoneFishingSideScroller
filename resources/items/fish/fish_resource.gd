@@ -7,6 +7,7 @@ class_name Fish
 @export var weight: float
 @export var weight_range: Vector2
 @export var base_price: int
+@export var price_range: Vector2
 @export var price: int = 0
 
 #region Getters
@@ -29,6 +30,9 @@ func get_weight_range() -> Vector2:
 func get_base_price() -> int:
 	return base_price
 
+func get_price_range() -> Vector2:
+	return price_range
+
 func get_price() -> int:
 	return price
 
@@ -36,12 +40,23 @@ func get_weight_color() -> String:
 	var weight_percent = inverse_lerp(weight_range.x, weight_range.y, weight)
 	
 	if weight_percent <= 0.25:
-		return "[color=#73263d]"
+		return "[color=#d41e3c]"
 	elif weight_percent >= 0.75:
 		return "[color=#3dff6e]"
 	
 	else:
-		return "[color=#c7d4e1]"
+		return "[color=#faffff]"
+
+func get_price_color() -> String:
+	var price_percent = inverse_lerp(price_range.x, price_range.y, price)
+	
+	if price_percent <= 0.25:
+		return "[color=#d41e3c]"
+	elif price_percent >= 0.75:
+		return "[color=#3dff6e]"
+	
+	else:
+		return "[color=#faffff]"
 
 func get_stats() -> String:
 	return "[color=#c7d4e1]Weight: " + get_weight_color() + get_weight() + "kg.[/color]\n" + "[color=#c7d4e1]Value: " + "[color=#3dff6e]$" + str(get_price()) + "[/color]"

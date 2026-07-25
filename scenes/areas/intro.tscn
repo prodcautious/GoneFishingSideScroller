@@ -57,7 +57,6 @@ size = Vector2(256, 26)
 
 [node name="Intro" type="Node2D" unique_id=656218291 groups=["Area"]]
 script = ExtResource("1_el4a1")
-fishing_ripple_scene = ExtResource("7_ljiig")
 limit_left = -368
 limit_right = -144
 camera_zoom = Vector2(3, 3)
@@ -65,7 +64,7 @@ camera_zoom = Vector2(3, 3)
 [node name="Characters" type="Node2D" parent="." unique_id=37953483 groups=["Characters"]]
 
 [node name="Player" parent="Characters" unique_id=1423084509 instance=ExtResource("3_el4a1")]
-position = Vector2(-360, -16)
+position = Vector2(-360, -17)
 
 [node name="WeatheredFisherman" parent="Characters" unique_id=2051625574 instance=ExtResource("3_601tu")]
 position = Vector2(-264, -16)

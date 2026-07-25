@@ -31,7 +31,7 @@ const EXPO_FACTOR: float = 3.0
 const DECAY_RATE: float = 0.20 
 const BITE_SPEED_BONUS: float = 0.25
 const WEIGHT_BIAS: float = 0.25
-const PRICE_BIAS: float = 0.25
+const PRICE_BIAS: float = 0.75
 
 var next_sfx_progress := 0.1
 const SFX_STEP := 0.05
@@ -286,31 +286,12 @@ func get_fish_on_hook(bait_type: String, catch_modifier: String) -> Fish:
 	var cumulative_chance = 0.0
 	for entry in eligible_fish:
 		cumulative_chance += entry["data"]["catch_chance"]
+		print(entry["data"]["name"])
 		if roll < cumulative_chance:
-			return _make_fish_resource(entry["name"], entry["data"])
+			return FishManager.make_fish_resource(entry["data"]["name"], entry["data"], cast_power, WEIGHT_BIAS, PRICE_BIAS)
 
 	var fallback = eligible_fish.back()
-	return _make_fish_resource(fallback["name"], fallback["data"])
-
-func _make_fish_resource(fish_name: String, fish_data: Dictionary) -> Fish:
-	var new_fish = Fish.new()
-	new_fish.type = fish_name
-	for water_type in fish_data["water_type"]:
-		new_fish.water_type.append(water_type)
-	for bait in fish_data["bait"]:
-		if !new_fish.accepted_bait.has(bait):
-			new_fish.accepted_bait.append(bait)
-	new_fish.encounter_rate = fish_data["catch_chance"]
-	
-	var weight_range = fish_data["weight"]
-	new_fish.weight_range = weight_range
-	
-	var base_weight := randf_range(fish_data["weight"].x, fish_data["weight"].y)
-	new_fish.weight = lerp(base_weight, fish_data["weight"].y, cast_power * WEIGHT_BIAS)
-
-	new_fish.price = int(fish_data["base_price"] * lerp(1.0, 1.0 + PRICE_BIAS, cast_power))
-	new_fish.icon = fish_data["texture"]
-	return new_fish
+	return FishManager.make_fish_resource(fallback["data"]["name"], fallback["data"], cast_power, WEIGHT_BIAS, PRICE_BIAS)
 
 func _catch_fish_animation(fish: Fish) -> void:
 	casted_out = false

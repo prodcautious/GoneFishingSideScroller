@@ -85,3 +85,6 @@ stream = ExtResource("3_rgv6m")
 autoplay = true
 max_distance = 1000.0
 panning_strength = 2.0
+
+[node name="DeathTimer" type="Timer" parent="." unique_id=1774247313]
+unique_name_in_owner = true

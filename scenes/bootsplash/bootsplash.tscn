@@ -240,9 +240,8 @@ _data = {
 &"bootsplash": SubResource("Animation_y0olu")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1579606442]
-
-[node name="Bootsplash" type="Control" parent="." unique_id=1674240622]
+[node name="Bootsplash" type="Control" unique_id=1674240622]
+process_mode = 3
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -252,7 +251,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bogre")
 
-[node name="ColorRect" type="ColorRect" parent="Bootsplash" unique_id=140725317]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=140725317]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,7 +260,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.05490196, 0.015686275, 0.12941177, 1)
 
-[node name="TextureRect" type="TextureRect" parent="Bootsplash" unique_id=1318225728]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1318225728]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -276,7 +275,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_kr7jx")
 
-[node name="TextureRect2" type="TextureRect" parent="Bootsplash" unique_id=2059228119]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=2059228119]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -291,7 +290,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_xwow8")
 
-[node name="MarginContainer" type="MarginContainer" parent="Bootsplash" unique_id=49541035]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=49541035]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -303,24 +302,28 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="SkipTooltipHBoxContainer" type="HBoxContainer" parent="Bootsplash/MarginContainer" unique_id=1757434221]
+[node name="SkipTooltipHBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1757434221]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="Bootsplash/MarginContainer/SkipTooltipHBoxContainer" unique_id=86380673]
+[node name="Label" type="Label" parent="MarginContainer/SkipTooltipHBoxContainer" unique_id=86380673]
 layout_mode = 2
 theme = ExtResource("4_xwow8")
 text = "LMB to skip"
 
-[node name="TextureRect" type="TextureRect" parent="Bootsplash/MarginContainer/SkipTooltipHBoxContainer" unique_id=2078404827]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/SkipTooltipHBoxContainer" unique_id=2078404827]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_xwow8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bootsplash" unique_id=1114002391]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1114002391]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_y2hje")
+
+[node name="BootsplashTimer" type="Timer" parent="." unique_id=26386247]
+unique_name_in_owner = true
+one_shot = true

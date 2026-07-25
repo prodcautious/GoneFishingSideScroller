@@ -1,5 +1,7 @@
 extends Control
 
+@onready var debug_check_box: CustomCheckBox = %DebugCheckBox
+
 @onready var resolution_option_button: CustomOptionButton = %ResolutionOptionButton
 @onready var window_mode_option_button: CustomOptionButton = %WindowModeOptionButton
 @onready var v_sync_check_box: CustomCheckBox = %VSyncCheckBox
@@ -26,10 +28,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("esc") and visible || event.is_action_pressed("close_menu") and visible:
 		get_viewport().set_input_as_handled()
 		OptionsManager.save_options()
-		if MenuManager.current_menu == MenuManager.MenuState.START:
-			MenuManager.pop_menu()
-		else:
-			MenuManager.pop_menu(true)
+		MenuManager.pop_menu()
 
 func _on_visibility_changed() -> void:
 	if visible:
@@ -38,6 +37,8 @@ func _on_visibility_changed() -> void:
 
 #region Helpers
 func _connect_signals() -> void:
+	# Game
+	debug_check_box.toggled.connect(_on_debug_check_box_toggled)
 	# Video
 	resolution_option_button.item_selected.connect(_on_resolution_selected)
 	window_mode_option_button.item_selected.connect(_on_window_mode_selected)
@@ -55,6 +56,8 @@ func register_menu() -> void:
 
 func set_up_default_settings() -> void:
 	is_setting_up = true
+	
+	debug_check_box.button_pressed = OptionsManager.debug
 
 	window_mode_option_button.select(OptionsManager.window_mode)
 	resolution_option_button.select(OptionsManager.resolution_index)
@@ -74,6 +77,13 @@ func set_up_default_settings() -> void:
 #endregion
 
 #region Signals
+func _on_debug_check_box_toggled(toggled_on: bool) -> void:
+	if is_setting_up:
+		return
+
+	OptionsManager.debug = toggled_on
+	OptionsManager.save_options()
+
 func _on_resolution_selected(index: int) -> void:
 	if is_setting_up:
 		return

@@ -133,6 +133,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=1526395203]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1798005338]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Debug"
+
+[node name="DebugCheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1832930571]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_c4822")
+metadata/_custom_type_script = "uid://dm3x470i8khp7"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer" unique_id=2005496550]
 layout_mode = 2
 theme_override_constants/separation = 16
@@ -277,11 +291,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Window Mode"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer" unique_id=414745006]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-
 [node name="WindowModeOptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer" unique_id=876491638]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(196, 32)
@@ -310,11 +319,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Resolution"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=361877687]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-
 [node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=377817508]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(196, 32)
@@ -342,11 +346,6 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "V-Sync"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=711392219]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
 
 [node name="VSyncCheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=682888255]
 unique_name_in_owner = true
@@ -388,7 +387,7 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VideoLabel" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer" unique_id=6579660]
+[node name="AudioLabel" type="Label" parent="MarginContainer/TabContainer/Audio/MarginContainer" unique_id=6579660]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -411,12 +410,6 @@ custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Master"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1796363833]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 32
 
 [node name="MasterHSlider" type="HSlider" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer" unique_id=449780478]
 unique_name_in_owner = true
@@ -446,12 +439,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Music"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=464659350]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-
 [node name="MusicHSlider" type="HSlider" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1263876254]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 16)
@@ -480,12 +467,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "SFX"
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2035866666]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-
 [node name="SfxHSlider" type="HSlider" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=199770099]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 16)
@@ -513,12 +494,6 @@ custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Voice"
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1821642061]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 32
 
 [node name="VoiceHSlider" type="HSlider" parent="MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1153305886]
 unique_name_in_owner = true

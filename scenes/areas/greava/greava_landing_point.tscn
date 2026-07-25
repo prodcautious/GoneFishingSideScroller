@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cgqqbp1m8wncr" path="res://assets/audio/sfx/waves_2.ogg" id="12_1welm"]
 [ext_resource type="AudioStream" uid="uid://dt2smi58hqia0" path="res://assets/audio/sfx/waves_3.ogg" id="13_vuiew"]
 [ext_resource type="Script" uid="uid://cv2n1k64l12qb" path="res://scripts/audio/random_audio_player.gd" id="14_ax7fa"]
+[ext_resource type="Script" uid="uid://d10a54xvv0dt0" path="res://scripts/fishing/fishing_hole_spawner.gd" id="16_vuiew"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pht4k"]
 shader = ExtResource("2_pht4k")
@@ -71,7 +72,6 @@ size = Vector2(784, 26)
 script = ExtResource("1_yl6xm")
 can_fish = true
 water_type = "Red Lake"
-fishing_ripple_scene = ExtResource("2_1welm")
 song_name = "greava_theme"
 limit_left = -320
 limit_right = 480
@@ -79,7 +79,7 @@ limit_right = 480
 [node name="Characters" type="Node2D" parent="." unique_id=200556153 groups=["Characters"]]
 
 [node name="Player" parent="Characters" unique_id=1423084509 instance=ExtResource("7_yu6xl")]
-position = Vector2(0, -16)
+position = Vector2(0, -17)
 
 [node name="Parallax" type="Node2D" parent="." unique_id=1570986181]
 light_mask = 2
@@ -181,12 +181,16 @@ autoplay = true
 bus = &"SFX"
 script = ExtResource("14_ax7fa")
 
-[node name="FishingRippleArea" type="Area2D" parent="." unique_id=1499557684]
+[node name="FishingHoleSpawner" type="Node2D" parent="." unique_id=1314069771 groups=["FishingHoleSpawner"]]
+script = ExtResource("16_vuiew")
+fishing_ripple_scene = ExtResource("2_1welm")
 
-[node name="FishingRippleCollisionShape2D" type="CollisionShape2D" parent="FishingRippleArea" unique_id=1087631469]
+[node name="FishingRippleArea" type="Area2D" parent="FishingHoleSpawner" unique_id=1499557684]
+
+[node name="FishingRippleCollisionShape2D" type="CollisionShape2D" parent="FishingHoleSpawner/FishingRippleArea" unique_id=1087631469]
 unique_name_in_owner = true
 position = Vector2(80, 16)
 shape = SubResource("RectangleShape2D_krrnh")
 
-[node name="FishRippleTimer" type="Timer" parent="." unique_id=1258330762]
+[node name="FishRippleTimer" type="Timer" parent="FishingHoleSpawner" unique_id=1258330762]
 unique_name_in_owner = true

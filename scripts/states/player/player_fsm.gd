@@ -143,7 +143,7 @@ func _enter_state(new_state, old_state) -> void:
 			parent._play_animation("idle")
 
 		states.walking:
-			parent._play_animation("walking")
+			parent._play_animation("walk")
 
 		states.fishing:
 			parent._play_animation("fishing")
@@ -153,7 +153,7 @@ func _enter_state(new_state, old_state) -> void:
 
 		# replace with actual jumping and falling animations at some point
 		states.jumping:
-			parent._play_animation("idle")
+			parent._play_animation("jump")
 
 		states.falling:
 			parent._play_animation("idle")

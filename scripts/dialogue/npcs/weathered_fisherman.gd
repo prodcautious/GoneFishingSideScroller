@@ -35,7 +35,7 @@ func _connect_signals() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _on_detect_area_entered(area: Area2D) -> void:
-	if GameManager.debug:
+	if OptionsManager.debug:
 		return
 
 	if cutscene_completed:

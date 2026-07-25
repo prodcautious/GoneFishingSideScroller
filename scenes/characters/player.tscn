@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dkr7ghuhrugjx" path="res://assets/textures/items/fish/red_snapper.png" id="13_xrqxk"]
 [ext_resource type="Shader" uid="uid://dogrmsj3anntm" path="res://shaders/ui/vignette.gdshader" id="14_k4v7y"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_eojnx"]
-_data = PackedByteArray("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")
-size_override = Vector2(224, 192)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_7vyk4"]
+_data = PackedByteArray("AAADAAUAAAABAAAAoAAAAIAAAABmBQAAUklGRl4FAABXRUJQVlA4TFEFAAAvn8AfEG+gqJEkZenFNtbE5vyrOQNkQ20kW8mP/y9AcJeOaJlqyIkUBADZCPFJoX8WRd42/wEA/v+VyE9K0qrWDEPu4jmcQ5rR3G/btB4AJdfW5rbRD4QCEQlcQcFL8Ci1ACf5DI0KSMO/eg3jmYE0FOSJ95Dp94OpPt3vNKphQAjQEmgDvfBthja+x++XqhlG9B+S20iOJI3bvTFyzSPcf/bjab5hzcbVZu16ShXlcFdu3wVdKKoyuCuz383kGlNDeJf5bkYXNdLYd2XYbXLtrI63XPpdJtdcTrZd8l3YhRJJv8vmck0zSr/L5lrGZggcSXbZXB84fgCO2ET73WyuwHU9BI4IHMt+uyyuJWyJd30w76qR67euoDtiil09XMgdWG1+xHUYoZ1G93XIzay62wUHLtCdQg83duluz1yoybUD7Aw8wm7s0t0Hr6PeCjoW3GuX6Q6rPdgeSjzHwnbHGXT3+IYvnelOcmDezcDtbjiQE97ReAcnVJ7qfUPlQE985zLdEbsnfprrPYAO8dNzZ3KLn7XAbW7SaxdyzRz4P0rlwO7Au7D739ZBfgMc//KPp/mGNRtX9l3YZXM8pYpy+y7owg4UVZl9F3aZHGNqKMEu7DI5qJHG2XdBl825szrecuZd2GVzzOVk274Lu7ADJWLfhV02h2uakX0XdtkcLjZD+y7ssjmWHD8AR69d0BVtjg9c10PgiB+szoid9VBnwjpHWucyIMdvnSMAl9lpd0QOjBx1gI4au0yO+REzj4AjQEcdsMtZnO2iS7TkhgO4AhfQ6XSHZ+ASr9fKxDMvCtXVw4mSg9dRTQ47x0prNe0cIirkhlOHvo56qz3QYn8PVDzpHK1++H3UYh+G7nbjrqL2w4076jBm0AR+w3ypM18y31Zz1w496HTCcCeVp/quHSoHrfp/8drhTI6WSq838dNcdzxYh2OW1jnz3tkqu3LT3Z7uEnBPx8ixQxVwUPn0u4EpT0TgDD3KUJnzfmBq9+s7oJ0UUaZHHnXnFmiXMhTe5XbJ/bc/nuZ2V+Jm4wq77S7jaqooh267K4e7UFRl2G12ZabdY2qoxy6ry3g3aqTpsQu60u7eWR1v9XBDV9pdcznZxm7ssu9CiWA3dqXd5ZpmhN3YlXbXMjYRu6FrCBzmXR841kO4C7o+AId19zJyDfoQ0K6AXMtg3f0bdkbovhF2Wu46P+I66M4ebugy75QFB3Zw1wi4Aw9NLpww67XXuwrgZh4h15cC3SkMddcEJZ712oXnLwVyXaKCvtPJ6nUEHbyOBXJcgV2Hr69G4G5gpzuVj+D3eLGP6hxXYLfAXZ6v9H6QVwyaMBfADe7qWnl1ie6Gdr5kBgnzpcNu3dnl0N2Aa4dKD9xUDvR2ZHIKHNAlUp7qPfDTmdMffprrPTA7Wjk8R66nM+xO7JBD4KDM+YF+x9IP4F0TOGwRbVzZJuSBy3sUpXD8z3o8zTfMPRtXm+V+ShXl63eDqMpg63WPqSH89Xrd1Pz9VY8Su6UBf4erk+0eJXYfb+nNRQSX2n2ybW/N7qYZ4dbrXsZmiEvujnofOH5w8JHcXQ/VItf1EJbUvQxcI0evkrp/w47IdejROt3zIw48wq3TLQtmFhx0g5C7XXj+UmgMmXjmRQHDu3XHtVtNDl5fqa2mB6+jCAzv1h2dGzj2X1+NtIone69ja0qgW/Z0t3MifFmo/eCZHX7g3bpj0rnB0Fd67iXzbYcfeDdwlKd6OzI5dbqDyoGttnOiOxye664Hfppjh60H2C2HRvfMe4fDTnxHm2M6ph5hd9Ie+M1rxx55uwO0S1nPHAA=")
+size_override = Vector2(160, 128)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6tgn"]
 
@@ -69,7 +69,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_xhtjm"]
 resource_name = "fishing"
-length = 1.2
+length = 1.4
 loop_mode = 1
 step = 0.01
 tracks/0/type = "value"
@@ -103,14 +103,13 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [25, 26, 27, 28, 29, 30]
+"values": [12, 13, 14, 15, 16, 17, 0]
 }
 
-[sub_resource type="Animation" id="Animation_xrqxk"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_jk2m4"]
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
@@ -126,11 +125,9 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_7vyk4"]
-resource_name = "walking"
-length = 0.8
+[sub_resource type="Animation" id="Animation_xrqxk"]
+length = 0.2
 loop_mode = 1
-step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -138,19 +135,24 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.35, 0.45, 0.55, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 6, 7, 8, 9, 10, 11]
+"values": [18]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.55),
+
+[sub_resource type="Animation" id="Animation_k4v7y"]
+length = 0.7999999999999999
+loop_mode = 1
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -160,13 +162,26 @@ tracks/1/keys = {
 "method": &"_play_footstep_sound"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.35, 0.45, 0.55, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 6, 7, 8, 9, 10, 11]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g66nw"]
 _data = {
 &"RESET": SubResource("Animation_2l4js"),
 &"fishing": SubResource("Animation_xhtjm"),
-&"idle": SubResource("Animation_xrqxk"),
-&"walking": SubResource("Animation_7vyk4")
+&"idle": SubResource("Animation_jk2m4"),
+&"jump": SubResource("Animation_xrqxk"),
+&"walk": SubResource("Animation_k4v7y")
 }
 
 [sub_resource type="Animation" id="Animation_rpnd8"]
@@ -325,9 +340,9 @@ unique_name_in_owner = true
 process_mode = 3
 texture_filter = 1
 position = Vector2(0, -16)
-texture = SubResource("PortableCompressedTexture2D_eojnx")
-hframes = 7
-vframes = 6
+texture = SubResource("PortableCompressedTexture2D_7vyk4")
+hframes = 5
+vframes = 4
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -349,7 +364,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/textures/characters/player/player.aseprite",
 "source_uid": 4810173981717615722
 }
-metadata/_aseprite_wizard_source_file_hash_ = "1ef883d02697533bdda5ca02ae0a8f98"
+metadata/_aseprite_wizard_source_file_hash_ = "a97d4444aa970c6175578e14ec5002bf"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1911022542]
 unique_name_in_owner = true

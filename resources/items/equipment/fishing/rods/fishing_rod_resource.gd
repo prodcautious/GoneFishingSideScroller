@@ -97,11 +97,7 @@ func consume_hook() -> void:
 	equipment_changed.emit()
 
 
-func _consume_accessory(
-	accessory: FishingAccessory,
-	accessory_array: Array,
-	accessory_type: FishingAccessory.AccessoryType
-) -> void:
+func _consume_accessory(accessory: FishingAccessory, accessory_array: Array, accessory_type: FishingAccessory.AccessoryType) -> void:
 	if accessory == null:
 		_equip_next_available(accessory_type)
 		return

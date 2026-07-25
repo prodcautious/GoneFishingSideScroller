@@ -122,8 +122,14 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_i7eh4"]
-color = Color(1, 0.9607843, 0.2509804, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvkk5"]
+atlas = ExtResource("2_78ylj")
+region = Rect2(23, 30, 2, 2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ypey"]
+texture = SubResource("AtlasTexture_dvkk5")
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hms4"]
 atlas = ExtResource("2_78ylj")
@@ -237,6 +243,8 @@ texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vh00w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dy6ti"]
 atlas = ExtResource("2_78ylj")
@@ -719,6 +727,26 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 modulate_color = Color(0.5, 0.5, 0.5, 1)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_aggjg"]
+color = Color(0.92941177, 0.48235294, 0.22352941, 1)
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_78ylj"]
+color = Color(0.75, 0.389, 0.18, 1)
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i66g5"]
+color = Color(0.5, 0.25933334, 0.120000005, 1)
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nft0o"]
+color = Color(0.0627451, 0.5647059, 0.5568628, 1)
+thickness = 4
+vertical = true
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpawf"]
 atlas = ExtResource("2_78ylj")
 region = Rect2(23, 16, 2, 16)
@@ -755,7 +783,7 @@ CheckBox/styles/normal = SubResource("StyleBoxEmpty_h7dq0")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_f2wyf")
 CheckButton/fonts/font = ExtResource("1_78ylj")
 CheckButton/styles/normal = SubResource("StyleBoxTexture_uldmd")
-HSeparator/styles/separator = SubResource("StyleBoxLine_i7eh4")
+HSeparator/styles/separator = SubResource("StyleBoxTexture_8ypey")
 HSlider/icons/grabber = SubResource("AtlasTexture_0hms4")
 HSlider/icons/grabber_highlight = SubResource("AtlasTexture_8iapp")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_78ylj")
@@ -776,6 +804,8 @@ Label/constants/shadow_offset_y = 0
 Label/constants/shadow_outline_size = 0
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_78ylj")
+LineEdit/fonts/font = ExtResource("1_78ylj")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_vh00w")
 MenuButton/fonts/font = ExtResource("1_78ylj")
 NameInputButton/base_type = &"Button"
 OptionButton/colors/font_color = Color(0.98039216, 1, 1, 1)
@@ -816,4 +846,8 @@ TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_i66g5")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_0xefo")
 TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_nkfox")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_lyb8g")
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_aggjg")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_78ylj")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxLine_i66g5")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_nft0o")
 VSeparator/styles/separator = SubResource("StyleBoxTexture_i7eh4")
