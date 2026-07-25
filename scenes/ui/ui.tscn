@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cicy5wju2riow"]
 
 [ext_resource type="PackedScene" uid="uid://6ukq3n8vi4uq" path="res://scenes/ui/menus/start_menu.tscn" id="1_pfayw"]
-[ext_resource type="PackedScene" uid="uid://dnhmox84c11o8" path="res://scenes/bootsplash/bootsplash.tscn" id="1_y220t"]
 [ext_resource type="Theme" uid="uid://rbfkgv8dwr1b" path="res://new_theme.tres" id="2_jcn1r"]
 [ext_resource type="PackedScene" uid="uid://drco646kgct6y" path="res://scenes/ui/menus/pause_menu.tscn" id="2_pfayw"]
 [ext_resource type="PackedScene" uid="uid://vfeh6mwyb7tr" path="res://scenes/ui/inventory/inventory.tscn" id="3_7vp6q"]
@@ -12,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b8blnw84wgjho" path="res://scenes/autoloads/debug.tscn" id="9_uegxj"]
 
 [node name="UI" type="CanvasLayer" unique_id=1743719295]
-
-[node name="Bootsplash" parent="." unique_id=1674240622 instance=ExtResource("1_y220t")]
 
 [node name="StartMenu" parent="." unique_id=1667299012 instance=ExtResource("1_pfayw")]
 visible = false

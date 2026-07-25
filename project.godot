@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GoneFishingSideScroll"
-run/main_scene="uid://cicy5wju2riow"
+run/main_scene="uid://dnhmox84c11o8"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0.05490196, 0.015686275, 0.12941177, 1)
 boot_splash/show_image=false
@@ -29,6 +29,7 @@ FishManager="*uid://cum3qn145vumh"
 InventoryManager="*uid://dhawxons0ruql"
 MenuManager="*uid://dyvyld65devdc"
 FishingRodManager="*uid://chnnbpvi3t676"
+Ui="*uid://cicy5wju2riow"
 
 [dialogue_manager]
 

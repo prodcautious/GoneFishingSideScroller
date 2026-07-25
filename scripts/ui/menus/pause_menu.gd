@@ -33,7 +33,6 @@ func _connect_signals() -> void:
 	options_button.pressed.connect(_on_options_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
-	GameManager.game_start.connect(_on_game_start)
 
 func _register_menu() -> void:
 	MenuManager.register_menu(MenuManager.MenuState.PAUSE, self)
@@ -49,7 +48,7 @@ func _toggle_visibility() -> void:
 	]:
 		return
 
-	if visible and MenuManager.current_menu != MenuManager.MenuState.PAUSE :
+	if visible and MenuManager.current_menu != MenuManager.MenuState.PAUSE:
 		player = get_tree().get_first_node_in_group("Player")
 		if player:
 			player.lock()
@@ -87,10 +86,6 @@ func _tween_out() -> void:
 #endregion
 
 #region Signals
-func _on_game_start() -> void:
-	# re-register menu when player goes back to start menu
-	_register_menu()
-
 func _on_resume_button_pressed() -> void:
 	_toggle_visibility()
 
